@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Hello Gridea | F嘉阳
+    阿里云CDN + nginx多级代理获取客户端IP | F嘉阳
 </title>
 <link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575364011075">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,47 +99,134 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            Hello Gridea
+                            阿里云CDN + nginx多级代理获取客户端IP
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2018-12-12</time>
+                            <time class="post-time">2019-04-03</time>
                             
-                                <a href="https://fjiayang.github.io//tag/FOZk8Oy2t" class="post-tag i-tag
-                            i-tag-error">
-                            #Gridea
+                                <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-warning">
+                            #Java
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/wYlRrVT0US" class="post-tag i-tag
+                            i-tag-warning">
+                            #CDN
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/ZugDp5bXgc" class="post-tag i-tag
+                            i-tag-primary">
+                            #nginx
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://fjiayang.github.io//post-images/hello-gridea.png')"></div>
-                            
                                 <div class="post-content">
-                                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+                                    <h2 id="无nginx代理场景">无Nginx代理场景</h2>
+<p>业务层通过获取请求头参数即可拿到客户端IP</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<pre><code class="language-java">request.getRemoteAddr();
+</code></pre>
+<h2 id="一级nginx代理">一级Nginx代理</h2>
+<p>使用代理后直接读取请求头参数会读取到代理服务器的IP地址，而非真实客户端IP</p>
+<p>解决方法是添加Nginx请求头参数提前保存客户端IP</p>
+<p><code>nginx.conf</code>配置加入内容</p>
+<pre><code>location / {
+    ...
+    # IP地址转发
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Real-Port $remote_port;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+</code></pre>
+<p>业务层读取nginx配置的请求头参数即可</p>
+<pre><code class="language-java">public static String getIpAddr(HttpServletRequest request) {
+        String ip = request.getHeader(&quot;X-Real-IP&quot;);
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getHeader(&quot;Proxy-Client-IP&quot;);
+            log.info(&quot;【Proxy-Client-IP】 {}&quot;, ip);
+        }
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getHeader(&quot;WL-Proxy-Client-IP&quot;);
+            log.info(&quot;【WL-Proxy-Client-IP】{}&quot;, ip);
+        }
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getHeader(&quot;X-Forwarded-For&quot;);
+            log.info(&quot;【X-Forwarded-For】{}&quot;, ip);
+        }
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+            log.info(&quot;【unknown】{}&quot;, ip);
+        }
+        return ip;
+    }
+</code></pre>
+<h2 id="多级nginx代理">多级Nginx代理</h2>
+<p>若存在多级Nginx代理，则需要在第一级代理时获取客户端IP，在后续代理逐层传递</p>
+<p>第一级代理配置同上，第N级代理配置<code>nginx.conf</code>如下</p>
+<pre><code>location /{
+   # IP地址转发
+   proxy_set_header X-Real-IP $X-Real-IP;
+   proxy_set_header X-Real-Port $X-Real-Port;
+   proxy_set_header X-Forwarded-For $X-Forwarded-For;
+}
+</code></pre>
+<p>业务层保持不变即可读取到传递的IP地址</p>
+<h2 id="阿里云cdn转发">阿里云CDN转发</h2>
+<p>在已经存在nginx代理的场景下，加入CDN后源客户端IP在CDN处被转发，故第一级nginx代理使用<code>$remote_addr</code>参数读取到的是CDN服务的地址，而根据一般约定，CDN转发会将IP地址存放在<code>X-Forwarded-For</code>参数下</p>
+<p>修改顶级Nginx配置以支持优先获取CDN代理地址，也可以通过修改业务层读取优先级实现</p>
+<pre><code>location / {
+    ...
+    # IP地址转发
+    # proxy_set_header X-Real-IP $remote_addr;
+    # proxy_set_header X-Real-Port $remote_port;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+</code></pre>
+<p>但经过对阿里云CDN测试，发现<code>X-Forwarded-For</code>下不仅包含真实客户端IP也包含CDN服务IP，故业务层需要做一定的处理进行区分</p>
+<p>如图，第一个为真实客户端IP，第二个为CDN代理IP</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2019/04/03/5ca413f53a191.png"><img src="https://i.loli.net/2019/04/03/5ca413f53a191.png" alt="1554256476626.png"></a></figure>
+<pre><code class="language-java">public static String getIpAddr(HttpServletRequest request) {
+        String ip = request.getHeader(&quot;X-Real-IP&quot;);
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getHeader(&quot;Proxy-Client-IP&quot;);
+            log.info(&quot;【Proxy-Client-IP】 {}&quot;, ip);
+        }
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getHeader(&quot;WL-Proxy-Client-IP&quot;);
+            log.info(&quot;【WL-Proxy-Client-IP】{}&quot;, ip);
+        }
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getHeader(&quot;X-Forwarded-For&quot;);
+            if (ip.contains(&quot;,&quot;)) {
+                // 通过阿里云CDN转发后可能读取到2个IP地址
+                String[] cdnMutilIp = ip.split(&quot;,&quot;);
+                ip = cdnMutilIp[0];
+            }
+            log.info(&quot;【X-Forwarded-For】{}&quot;, ip);
+        }
+        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+            log.info(&quot;【unknown】{}&quot;, ip);
+        }
+        return ip;
+    }
+}
+</code></pre>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/tyk-wang-guan-docker-an-zhuang">
+                                <h3 class="post-title">
+                                    Tyk网关Docker安装
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -156,7 +243,10 @@
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li><a href="#%E6%97%A0nginx%E4%BB%A3%E7%90%86%E5%9C%BA%E6%99%AF">无Nginx代理场景</a></li>
+<li><a href="#%E4%B8%80%E7%BA%A7nginx%E4%BB%A3%E7%90%86">一级Nginx代理</a></li>
+<li><a href="#%E5%A4%9A%E7%BA%A7nginx%E4%BB%A3%E7%90%86">多级Nginx代理</a></li>
+<li><a href="#%E9%98%BF%E9%87%8C%E4%BA%91cdn%E8%BD%AC%E5%8F%91">阿里云CDN转发</a></li>
 </ul>
 </li>
 </ul>

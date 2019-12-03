@@ -1,0 +1,418 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Tyk网关Docker安装 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575364011075">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575364011075" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Tyk网关Docker安装
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-03-31</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-error">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="文档指南">文档指南</h2>
+<p><a href="https://tyk.io/docs/get-started/with-tyk-on-premise/installation/docker/">官方文档</a></p>
+<p>查看官方Docker安装指南，发现只提供了镜像地址，并未给出详细操作步骤</p>
+<!-- more -->
+<blockquote>
+<h1 id="with-docker">With Docker</h1>
+<p>Tyk has three containers that are available to set up a Docker installation:</p>
+<ul>
+<li><a href="https://hub.docker.com/r/tykio/tyk-gateway/">The Tyk Gateway container</a></li>
+<li><a href="https://hub.docker.com/r/tykio/tyk-dashboard/">The Tyk Dashboard container</a></li>
+<li><a href="https://hub.docker.com/r/tykio/tyk-pump-docker-pub/">The Tyk Pump container</a></li>
+</ul>
+<p>All three are required for a full deployment. We recommend that each container is installed on a separate machine for optimum performance.</p>
+</blockquote>
+<h2 id="实践">实践</h2>
+<h3 id="tyk-gateway-container">Tyk Gateway container</h3>
+<p>参考镜像指南，此处的目标是搭建带<code>Dashboard</code>的Tyk网关</p>
+<blockquote>
+<h3 id="gateway-pro-installation-with-dashboard">Gateway - Pro installation with Dashboard</h3>
+<p>The gateway in a Pro installation is dependent on the dashboard service. We will assume that the dashboard service is installed, up and running. If not, we would recommend that you follow the dashboard installation guide here:</p>
+<p><a href="https://github.com/TykTechnologies/tyk-dashboard-docker">https://github.com/TykTechnologies/tyk-dashboard-docker</a></p>
+<p>The gateway relies upon the dashboard service to load it's api definitions &amp; proxy configurations. As such, there is no need to mount any app directory.</p>
+<pre><code class="language-bash">docker run -d \
+  --name tyk_gateway \
+  --network tyk \
+  -p 8080:8080 \
+  -v $(pwd)/tyk.with_dashboard.conf:/opt/tyk-gateway/tyk.conf \
+  tykio/tyk-gateway:latest
+</code></pre>
+</blockquote>
+<p>文档中说明搭建网关需要先搭建<code>Dashboard</code></p>
+<h3 id="tyk-dashboard-container">Tyk Dashboard container</h3>
+<p>安装指南，指南的第六步指向的连接已经失效，由此推断之前存在一键安装脚本</p>
+<blockquote>
+<h2 id="quickstart">Quickstart</h2>
+<ol>
+<li>
+<p>Ensure you have set up the Redis, MongoDB and Tyk Gateway containers</p>
+</li>
+<li>
+<p>Set up the docker instance IP as the Dashboard hostname (in your <code>/etc/hosts</code> file or as a DNS):</p>
+<p>127.0.0.1 dashboard.tyk.docker</p>
+</li>
+<li>
+<p>Run the Dashboard</p>
+<p><code>docker run -d --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_mongo:mongo --link tyk_gateway:tyk_gateway tykio/tyk-dashboard</code></p>
+</li>
+<li>
+<p>You should now be able to access your Dashboard at <code>http://dashboard.tyk.docker:3000/</code> (note for OSX users, replace 127.0.0.1 with whatever IP address your docker VM runs)</p>
+</li>
+<li>
+<p>Enter your Dashboard License. Go to <code>http://dashboard.tyk.docker:3000/</code>. You will see a screen asking for a license, enter it in the section marked “<strong>Already have a license?</strong>” and click <code>Use this license</code>.</p>
+</li>
+<li>
+<p>Grab the bootstrap script from our <a href="https://github.com/TykTechnologies/tyk-analytics">tyk-dashboard github repo</a> and run:</p>
+<p>./bootstrap.sh dashboard.tyk.docker</p>
+</li>
+</ol>
+<p>To use an external configuration files, use the <code>-v</code> option to mount it over <code>/opt/tyk-dashboard/tyk_analytics.conf</code></p>
+</blockquote>
+<p>经过查找发现了旧版指南链接仍然可以访问，但不建议使用，<a href="https://tyk.io/docs/get-started/with-tyk-on-premise/installation/docker/docker-quickstart/">旧版指南</a></p>
+<p>按照文档的说法需要申请许可证，官方提供开发许可证，提供邮箱即可获取12个月的授权，<a href="https://tyk.io/shop/checkout/">申请地址</a></p>
+<p>申请后根据文档提供的Docker启动语句准备环境和Docker-compose文件便于一键启动</p>
+<p><code>docker-compose.yml</code>文件</p>
+<pre><code class="language-yaml">version: &quot;3.1&quot;
+
+services:
+
+  tyk_gateway:
+    image: tykio/tyk-gateway:latest
+    restart: always
+    networks:
+      - tyk-service-bridge
+    volumes:
+      - /www/wwwroot/tyk-free/apps:/opt/tyk-gateway/apps
+    depends_on:
+      - tyk_dashboard
+
+  tyk_dashboard:
+    image: tykio/tyk-dashboard
+    restart: always
+    networks:
+      - tyk-service-bridge
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: mongo
+    restart: always
+    networks:
+      - tyk-service-bridge
+
+  redis:
+    image: redis:4.0-alpine
+    restart: always
+    networks:
+      - tyk-service-bridge
+
+networks:
+  tyk-service-bridge:
+    driver: bridge
+</code></pre>
+<p>启动</p>
+<pre><code class="language-bash">$ docker-compose up
+</code></pre>
+<p>放行防火墙</p>
+<pre><code class="language-bash">$ firewall-cmd --zone=public --add-port=3000/tcp --permanent 
+$ firewall-cmd --reload
+</code></pre>
+<p>访问浏览器<code>IP:3000</code>输入秘钥</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2019/03/31/5ca072553a14b.png"><img src="https://i.loli.net/2019/03/31/5ca072553a14b.png" alt="1554004096241.png"></a></figure>
+<p>许可证已经发送到注册邮件中，激活后可登陆</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2019/03/31/5ca072552f277.png"><img src="https://i.loli.net/2019/03/31/5ca072552f277.png" alt="1554004144220.png"></a></figure>
+<p>但此时没有默认的用户名和密码，并且暂时未找到配置的方式（差评），需要通过官方脚本注册用户名和密码</p>
+<p>但官方脚本依赖Python环境，若主机没有python环境则无法执行</p>
+<p>启动脚本：</p>
+<pre><code class="language-bash">#!/bin/bash
+# Usage ./bootstrap.sh DASHBOARD_HOSTNAME
+
+LOCALIP=$1
+RANDOM_USER=$(env LC_CTYPE=C tr -dc &quot;a-z0-9&quot; &lt; /dev/urandom | head -c 10)
+PASS=&quot;test123&quot;
+
+echo &quot;Creating Organisation&quot;
+ORGDATA=$(curl --silent --header &quot;admin-auth: 12345&quot; --header &quot;Content-Type:application/json&quot; --data '{&quot;owner_name&quot;: &quot;Default Org.&quot;,&quot;owner_slug&quot;: &quot;default&quot;, &quot;cname_enabled&quot;: true, &quot;cname&quot;: &quot;&quot;}' http://$LOCALIP:3000/admin/organisations 2&gt;&amp;1)
+#echo $ORGDATA
+ORGID=$(echo $ORGDATA | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj[&quot;Meta&quot;])')
+echo &quot;ORGID: $ORGID&quot;
+
+echo &quot;Adding new user&quot;
+USER_DATA=$(curl --silent --header &quot;admin-auth: 12345&quot; --header &quot;Content-Type:application/json&quot; --data '{&quot;first_name&quot;: &quot;John&quot;,&quot;last_name&quot;: &quot;Smith&quot;,&quot;email_address&quot;: &quot;'$RANDOM_USER'@example.com&quot;,&quot;password&quot;:&quot;'$PASS'&quot;, &quot;active&quot;: true,&quot;org_id&quot;: &quot;'$ORGID'&quot;}' http://$LOCALIP:3000/admin/users 2&gt;&amp;1)
+#echo $USER_DATA
+USER_CODE=$(echo $USER_DATA | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj[&quot;Message&quot;])')
+echo &quot;USER AUTH: $USER_CODE&quot;
+
+USER_LIST=$(curl --silent --header &quot;authorization: $USER_CODE&quot; http://$LOCALIP:3000/api/users 2&gt;&amp;1)
+#echo $USER_LIST
+
+USER_ID=$(echo $USER_LIST | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj[&quot;users&quot;][0][&quot;id&quot;])')
+echo &quot;NEW ID: $USER_ID&quot;
+
+echo &quot;Setting password&quot;
+OK=$(curl --silent --header &quot;authorization: $USER_CODE&quot; --header &quot;Content-Type:application/json&quot; http://$LOCALIP:3000/api/users/$USER_ID/actions/reset --data '{&quot;new_password&quot;:&quot;'$PASS'&quot;}')
+
+echo &quot;&quot;
+
+echo &quot;DONE&quot;
+echo &quot;====&quot;
+echo &quot;Login at http://$LOCALIP:3000/&quot;
+echo &quot;User: $RANDOM_USER@example.com&quot;
+echo &quot;Pass: $PASS&quot;
+echo &quot;&quot;
+</code></pre>
+<p>为了方便使用，此处创建了包含启动脚本的Docker镜像</p>
+<p>仓库地址：<a href="https://hub.docker.com/r/fjy8018/tyk-bootstrap">fjy8018/tyk-bootstrap</a></p>
+<p>使用方法：</p>
+<pre><code class="language-bash">$ docker run --rm -it --network tyk-free_tyk-service-bridge -e TARGET_IP=tyk_dashboard  fjy8018/tyk-bootstrap:0.1
+</code></pre>
+<p>随即获得登陆名和密码</p>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2019/03/31/5ca07255176c1.png"><img src="https://i.loli.net/2019/03/31/5ca07255176c1.png" alt="1554007784141.png"></a></figure>
+<p>登陆成功</p>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2019/03/31/5ca0725532940.png"><img src="https://i.loli.net/2019/03/31/5ca0725532940.png" alt="1554018550325.png"></a></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/springboot2x-data-jpa-duo-shu-ju-yuan-pa-keng">
+                                <h3 class="post-title">
+                                    SpringBoot2.x Data JPA 多数据源爬坑
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%96%87%E6%A1%A3%E6%8C%87%E5%8D%97">文档指南</a></li>
+</ul>
+</li>
+<li><a href="#with-docker">With Docker</a>
+<ul>
+<li><a href="#%E5%AE%9E%E8%B7%B5">实践</a>
+<ul>
+<li><a href="#tyk-gateway-container">Tyk Gateway container</a></li>
+<li><a href="#gateway-pro-installation-with-dashboard">Gateway - Pro installation with Dashboard</a></li>
+<li><a href="#tyk-dashboard-container">Tyk Dashboard container</a></li>
+</ul>
+</li>
+<li><a href="#quickstart">Quickstart</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
