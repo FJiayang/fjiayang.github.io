@@ -1,0 +1,592 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Kubernetes 集群搭建 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575360681806">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575360681806" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Kubernetes 集群搭建
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-10-20</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/yb4HlP89R" class="post-tag i-tag
+                            i-tag-other_2">
+                            #Kubernetes
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-success">
+                            #Docker
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/rjmWDGdyvm" class="post-tag i-tag
+                            i-tag-error">
+                            #集群
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://s2.ax1x.com/2019/11/27/QCRTo9.jpg')"></div>
+                            
+                                <div class="post-content">
+                                    <h2 id="搭建方法分类">搭建方法分类</h2>
+<p>如果是搭建<code>Kubernetes</code>的学习环境，则可以直接使用<code>minikube</code>快速搭建单节点的<code>Kubernetes</code>环境，官方推荐使用kubeadm搭建<code>Kubernetes</code>集群生产环境</p>
+<p>但kubeadm需要连接谷歌容器仓库获取镜像，在网络受限的情况下无法搭建成功，故有两种搭建方法：</p>
+<ul>
+<li>服务器使用代理，代理所有的<code>http</code>和<code>https</code>连接，可以自由访问任意地址</li>
+<li>使用阿里云镜像地址</li>
+</ul>
+<p>本次采用第二种方式进行搭建</p>
+<h2 id="环境准备">环境准备</h2>
+<p>本次宿主机为<code>CentOS 7</code>，结合3台<code>virtual box</code>虚拟机模拟集群环境，虚拟机使用<code>Vagrant</code>进行管理，<code>vagrant</code>安装比较简单，此处不再赘述</p>
+<p>宿主机配置：</p>
+<ul>
+<li>CPU：4C</li>
+<li>RAM：8G</li>
+</ul>
+<h2 id="虚拟机配置">虚拟机配置</h2>
+<p>由于网络受限，<code>vagrant</code>默认拉取的操作系统文件地址不可访问，需要自行从官方下载镜像或者使用代理下载镜像，此处对此操作也不再赘述</p>
+<p>三台虚拟机配置文件</p>
+<pre><code class="language-ruby"># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version &quot;&gt;= 1.6.0&quot;
+
+boxes = [
+    {
+        :name =&gt; &quot;k8s-master&quot;,
+        :eth1 =&gt; &quot;192.168.205.120&quot;,
+        :mem =&gt; &quot;2048&quot;,
+        :cpu =&gt; &quot;2&quot;
+    },
+    {
+        :name =&gt; &quot;k8s-node1&quot;,
+        :eth1 =&gt; &quot;192.168.205.121&quot;,
+        :mem =&gt; &quot;2048&quot;,
+        :cpu =&gt; &quot;1&quot;
+    },
+    {
+        :name =&gt; &quot;k8s-node2&quot;,
+        :eth1 =&gt; &quot;192.168.205.122&quot;,
+        :mem =&gt; &quot;2048&quot;,
+        :cpu =&gt; &quot;1&quot;
+    }
+
+]
+
+Vagrant.configure(2) do |config|
+
+  config.vm.box = &quot;centos/7&quot;
+  boxes.each do |opts|
+    config.vm.define opts[:name] do |config|
+      config.vm.hostname = opts[:name]
+      config.vm.provider &quot;vmware_fusion&quot; do |v|
+        v.vmx[&quot;memsize&quot;] = opts[:mem]
+        v.vmx[&quot;numvcpus&quot;] = opts[:cpu]
+      end
+      config.vm.provider &quot;virtualbox&quot; do |v|
+        v.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, opts[:mem]]
+        v.customize [&quot;modifyvm&quot;, :id, &quot;--cpus&quot;, opts[:cpu]]
+      end
+      config.vm.network :private_network, ip: opts[:eth1]
+    end
+  end
+  config.vm.provision &quot;shell&quot;, privileged: true, path: &quot;./setup.sh&quot;
+end
+</code></pre>
+<p>所有虚拟机启动后都会执行<code>./setup.sh</code>脚本配置基础环境，脚本内容如下</p>
+<pre><code class="language-bash">#/bin/sh
+
+sudo yum install -y vim telnet bind-utils wget yum-utils
+
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum -y install docker-ce-18.09.8 docker-ce-cli-18.09.8 containerd.io
+
+if [ ! $(getent group docker) ];
+then 
+    sudo groupadd docker;
+else
+    echo &quot;docker user group already exists&quot;
+fi
+
+sudo gpasswd -a $USER docker
+sudo systemctl restart docker
+
+# open password auth for backup if ssh key doesn't work, bydefault, username=vagrant password=vagrant
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
+sudomkdir /etc/yum.repos.d/bak &amp;&amp; mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak
+sudowget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo
+sudowget -O /etc/yum.repos.d/epel.repo http://mirrors.cloud.tencent.com/repo/epel-7.repo
+
+yum clean all &amp;&amp; yum makecache
+
+sudo bash -c 'cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF'
+
+sudo wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'
+{
+  &quot;registry-mirrors&quot;: [&quot;https://clayphwh.mirror.aliyuncs.com&quot;]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+sudo setenforce 0
+
+sudo yum install -y kubelet kubeadm kubectl
+
+sudo bash -c 'cat &lt;&lt;EOF &gt;  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward=1
+EOF'
+sudo sysctl --system
+
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+sudo swapoff -a
+
+sudo systemctl enable docker.service
+sudo systemctl enable kubelet.service
+</code></pre>
+<p>脚本内已将K8S镜像均配置为阿里云镜像仓库，并配置了阿里云容器加速服务地址，更便于在国内拉取镜像</p>
+<h2 id="启动虚拟机">启动虚拟机</h2>
+<p>使用命令启动虚拟机</p>
+<pre><code class="language-bash">$ vagrant up
+</code></pre>
+<p>启动需要较长时间，若出现大量超时也请耐心等待</p>
+<pre><code class="language-bash">Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: mirrors.163.com
+ * updates: mirrors.163.com
+http://vault.centos.org/7.1.1503/os/x86_64/repodata/0e6e90965f55146ba5025ea450f822d1bb0267d0299ef64dd4365825e6bad995-c7-x86_64-comps.xml.gz: [Errno 12] Timeout on http://vault.centos.org/7.1.1503/os/x86_64/repodata/0e6e90965f55146ba5025ea450f822d1bb0267d0299ef64dd4365825e6bad995-c7-x86_64-comps.xml.gz: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
+Trying other mirror.
+http://vault.centos.org/7.1.1503/updates/x86_64/repodata/93b71f445d2ec2138d28152612f4fb29c8e76ee31f2666b964d88249b4e0a955-primary.sqlite.bz2: [Errno 12] Timeout on http://vault.centos.org/7.1.1503/updates/x86_64/repodata/93b71f445d2ec2138d28152612f4fb29c8e76ee31f2666b964d88249b4e0a955-primary.sqlite.bz2: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
+Trying other mirror.
+http://vault.centos.org/7.2.1511/os/x86_64/repodata/c6411f1cc8a000ed2b651b49134631d279abba1ec1f78e5dcca79a52d8c1eada-primary.sqlite.bz2: [Errno 12] Timeout on http://vault.centos.org/7.2.1511/os/x86_64/repodata/c6411f1cc8a000ed2b651b49134631d279abba1ec1f78e5dcca79a52d8c1eada-primary.sqlite.bz2: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
+Trying other mirror.
+...
+</code></pre>
+<p>启动完成后通过命令查看虚拟机状态</p>
+<pre><code class="language-bash">$ vagrant status
+Current machine states:
+
+k8s-master                running (virtualbox)
+k8s-node1                 running (virtualbox)
+k8s-node2                 running (virtualbox)
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+</code></pre>
+<h2 id="k8s-master节点初始化">K8S master节点初始化</h2>
+<p>进入主节点，查看环境是否已经配置完成</p>
+<pre><code class="language-bash">$ vagrant ssh k8s-master
+</code></pre>
+<p>执行以下三条语句查看是否有预期输出</p>
+<pre><code class="language-bash">[vagrant@k8s-master ~]$ sudo which kubeadm
+/bin/kubeadm
+[vagrant@k8s-master ~]$ sudo which kubelet
+/bin/kubelet
+[vagrant@k8s-master ~]$ sudo which kubectl
+/bin/kubectl
+[vagrant@k8s-master ~]$ sudo docker version
+Client:
+ Version:           18.09.8
+ API version:       1.39
+ Go version:        go1.10.8
+ Git commit:        0dd43dd87f
+ Built:             Wed Jul 17 17:40:31 2019
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.8
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.8
+  Git commit:       0dd43dd
+  Built:            Wed Jul 17 17:10:42 2019
+  OS/Arch:          linux/amd64
+  Experimental:     false
+</code></pre>
+<p>使用初始化命令，并指定拉取镜像地址为阿里云地址，同时指定容器网络地址和注册中心广播地址</p>
+<pre><code class="language-bash">$ sudo kubeadm init --pod-network-cidr 172.100.0.0/16 --image-repository registry.aliyuncs.com/google_containers --apiserver-advertise-address 192.168.205.120
+</code></pre>
+<p>输出如下即初始化完成</p>
+<pre><code class="language-bash">$ sudo kubeadm init --pod-network-cidr 172.100.0.0/16 --image-repository registry.aliyuncs.com/google_containers --apiserver-advertise-address 192.168.205.120
+W1020 01:31:27.560129   20473 version.go:101] could not fetch a `Kubernetes`version from the internet: unable to get URL &quot;https://dl.k8s.io/release/stable-1.txt&quot;: Get https://dl.k8s.io/release/stable-1.txt: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+W1020 01:31:27.560713   20473 version.go:102] falling back to the local client version: v1.16.2
+[init] Using `Kubernetes`version: v1.16.2
+[preflight] Running pre-flight checks
+        [WARNING IsDockerSystemdCheck]: detected &quot;cgroupfs&quot; as the Docker cgroup driver. The recommended driver is &quot;systemd&quot;. Please follow the guide at https://kubernetes.io/docs/setup/cri/
+[preflight] Pulling images required for setting up a `Kubernetes`cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[kubelet-start] Writing kubelet environment file with flags to file &quot;/var/lib/kubelet/kubeadm-flags.env&quot;
+[kubelet-start] Writing kubelet configuration to file &quot;/var/lib/kubelet/config.yaml&quot;
+[kubelet-start] Activating the kubelet service
+[certs] Using certificateDir folder &quot;/etc/kubernetes/pki&quot;
+[certs] Generating &quot;ca&quot; certificate and key
+[certs] Generating &quot;apiserver&quot; certificate and key
+[certs] apiserver serving cert is signed for DNS names [k8s-master `kubernetes`kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 192.168.205.120]
+[certs] Generating &quot;apiserver-kubelet-client&quot; certificate and key
+[certs] Generating &quot;front-proxy-ca&quot; certificate and key
+[certs] Generating &quot;front-proxy-client&quot; certificate and key
+[certs] Generating &quot;etcd/ca&quot; certificate and key
+[certs] Generating &quot;etcd/server&quot; certificate and key
+[certs] etcd/server serving cert is signed for DNS names [k8s-master localhost] and IPs [192.168.205.120 127.0.0.1 ::1]
+[certs] Generating &quot;etcd/peer&quot; certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [k8s-master localhost] and IPs [192.168.205.120 127.0.0.1 ::1]
+[certs] Generating &quot;etcd/healthcheck-client&quot; certificate and key
+[certs] Generating &quot;apiserver-etcd-client&quot; certificate and key
+[certs] Generating &quot;sa&quot; key and public key
+[kubeconfig] Using kubeconfig folder &quot;/etc/kubernetes&quot;
+[kubeconfig] Writing &quot;admin.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;kubelet.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;controller-manager.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;scheduler.conf&quot; kubeconfig file
+[control-plane] Using manifest folder &quot;/etc/kubernetes/manifests&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-apiserver&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-controller-manager&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-scheduler&quot;
+[etcd] Creating static Pod manifest for local etcd in &quot;/etc/kubernetes/manifests&quot;
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory &quot;/etc/kubernetes/manifests&quot;. This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+[apiclient] All control plane components are healthy after 59.511578 seconds
+[upload-config] Storing the configuration used in ConfigMap &quot;kubeadm-config&quot; in the &quot;kube-system&quot; Namespace
+[kubelet] Creating a ConfigMap &quot;kubelet-config-1.16&quot; in namespace kube-system with the configuration for the kubelets in the cluster
+[upload-certs] Skipping phase. Please see --upload-certs
+[mark-control-plane] Marking the node k8s-master as control-plane by adding the label &quot;node-role.kubernetes.io/master=''&quot;
+[mark-control-plane] Marking the node k8s-master as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[bootstrap-token] Using token: rod570.p67pymzbil4m6u8d
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstrap-token] Creating the &quot;cluster-info&quot; ConfigMap in the &quot;kube-public&quot; namespace
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your `Kubernetes`control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.205.120:6443 --token rod570.p67pymzbil4m6u8d \
+    --discovery-token-ca-cert-hash sha256:8f4cb9d555c78d58befeb3cfa3f7537989aa599e53e4f1bae929d8cc7afd1476
+</code></pre>
+<h2 id="kubectl-配置">kubectl 配置</h2>
+<p>拷贝kubectl配置</p>
+<pre><code class="language-bash">$ rm -rf ~/.kube
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</code></pre>
+<p>若不配置直接使用则报无法连接错误</p>
+<pre><code class="language-bash">[vagrant@k8s-master ~]$ kubectl get pod --all-namespaces
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+</code></pre>
+<p>此时使用<code>kubectl</code>可查看k8s容器运行情况，输出如下则为初始化成功，启动由于未配置网络插件，故<code>coredns</code>一直处于<code>Pending</code>状态</p>
+<pre><code class="language-bash">[vagrant@k8s-master ~]$ kubectl get pod --all-namespaces
+NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
+kube-system   coredns-58cc8c89f4-c297b             0/1     Pending   0          81s
+kube-system   coredns-58cc8c89f4-spzhj             0/1     Pending   0          81s
+kube-system   etcd-k8s-master                      1/1     Running   0          39s
+kube-system   kube-apiserver-k8s-master            1/1     Running   0          49s
+kube-system   kube-controller-manager-k8s-master   1/1     Running   0          40s
+kube-system   kube-proxy-xlb62                     1/1     Running   0          81s
+kube-system   kube-scheduler-k8s-master            1/1     Running   0          51s
+</code></pre>
+<h2 id="安装网络插件">安装网络插件</h2>
+<p>网络插件有多个可选，可通过<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network">官网</a>查看，此处选择安装<code>flannel</code> CNI网络插件</p>
+<blockquote>
+<p>For <code>flannel</code> to work correctly, you must pass <code>--pod-network-cidr=10.244.0.0/16</code> to <code>kubeadm init</code>.</p>
+<p>Set <code>/proc/sys/net/bridge/bridge-nf-call-iptables</code> to <code>1</code> by running <code>sysctl net.bridge.bridge-nf-call-iptables=1</code> to pass bridged IPv4 traffic to iptables’ chains. This is a requirement for some CNI plugins to work, for more information please see <a href="https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#network-plugin-requirements">here</a>.</p>
+<p>Make sure that your firewall rules allow UDP ports 8285 and 8472 traffic for all hosts participating in the overlay network. see <a href="https://coreos.com/flannel/docs/latest/troubleshooting.html#firewalls">here </a>.</p>
+<p>Note that <code>flannel</code> works on <code>amd64</code>, <code>arm</code>, <code>arm64</code>, <code>ppc64le</code> and <code>s390x</code> under Linux. Windows (<code>amd64</code>) is claimed as supported in v0.11.0 but the usage is undocumented.</p>
+<pre><code class="language-shell">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
+</code></pre>
+<p>For more information about <code>flannel</code>, see <a href="https://github.com/coreos/flannel">the CoreOS flannel repository on GitHub </a>.</p>
+</blockquote>
+<p>相关的网络配置已在脚本中写入，此时直接执行yml脚本即可</p>
+<pre><code class="language-bash">$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
+</code></pre>
+<p>再次查看容器运行情况，所有容器均已运行，则master节点配置完成</p>
+<pre><code class="language-bash">[vagrant@k8s-master ~]$ kubectl get pod --all-namespaces
+NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
+kube-system   coredns-58cc8c89f4-c297b             1/1     Running   0          5m17s
+kube-system   coredns-58cc8c89f4-spzhj             1/1     Running   0          5m17s
+kube-system   etcd-k8s-master                      1/1     Running   0          4m35s
+kube-system   kube-apiserver-k8s-master            1/1     Running   0          4m45s
+kube-system   kube-controller-manager-k8s-master   1/1     Running   0          4m36s
+kube-system   kube-flannel-ds-amd64-6rchg          1/1     Running   0          3m50s
+kube-system   kube-proxy-xlb62                     1/1     Running   0          5m17s
+kube-system   kube-scheduler-k8s-master            1/1     Running   0          4m47s
+</code></pre>
+<h2 id="配置worker节点">配置worker节点</h2>
+<p>以<code>k8s-node1</code>为例，执行<code>master</code>初始化时提供的脚本即可加入<code>k8s</code>集群，输出如下则加入成功</p>
+<pre><code class="language-bash">[vagrant@k8s-node1 ~]$ sudo kubeadm join 192.168.205.120:6443 --token 8ry5oo.y48ksgurn103zq4h \
+&gt;     --discovery-token-ca-cert-hash sha256:ead07352591500c2cfe3321bf87d2e068790e16f2a7e0cc23541c864d24006d4
+[preflight] Running pre-flight checks
+        [WARNING IsDockerSystemdCheck]: detected &quot;cgroupfs&quot; as the Docker cgroup driver. The recommended driver is &quot;systemd&quot;. Please follow the guide at https://kubernetes.io/docs/setup/cri/
+[preflight] Reading configuration from the cluster...
+[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
+[kubelet-start] Downloading configuration for the kubelet from the &quot;kubelet-config-1.16&quot; ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file &quot;/var/lib/kubelet/config.yaml&quot;
+[kubelet-start] Writing kubelet environment file with flags to file &quot;/var/lib/kubelet/kubeadm-flags.env&quot;
+[kubelet-start] Activating the kubelet service
+[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+
+This node has joined the cluster:
+* Certificate signing request was sent to apiserver and a response was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+</code></pre>
+<p>稍等片刻进入<code>master</code>节点查看容器运行情况，会发现多了几个网络容器，属于预期情况</p>
+<pre><code class="language-bash">[vagrant@k8s-master ~]$ kubectl get pod --all-namespaces
+NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
+kube-system   coredns-58cc8c89f4-c297b             1/1     Running   0          6m28s
+kube-system   coredns-58cc8c89f4-spzhj             1/1     Running   0          6m28s
+kube-system   etcd-k8s-master                      1/1     Running   0          5m46s
+kube-system   kube-apiserver-k8s-master            1/1     Running   0          5m56s
+kube-system   kube-controller-manager-k8s-master   1/1     Running   0          5m47s
+kube-system   kube-flannel-ds-amd64-6fwg5          1/1     Running   0          49s
+kube-system   kube-flannel-ds-amd64-6rchg          1/1     Running   0          5m1s
+kube-system   kube-flannel-ds-amd64-z4plh          1/1     Running   0          43s
+kube-system   kube-proxy-cdcs4                     1/1     Running   0          49s
+kube-system   kube-proxy-nlmbb                     1/1     Running   0          43s
+kube-system   kube-proxy-xlb62                     1/1     Running   0          6m28s
+kube-system   kube-scheduler-k8s-master            1/1     Running   0          5m58s
+</code></pre>
+<h2 id="集群验证">集群验证</h2>
+<p>在<code>master</code>节点中启动<code>nginx</code>容器测试集群情况</p>
+<pre><code class="language-bash">$ kubectl create deployment nginx --image=nginx
+</code></pre>
+<p>稍等片刻，输出如下则集群正常运行，<code>k8s</code>集群配置完成</p>
+<pre><code class="language-bash">[vagrant@k8s-master ~]$ kubectl get pod --all-namespaces
+NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
+default       nginx-86c57db685-2gkxm               1/1     Running   0          58s
+kube-system   coredns-58cc8c89f4-c297b             1/1     Running   0          7m46s
+kube-system   coredns-58cc8c89f4-spzhj             1/1     Running   0          7m46s
+kube-system   etcd-k8s-master                      1/1     Running   0          7m4s
+kube-system   kube-apiserver-k8s-master            1/1     Running   0          7m14s
+kube-system   kube-controller-manager-k8s-master   1/1     Running   0          7m5s
+kube-system   kube-flannel-ds-amd64-6fwg5          1/1     Running   0          2m7s
+kube-system   kube-flannel-ds-amd64-6rchg          1/1     Running   0          6m19s
+kube-system   kube-flannel-ds-amd64-z4plh          1/1     Running   0          2m1s
+kube-system   kube-proxy-cdcs4                     1/1     Running   0          2m7s
+kube-system   kube-proxy-nlmbb                     1/1     Running   0          2m1s
+kube-system   kube-proxy-xlb62                     1/1     Running   0          7m46s
+kube-system   kube-scheduler-k8s-master            1/1     Running   0          7m16s
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB">搭建方法分类</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87">环境准备</a></li>
+<li><a href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE">虚拟机配置</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA">启动虚拟机</a></li>
+<li><a href="#k8s-master%E8%8A%82%E7%82%B9%E5%88%9D%E5%A7%8B%E5%8C%96">K8S master节点初始化</a></li>
+<li><a href="#kubectl-%E9%85%8D%E7%BD%AE">kubectl 配置</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6">安装网络插件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AEworker%E8%8A%82%E7%82%B9">配置worker节点</a></li>
+<li><a href="#%E9%9B%86%E7%BE%A4%E9%AA%8C%E8%AF%81">集群验证</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
