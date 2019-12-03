@@ -1,0 +1,396 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    DevOps GitLab CICD 实践2——Runner 部署 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362720193">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362720193" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            DevOps GitLab CICD 实践2——Runner 部署
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-04-03</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
+                            i-tag-banana">
+                            #DevOps
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                            i-tag-other_2">
+                            #CICD
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-success">
+                            #GitLab
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-other_4">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>前置步骤：<a href="https://blog.fjy8018.top/index.php/archives/205/">DevOps GitLab CICD 实践1——GitLab 部署</a></p>
+<!-- more -->
+<h2 id="官方文档">官方文档</h2>
+<p><a href="https://docs.gitlab.com/runner/install/docker.html">文档地址</a></p>
+<p>虽然有官方指引，但个人感觉指引的不够清晰，导致初次配置可能频繁失败</p>
+<blockquote>
+<h1 id="run-gitlab-runner-in-a-container">Run GitLab Runner in a container</h1>
+<p>This is how you can run GitLab Runner inside a Docker container.</p>
+<h2 id="general-gitlab-runner-docker-image-usage">General GitLab Runner Docker image usage</h2>
+<p>GitLab Runner Docker images (based on <a href="https://docs.gitlab.com/runner/install/docker.html#docker-images">Ubuntu or Alpine Linux</a>) are designed as wrappers around the standard <code>gitlab-runner</code> command, like if GitLab Runner was installed directly on the host.</p>
+<p>The general rule is that every GitLab Runner command that normally would be executed as:</p>
+<pre><code class="language-bash">gitlab-runner [Runner command and options...]
+</code></pre>
+<p>can be executed with:</p>
+<pre><code class="language-bash">docker run [chosen docker options...] gitlab/gitlab-runner [Runner command and options...]
+</code></pre>
+<p>For example, getting the top-level help information for GitLab Runner command could be executed as:</p>
+<pre><code class="language-bash">docker run --rm -t -i gitlab/gitlab-runner --help
+
+NAME:
+   gitlab-runner - a GitLab Runner
+
+USAGE:
+   gitlab-runner [global options] command [command options] [arguments...]
+
+VERSION:
+   10.7.0 (7c273476)
+
+(...)
+</code></pre>
+<p>In short, the <code>gitlab-runner</code> part of the command is replaced with <code>docker run [docker options] gitlab/gitlab-runner</code>, while the rest of Runner’s command stays as it is described in the <a href="https://docs.gitlab.com/runner/register/index.html">register documentation</a>. The only difference is that the <code>gitlab-runner</code> command is executed inside of a Docker container.</p>
+<h2 id="docker-image-installation-and-configuration">Docker image installation and configuration</h2>
+<ol>
+<li>
+<p>Install Docker first:</p>
+<pre><code class="language-bash"> curl -sSL https://get.docker.com/ | sh
+</code></pre>
+</li>
+<li>
+<p>You need to mount a config volume into the <code>gitlab-runner</code> container to be used for configs and other resources:</p>
+<pre><code class="language-bash"> docker run -d --name gitlab-runner --restart always \
+   -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   gitlab/gitlab-runner:latest
+</code></pre>
+<p><strong>Tip:</strong> On macOS, use <code>/Users/Shared</code> instead of <code>/srv</code>.</p>
+<p>Or, you can use a config container to mount your custom data volume:</p>
+<pre><code class="language-bash"> docker run -d --name gitlab-runner-config \
+     -v /etc/gitlab-runner \
+     busybox:latest \
+     /bin/true
+</code></pre>
+<p>And then, run the Runner:</p>
+<pre><code class="language-bash"> docker run -d --name gitlab-runner --restart always \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     --volumes-from gitlab-runner-config \
+     gitlab/gitlab-runner:latest
+</code></pre>
+</li>
+<li>
+<p>Register the runner you just launched by following the instructions in the <a href="https://docs.gitlab.com/runner/register/index.html#docker">Docker section of Registering Runners</a>. The runner won’t pick up any jobs until it’s registered.</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="安装步骤">安装步骤</h2>
+<h3 id="获取gitlab-runner秘钥">获取Gitlab Runner秘钥</h3>
+<p>可以通过Gitlab管理员账号获取，也可以让每一个用户自行配置</p>
+<ul>
+<li>普通用户查看秘钥</li>
+</ul>
+<p>进入任意一个仓库的设置中，查看CICD配置</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2019/04/03/5ca46d8f7ec77.png"><img src="https://i.loli.net/2019/04/03/5ca46d8f7ec77.png" alt="1554266163188.png"></a></figure>
+<p>准备注册专用Runner令牌</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2019/04/03/5ca46d8ff2aa9.png"><img src="https://i.loli.net/2019/04/03/5ca46d8ff2aa9.png" alt="1554266217632.png"></a></figure>
+<ul>
+<li>管理员查看令牌</li>
+</ul>
+<p>进入总设置页面，配置全局Runner令牌</p>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2019/04/03/5ca46d907392b.png"><img src="https://i.loli.net/2019/04/03/5ca46d907392b.png" alt="1554266287842.png"></a></figure>
+<h3 id="runner注册">Runner注册</h3>
+<p>由于Runner一般运行复杂构建、打包任务，推荐配置在性能、带宽更大的机房</p>
+<h4 id="准备docker环境">准备Docker环境</h4>
+<pre><code class="language-bash">$ curl -sSL https://get.docker.com/ | sh
+$ systemctl start docker
+</code></pre>
+<h4 id="注册">注册</h4>
+<p>可以根据需要选择注册Runner类型</p>
+<p>同时，为了方便配置，使用单行注册并且关闭交互</p>
+<p><a href="https://docs.gitlab.com/runner/register/index.html#one-line-registration-command">单行注册官方文档</a></p>
+<p>命令说明：</p>
+<ul>
+<li><code>-v</code>挂载的目的是为了将注册后的配置文件持久化，用于运行容器</li>
+<li><code>--rm</code>指定容器运行结束后自动删除停止的容器</li>
+<li><code>-it</code>指定使用命令行交互方式运行，便于查看注册结果</li>
+</ul>
+<pre><code class="language-bash">$ docker run --rm -it \
+  -v /www/wwwroot/gitlab/srv/gitlab-runner/config:/etc/gitlab-runner \
+  gitlab/gitlab-runner:alpine-v11.8.0 register \
+  --non-interactive \
+  --executor &quot;docker&quot; \
+  --docker-image docker:stable \
+  --url &quot;Gitlab URL&quot; \
+  --registration-token &quot;令牌&quot; \
+  --description &quot;描述&quot; \
+  --tag-list &quot;标签1,标签2&quot; \
+  --run-untagged \
+  --docker-privileged \
+  --locked=&quot;false&quot;
+</code></pre>
+<p>注册成功提示</p>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2019/04/03/5ca46d8cb31ce.png"><img src="https://i.loli.net/2019/04/03/5ca46d8cb31ce.png" alt="1554277014308.png"></a></figure>
+<p>此时管理面板显示新的Runner已经注册</p>
+<figure data-type="image" tabindex="5"><a href="https://i.loli.net/2019/04/03/5ca46d8db2078.png"><img src="https://i.loli.net/2019/04/03/5ca46d8db2078.png" alt="1554277086811.png"></a></figure>
+<h3 id="runner-启动">Runner 启动</h3>
+<p>挂载本地配置信息并启动Runner</p>
+<pre><code class="language-bash">$ docker run -d --name gitlab-runner --restart always \
+ 	-v /www/wwwroot/gitlab/srv/gitlab-runner/config:/etc/gitlab-runner \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    gitlab/gitlab-runner:alpine-v11.8.0
+</code></pre>
+<p>此时可见Runner已经保持和Gitlab的联系</p>
+<figure data-type="image" tabindex="6"><a href="https://i.loli.net/2019/04/03/5ca46d8c56a69.png"><img src="https://i.loli.net/2019/04/03/5ca46d8c56a69.png" alt="1554277457677.png"></a></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/devops-gitlab-cicd-shi-jian-1-gitlab-bu-shu">
+                                <h3 class="post-title">
+                                    DevOps GitLab CICD 实践1——GitLab 部署
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3">官方文档</a></li>
+</ul>
+</li>
+<li><a href="#run-gitlab-runner-in-a-container">Run GitLab Runner in a container</a>
+<ul>
+<li><a href="#general-gitlab-runner-docker-image-usage">General GitLab Runner Docker image usage</a></li>
+<li><a href="#docker-image-installation-and-configuration">Docker image installation and configuration</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4">安装步骤</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96gitlab-runner%E7%A7%98%E9%92%A5">获取Gitlab Runner秘钥</a></li>
+<li><a href="#runner%E6%B3%A8%E5%86%8C">Runner注册</a>
+<ul>
+<li><a href="#%E5%87%86%E5%A4%87docker%E7%8E%AF%E5%A2%83">准备Docker环境</a></li>
+<li><a href="#%E6%B3%A8%E5%86%8C">注册</a></li>
+</ul>
+</li>
+<li><a href="#runner-%E5%90%AF%E5%8A%A8">Runner 启动</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

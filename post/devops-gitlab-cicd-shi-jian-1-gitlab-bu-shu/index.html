@@ -1,0 +1,480 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    DevOps GitLab CICD 实践1——GitLab 部署 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362720193">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362720193" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            DevOps GitLab CICD 实践1——GitLab 部署
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-04-03</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
+                            i-tag-">
+                            #DevOps
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                            i-tag-warning">
+                            #CICD
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-success">
+                            #GitLab
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-other_3">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="配置目标">配置目标</h2>
+<ul>
+<li>邮件提示</li>
+<li>GitHub第三方授权登陆</li>
+<li>GitLab Runner</li>
+<li>Docker私服注册</li>
+</ul>
+<!-- more -->
+<h2 id="官方介绍">官方介绍</h2>
+<p>目前微服务盛行环境下，服务部署优先考虑Docker方式，便于迁移和弹性伸缩</p>
+<p>官方镜像介绍 <a href="https://docs.gitlab.com/omnibus/docker/">GitLab Docker images</a></p>
+<blockquote>
+<h1 id="gitlab-docker-images">GitLab Docker images</h1>
+<p>Both GitLab CE and EE are in Docker Hub:</p>
+<ul>
+<li><a href="https://registry.hub.docker.com/u/gitlab/gitlab-ce/">GitLab CE Docker image</a></li>
+<li><a href="https://registry.hub.docker.com/u/gitlab/gitlab-ee/">GitLab EE Docker image</a></li>
+</ul>
+<p>The GitLab Docker images are monolithic images of GitLab running all the necessary services on a single container.</p>
+<p>In the following examples we are using the image of GitLab CE. To use GitLab EE instead of GitLab CE, replace the image name to <code>gitlab/gitlab-ee:latest</code>.</p>
+<p>If you want to use the latest RC image, use <code>gitlab/gitlab-ce:rc</code> or <code>gitlab/gitlab-ee:rc</code> for GitLab CE and GitLab EE respectively.</p>
+<p>The GitLab Docker images can be run in multiple ways:</p>
+<ul>
+<li><a href="https://docs.gitlab.com/omnibus/docker/#run-the-image">Run the image in Docker Engine</a></li>
+<li><a href="https://docs.gitlab.com/omnibus/docker/#install-gitlab-into-a-cluster">Install GitLab into a cluster</a></li>
+<li><a href="https://docs.gitlab.com/omnibus/docker/#install-gitlab-using-docker-compose">Install GitLab using docker-compose</a></li>
+</ul>
+</blockquote>
+<h2 id="docker-compose-脚本">docker-compose 脚本</h2>
+<p>此处选择社区版(CE)安装，同时为了便于参数配置，使用<code>docker-compose</code>方式编写脚本文件</p>
+<blockquote>
+<h2 id="install-gitlab-using-docker-compose">Install GitLab using docker-compose</h2>
+<p>With <a href="https://docs.docker.com/compose/">Docker compose</a> you can easily configure, install, and upgrade your Docker-based GitLab installation.</p>
+<ol>
+<li>
+<p><a href="https://docs.docker.com/compose/install/">Install</a> Docker Compose</p>
+</li>
+<li>
+<p>Create a <code>docker-compose.yml</code> file (or <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/docker/docker-compose.yml">download an example</a>):</p>
+<pre><code class="language-yaml"> web:
+   image: 'gitlab/gitlab-ce:latest'
+   restart: always
+   hostname: 'gitlab.example.com'
+   environment:
+     GITLAB_OMNIBUS_CONFIG: |
+       external_url 'https://gitlab.example.com'
+       # Add any other gitlab.rb configuration here, each on its own line
+   ports:
+     - '80:80'
+     - '443:443'
+     - '22:22'
+   volumes:
+     - '/srv/gitlab/config:/etc/gitlab'
+     - '/srv/gitlab/logs:/var/log/gitlab'
+     - '/srv/gitlab/data:/var/opt/gitlab'
+</code></pre>
+</li>
+<li>
+<p>Make sure you are in the same directory as <code>docker-compose.yml</code> and run <code>docker-compose up -d</code> to start GitLab</p>
+</li>
+</ol>
+<p>Read <a href="https://docs.gitlab.com/omnibus/docker/#pre-configure-docker-container">“Pre-configure Docker container”</a> to see how the <code>GITLAB_OMNIBUS_CONFIG</code> variable works.</p>
+<p>Below is another <code>docker-compose.yml</code> example with GitLab running on a custom HTTP and SSH port. Notice how the <code>GITLAB_OMNIBUS_CONFIG</code> variables match the <code>ports</code> section:</p>
+<pre><code class="language-yaml">web:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  hostname: 'gitlab.example.com'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://gitlab.example.com:9090'
+      gitlab_rails['gitlab_shell_ssh_port'] = 2224
+  ports:
+    - '9090:9090'
+    - '2224:22'
+  volumes:
+    - '/srv/gitlab/config:/etc/gitlab'
+    - '/srv/gitlab/logs:/var/log/gitlab'
+    - '/srv/gitlab/data:/var/opt/gitlab'
+</code></pre>
+<p>This is the same as using <code>--publish 9090:9090 --publish 2224:22</code>.</p>
+</blockquote>
+<p>官方提示说明Docker CE版基于<code>Omnibus</code>版本，故环境配置也可参考相关文档</p>
+<h3 id="omnibus文档目录">Omnibus文档目录</h3>
+<blockquote>
+<h4 id="installation-and-configuration-using-omnibus-package">Installation and Configuration using omnibus package</h4>
+<p><strong>Note:</strong> This section describes the commonly used configuration settings. Check <a href="https://docs.gitlab.com/omnibus/README.html#configuring">configuration</a> section of the documentation for complete configuration settings.</p>
+<ul>
+<li>Installing GitLab
+<ul>
+<li><a href="https://docs.gitlab.com/omnibus/manual_install.html">Manually downloading and installing a GitLab package</a></li>
+</ul>
+</li>
+<li><a href="https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab">Setting up a domain name/URL</a> for the GitLab Instance so that it can be accessed easily</li>
+<li><a href="https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https">Enabling HTTPS</a></li>
+<li><a href="https://docs.gitlab.com/omnibus/settings/smtp.html#smtp-settings">Enabling notification EMails</a></li>
+<li>Enabling replying via email
+<ul>
+<li><a href="https://docs.gitlab.com/ce/administration/reply_by_email_postfix_setup.html">Installing and configuring postfix</a></li>
+</ul>
+</li>
+<li>Enabling container registry on GitLab
+<ul>
+<li>You will require SSL certificates for the domain used for container registry</li>
+</ul>
+</li>
+<li>Enabling GitLab Pages
+<ul>
+<li>If you want HTTPS enabled, you will have to get wildcard certificates</li>
+</ul>
+</li>
+<li><a href="https://docs.gitlab.com/ee/integration/elasticsearch.html">Enabling Elasticsearch</a></li>
+<li><a href="https://docs.gitlab.com/omnibus/gitlab-mattermost/README.html">GitLab Mattermost</a> Set up the Mattermost messaging app that ships with Omnibus GitLab package.</li>
+<li><a href="https://docs.gitlab.com/ce/administration/monitoring/performance/prometheus.html">GitLab Prometheus</a> Set up the Prometheus monitoring included in the Omnibus GitLab package.</li>
+<li><a href="https://docs.gitlab.com/omnibus/roles/README.html">GitLab High Availability Roles</a></li>
+</ul>
+</blockquote>
+<p>结合配置目标编写yaml文件</p>
+<p>注意：</p>
+<ul>
+<li>此处邮件使用163邮箱（官方没有提供163邮箱支持案例）</li>
+<li>Docker私服公钥执行从私服上获取</li>
+<li>由于特殊原因，目标配置未启动SSL安全连接，但GitLab可以通过简单配置支持SSL并<strong>自动更新证书</strong></li>
+</ul>
+<p><a href="https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypthttpsletsencryptorg-integration">配置文档</a></p>
+<blockquote>
+<h3 id="lets-encrypt"><a href="https://letsencrypt.org/">Let’s Encrypt</a> Integration</h3>
+<h4 id="primary-gitlab-instance">Primary GitLab Instance</h4>
+<blockquote>
+<p><strong>Note</strong>: Introduced in GitLab version <strong>10.5</strong> and disabled by default. Enabled by default in GitLab version <strong>10.7</strong> and later if <code>external_url</code> is set with the <em>https</em>protocol and no certificates are configured.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: In order for Let’s Encrypt verification to work correctly, ports 80 and 443 will need to be accessible to the Let’s Encrypt servers that run the validation. Also note that the validation currently <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3580">does not work with non-standard ports</a>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Caution</strong> Administrators installing or upgrading to GitLab version <strong>10.7</strong> or later and do not plan on using <strong>Let’s Encrypt</strong> should set the following in <code>/etc/gitlab/gitlab.rb</code> to disable:</p>
+<pre><code class="language-properties">letsencrypt['enable'] = false
+</code></pre>
+</blockquote>
+<p>Add the following entries to <code>/etc/gitlab/gitlab.rb</code> to enable <strong>Let’s Encrypt</strong> support for the primary domain:</p>
+<pre><code class="language-properties">letsencrypt['enable'] = true                      # GitLab 10.5 and 10.6 require this option
+external_url &quot;https://gitlab.example.com&quot;	  # Must use https protocol
+letsencrypt['contact_emails'] = ['foo@email.com'] # Optional
+</code></pre>
+</blockquote>
+<p>生成163邮箱授权密码</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2019/04/03/5ca46d909bef7.png"><img src="https://i.loli.net/2019/04/03/5ca46d909bef7.png" alt="1554263126117.png"></a></figure>
+<p>生成GitHub授权秘钥</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2019/04/03/5ca46d8fef5f8.png"><img src="https://i.loli.net/2019/04/03/5ca46d8fef5f8.png" alt="1554262788318.png"></a></figure>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2019/04/03/5ca46d9022cde.png"><img src="https://i.loli.net/2019/04/03/5ca46d9022cde.png" alt="1554262821319.png"></a></figure>
+<p>最终配置</p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  gitlab:
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url '外部访问地址'
+        gitlab_rails['gitlab_shell_ssh_port'] = 外部SSH端口
+        registry_external_url 'Docker私服地址'
+        registry_nginx['ssl_certificate'] = &quot;Docker 私服CA证书 crt文件&quot;
+        registry_nginx['ssl_certificate_key'] = &quot;Docker 私服公钥 pem文件&quot;
+        gitlab_rails['smtp_enable'] = true
+        gitlab_rails['smtp_address'] = &quot;smtp.163.com&quot;
+        gitlab_rails['smtp_port'] = 465
+        gitlab_rails['smtp_user_name'] = &quot;邮件发送者名称&quot;
+        gitlab_rails['gitlab_email_from'] = '邮件发送地址'
+        gitlab_rails['smtp_password'] = &quot;授权密码&quot;
+        gitlab_rails['smtp_domain'] = &quot;163.com&quot;
+        gitlab_rails['smtp_authentication'] = &quot;login&quot;
+        gitlab_rails['smtp_enable_starttls_auto'] = true
+        gitlab_rails['smtp_tls'] = true
+        gitlab_rails['omniauth_enabled'] = true
+        gitlab_rails['omniauth_allow_single_sign_on'] = true
+        gitlab_rails['omniauth_block_auto_created_users'] = true
+        gitlab_rails['omniauth_providers'] = [
+          {
+            &quot;name&quot; =&gt; &quot;github&quot;,
+            &quot;app_id&quot; =&gt; &quot;Client ID&quot;,
+            &quot;app_secret&quot; =&gt; &quot;Client Secret&quot;,
+            &quot;url&quot; =&gt; &quot;https://github.com/&quot;,
+            &quot;args&quot; =&gt; { &quot;scope&quot; =&gt; &quot;user:email&quot; }
+          }
+        ]
+    image: gitlab/gitlab-ce:latest
+    hostname: gitlab.fjy8018.top
+    restart: always
+    networks:
+    - devops-service-bridge
+    ports:
+    - '8443:443'
+    - '8099:8099'
+    - '8022:22'
+    volumes:
+    - ./srv/gitlab/config:/etc/gitlab
+    - ./srv/gitlab/logs:/var/log/gitlab
+    - ./srv/gitlab/data:/var/opt/gitlab
+    - /etc/docker/certs.d:/etc/docker/certs.d
+
+
+networks:
+  devops-service-bridge:
+    driver: bridge
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu">
+                                <h3 class="post-title">
+                                    LeetCode刷题记录
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E7%9B%AE%E6%A0%87">配置目标</a></li>
+<li><a href="#%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D">官方介绍</a></li>
+</ul>
+</li>
+<li><a href="#gitlab-docker-images">GitLab Docker images</a>
+<ul>
+<li><a href="#docker-compose-%E8%84%9A%E6%9C%AC">docker-compose 脚本</a></li>
+<li><a href="#install-gitlab-using-docker-compose">Install GitLab using docker-compose</a>
+<ul>
+<li><a href="#omnibus%E6%96%87%E6%A1%A3%E7%9B%AE%E5%BD%95">Omnibus文档目录</a>
+<ul>
+<li><a href="#installation-and-configuration-using-omnibus-package">Installation and Configuration using omnibus package</a></li>
+</ul>
+</li>
+<li><a href="#lets-encrypt">Let’s Encrypt</a>
+<ul>
+<li><a href="#primary-gitlab-instance">Primary GitLab Instance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
