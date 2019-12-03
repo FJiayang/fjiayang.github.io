@@ -7,7 +7,7 @@
 <title>
     DevOps | F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362382913">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362626651">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362382913" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362626651" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -112,32 +112,32 @@
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://fjiayang.github.io//tag/xTpEEjjmQ" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-error">
             #mesos
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-other_2">
             #DevOps
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/FZ58cYbuWL" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_1">
             #marathon
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/6peMWxmLrM" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-other_2">
             #vmware
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/DykPrKp3oQ" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-error">
             #zookeeper
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-banana">
             #Docker
         </a>
                         
@@ -167,7 +167,7 @@
                     <time class="post-time">2019-08-16</time>
                     
                         <a href="https://fjiayang.github.io//tag/dgP0uMsX9" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-other_2">
             #Ansible
         </a>
                         
@@ -177,27 +177,27 @@
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/xTpEEjjmQ" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-banana">
             #mesos
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-primary">
             #DevOps
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/FZ58cYbuWL" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-success">
             #marathon
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_3">
             #GitLab
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-warning">
             #Docker
         </a>
                         
@@ -217,6 +217,278 @@
                 </div>
             </article>
             
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/devops-gitlab-cicd-shi-jian-3-ci-wen-jian-bian-xie">
+                        DevOps GitLab CICD 实践3——CI文件编写
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-04-03</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
+                            i-tag-">
+            #DevOps
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                            i-tag-banana">
+            #CICD
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-">
+            #GitLab
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-success">
+            #Docker
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            前置步骤：
+
+DevOps GitLab CICD 实践1——GitLab 部署
+DevOps GitLab CICD 实践2——Runner 部署
+
+官方文档
+编写结构类似Jenkins pineline流水线
+GitLab CI/CD Pipeline Configuration Reference
+
+GitLab CI/CD Pipeline Configuration Reference
+GitLab CI/CD pipelines are configured using a YAML file called .gitlab-ci.yml within each project.
+The .gitlab-ci.yml file defines the structure and order of the pipelines and determines:
+
+What to execute using GitLab Runner.
+What decisions to make when specific conditions are encountered. For example, when a process succeeds or fails.
+
+This topic covers CI/CD pipeline configuration. For other CI/CD configuration information, see:
+
+GitLab CI/CD Variables, for configuring the environment the pipelines run in.
+GitLab Runner advanced configuration, for configuring GitLab Runner.
+
+We have complete examples of configuring pipelines:
+
+For a quick introduction to GitLab CI, follow our quick start guide.
+For a collection of examples, see GitLab CI/CD Examples.
+To see a large .gitlab-ci.yml file used in an enterprise, see the .gitlab-ci.yml file for gitlab-ce.
+
+
+目标
+
+maven项目自动打包
+自动测试
+自动镜像构建并上传
+
+官方参数表列出了作业的可用参数：
+
+
+
+关键词
+描述
+
+
+
+
+script
+由Runner执行的Shell脚本。
+
+
+image
+使用泊坞窗图像。也可用：image:name和image:entrypoint。
+
+
+services
+使用docker services图像。也可用：services:name，services:alias，services:entrypoint，和services:command。
+
+
+before_script
+覆盖在作业之前执行的一组命令。
+
+
+after_script
+覆盖作业后执行的一组命令。
+
+
+stages
+定义管道中的阶段。
+
+
+stage
+定义作业阶段（默认值:) test。
+
+
+only
+创建作业时限制。也可用：only:refs，only:kubernetes，only:variables，和only:changes。
+
+
+except
+在未创建作业时限制。也可用：except:refs，except:kubernetes，except:variables，和except:changes。
+
+
+tags
+用于选择Runner的标签列表。
+
+
+allow_failure
+让工作失败。失败的作业无助于提交状态。
+
+
+when
+什么时候开始工作。也可用：when:manual和when:delayed。
+
+
+environment
+作业部署到的环境的名称。也可用：environment:name，environment:url，environment:on_stop，和environment:action。
+
+
+cache
+后续运行之间应缓存的文件列表。也可用：cache:paths，cache:key，cache:untracked，和cache:policy。
+
+
+artifacts
+成功附加到作业的文件和目录列表。也可用：artifacts:paths，artifacts:name，artifacts:untracked，artifacts:when，artifacts:expire_in，artifacts:reports，和artifacts:reports:junit。  在GitLab 企业版，这些都是可供选择：artifacts:reports:codequality，artifacts:reports:sast，artifacts:reports:dependency_scanning，artifacts:reports:container_scanning，artifacts:reports:dast，artifacts:reports:license_management，和artifacts:reports:performance。
+
+
+dependencies
+作业所依赖的其他作业，以便您可以在它们之间传递工件。
+
+
+coverage
+给定作业的代码覆盖率设置。
+
+
+retry
+在发生故障的情况下，可以自动重试作业的次数和次数。
+
+
+parallel
+应该并行运行多少个作业实例。
+
+
+trigger
+定义下游管道触发器。
+
+
+include
+允许此作业包含外部YAML文件。也可用：include:local，include:file，include:template，和include:remote。
+
+
+extends
+此作业将继承的配置条目。
+
+
+pages
+上传作业结果以用于GitLab Pages。
+
+
+variables
+在作业级别定义作业变量。
+
+
+
+注： 参数types和type被弃用。
+参考
+官方构建案例
+Deploy a Spring Boot application to Cloud Foundry with GitLab CI/CD
+参考其脚本
+
+Configure GitLab CI/CD to deploy your application
+Now we need to add the GitLab CI/CD configuration file (.gitlab-ci.yml) to our project’s root. This is how GitLab figures out what commands need to be run whenever code is pushed to our repository. We will add the following .gitlab-ci.yml file to the root directory of the repository, GitLab will detect it automatically and run the steps defined once we push our code:
+image: java:8
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script: ./mvnw package
+  artifacts:
+    paths:
+      - target/demo-0.0.1-SNAPSHOT.jar
+
+production:
+  stage: deploy
+  script:
+  - curl --location &amp;quot;https://cli.run.pivotal.io/stable?release=linux64-binary&amp;amp;source=github&amp;quot; | tar zx
+  - ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
+  - ./cf push
+  only:
+  - master
+
+
+配置
+全局变量
+进入工程CI设置配置全局变量脚本，包含镜像仓库登陆名称、密码、打包名称等
+配置全局变量目的在于配置脚本中不应该包含密码等敏感信息
+
+若希望使用GitLab内置环境变量，可参考官方表格
+GitLab CI/CD environment variables
+CI脚本
+结合可用参数和样例配置，根据已经存在的SpringBoot项目编写响应的CI脚本.gitlab-ci.yml
+image: docker:stable
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - build
+  - package
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script: &amp;quot;mvn package -B&amp;quot;
+  artifacts:
+    paths:
+      - target/*.jar
+
+docker-build:
+  stage: package
+  script:
+    - docker build -t $CONTAINER_IMAGE:latest .
+    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS
+    - docker push $CONTAINER_IMAGE:latest
+
+该脚本对于满足脚本目标的工程都可复用，若需要测试，则增加相关的测试步骤即可
+此处由于工程包含外部依赖关系，不在构建时测试
+自动构建
+默认的触发构建事件为commit等
+触发后会自动执行任务
+
+
+Maven自动触发构建
+
+自动镜像打包
+
+
+自动上传（推送）镜像
+
+执行结果
+
+若执行失败则会发送邮件给开发人员
+
+CICD全套流程目标实现！
+总结
+不管使用GitLab CICD或者是使用Jenkins+Ansible的方式，目标都在于践行DevOps，打通开发与运维流程，一旦配置好CICD流程，往后开发人员便不再操心打包、构建等操作，可以专注开发
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/devops-gitlab-cicd-shi-jian-3-ci-wen-jian-bian-xie">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
                 <!-- 翻页 -->
                 
                 </div>
@@ -228,7 +500,7 @@
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575362382913)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575362626651)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

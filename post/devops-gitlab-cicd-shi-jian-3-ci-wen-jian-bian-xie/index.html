@@ -1,0 +1,501 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    DevOps GitLab CICD 实践3——CI文件编写 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362626651">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362626651" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            DevOps GitLab CICD 实践3——CI文件编写
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-04-03</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
+                            i-tag-other_3">
+                            #DevOps
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                            i-tag-other_3">
+                            #CICD
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-banana">
+                            #GitLab
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-other_3">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>前置步骤：</p>
+<ul>
+<li><a href="https://blog.fjy8018.top/index.php/archives/205/">DevOps GitLab CICD 实践1——GitLab 部署</a></li>
+<li><a href="https://blog.fjy8018.top/index.php/archives/206/">DevOps GitLab CICD 实践2——Runner 部署</a></li>
+</ul>
+<h2 id="官方文档">官方文档</h2>
+<p>编写结构类似Jenkins pineline流水线</p>
+<p><a href="https://docs.gitlab.com/ee/ci/yaml/README.html">GitLab CI/CD Pipeline Configuration Reference</a></p>
+<blockquote>
+<h1 id="gitlab-cicd-pipeline-configuration-reference">GitLab CI/CD Pipeline Configuration Reference</h1>
+<p>GitLab CI/CD <a href="https://docs.gitlab.com/ee/ci/pipelines.html">pipelines</a> are configured using a YAML file called <code>.gitlab-ci.yml</code> within each project.</p>
+<p>The <code>.gitlab-ci.yml</code> file defines the structure and order of the pipelines and determines:</p>
+<ul>
+<li>What to execute using <a href="https://docs.gitlab.com/runner/">GitLab Runner</a>.</li>
+<li>What decisions to make when specific conditions are encountered. For example, when a process succeeds or fails.</li>
+</ul>
+<p>This topic covers CI/CD pipeline configuration. For other CI/CD configuration information, see:</p>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/variables/README.html">GitLab CI/CD Variables</a>, for configuring the environment the pipelines run in.</li>
+<li><a href="https://docs.gitlab.com/runner/configuration/advanced-configuration.html">GitLab Runner advanced configuration</a>, for configuring GitLab Runner.</li>
+</ul>
+<p>We have complete examples of configuring pipelines:</p>
+<ul>
+<li>For a quick introduction to GitLab CI, follow our <a href="https://docs.gitlab.com/ee/ci/quick_start/README.html">quick start guide</a>.</li>
+<li>For a collection of examples, see <a href="https://docs.gitlab.com/ee/ci/examples/README.html">GitLab CI/CD Examples</a>.</li>
+<li>To see a large <code>.gitlab-ci.yml</code> file used in an enterprise, see the <a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/.gitlab-ci.yml"><code>.gitlab-ci.yml</code> file for <code>gitlab-ce</code></a>.</li>
+</ul>
+</blockquote>
+<h2 id="目标">目标</h2>
+<ul>
+<li>maven项目自动打包</li>
+<li><s>自动测试</s></li>
+<li>自动镜像构建并上传</li>
+</ul>
+<p>官方参数表列出了作业的可用参数：</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#script"><code>script</code></a></td>
+<td>由Runner执行的Shell脚本。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#image"><code>image</code></a></td>
+<td>使用泊坞窗图像。也可用：<code>image:name</code>和<code>image:entrypoint</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#services"><code>services</code></a></td>
+<td>使用docker services图像。也可用：<code>services:name</code>，<code>services:alias</code>，<code>services:entrypoint</code>，和<code>services:command</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#before_script-and-after_script"><code>before_script</code></a></td>
+<td>覆盖在作业之前执行的一组命令。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#before_script-and-after_script"><code>after_script</code></a></td>
+<td>覆盖作业后执行的一组命令。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#stages"><code>stages</code></a></td>
+<td>定义管道中的阶段。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#stage"><code>stage</code></a></td>
+<td>定义作业阶段（默认值:) <code>test</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#onlyexcept-basic"><code>only</code></a></td>
+<td>创建作业时限制。也可用：<a href="https://docs.gitlab.com/ee/ci/yaml/README.html#onlyexcept-advanced"><code>only:refs</code>，<code>only:kubernetes</code>，<code>only:variables</code>，和<code>only:changes</code></a>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#onlyexcept-basic"><code>except</code></a></td>
+<td>在未创建作业时限制。也可用：<a href="https://docs.gitlab.com/ee/ci/yaml/README.html#onlyexcept-advanced"><code>except:refs</code>，<code>except:kubernetes</code>，<code>except:variables</code>，和<code>except:changes</code></a>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#tags"><code>tags</code></a></td>
+<td>用于选择Runner的标签列表。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#allow_failure"><code>allow_failure</code></a></td>
+<td>让工作失败。失败的作业无助于提交状态。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#when"><code>when</code></a></td>
+<td>什么时候开始工作。也可用：<code>when:manual</code>和<code>when:delayed</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#environment"><code>environment</code></a></td>
+<td>作业部署到的环境的名称。也可用：<code>environment:name</code>，<code>environment:url</code>，<code>environment:on_stop</code>，和<code>environment:action</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#cache"><code>cache</code></a></td>
+<td>后续运行之间应缓存的文件列表。也可用：<code>cache:paths</code>，<code>cache:key</code>，<code>cache:untracked</code>，和<code>cache:policy</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#artifacts"><code>artifacts</code></a></td>
+<td>成功附加到作业的文件和目录列表。也可用：<code>artifacts:paths</code>，<code>artifacts:name</code>，<code>artifacts:untracked</code>，<code>artifacts:when</code>，<code>artifacts:expire_in</code>，<code>artifacts:reports</code>，和<code>artifacts:reports:junit</code>。  在GitLab <a href="https://about.gitlab.com/pricing/">企业版</a>，这些都是可供选择：<code>artifacts:reports:codequality</code>，<code>artifacts:reports:sast</code>，<code>artifacts:reports:dependency_scanning</code>，<code>artifacts:reports:container_scanning</code>，<code>artifacts:reports:dast</code>，<code>artifacts:reports:license_management</code>，和<code>artifacts:reports:performance</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#dependencies"><code>dependencies</code></a></td>
+<td>作业所依赖的其他作业，以便您可以在它们之间传递工件。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#coverage"><code>coverage</code></a></td>
+<td>给定作业的代码覆盖率设置。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#retry"><code>retry</code></a></td>
+<td>在发生故障的情况下，可以自动重试作业的次数和次数。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#parallel"><code>parallel</code></a></td>
+<td>应该并行运行多少个作业实例。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#trigger-premium"><code>trigger</code></a></td>
+<td>定义下游管道触发器。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#include"><code>include</code></a></td>
+<td>允许此作业包含外部YAML文件。也可用：<code>include:local</code>，<code>include:file</code>，<code>include:template</code>，和<code>include:remote</code>。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#extends"><code>extends</code></a></td>
+<td>此作业将继承的配置条目。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#pages"><code>pages</code></a></td>
+<td>上传作业结果以用于GitLab Pages。</td>
+</tr>
+<tr>
+<td><a href="https://docs.gitlab.com/ee/ci/yaml/README.html#variables"><code>variables</code></a></td>
+<td>在作业级别定义作业变量。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注：</strong> 参数<code>types</code>和<code>type</code>被<a href="https://docs.gitlab.com/ee/ci/yaml/README.html#deprecated-parameters">弃用</a>。</p>
+<h2 id="参考">参考</h2>
+<p>官方构建案例</p>
+<p><a href="https://docs.gitlab.com/ee/ci/examples/deploy_spring_boot_to_cloud_foundry/index.html">Deploy a Spring Boot application to Cloud Foundry with GitLab CI/CD</a></p>
+<p>参考其脚本</p>
+<blockquote>
+<h2 id="configure-gitlab-cicd-to-deploy-your-application">Configure GitLab CI/CD to deploy your application</h2>
+<p>Now we need to add the GitLab CI/CD configuration file (<a href="https://docs.gitlab.com/ee/ci/yaml/README.html"><code>.gitlab-ci.yml</code></a>) to our project’s root. This is how GitLab figures out what commands need to be run whenever code is pushed to our repository. We will add the following <code>.gitlab-ci.yml</code> file to the root directory of the repository, GitLab will detect it automatically and run the steps defined once we push our code:</p>
+<pre><code class="language-yaml">image: java:8
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script: ./mvnw package
+  artifacts:
+    paths:
+      - target/demo-0.0.1-SNAPSHOT.jar
+
+production:
+  stage: deploy
+  script:
+  - curl --location &quot;https://cli.run.pivotal.io/stable?release=linux64-binary&amp;source=github&quot; | tar zx
+  - ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
+  - ./cf push
+  only:
+  - master
+</code></pre>
+</blockquote>
+<h2 id="配置">配置</h2>
+<h3 id="全局变量">全局变量</h3>
+<p>进入工程CI设置配置全局变量脚本，包含镜像仓库登陆名称、密码、打包名称等</p>
+<p>配置全局变量目的在于配置脚本中<strong>不应该</strong>包含密码等敏感信息</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2019/04/03/5ca46d8dd6a74.png"><img src="https://i.loli.net/2019/04/03/5ca46d8dd6a74.png" alt="1554278638713.png"></a></figure>
+<p>若希望使用GitLab内置环境变量，可参考官方表格</p>
+<p><a href="https://docs.gitlab.com/ee/ci/variables/README.html">GitLab CI/CD environment variables</a></p>
+<h3 id="ci脚本">CI脚本</h3>
+<p>结合可用参数和样例配置，根据已经存在的SpringBoot项目编写响应的CI脚本<code>.gitlab-ci.yml</code></p>
+<pre><code class="language-yaml">image: docker:stable
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - build
+  - package
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script: &quot;mvn package -B&quot;
+  artifacts:
+    paths:
+      - target/*.jar
+
+docker-build:
+  stage: package
+  script:
+    - docker build -t $CONTAINER_IMAGE:latest .
+    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS
+    - docker push $CONTAINER_IMAGE:latest
+</code></pre>
+<p>该脚本对于满足脚本目标的工程都可复用，若需要测试，则增加相关的测试步骤即可</p>
+<p>此处由于工程包含外部依赖关系，不在构建时测试</p>
+<h3 id="自动构建">自动构建</h3>
+<p>默认的触发构建事件为<code>commit</code>等</p>
+<p>触发后会自动执行任务</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2019/04/03/5ca46e940608c.png"><img src="https://i.loli.net/2019/04/03/5ca46e940608c.png" alt="1554278973797.png"></a></figure>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2019/04/03/5ca46e93a1220.png"><img src="https://i.loli.net/2019/04/03/5ca46e93a1220.png" alt="1554279027476.png"></a></figure>
+<p>Maven自动触发构建</p>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2019/04/03/5ca46e9318e2b.png"><img src="https://i.loli.net/2019/04/03/5ca46e9318e2b.png" alt="1554279066238.png"></a></figure>
+<p>自动镜像打包</p>
+<figure data-type="image" tabindex="5"><a href="https://i.loli.net/2019/04/03/5ca46e9490c9f.png"><img src="https://i.loli.net/2019/04/03/5ca46e9490c9f.png" alt="1554279219445.png"></a></figure>
+<figure data-type="image" tabindex="6"><a href="https://i.loli.net/2019/04/03/5ca46e935f2c2.png"><img src="https://i.loli.net/2019/04/03/5ca46e935f2c2.png" alt="1554279272711.png"></a></figure>
+<p>自动上传（推送）镜像</p>
+<figure data-type="image" tabindex="7"><a href="https://i.loli.net/2019/04/03/5ca46e93137c7.png"><img src="https://i.loli.net/2019/04/03/5ca46e93137c7.png" alt="1554279311054.png"></a></figure>
+<h3 id="执行结果">执行结果</h3>
+<figure data-type="image" tabindex="8"><a href="https://i.loli.net/2019/04/03/5ca46e921bcd7.png"><img src="https://i.loli.net/2019/04/03/5ca46e921bcd7.png" alt="1554279508887.png"></a></figure>
+<p>若执行失败则会发送邮件给开发人员</p>
+<figure data-type="image" tabindex="9"><a href="https://i.loli.net/2019/04/03/5ca46e94b500e.png"><img src="https://i.loli.net/2019/04/03/5ca46e94b500e.png" alt="1554279616575.png"></a></figure>
+<p>CICD全套流程目标实现！</p>
+<h2 id="总结">总结</h2>
+<p>不管使用GitLab CICD或者是使用Jenkins+Ansible的方式，目标都在于践行DevOps，打通开发与运维流程，一旦配置好CICD流程，往后开发人员便不再操心打包、构建等操作，可以专注开发</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu">
+                                <h3 class="post-title">
+                                    LeetCode刷题记录
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3">官方文档</a></li>
+</ul>
+</li>
+<li><a href="#gitlab-cicd-pipeline-configuration-reference">GitLab CI/CD Pipeline Configuration Reference</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87">目标</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+<li><a href="#configure-gitlab-cicd-to-deploy-your-application">Configure GitLab CI/CD to deploy your application</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a>
+<ul>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">全局变量</a></li>
+<li><a href="#ci%E8%84%9A%E6%9C%AC">CI脚本</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA">自动构建</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C">执行结果</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

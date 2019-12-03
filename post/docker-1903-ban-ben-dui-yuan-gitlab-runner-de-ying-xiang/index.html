@@ -1,0 +1,493 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Docker 19.03 版本对原Gitlab-Runner的影响 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362626651">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362626651" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Docker 19.03 版本对原Gitlab-Runner的影响
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-07-28</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                            i-tag-error">
+                            #CICD
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-">
+                            #GitLab
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-info">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="版本变化始末">版本变化始末</h2>
+<ul>
+<li>在 2019.07.24 Docker社区发布了<code>19.03</code>的新版本，在此前版本号为<code>18.0x</code></li>
+</ul>
+<!-- more -->
+<h2 id="新版本带来的坑">新版本带来的坑</h2>
+<p>原本没太在意<code>docker</code>版本的变化，因为多数情况都是兼容旧版的所有特性和功能的</p>
+<p>结果在近期的CICD构建中，在ci脚本没有变化的情况下突然所有<code>runner</code>的构建都失败了</p>
+<p>随后立即采取以下措施尝试修复</p>
+<ol>
+<li>工程版本回退到上一次可用状态</li>
+<li>更换<code>runner</code>服务器和容器</li>
+<li>更改<code>ci</code>脚本</li>
+<li>重启<code>docker</code>服务</li>
+</ol>
+<p>均无效</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/07/28/5d3d2d216a5f496230.png" alt="1564288081390.png"></figure>
+<p>执行构建步骤出现了以往没有出现过的警告信息</p>
+<pre><code class="language-bash">Running with gitlab-runner 11.8.0 (4745a6f3)
+  on docker-in-docker-runner 4iAG2sYM
+Using Docker executor with image docker:stable ...
+Starting service docker:dind ...
+Pulling docker image docker:dind ...
+Using docker image sha256:fd0c64832f7e46b63a180e6000dbba7ad7a63542c5764841cba73429ba74a39e for docker:dind ...
+Waiting for services to be up and running...
+
+*** WARNING: Service runner-4iAG2sYM-project-89-concurrent-0-docker-0 probably didn't start properly.
+
+Health check error:
+service &quot;runner-4iAG2sYM-project-89-concurrent-0-docker-0-wait-for-service&quot; timeout
+
+Health check container logs:
+
+...
+
+2019-07-24T03:11:35.365911823Z time=&quot;2019-07-24T03:11:35.365537741Z&quot; level=info msg=&quot;API listen on [::]:2376&quot;
+2019-07-24T03:11:35.366107674Z time=&quot;2019-07-24T03:11:35.365626706Z&quot; level=info msg=&quot;API listen on /var/run/docker.sock&quot;
+
+*********
+
+Pulling docker image docker:stable ...
+Using docker image sha256:c4154a2b47a18fe9437956ab981bd5924b19e7ae3eb3ed60c42cf8dfa394d550 for docker:stable ...
+</code></pre>
+<p>最终报错信息</p>
+<pre><code class="language-bash">Downloading artifacts for maven-build (280)...
+Downloading artifacts from coordinator... ok        id=280 responseStatus=200 OK token=L9iuC5Ss
+$ docker build -t $CONTAINER_IMAGE:$IMAGE_VERSION .
+Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?
+ERROR: Job failed: exit code 1
+</code></pre>
+<h2 id="寻找解决方法">寻找解决方法</h2>
+<p>该错误在早期版本就出现过，但与本次情况均不符合，以往通过挂载容器路径即可，而本次情况是<code>runner</code>服务和构建脚本均不变的情况下突然出现构建失败的情况</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/07/28/5d3d2d21691a426024.png" alt="1564288454164.png"></figure>
+<p>最终在社区ISSUS讨论中发现了相关讨论，并且问题发生时间相近</p>
+<p><a href="https://gitlab.com/gitlab-org/gitlab-ce/issues/64959">Jobs failing with &quot;Cannot connect to the Docker daemon&quot;</a></p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/07/28/5d3d2d212457666352.png" alt="1564288560626.png"></figure>
+<p>官方开发者解释 当天几个小时前发布的新版本 <code>19.03</code>默认开启了<code>TLS</code>确实会影响已有的<code>Docker in Docker</code>模式的构建环境</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2019/07/28/5d3d2d2147bd260875.png" alt="1564288621569.png"></figure>
+<p>同时官方开发人员建议自行部署的<code>runner</code>建议开启<code>TLS</code>功能</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2019/07/28/5d3d2d214685a34515.png" alt="1564288718662.png"></figure>
+<p>该开发者在另一个讨论中提供了19.03环境下的runner启动和配置样板，同时还有样例ci脚本</p>
+<p><a href="https://gitlab.com/gitlab-org/gitlab-ce/merge_requests/31051#note_194866340">Update DinD example for 19.03</a></p>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2019/07/28/5d3d2d21539a832091.png" alt="1564288829375.png"></figure>
+<h2 id="解决方法">解决方法</h2>
+<ol>
+<li>最好可以卸载旧版本的Docker，尽管运行runner和dind环境都基于docker容器中</li>
+<li>加入TLS相关runner注册配置</li>
+</ol>
+<p>此处采用更新Docker版本并使用最新版的runner镜像进行注册</p>
+<h3 id="更新docker版本">更新docker版本</h3>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/centos/">官方文档</a></p>
+<p>卸载旧docker</p>
+<pre><code class="language-bash">$ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+</code></pre>
+<p>配置生产环境的依赖仓库</p>
+<pre><code class="language-bash">$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre>
+<p><strong>官方建议</strong>的安装新版Docker命令</p>
+<pre><code class="language-bash">$ sudo yum install docker-ce docker-ce-cli containerd.io
+</code></pre>
+<p>但经过这次事件后个人不建议使用该命令，而是应该手动指定所有Docker环境版本号，防止以后版本更新导致不兼容问题</p>
+<p>查看当前可以安装的所有版本</p>
+<pre><code class="language-bash">$ sudo yum list docker-ce --showduplicates | sort -r
+ * updates: repos.lax.quadranet.com
+Loaded plugins: fastestmirror
+ * extras: mirror.hostduplex.com
+ * epel: d2lzkl7pfhq30w.cloudfront.net
+ * elrepo-kernel: repos.lax-noc.com
+docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.3.ce-1.el7                    docker-ce-stable
+docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
+Determining fastest mirrors
+ * base: mirror.hostduplex.com
+Available Packages
+</code></pre>
+<p>指定最新版本</p>
+<pre><code class="language-bash">$ sudo yum install docker-ce-19.03.1 docker-ce-cli-19.03.1 containerd.io
+</code></pre>
+<p>启动docker</p>
+<pre><code class="language-bash">$ sudo systemctl start docker
+</code></pre>
+<p>设置开机自启</p>
+<pre><code class="language-bash">$ sudo systemctl enable docker
+</code></pre>
+<h3 id="安装gitlab-runner">安装Gitlab Runner</h3>
+<p>官方对新版启用TLS的注册样例</p>
+<blockquote>
+<ol>
+<li>Register GitLab Runner from the command line to use <code>docker</code> and <code>privileged</code><br>
+mode:</li>
+</ol>
+<pre><code class="language-bash">sudo gitlab-runner register -n \
+  --url https://gitlab.com/ \
+  --registration-token REGISTRATION_TOKEN \
+  --executor docker \
+  --description &quot;My Docker Runner&quot; \
+  --docker-image &quot;docker:stable&quot; \
+  --docker-privileged \
+  --docker-volumes &quot;/certs/client&quot;
+</code></pre>
+</blockquote>
+<p>此处采用容器化注册runner命令为</p>
+<pre><code class="language-bash">$ docker run --rm -t -i \
+-v /etc/gitlab-runner/config:/etc/gitlab-runner \
+gitlab/gitlab-runner:alpine-v12.1.0 register \
+--url &quot;https://gitlab.com/&quot; \
+--registration-token REGISTRATION_TOKEN \
+--executor docker \
+--non-interactive \
+--run-untagged \
+--tag-list &quot;Runner,Docker&quot; \
+--run-untagged=&quot;true&quot; \
+--locked=&quot;false&quot; \
+--description &quot;My Docker Runner&quot; \
+--docker-image &quot;docker:stable&quot; \
+--docker-privileged \
+--docker-volumes &quot;/certs/client&quot;
+</code></pre>
+<p>主要的变化至于增加了证书挂载<code>--docker-volumes &quot;/certs/client&quot;</code>配置，同时指定了<code>runner</code>的版本号</p>
+<p>启动<code>runner</code></p>
+<pre><code class="language-bash">$ docker run --name gitlab-runner --restart always -d \
+-v /etc/gitlab-runner/config:/etc/gitlab-runner \
+-v /var/run/docker.sock:/var/run/docker.sock \
+gitlab/gitlab-runner:alpine-v12.1.0
+</code></pre>
+<h3 id="修改构建脚本">修改构建脚本</h3>
+<p>官方对新版启用<code>TLS</code>的构建脚本样例，指定了构建时使用的<code>docker</code>版本与外部一直，防止不兼容的问题</p>
+<p>同时加入了<code>TLS</code>环境变量配置</p>
+<pre><code class="language-yaml"> image: docker:19.03
+
+ variables:
+   # When using dind service we need to instruct docker, to talk with
+   # the daemon started inside of the service. The daemon is
+   # available with a network connection instead of the default
+   # /var/run/docker.sock socket. docker:19.03-dind does this
+   # automatically by setting the DOCKER_HOST in
+   # https://github.com/docker-library/docker/blob/d45051476babc297257df490d22cbd806f1b11e4/19.03/docker-entrypoint.sh#L23-L29
+   #
+   # The 'docker' hostname is the alias of the service container as described at
+   # https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#accessing-the-services.
+   #
+   # Note that if you're using the Kubernetes executor, the variable should be set to
+   # tcp://localhost:2376/ because of how the Kubernetes executor connects services
+   # to the job container
+   # DOCKER_HOST: tcp://localhost:2376/
+   #
+   # When using dind, it's wise to use the overlayfs driver for
+   # improved performance.
+   DOCKER_DRIVER: overlay2
+   # Specify to Docker where to create the certificates, Docker will
+   # create them automatically on boot, and will create
+   # `/certs/client` that will be shared between the service and
+   # build container.
+   DOCKER_TLS_CERTDIR: &quot;/certs&quot;
+
+ services:
+   - docker:19.03-dind
+
+ before_script:
+   - echo $DOCKER_HOST
+   - docker info
+
+ build:
+   stage: build
+   script:
+     - docker build -t my-docker-image .
+</code></pre>
+<p>在此前自己的构建脚本是按照官网提供的样板，没有指定版本，因此会导致每次构建都会使用当前最新的版本作为基础，最终导致外部Docker和内部Docker容器版本不一致</p>
+<p>官网示例DinD构建脚本</p>
+<pre><code class="language-yaml">image: docker:stable
+services:
+  - docker:dind
+...
+</code></pre>
+<p>按照社区配置修改后重新构建则成功</p>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2019/07/28/5d3d2d213b81385192.png" alt="1564290149104.png"></figure>
+<h2 id="总结">总结</h2>
+<p>对于Docker等云服务平台仍然需要特别注意版本变化，为了防止不兼容的情况，在生产环境尽量不要使用<code>latest</code>版本标签，而是应该手动指定所有参与构建的版本环境</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/devops-gitlab-cicd-shi-jian-3-ci-wen-jian-bian-xie">
+                                <h3 class="post-title">
+                                    DevOps GitLab CICD 实践3——CI文件编写
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%89%88%E6%9C%AC%E5%8F%98%E5%8C%96%E5%A7%8B%E6%9C%AB">版本变化始末</a></li>
+<li><a href="#%E6%96%B0%E7%89%88%E6%9C%AC%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%9D%91">新版本带来的坑</a></li>
+<li><a href="#%E5%AF%BB%E6%89%BE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95">寻找解决方法</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95">解决方法</a>
+<ul>
+<li><a href="#%E6%9B%B4%E6%96%B0docker%E7%89%88%E6%9C%AC">更新docker版本</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85gitlab-runner">安装Gitlab Runner</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC">修改构建脚本</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

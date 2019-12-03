@@ -1,0 +1,526 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    SpringBoot 2.x quartz多数据定时任务源配置 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362626651">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362626651" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            SpringBoot 2.x quartz多数据定时任务源配置
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-07-29</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
+                            i-tag-info">
+                            #SpringBoot
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/yipNJ12QTf" class="post-tag i-tag
+                            i-tag-other_4">
+                            #Quartz
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="基础环境">基础环境</h2>
+<p><code>SpringBoot</code> 2.0 开始官方提供了对<code>quartz</code>定时任务的自动配置支持依赖<code>spring-boot-starter-quartz</code>组件，无需自行集成</p>
+<!-- more -->
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-quartz&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>环境版本：</p>
+<ol>
+<li>SpringBoot 2.1.6.RELEASE</li>
+<li>Java 8</li>
+</ol>
+<h2 id="定时任务配置">定时任务配置</h2>
+<h3 id="添加依赖">添加依赖</h3>
+<p>在pom.xml中添加quartz、Jpa、mysql驱动、lombok依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-quartz&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="添加配置文件">添加配置文件</h3>
+<p>添加数据库配置</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: hmdt
+      url: jdbc:mysql://db/bussines_db?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai
+    quartz:
+      url: jdbc:mysql://db/bussines_quartz?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: hmdt
+
+  quartz:
+    #相关属性配置
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+          jobStore:
+            # 数据源名称
+            dataSource: quartzDataSource
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 1000
+            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+    job-store-type: jdbc
+    #初始化表结构
+    jdbc:
+      initialize-schema: never
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL55Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+</code></pre>
+<p>数据库配置也有样例配在<code>spring.quartz.properties</code>中，但亲测配置无效，并且由于还需要指定连接池等信息，此处配置在spring的连接池中更容易管理</p>
+<h3 id="下载官网建表语句">下载官网建表语句</h3>
+<p>尽管使用了<code>JPA</code>，但由于没有实体关联，<code>spring</code>并不会帮我们自动建表，还需要去官网下载<code>sql</code>脚本</p>
+<p><a href="http://www.quartz-scheduler.org/downloads/">quartz官网</a></p>
+<p>官网压缩包路径<code>quartz-2.3.0-SNAPSHOT\src\org\quartz\impl\jdbcjobstore</code>中支持大量数据库建表语句，选择对应的使用即可</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/07/29/5d3ef2d5f182d76181.png" alt="1564406464554.png"></figure>
+<h3 id="配置多数据源">配置多数据源</h3>
+<p>多配置源之前在文章中详细说过配置样例和原因，这里不再赘述</p>
+<p><a href="https://blog.fjy8018.top/index.php/archives/202/">SpringBoot2.x Data JPA 多数据源爬坑</a></p>
+<p>编写数据库配置，统一使用<code>HikariCP</code>连接池</p>
+<pre><code class="language-java">package com.gcb.invest.config;
+
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+/**
+ * 定时任务数据源配置
+ *
+ * @author F嘉阳
+ * @date 2019-07-28 21:52
+ */
+@Configuration
+public class DataSourceConfig {
+
+    @Bean
+    @Primary
+    @ConfigurationProperties(&quot;spring.datasource.primary&quot;)
+    public DataSourceProperties primaryDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean
+    @Primary
+    @ConfigurationProperties(&quot;spring.datasource.primary.configuration&quot;)
+    public HikariDataSource firstDataSource() {
+        return primaryDataSourceProperties().initializeDataSourceBuilder()
+                .type(HikariDataSource.class).build();
+    }
+
+    @Bean
+    @ConfigurationProperties(&quot;spring.datasource.quartz&quot;)
+    public DataSourceProperties quartzDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean
+    @QuartzDataSource
+    @ConfigurationProperties(&quot;spring.datasource.quartz.configuration&quot;)
+    public HikariDataSource quartzDataSource() {
+        return quartzDataSourceProperties().initializeDataSourceBuilder()
+                .type(HikariDataSource.class).build();
+    }
+}
+</code></pre>
+<h3 id="定时任务配置-2">定时任务配置</h3>
+<h4 id="配置样例1bean注入">配置样例1——Bean注入</h4>
+<p>编写定时任务，由于经过Spring的封装，使用变得更加方便</p>
+<p>此处通过内部类配置定时任务，并使用<code>@DisallowConcurrentExecution</code>注解指定其在分布式环境下不可并发执行</p>
+<pre><code class="language-java">import lombok.extern.slf4j.Slf4j;
+import org.quartz.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.QuartzJobBean;
+
+/**
+ * 定时任务配置
+ *
+ * @author ：F嘉阳
+ * @date ：2019/7/29 9:16
+ */
+@Slf4j
+@Configuration
+public class QuartzConfig {
+
+    /**
+     * 测试定时任务构建
+     *
+     * @return
+     */
+    @Bean
+    public JobDetail testTaskJobDetail() {
+        return JobBuilder.newJob(TestTask.class)
+                .withIdentity(TestTask.class.getName())
+                .storeDurably(true)
+                .build();
+    }
+
+    /**
+     * 测试定时任务配置
+     *
+     * @return
+     */
+    @Bean
+    public Trigger testTaskTrigger() {
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(&quot;0/2 * * * * ?&quot;);
+        return TriggerBuilder.newTrigger()
+                .forJob(testTaskJobDetail())
+                .withIdentity(TestTask.class.getName())
+                .withSchedule(scheduleBuilder)
+                .build();
+    }
+
+    @DisallowConcurrentExecution
+    private class TestTask extends QuartzJobBean {
+        @Override
+        protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+            log.debug(&quot;执行测试定时任务&quot;);
+        }
+    }
+}
+</code></pre>
+<h4 id="配置样例2调度器注入">配置样例2——调度器注入</h4>
+<p>另一种方式可使用注入调度器手动构建任务，不过需要<strong>调用该方法</strong>之后调度器才会被创建</p>
+<pre><code class="language-java">import org.quartz.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.UUID;
+
+/**
+ * @author ：F嘉阳
+ * @date ：2019/7/29 8:59
+ */
+@Service
+@Transactional(rollbackFor = Exception.class)
+public class QuartzTimerService {
+
+    @Autowired
+    private Scheduler scheduler;
+
+    public void buildGoodStockTimer() throws Exception {
+        //任务名称
+        String name = UUID.randomUUID().toString();
+        //任务所属分组
+        String group = CustomQuartzJob.class.getName();
+
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(&quot;0/1 * * * * ?&quot;);
+        //创建任务
+        JobDetail jobDetail = JobBuilder.newJob(CustomQuartzJob.class).withIdentity(name,group).build();
+        //创建任务触发器
+        Trigger trigger = TriggerBuilder.newTrigger().withIdentity(name,group).withSchedule(scheduleBuilder).build();
+        //将触发器与任务绑定到调度器内
+        scheduler.scheduleJob(jobDetail, trigger);
+    }
+}
+</code></pre>
+<p>定时任务类</p>
+<pre><code class="language-java">import lombok.extern.slf4j.Slf4j;
+import org.quartz.DisallowConcurrentExecution;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.springframework.scheduling.quartz.QuartzJobBean;
+
+/**
+ * @author ：F嘉阳
+ * @date ：2019/7/29 8:55
+ */
+@Slf4j
+@DisallowConcurrentExecution
+public class CustomQuartzJob extends QuartzJobBean {
+    @Override
+    protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        log.info(&quot;执行定时任务&quot;);
+    }
+}
+</code></pre>
+<h2 id="执行结果">执行结果</h2>
+<p>执行成功</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/07/29/5d3e9a29728e424620.png" alt="1564383676571.png"></figure>
+<p>在分布式环境下自动进行作业节点迁移</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/07/29/5d3e9a29782f691650.png" alt="1564383705389.png"></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/docker-1903-ban-ben-dui-yuan-gitlab-runner-de-ying-xiang">
+                                <h3 class="post-title">
+                                    Docker 19.03 版本对原Gitlab-Runner的影响
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83">基础环境</a></li>
+<li><a href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E9%85%8D%E7%BD%AE">定时任务配置</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96">添加依赖</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">添加配置文件</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5">下载官网建表语句</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90">配置多数据源</a></li>
+<li><a href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E9%85%8D%E7%BD%AE-2">定时任务配置</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%A0%B7%E4%BE%8B1bean%E6%B3%A8%E5%85%A5">配置样例1——Bean注入</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%A0%B7%E4%BE%8B2%E8%B0%83%E5%BA%A6%E5%99%A8%E6%B3%A8%E5%85%A5">配置样例2——调度器注入</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C">执行结果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
