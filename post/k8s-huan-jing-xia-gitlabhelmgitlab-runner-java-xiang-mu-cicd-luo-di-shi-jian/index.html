@@ -1,0 +1,718 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    k8s环境下GitLab+Helm+GitLab Runner Java项目CICD落地实践 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575361952131">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575361952131" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            k8s环境下GitLab+Helm+GitLab Runner Java项目CICD落地实践
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-11-27</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                            i-tag-error">
+                            #CICD
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-other_1">
+                            #GitLab
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/yb4HlP89R" class="post-tag i-tag
+                            i-tag-warning">
+                            #Kubernetes
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-banana">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://s2.ax1x.com/2019/11/27/Qpybmn.png')"></div>
+                            
+                                <div class="post-content">
+                                    <h2 id="背景">背景</h2>
+<p>目前使用5台服务器搭建了<code>Kubernetes</code>集群环境，监控、日志采集均已落地，业务也手工迁移到集群中顺利运行，故需要将原本基于原生<code>docker</code>环境的CICD流程迁移到<code>Kubernetes</code>集群中</p>
+<!-- more -->
+<h2 id="优势">优势</h2>
+<p><code>Kubernetes</code>集群实现CICD有几个显著优势</p>
+<ol>
+<li><code>Deployment</code> 天然支持滚动部署、结合其他<code>Kubernetes</code>特性还能实现蓝绿部署、金丝雀部署等</li>
+<li>新版本的<code>GitLab</code>与<code>GitLab Runner</code>天然支持<code>Kubernetes</code>集群，支持<code>runner</code>自动伸缩，减小资源占用</li>
+</ol>
+<h2 id="环境">环境</h2>
+<p><code>Kubernetes</code>版本：1.14</p>
+<p><code>GitLab</code>版本：12.2.5</p>
+<p><code>GitLab-Runner</code>版本：12.1.0</p>
+<p><code>Docker</code>环境版本：17.03.1</p>
+<h2 id="gitlab-runner部署">GitLab-Runner部署</h2>
+<h3 id="配置介绍">配置介绍</h3>
+<p>原始环境的<code>gitlab runner</code>通过手动执行官网提供的注册命令和启动命令，分成两部部署，需要较多的手工操作，而在<code>Kubernetes</code>中，其支持使用<code>Helm</code>一键部署，官方文档如下</p>
+<p><a href="https://docs.gitlab.com/runner/install/%60Kubernetes%60.html">GitLab Runner Helm Chart</a></p>
+<p>其实官方文档的指引并不清晰，许多配置在文档中没有介绍用法，推荐去其源码仓库查看详细的参数使用文档</p>
+<p><a href="https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/executors/%60Kubernetes%60.md#the-keywords">The Kubernetes executor</a></p>
+<p>其中介绍了几个关键配置，在后面修改工程的<code>ci</code>配置文件时会用到</p>
+<h4 id="使用dind方式构建已经不再推荐">使用DinD方式构建已经不再推荐</h4>
+<p><a href="https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-workflow-with-docker-executor">官方文档</a>介绍</p>
+<blockquote>
+<h3 id="use-docker-in-docker-workflow-with-docker-executor">Use docker-in-docker workflow with Docker executor</h3>
+<p>The second approach is to use the special docker-in-docker (dind) <a href="https://hub.docker.com/_/docker/">Docker image</a> with all tools installed (<code>docker</code>) and run the job script in context of that image in privileged mode.</p>
+<p><strong>Note:</strong> <code>docker-compose</code> is not part of docker-in-docker (dind). To use <code>docker-compose</code> in your CI builds, follow the <code>docker-compose</code> <a href="https://docs.docker.com/compose/install/">installation instructions</a>.</p>
+<p><strong>Danger:</strong> By enabling <code>--docker-privileged</code>, you are effectively disabling all of the security mechanisms of containers and exposing your host to privilege escalation which can lead to container breakout. For more information, check out the official Docker documentation on <a href="https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities">Runtime privilege and Linux capabilities</a>.</p>
+<p>Docker-in-Docker works well, and is the recommended configuration, but it is not without its own challenges:</p>
+<ul>
+<li>When using docker-in-docker, each job is in a clean environment without the past history. Concurrent jobs work fine because every build gets it’s own instance of Docker engine so they won’t conflict with each other. But this also means jobs can be slower because there’s no caching of layers.</li>
+<li>By default, Docker 17.09 and higher uses <code>--storage-driver overlay2</code> which is the recommended storage driver. See <a href="https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#using-the-overlayfs-driver">Using the overlayfs driver</a> for details.</li>
+<li>Since the <code>docker:19.03.1-dind</code> container and the Runner container don’t share their root filesystem, the job’s working directory can be used as a mount point for child containers. For example, if you have files you want to share with a child container, you may create a subdirectory under <code>/builds/$CI_PROJECT_PATH</code> and use it as your mount point (for a more thorough explanation, check <a href="https://gitlab.com/gitlab-org/gitlab-foss/issues/41227">issue #41227</a>):</li>
+</ul>
+</blockquote>
+<p>总之使用<code>DinD</code>进行容器构建并非不可行，但面临许多问题，例如使用<code>overlay2</code>网络需要Docker版本高于 17.09</p>
+<blockquote>
+<h3 id="using-dockerdind">Using <code>docker:dind</code></h3>
+<p>Running the <code>docker:dind</code> also known as the <code>docker-in-docker</code> image is also possible but sadly needs the containers to be run in privileged mode. If you're willing to take that risk other problems will arise that might not seem as straight forward at first glance. Because the docker daemon is started as a <code>service</code> usually in your <code>.gitlab-ci.yaml</code> it will be run as a separate container in your Pod. Basically containers in Pods only share volumes assigned to them and an IP address by which they can reach each other using <code>localhost</code>. <code>/var/run/docker.sock</code> is not shared by the <code>docker:dind</code> container and the <code>docker</code> binary tries to use it by default.</p>
+<p>To overwrite this and make the client use TCP to contact the Docker daemon, in the other container, be sure to include the environment variables of the build container:</p>
+<ul>
+<li><code>DOCKER_HOST=tcp://localhost:2375</code> for no TLS connection.</li>
+<li><code>DOCKER_HOST=tcp://localhost:2376</code> for TLS connection.</li>
+</ul>
+<p>Make sure to configure those properly. As of Docker 19.03, TLS is enabled by default but it requires mapping certificates to your client. You can enable non-TLS connection for DIND or mount certificates as described in <a href="https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-workflow-with-docker-executor"><strong>Use Docker In Docker Workflow wiht Docker executor</strong></a></p>
+</blockquote>
+<p>在Docker 19.03.1版本之后默认开启了<code>TLS</code>配置，在构建的环境变量中需要声明，否则报连接不上<code>docker</code>的错误，并且使用<code>DinD</code>构建需要<code>runner</code>开启特权模式，以访问主机的资源，并且由于使用了特权模式，在<code>Pod</code>中对<code>runner</code>需要使用的资源限制将失效</p>
+<figure data-type="image" tabindex="1"><img src="https://fjy8018.gitee.io/images/img/1574777453616.png" alt="1574777453616"></figure>
+<h4 id="使用kaniko构建docker镜像">使用Kaniko构建Docker镜像</h4>
+<p>目前官方提供另一种方式在<code>docker</code>容器中构建并推送镜像，实现更加优雅，可以实现无缝迁移，那就是<code>kaniko</code></p>
+<p><a href="https://docs.gitlab.com/ee/ci/docker/using_kaniko.html">Building a Docker image with kaniko</a></p>
+<p>其优势官网描述如下</p>
+<blockquote>
+<p>在Kubernetes集群中构建Docker映像的另一种方法是使用<a href="https://github.com/GoogleContainerTools/kaniko">kaniko</a>。iko子</p>
+<ul>
+<li>允许您构建没有特权访问权限的映像。</li>
+<li>无需Docker守护程序即可工作。</li>
+</ul>
+</blockquote>
+<p>在后面的实践中会使用两种方式构建Docker镜像，可根据实际情况选择</p>
+<h3 id="使用helm部署">使用Helm部署</h3>
+<p>拉取<code>Helm</code> <code>Gitlab-Runner</code>仓库到本地，修改配置</p>
+<p><a href="https://gitlab.com/gitlab-org/charts/gitlab-runner">GitLab Runner</a></p>
+<p>将原有的<code>gitlab-runner</code>配置迁移到<code>Helm</code>中，迁移后如下</p>
+<pre><code class="language-yaml">image: alpine-v12.1.0
+imagePullPolicy: IfNotPresent
+gitlabUrl: https://gitlab.fjy8018.top/
+runnerRegistrationToken: &quot;ZXhpuj4Dxmx2tpxW9Kdr&quot;
+unregisterRunners: true
+terminationGracePeriodSeconds: 3600
+concurrent: 10
+checkInterval: 30
+rbac:
+  create: true
+  clusterWideAccess: false
+metrics:
+  enabled: true
+  listenPort: 9090
+runners:
+  image: ubuntu:16.04
+  imagePullSecrets:
+    - name: registry-secret
+  locked: false
+  tags: &quot;k8s&quot;
+  runUntagged: true
+  privileged: true
+  pollTimeout: 180
+  outputLimit: 4096
+  cache: {}
+  builds: {}
+  services: {}
+  helpers: {}
+resources:
+   limits:
+     memory: 2048Mi
+     cpu: 1500m
+   requests:
+     memory: 128Mi
+     cpu: 200m
+affinity: {}
+nodeSelector: {}
+tolerations: []
+hostAliases:
+   - ip: &quot;192.168.1.13&quot;
+     hostnames:
+     - &quot;gitlab.fjy8018.top&quot;
+   - ip: &quot;192.168.1.30&quot;
+     hostnames:
+     - &quot;harbor.fjy8018.top&quot;
+podAnnotations: {}
+</code></pre>
+<p>其中配置了私钥、内网<code>harbor</code>地址、<code>harbor</code>拉取资源私钥，资源限制策略</p>
+<h4 id="gitlab-runner选择可能导致的坑">GitLab-Runner选择可能导致的坑</h4>
+<p>选择<code>runner</code>镜像为<code>alpine-v12.1.0</code>，这一点单独说一下，目前最新的runner版本为12.5.0，但其有许多问题，<code>alpine</code>新版镜像在<code>Kubernetes</code>中间断发生无法解析<code>DNS</code>的问题，反映到<code>GitLab-Runner</code>中就是<code>Could not resolve host</code>和<code>server misbehaving</code></p>
+<figure data-type="image" tabindex="2"><img src="https://fjy8018.gitee.io/images/img/1574778107416.png" alt="1574778107416"></figure>
+<figure data-type="image" tabindex="3"><img src="https://fjy8018.gitee.io/images/img/1574778146693.png" alt="1574778146693"></figure>
+<p>查阅解决方法</p>
+<figure data-type="image" tabindex="4"><img src="https://fjy8018.gitee.io/images/img/1574777890021.png" alt="1574777890021"></figure>
+<p>通过查询发现，其官方仓库还有多个相关issue没有关闭</p>
+<p>官方gitlab：<a href="https://gitlab.com/gitlab-org/charts/gitlab-runner/issues/96">Kubernetes runner: Could not resolve host</a></p>
+<p>stackoverflow：<a href="https://stackoverflow.com/questions/57049548/gitlab-runner-is-not-able-to-resolve-dns-of-gitlab-server">Gitlab Runner is not able to resolve DNS of Gitlab Server</a></p>
+<p>给出的解决方案无一例外都是降级到alpine-v12.1.0</p>
+<blockquote>
+<p>We had same issue for couple of days. We tried change CoreDNS config, move runners to different k8s cluster and so on. Finally today i checked my personal runner and found that i'm using different version. Runners in cluster had <code>gitlab/gitlab-runner:alpine-v12.3.0</code>, when mine had <code>gitlab/gitlab-runner:alpine-v12.0.1</code>. We added line</p>
+<pre><code class="language-yaml">image: gitlab/gitlab-runner:alpine-v12.1.0
+</code></pre>
+<p>in <code>values.yaml</code> and this solved problem for us</p>
+</blockquote>
+<p>其问题的根源应该在于alpine基础镜像对Kubernetes 集群支持有问题，</p>
+<p><a href="https://github.com/%60Kubernetes%60/%60Kubernetes%60/issues/64924">ndots breaks DNS resolving #64924</a></p>
+<figure data-type="image" tabindex="5"><img src="https://fjy8018.gitee.io/images/img/1574778408166.png" alt="1574778408166"></figure>
+<figure data-type="image" tabindex="6"><img src="https://fjy8018.gitee.io/images/img/1574778416868.png" alt="1574778416868"></figure>
+<p><code>docker-alpine</code>仓库对应也有未关闭的<code>issue</code>，其中就提到了关于<code>DNS</code>解析超时和异常的问题</p>
+<p><a href="https://github.com/gliderlabs/docker-alpine/issues/255">DNS Issue #255</a></p>
+<figure data-type="image" tabindex="7"><img src="https://fjy8018.gitee.io/images/img/1574778470283.png" alt="1574778470283"></figure>
+<h4 id="安装">安装</h4>
+<p>一行命令安装即可</p>
+<pre><code class="language-bash">$ helm install /root/gitlab-runner/ --name k8s-gitlab-runner --namespace gitlab-runner
+</code></pre>
+<p>输出如下</p>
+<pre><code class="language-bash">NAME:   k8s-gitlab-runner
+LAST DEPLOYED: Tue Nov 26 21:51:57 2019
+NAMESPACE: gitlab-runner
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/ConfigMap
+NAME                             DATA  AGE
+k8s-gitlab-runner-gitlab-runner  5     0s
+
+==&gt; v1/Deployment
+NAME                             READY  UP-TO-DATE  AVAILABLE  AGE
+k8s-gitlab-runner-gitlab-runner  0/1    1           0          0s
+
+==&gt; v1/Pod(related)
+NAME                                              READY  STATUS   RESTARTS  AGE
+k8s-gitlab-runner-gitlab-runner-744d598997-xwh92  0/1    Pending  0         0s
+
+==&gt; v1/Role
+NAME                             AGE
+k8s-gitlab-runner-gitlab-runner  0s
+
+==&gt; v1/RoleBinding
+NAME                             AGE
+k8s-gitlab-runner-gitlab-runner  0s
+
+==&gt; v1/Secret
+NAME                             TYPE    DATA  AGE
+k8s-gitlab-runner-gitlab-runner  Opaque  2     0s
+
+==&gt; v1/ServiceAccount
+NAME                             SECRETS  AGE
+k8s-gitlab-runner-gitlab-runner  1        0s
+
+
+NOTES:
+
+Your GitLab Runner should now be registered against the GitLab instance reachable at: &quot;https://gitlab.fjy8018.top/&quot;
+</code></pre>
+<p>查看gitlab admin页面，发现已经有一个runner成功注册</p>
+<figure data-type="image" tabindex="8"><img src="https://fjy8018.gitee.io/images/img/1574778634857.png" alt="1574778634857"></figure>
+<h2 id="工程配置">工程配置</h2>
+<h3 id="dind方式构建所需配置">DinD方式构建所需配置</h3>
+<p>如果原本的<code>ci</code>文件是基于<code>19.03 DinD</code>镜像构建的则需要加上<code>TLS</code>相关配置</p>
+<pre><code class="language-yaml">image: docker:19.03
+
+variables:
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_TLS_CERTDIR: &quot;&quot;
+...
+</code></pre>
+<p>其余配置保持不变，使用DinD构建</p>
+<h3 id="kubectl和kubernetes权限配置">Kubectl和Kubernetes权限配置</h3>
+<p>由于使用<code>k8s</code>集群，而通过集群部署需要使用<code>kubectl</code>客户端，故手动创建了一个<code>kubectl</code> <code>docker</code>镜像，使用<code>gitlab</code>触发<code>dockerhub</code>构建，构建内容公开透明，可放心使用，如有其它版本的构建需求也可提pull request，会在后面补充，目前用到的只有1.14.0</p>
+<p><a href="fjy8018/kubectl">fjy8018/kubectl</a></p>
+<figure data-type="image" tabindex="9"><img src="https://fjy8018.gitee.io/images/img/1574778835433.png" alt="1574778835433"></figure>
+<p>有<code>kubectl</code>客户端，还需要配置连接<code>TLS</code>和连接账户</p>
+<p>为了保障安全，新建一个专门访问该工程命名空间的<code>ServiceAccount</code></p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hmdt-gitlab-ci
+  namespace: hmdt
+</code></pre>
+<p>利用集群提供的RBAC机制，为该账户授予该命名空间的admin权限</p>
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: hmdt-gitlab-role
+  namespace: hmdt
+subjects:
+  - kind: ServiceAccount
+    name: hmdt-gitlab-ci
+    namespace: hmdt
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: admin
+</code></pre>
+<p>创建后在查询其在k8s集群中生成的唯一名称，此处为<code>hmdt-gitlab-ci-token-86n89</code></p>
+<pre><code class="language-bash">$ kubectl describe sa hmdt-gitlab-ci -n hmdt
+Name:                hmdt-gitlab-ci
+Namespace:           hmdt
+Labels:              &lt;none&gt;
+Annotations:         kubectl.`Kubernetes`.io/last-applied-configuration:
+                       {&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;ServiceAccount&quot;,&quot;metadata&quot;:{&quot;annotations&quot;:{},&quot;name&quot;:&quot;hmdt-gitlab-ci&quot;,&quot;namespace&quot;:&quot;hmdt&quot;}}
+Image pull secrets:  &lt;none&gt;
+Mountable secrets:   hmdt-gitlab-ci-token-86n89
+Tokens:              hmdt-gitlab-ci-token-86n89
+Events:              &lt;none&gt;
+</code></pre>
+<p>然后根据上面的Secret找到CA证书</p>
+<pre><code class="language-bash">$ kubectl get secret hmdt-gitlab-ci-token-86n89 -n hmdt -o json | jq -r '.data[&quot;ca.crt&quot;]' | base64 -d
+</code></pre>
+<p>再找到对应的 Token</p>
+<pre><code class="language-bash">$ kubectl get secret hmdt-gitlab-ci-token-86n89  -n hmdt -o json | jq -r '.data.token' | base64 -d
+</code></pre>
+<h3 id="kubernetes关联gitlab配置">Kubernetes关联GitLab配置</h3>
+<p>进入gitlab Kubernetes集群配置页面，填写相关信息，让gitlab自动连接上集群环境</p>
+<figure data-type="image" tabindex="10"><img src="https://fjy8018.gitee.io/images/img/1574779375430.png" alt="1574779375430"></figure>
+<figure data-type="image" tabindex="11"><img src="https://fjy8018.gitee.io/images/img/1574779403873.png" alt="1574779403873"></figure>
+<p>注意，需要将此处取消勾选，否则gitlab会自动创建新的用户账户，而不使用已经创建好的用户账户，在运行过程中会报无权限错误</p>
+<figure data-type="image" tabindex="12"><img src="https://fjy8018.gitee.io/images/img/1574779467185.png" alt="1574779467185"></figure>
+<p>不取消导致的报错如下，gitlab创建了新的用户账户<code>hmdt-prod-service-account</code>，但没有操作指定命名空间的权限</p>
+<figure data-type="image" tabindex="13"><img src="https://fjy8018.gitee.io/images/img/1574779599949.png" alt="1574779599949"></figure>
+<h3 id="gitlab环境配置">GitLab环境配置</h3>
+<p>创建环境</p>
+<figure data-type="image" tabindex="14"><img src="https://fjy8018.gitee.io/images/img/image-20191127095307604.png" alt="image-20191127095307604"></figure>
+<p>名称和url可以按需自定义</p>
+<figure data-type="image" tabindex="15"><img src="https://fjy8018.gitee.io/images/img/image-20191127095330949.png" alt="image-20191127095330949"></figure>
+<h3 id="ci脚本配置">CI脚本配置</h3>
+<p>最终配置CI文件如下，该文件使用<code>DinD</code>方式构建<code>Dockerfile</code></p>
+<pre><code class="language-yaml">image: docker:19.03
+
+variables:
+  MAVEN_CLI_OPTS: &quot;-s .m2/settings.xml --batch-mode -Dmaven.test.skip=true&quot;
+  MAVEN_OPTS: &quot;-Dmaven.repo.local=.m2/repository&quot;
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_TLS_CERTDIR: &quot;&quot;
+  SPRING_PROFILES_ACTIVE: docker
+  IMAGE_VERSION: &quot;1.8.6&quot;
+  DOCKER_REGISTRY_MIRROR: &quot;https://XXX.mirror.aliyuncs.com&quot;
+
+stages:
+  - test
+  - package
+  - review
+  - deploy
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: test
+  retry: 2
+  script:
+    - mvn $MAVEN_CLI_OPTS clean package -U -B -T 2C
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - target/*.jar
+
+maven-scan:
+  stage: test
+  retry: 2
+  image: maven:3-jdk-8
+  script:
+    - mvn $MAVEN_CLI_OPTS verify sonar:sonar
+
+maven-deploy:
+  stage: deploy
+  retry: 2
+  image: maven:3-jdk-8
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+
+docker-harbor-build:
+  image: docker:19.03
+  stage: package
+  retry: 2
+  services:
+    - name: docker:19.03-dind
+      alias: docker
+  before_script:
+    - docker login -u &quot;$CI_REGISTRY_USER&quot; -p &quot;$CI_REGISTRY_PASSWORD&quot; $CI_REGISTRY
+  script:
+    - docker build --pull -t &quot;$CI_REGISTRY_IMAGE:$IMAGE_VERSION&quot; .
+    - docker push &quot;$CI_REGISTRY_IMAGE:$IMAGE_VERSION&quot;
+    - docker logout $CI_REGISTRY
+
+deploy_live:
+  image: fjy8018/kubectl:v1.14.0
+  stage: deploy
+  retry: 2
+  environment:
+    name: prod
+    url: https://XXXX
+  script:
+    - kubectl version
+    - kubectl get pods -n hmdt
+    - cd manifests/
+    - sed -i &quot;s/__IMAGE_VERSION_SLUG__/${IMAGE_VERSION}/&quot; deployment.yaml
+    - kubectl apply -f deployment.yaml
+    - kubectl rollout status -f deployment.yaml
+    - kubectl get pods -n hmdt
+</code></pre>
+<p>若需要使用<code>Kaniko</code>构建<code>Dockerfile</code>，则配置如下</p>
+<p>注意，其中依赖的镜像<code>gcr.io/kaniko-project/executor:debug</code>属于谷歌镜像仓库，可能存在无法拉取的情况</p>
+<pre><code class="language-yaml">image: docker:19.03
+
+variables:
+  MAVEN_CLI_OPTS: &quot;-s .m2/settings.xml --batch-mode -Dmaven.test.skip=true&quot;
+  MAVEN_OPTS: &quot;-Dmaven.repo.local=.m2/repository&quot;
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_TLS_CERTDIR: &quot;&quot;
+  SPRING_PROFILES_ACTIVE: docker
+  IMAGE_VERSION: &quot;1.8.6&quot;
+  DOCKER_REGISTRY_MIRROR: &quot;https://XXX.mirror.aliyuncs.com&quot;
+
+cache:
+  paths:
+    - target/
+
+stages:
+  - test
+  - package
+  - review
+  - deploy
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: test
+  retry: 2
+  script:
+    - mvn $MAVEN_CLI_OPTS clean package -U -B -T 2C
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - target/*.jar
+
+maven-scan:
+  stage: test
+  retry: 2
+  image: maven:3-jdk-8
+  script:
+    - mvn $MAVEN_CLI_OPTS verify sonar:sonar
+
+maven-deploy:
+  stage: deploy
+  retry: 2
+  image: maven:3-jdk-8
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+
+
+docker-harbor-build:
+  stage: package
+  retry: 2
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [&quot;&quot;]
+  script:
+    - echo &quot;{\&quot;auths\&quot;:{\&quot;$CI_REGISTRY\&quot;:{\&quot;username\&quot;:\&quot;$CI_REGISTRY_USER\&quot;,\&quot;password\&quot;:\&quot;$CI_REGISTRY_PASSWORD\&quot;}}}&quot; &gt; /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$IMAGE_VERSION
+
+deploy_live:
+  image: fjy8018/kubectl:v1.14.0
+  stage: deploy
+  retry: 2
+  environment:
+    name: prod
+    url: https://XXXX
+  script:
+    - kubectl version
+    - kubectl get pods -n hmdt
+    - cd manifests/
+    - sed -i &quot;s/__IMAGE_VERSION_SLUG__/${IMAGE_VERSION}/&quot; deployment.yaml
+    - kubectl apply -f deployment.yaml
+    - kubectl rollout status -f deployment.yaml
+    - kubectl get pods -n hmdt
+</code></pre>
+<h2 id="执行流水线">执行流水线</h2>
+<h3 id="runner自动扩缩容">runner自动扩缩容</h3>
+<p><code>Kubernetes</code>中的runner会根据任务多少自动扩缩容，目前配置的上限为10个</p>
+<figure data-type="image" tabindex="16"><img src="https://fjy8018.gitee.io/images/img/1574776369212.png" alt="1574776369212"></figure>
+<p>Grafana也能监控到集群在构建过程中的资源使用情况</p>
+<figure data-type="image" tabindex="17"><img src="https://fjy8018.gitee.io/images/img/1574776599795.png" alt="1574776599795"></figure>
+<h3 id="使用dind构建dockerfile结果">使用<code>DinD</code>构建<code>Dockerfile</code>结果</h3>
+<figure data-type="image" tabindex="18"><img src="https://fjy8018.gitee.io/images/img/image-20191127100525518.png" alt="image-20191127100525518"></figure>
+<h3 id="使用kaniko构建dockerfile的结果">使用<code>Kaniko</code>构建<code>Dockerfile</code>的结果</h3>
+<figure data-type="image" tabindex="19"><img src="https://fjy8018.gitee.io/images/img/image-20191127100458620.png" alt="image-20191127100458620"></figure>
+<h3 id="部署结果">部署结果</h3>
+<p>执行部署时gitlab会自动注入配置好的<code>kubectl</code> config</p>
+<figure data-type="image" tabindex="20"><img src="https://fjy8018.gitee.io/images/img/image-20191127095832650.png" alt="image-20191127095832650"></figure>
+<h3 id="构建结果">构建结果</h3>
+<figure data-type="image" tabindex="21"><img src="https://fjy8018.gitee.io/images/img/image-20191127095739561.png" alt="image-20191127095739561"></figure>
+<p>部署完成后可在环境配置页中查看部署结果，只有成功的部署才会被记录</p>
+<figure data-type="image" tabindex="22"><img src="https://fjy8018.gitee.io/images/img/image-20191127095923676.png" alt="image-20191127095923676"></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/k8s-gong-xiang-cun-chu-yi-ji-redis-gao-ke-yong-ji-qun-kuai-su-da-jian">
+                                <h3 class="post-title">
+                                    k8s共享存储以及Redis高可用集群快速搭建
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
+<li><a href="#%E4%BC%98%E5%8A%BF">优势</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li>
+<li><a href="#gitlab-runner%E9%83%A8%E7%BD%B2">GitLab-Runner部署</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E4%BB%8B%E7%BB%8D">配置介绍</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8dind%E6%96%B9%E5%BC%8F%E6%9E%84%E5%BB%BA%E5%B7%B2%E7%BB%8F%E4%B8%8D%E5%86%8D%E6%8E%A8%E8%8D%90">使用DinD方式构建已经不再推荐</a></li>
+</ul>
+</li>
+<li><a href="#use-docker-in-docker-workflow-with-docker-executor">Use docker-in-docker workflow with Docker executor</a></li>
+<li><a href="#using-dockerdind">Using <code>docker:dind</code></a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8kaniko%E6%9E%84%E5%BB%BAdocker%E9%95%9C%E5%83%8F">使用Kaniko构建Docker镜像</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8helm%E9%83%A8%E7%BD%B2">使用Helm部署</a>
+<ul>
+<li><a href="#gitlab-runner%E9%80%89%E6%8B%A9%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%9D%91">GitLab-Runner选择可能导致的坑</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE">工程配置</a>
+<ul>
+<li><a href="#dind%E6%96%B9%E5%BC%8F%E6%9E%84%E5%BB%BA%E6%89%80%E9%9C%80%E9%85%8D%E7%BD%AE">DinD方式构建所需配置</a></li>
+<li><a href="#kubectl%E5%92%8Ckubernetes%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE">Kubectl和Kubernetes权限配置</a></li>
+<li><a href="#kubernetes%E5%85%B3%E8%81%94gitlab%E9%85%8D%E7%BD%AE">Kubernetes关联GitLab配置</a></li>
+<li><a href="#gitlab%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">GitLab环境配置</a></li>
+<li><a href="#ci%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE">CI脚本配置</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E6%B0%B4%E7%BA%BF">执行流水线</a>
+<ul>
+<li><a href="#runner%E8%87%AA%E5%8A%A8%E6%89%A9%E7%BC%A9%E5%AE%B9">runner自动扩缩容</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8dind%E6%9E%84%E5%BB%BAdockerfile%E7%BB%93%E6%9E%9C">使用<code>DinD</code>构建<code>Dockerfile</code>结果</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8kaniko%E6%9E%84%E5%BB%BAdockerfile%E7%9A%84%E7%BB%93%E6%9E%9C">使用<code>Kaniko</code>构建<code>Dockerfile</code>的结果</a></li>
+<li><a href="#%E9%83%A8%E7%BD%B2%E7%BB%93%E6%9E%9C">部署结果</a></li>
+<li><a href="#%E6%9E%84%E5%BB%BA%E7%BB%93%E6%9E%9C">构建结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

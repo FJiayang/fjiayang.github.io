@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fjiayang.github.io/</id>
     <title>F嘉阳</title>
-    <updated>2019-12-03T08:28:58.986Z</updated>
+    <updated>2019-12-03T08:32:36.523Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fjiayang.github.io/"/>
     <link rel="self" href="https://fjiayang.github.io//atom.xml"/>
@@ -35,6 +35,45 @@
 <p>题目描述：</p>
 </li>
 </ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[k8s环境下GitLab+Helm+GitLab Runner Java项目CICD落地实践]]></title>
+        <id>https://fjiayang.github.io//post/k8s-huan-jing-xia-gitlabhelmgitlab-runner-java-xiang-mu-cicd-luo-di-shi-jian</id>
+        <link href="https://fjiayang.github.io//post/k8s-huan-jing-xia-gitlabhelmgitlab-runner-java-xiang-mu-cicd-luo-di-shi-jian">
+        </link>
+        <updated>2019-11-27T02:24:54.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="背景">背景</h2>
+<p>目前使用5台服务器搭建了<code>Kubernetes</code>集群环境，监控、日志采集均已落地，业务也手工迁移到集群中顺利运行，故需要将原本基于原生<code>docker</code>环境的CICD流程迁移到<code>Kubernetes</code>集群中</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="背景">背景</h2>
+<p>目前使用5台服务器搭建了<code>Kubernetes</code>集群环境，监控、日志采集均已落地，业务也手工迁移到集群中顺利运行，故需要将原本基于原生<code>docker</code>环境的CICD流程迁移到<code>Kubernetes</code>集群中</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[k8s共享存储以及Redis高可用集群快速搭建]]></title>
+        <id>https://fjiayang.github.io//post/k8s-gong-xiang-cun-chu-yi-ji-redis-gao-ke-yong-ji-qun-kuai-su-da-jian</id>
+        <link href="https://fjiayang.github.io//post/k8s-gong-xiang-cun-chu-yi-ji-redis-gao-ke-yong-ji-qun-kuai-su-da-jian">
+        </link>
+        <updated>2019-11-20T07:55:53.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="介绍">介绍</h2>
+<p><code>StorageClass</code> 为管理员提供了描述存储 <code>&quot;类&quot;</code> 的方法。 不同的<code>类型</code>可能会映射到不同的服务质量等级或备份策略，通常由运维制定的任意策略</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="介绍">介绍</h2>
+<p><code>StorageClass</code> 为管理员提供了描述存储 <code>&quot;类&quot;</code> 的方法。 不同的<code>类型</code>可能会映射到不同的服务质量等级或备份策略，通常由运维制定的任意策略</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[k8s监控平台搭建]]></title>
+        <id>https://fjiayang.github.io//post/k8s-jian-kong-ping-tai-da-jian</id>
+        <link href="https://fjiayang.github.io//post/k8s-jian-kong-ping-tai-da-jian">
+        </link>
+        <updated>2019-11-12T13:33:45.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="架构">架构</h2>
+<p>目前主流容器化监控平台采用<code>Prometheus</code>+<code>Grafana</code>架构，下图为<code>Prometheus</code>架构图，可以主动发现各种指标和采集数据，实现</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="架构">架构</h2>
+<p>目前主流容器化监控平台采用<code>Prometheus</code>+<code>Grafana</code>架构，下图为<code>Prometheus</code>架构图，可以主动发现各种指标和采集数据，实现</p>
 ]]></content>
     </entry>
     <entry>

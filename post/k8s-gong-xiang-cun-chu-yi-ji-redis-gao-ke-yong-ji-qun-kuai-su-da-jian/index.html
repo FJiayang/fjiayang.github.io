@@ -1,0 +1,936 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    k8s共享存储以及Redis高可用集群快速搭建 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575361952131">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575361952131" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            k8s共享存储以及Redis高可用集群快速搭建
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-11-20</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/4QCDLcnCA" class="post-tag i-tag
+                            i-tag-other_2">
+                            #Redis
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/yb4HlP89R" class="post-tag i-tag
+                            i-tag-primary">
+                            #Kubernetes
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-info">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://s2.ax1x.com/2019/11/27/QC2YcT.png')"></div>
+                            
+                                <div class="post-content">
+                                    <h2 id="介绍">介绍</h2>
+<p><code>StorageClass</code> 为管理员提供了描述存储 <code>&quot;类&quot;</code> 的方法。 不同的<code>类型</code>可能会映射到不同的服务质量等级或备份策略，通常由运维制定的任意策略</p>
+<!-- more -->
+<p>用户通过在 <code>PersistentVolumeClaim</code> 中包含存储类来请求动态供应的存储 ，动态卷供应的实现基于 <code>storage.k8s.io</code> API 组中的 <code>StorageClass</code> API 对象。 集群管理员可以根据需要定义多个 <code>StorageClass</code> 对象，每个对象指定一个<em>卷插件</em>（又名 <em>provisioner</em>）， 卷插件向卷供应商提供在创建卷时需要的数据卷信息及相关参数。</p>
+<h2 id="环境">环境</h2>
+<p>Kubernetes：v1.14.0</p>
+<p>Docker：17.03.1-ce</p>
+<p>机器数：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>×</mo><mi>m</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>+</mo><mn>2</mn><mo>×</mo><mi>w</mi><mi>o</mi><mi>r</mi><mi>k</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">3 \times master + 2 \times worker</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span></p>
+<p>其中，master3、worker1、worker2都挂载了2块磁盘，非系统盘为纯净未分区磁盘，用于提供给GlusterFs管理</p>
+<h2 id="安装glusterfs">安装GlusterFs</h2>
+<p>在所有可能被调度到<code>pod</code>的节点安装<code>glusterfs</code></p>
+<pre><code class="language-bash">$ yum install -y glusterfs glusterfs-fuse net-tools
+</code></pre>
+<h2 id="启动glusterfs与heketi">启动GlusterFs与heketi</h2>
+<p>使用<code>yaml</code>文件启动<code>glusterfs</code>及其操作工具<code>heketi</code></p>
+<p><code>glusterfs-daemonset.yaml</code></p>
+<pre><code class="language-yaml">---
+kind: DaemonSet
+apiVersion: extensions/v1beta1
+metadata:
+  name: glusterfs
+  labels:
+    glusterfs: daemonset
+  annotations:
+    description: GlusterFS DaemonSet
+    tags: glusterfs
+spec:
+  template:
+    metadata:
+      name: glusterfs
+      labels:
+        glusterfs: pod
+        glusterfs-node: pod
+    spec:
+      nodeSelector:
+        storagenode: glusterfs
+      hostNetwork: true
+      containers:
+      - image: gluster/gluster-centos:latest
+        imagePullPolicy: IfNotPresent
+        name: glusterfs
+        env:
+        # alternative for /dev volumeMount to enable access to *all* devices
+        - name: HOST_DEV_DIR
+          value: &quot;/mnt/host-dev&quot;
+        # set GLUSTER_BLOCKD_STATUS_PROBE_ENABLE to &quot;1&quot; so the
+        # readiness/liveness probe validate gluster-blockd as well
+        - name: GLUSTER_BLOCKD_STATUS_PROBE_ENABLE
+          value: &quot;1&quot;
+        - name: GB_GLFS_LRU_COUNT
+          value: &quot;15&quot;
+        - name: TCMU_LOGDIR
+          value: &quot;/var/log/glusterfs/gluster-block&quot;
+        resources:
+          requests:
+            memory: 100Mi
+            cpu: 100m
+        volumeMounts:
+        - name: glusterfs-heketi
+          mountPath: &quot;/var/lib/heketi&quot;
+        - name: glusterfs-run
+          mountPath: &quot;/run&quot;
+        - name: glusterfs-lvm
+          mountPath: &quot;/run/lvm&quot;
+        - name: glusterfs-etc
+          mountPath: &quot;/etc/glusterfs&quot;
+        - name: glusterfs-logs
+          mountPath: &quot;/var/log/glusterfs&quot;
+        - name: glusterfs-config
+          mountPath: &quot;/var/lib/glusterd&quot;
+        - name: glusterfs-host-dev
+          mountPath: &quot;/mnt/host-dev&quot;
+        - name: glusterfs-misc
+          mountPath: &quot;/var/lib/misc/glusterfsd&quot;
+        - name: glusterfs-block-sys-class
+          mountPath: &quot;/sys/class&quot;
+        - name: glusterfs-block-sys-module
+          mountPath: &quot;/sys/module&quot;
+        - name: glusterfs-cgroup
+          mountPath: &quot;/sys/fs/cgroup&quot;
+          readOnly: true
+        - name: glusterfs-ssl
+          mountPath: &quot;/etc/ssl&quot;
+          readOnly: true
+        - name: kernel-modules
+          mountPath: &quot;/usr/lib/modules&quot;
+          readOnly: true
+        securityContext:
+          capabilities: {}
+          privileged: true
+        readinessProbe:
+          timeoutSeconds: 3
+          initialDelaySeconds: 40
+          exec:
+            command:
+            - &quot;/bin/bash&quot;
+            - &quot;-c&quot;
+            - &quot;if command -v /usr/local/bin/status-probe.sh; then /usr/local/bin/status-probe.sh readiness; else systemctl status glusterd.service; fi&quot;
+          periodSeconds: 25
+          successThreshold: 1
+          failureThreshold: 50
+        livenessProbe:
+          timeoutSeconds: 3
+          initialDelaySeconds: 40
+          exec:
+            command:
+            - &quot;/bin/bash&quot;
+            - &quot;-c&quot;
+            - &quot;if command -v /usr/local/bin/status-probe.sh; then /usr/local/bin/status-probe.sh liveness; else systemctl status glusterd.service; fi&quot;
+          periodSeconds: 25
+          successThreshold: 1
+          failureThreshold: 50
+      volumes:
+      - name: glusterfs-heketi
+        hostPath:
+          path: &quot;/var/lib/heketi&quot;
+      - name: glusterfs-run
+      - name: glusterfs-lvm
+        hostPath:
+          path: &quot;/run/lvm&quot;
+      - name: glusterfs-etc
+        hostPath:
+          path: &quot;/etc/glusterfs&quot;
+      - name: glusterfs-logs
+        hostPath:
+          path: &quot;/var/log/glusterfs&quot;
+      - name: glusterfs-config
+        hostPath:
+          path: &quot;/var/lib/glusterd&quot;
+      - name: glusterfs-host-dev
+        hostPath:
+          path: &quot;/dev&quot;
+      - name: glusterfs-misc
+        hostPath:
+          path: &quot;/var/lib/misc/glusterfsd&quot;
+      - name: glusterfs-block-sys-class
+        hostPath:
+          path: &quot;/sys/class&quot;
+      - name: glusterfs-block-sys-module
+        hostPath:
+          path: &quot;/sys/module&quot;
+      - name: glusterfs-cgroup
+        hostPath:
+          path: &quot;/sys/fs/cgroup&quot;
+      - name: glusterfs-ssl
+        hostPath:
+          path: &quot;/etc/ssl&quot;
+      - name: kernel-modules
+        hostPath:
+          path: &quot;/usr/lib/modules&quot;
+</code></pre>
+<p><code>heketi-security.yaml</code> 用户与权限相关</p>
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: heketi-clusterrolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: heketi-clusterrole
+subjects:
+- kind: ServiceAccount
+  name: heketi-service-account
+  namespace: default
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: heketi-service-account
+  namespace: default
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: heketi-clusterrole
+rules:
+- apiGroups:
+  - &quot;&quot;
+  resources:
+  - pods
+  - pods/status
+  - pods/exec
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+</code></pre>
+<p><code>heketi-deployment.yaml</code>启动服务并使用ingress四层反向代理</p>
+<pre><code class="language-yaml">kind: Service
+apiVersion: v1
+metadata:
+  name: heketi
+  labels: 
+    glusterfs: heketi-service
+    deploy-heketi: support
+  annotations: 
+    description: Exposes Heketi Service
+spec:
+  selector: 
+    name: heketi
+  ports:
+  - name: heketi
+    port: 80
+    targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+data:
+  &quot;30001&quot;: default/heketi:80
+
+---
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: heketi
+  labels: 
+    glusterfs: heketi-deployment
+  annotations: 
+    description: Defines how to deploy Heketi
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: heketi
+      labels: 
+        name: heketi
+        glusterfs: heketi-pod
+    spec:
+      serviceAccountName: heketi-service-account
+      containers:
+      - image: heketi/heketi:6
+        imagePullPolicy: Always
+        name: heketi
+        env:
+        - name: HEKETI_EXECUTOR
+          value: &quot;kubernetes&quot;
+        - name: HEKETI_DB_PATH
+          value: &quot;/var/lib/heketi/heketi.db&quot;
+        - name: HEKETI_FSTAB
+          value: &quot;/var/lib/heketi/fstab&quot;
+        - name: HEKETI_SNAPSHOT_LIMIT
+          value: &quot;14&quot;
+        - name: HEKETI_KUBE_GLUSTER_DAEMONSET
+          value: &quot;y&quot;
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: db
+          mountPath: /var/lib/heketi
+        readinessProbe:
+          timeoutSeconds: 3
+          initialDelaySeconds: 3
+          httpGet: 
+            path: /hello
+            port: 8080
+        livenessProbe:
+          timeoutSeconds: 3
+          initialDelaySeconds: 30
+          httpGet: 
+            path: /hello
+            port: 8080
+      volumes:
+      - name: db
+        hostPath:
+          path: &quot;/heketi-data&quot;
+</code></pre>
+<h2 id="glusterfs初始化">GlusterFS初始化</h2>
+<h3 id="创建">创建</h3>
+<p>使用<code>heketi-cli</code>初始化<code>GlusterFS</code>节点，找到<code>heketi</code>容器并进入</p>
+<pre><code class="language-bash">$ docker ps | grep hek
+9c92cf25e4bb        heketi/heketi@sha256:44058f20a91211234abc533c9b4b5c42764b8cd740e21d03377bee14ebca4497   &quot;/usr/bin/heketi-s...&quot;   About a minute ago   Up 58 seconds                           k8s_he eti_heketi-68f9dfdfbf-w4qrd_default_c0566bf2-09ff-11ea-b6ce-000c298872e2_0
+ebafb92c4dc1        registry.cn-hangzhou.aliyuncs.com/imooc/pause:3.1                                       &quot;/pause&quot;                 About a minute ago   Up About a minute                       k8s_POD_heketi-68f9dfdfbf-w4qrd_default_c0566bf2-09ff-11ea-b6ce-000c298872e2_0
+$ docker exec -it 9c92 /bin/bash
+</code></pre>
+<p>配置容器本地环境变量，并配置节点<code>json</code>文件</p>
+<pre><code class="language-bash">$ export HEKETI_CLI_SERVER=http://localhost:8080
+$ vi topology.json
+</code></pre>
+<p>主机名需要唯一并可以访问</p>
+<pre><code class="language-json">{
+  &quot;clusters&quot;: [
+    {
+      &quot;nodes&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;hostnames&quot;: {
+              &quot;manage&quot;: [
+                &quot;k8smaster3&quot;
+              ],
+              &quot;storage&quot;: [
+                &quot;192.168.1.17&quot;
+              ]
+            },
+            &quot;zone&quot;: 1
+          },
+          &quot;devices&quot;: [&quot;/dev/sdb&quot;]
+        },
+        {
+          &quot;node&quot;: {
+            &quot;hostnames&quot;: {
+              &quot;manage&quot;: [
+                &quot;k8sworker1&quot;
+              ],
+              &quot;storage&quot;: [
+                &quot;192.168.1.18&quot;
+              ]
+            },
+            &quot;zone&quot;: 1
+          },
+          &quot;devices&quot;: [&quot;/dev/sdb&quot;]
+        },
+        {
+          &quot;node&quot;: {
+            &quot;hostnames&quot;: {
+              &quot;manage&quot;: [
+                &quot;k8sworker2&quot;
+              ],
+              &quot;storage&quot;: [
+                &quot;192.168.1.19&quot;
+              ]
+            },
+            &quot;zone&quot;: 1
+          },
+          &quot;devices&quot;: [&quot;/dev/sdb&quot;]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>装载<code>json</code>文件</p>
+<pre><code class="language-bash">$ heketi-cli topology load --json topology.json
+        Found node k8smaster3 on cluster 84d8a3a128c43a2a7d6c36aa6833823f
+                Adding device /dev/sdb ... OK
+        Found node k8sworker1 on cluster 84d8a3a128c43a2a7d6c36aa6833823f
+                Adding device /dev/sdb ... OK
+        Found node k8sworker2 on cluster 84d8a3a128c43a2a7d6c36aa6833823f
+                Adding device /dev/sdb ... OK
+</code></pre>
+<h4 id="可能出现的问题">可能出现的问题</h4>
+<h5 id="1-无法初始化">1. 无法初始化</h5>
+<p>报错信息为</p>
+<pre><code class="language-bash">Creating cluster ... ID: 84d8a3a128c43a2a7d6c36aa6833823f
+        Allowing file volumes on cluster.
+        Allowing block volumes on cluster.
+        Creating node k8smaster3 ... ID: b97a53e296850d59bbdd4043b13ebf78
+                Adding device /dev/sdb ... Unable to add device: Unable to execute command on glusterfs-4vgh8:   WARNING: Device /dev/sdb not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/centos/root not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/sda1 not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/centos/swap not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/sda2 not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/sdb not initialized in udev database even after waiting 10000000 microseconds.
+  Can't initialize physical volume &quot;/dev/sdb&quot; of volume group &quot;vg_9bc3bdaff53104647cd24abe9ca60745&quot; without -ff
+  /dev/sdb: physical volume not initialized.
+        Creating node k8sworker1 ... ID: 3a57327dbd24d9aedcae01f72857ef5e
+                Adding device /dev/sdb ... Unable to add device: Unable to execute command on glusterfs-wzcf8:   WARNING: Device /dev/sdb not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/centos/root not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/sda1 not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/centos/swap not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/sda2 not initialized in udev database even after waiting 10000000 microseconds.
+  WARNING: Device /dev/sdb not initialized in udev database even after waiting 10000000 microseconds.
+  Can't initialize physical volume &quot;/dev/sdb&quot; of volume group &quot;vg_c6a688843cd06e333c83e56814c95c55&quot; without -ff
+  /dev/sdb: physical volume not initialized.
+        Creating node k8sworker2 ... ID: 141f497c0797b26a22a31288ca97acf1
+</code></pre>
+<p>通过查阅资料，发现如下issue，官方提供磁盘擦除命令，执行后重新初始化节点</p>
+<p><a href="https://github.com/gluster/gluster-kubernetes/issues/279">deploy fails using k8s 1.7.1 when heketi tries to add devices to cluster #2 #279</a></p>
+<blockquote>
+<p>Destroy the heketi and GlusterFS pods, then try the following on each of the nodes:</p>
+<pre><code class="language-bash">pvdisplay -C -o pv_name,vg_name # look for VGs on PVs on your target devices
+lvremove -ff &lt;any VGs found above&gt;
+vgremove -f &lt;any VGs found above&gt;
+pvremove -f &lt;any PVs found above&gt;
+wipefs -a &lt;target device&gt;
+</code></pre>
+<p>Then try gk-deploy from the beginning again. Naturally, double-check that you're definitely removing something only on the target devices. 😃</p>
+</blockquote>
+<p>进入挂载磁盘节点，查看当前磁盘信息</p>
+<pre><code class="language-bash">$ lsblk
+NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda               8:0    0   40G  0 disk
+├─sda1            8:1    0    1G  0 part /boot
+└─sda2            8:2    0   39G  0 part
+  ├─centos-root 253:0    0   35G  0 lvm  /
+  └─centos-swap 253:1    0    4G  0 lvm
+sdb               8:16   0   40G  0 disk
+sr0              11:0    1 1024M  0 rom
+</code></pre>
+<p>查看<code>pvs</code>名称</p>
+<pre><code class="language-bash">$ pvs
+  PV         VG                                  Fmt  Attr PSize   PFree
+  /dev/sda2  centos                              lvm2 a--  &lt;39.00g     0
+  /dev/sdb   vg_c6a688843cd06e333c83e56814c95c55 lvm2 a--   39.87g 39.87g
+</code></pre>
+<p>抹除磁盘</p>
+<pre><code class="language-bash">$ pvdisplay -C -o /dev/sdb,vg_c6a688843cd06e333c83e56814c95c55
+$ lvremove -ff vg_c6a688843cd06e333c83e56814c95c55
+$ vgremove -f vg_c6a688843cd06e333c83e56814c95c55
+$ pvremove -f /dev/sdb
+$ wipefs -a /dev/sdb
+</code></pre>
+<p>抹除后重新进入容器创建即可</p>
+<h3 id="验证">验证</h3>
+<p>进入3个存储节点，检查创建情况，此处以<code>worker1</code>为例</p>
+<pre><code class="language-bash">$ netstat -ntlp | grep glusterd
+tcp        0      0 0.0.0.0:24007           0.0.0.0:*               LISTEN      25997/glusterd
+$ docker ps | grep glus
+eae6ef1d4a37        22a008905c35                                                                                                                         &quot;/usr/local/bin/up...&quot;   31 minutes ago      Up 31 minutes                           k8s_glusterfs_glusterfs-wzcf8_default_940d0f57-09ff-11ea-b6ce-000c298872e2_0
+858fd84edbc2        registry.cn-hangzhou.aliyuncs.com/imooc/pause:3.1                                                                                    &quot;/pause&quot;                 31 minutes ago      Up 31 minutes                           k8s_POD_glusterfs-wzcf8_default_940d0f57-09ff-11ea-b6ce-000c298872e2_0
+$ docker exec -it eae6 /bin/bash
+$ gluster pool list
+UUID                                    Hostname        State
+6d4eda3d-a7c2-4e27-999c-972106c54c3d    k8smaster3      Connected
+56a6e1d4-46db-4ff2-83eb-39c313bc9197    192.168.1.19    Connected
+a8ac96bd-b596-433c-8e2a-e3a97873886b    localhost       Connected
+</code></pre>
+<h2 id="创建storage-class">创建storage-class</h2>
+<p>定义<code>StorageClass</code>，通过访问<code>ingress-nginx</code>四层代理暴露的端口管理<code>glusterfs</code></p>
+<p><code>glusterfs-storage-class.yaml</code></p>
+<pre><code class="language-yaml">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: glusterfs-storage-class
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: &quot;http://192.168.1.16:30001&quot;
+  restauthenabled: &quot;false&quot;
+</code></pre>
+<h2 id="创建pvc">创建PVC</h2>
+<p>创建PVC， 可以被单个节点映射为<code>ReadWriteOnce</code>,或者多个节点映射为<code>ReadOnlyMany</code>,但不能同时使用这两种方式来映射。</p>
+<p><code>glusterfs-pvc.yaml</code></p>
+<pre><code class="language-yaml">kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: glusterfs-pvc
+spec:
+  storageClassName: glusterfs-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+</code></pre>
+<p>检查<code>pvc</code>，可见已经是已绑定(<code>Bound</code>)状态</p>
+<pre><code class="language-bash">$ kubectl get pvc
+NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS              AGE
+glusterfs-pvc   Bound    pvc-7c4f94cd-0a04-11ea-b6ce-000c298872e2   1Gi        RWO            glusterfs-storage-class   128m
+</code></pre>
+<h2 id="基于helm安装redis-ha">基于Helm安装Redis-HA</h2>
+<p>访问<code>charts</code>官方仓库：<a href="https://github.com/helm/charts">https://github.com/helm/charts</a></p>
+<p>在stable目录下找到<code>redis-ha</code>目录，修改<code>values.yaml</code>文件如下，主要配置存储类为<code>storageClass: glusterfs-storage-class</code>，然后修改用户名和密码等相关信息即可</p>
+<pre><code class="language-yaml">image:
+  repository: redis
+  tag: 5.0.5-alpine
+  pullPolicy: IfNotPresent
+replicas: 3
+labels: {}
+configure-service-account/
+serviceAccount:
+  create: truetemplate
+Automatically proxies to Redis master.
+haproxy:
+  enabled: false
+  readOnly:
+    enabled: false
+    port: 6380
+  replicas: 1
+  image:
+    repository: haproxy
+    tag: 2.0.4
+    pullPolicy: IfNotPresent
+  annotations: {}
+  resources: {}
+  service:
+    type: ClusterIP
+    loadBalancerIP:
+    annotations: {}
+  serviceAccount:
+    create: true
+  exporter:
+    image:
+      repository: quay.azk8s.cn/prometheus/haproxy-exporter
+      tag: v0.9.0
+    enabled: false
+    port: 9101
+  init:
+    resources: {}
+  timeout:
+    connect: 4s
+    server: 30s
+    client: 30s
+  securityContext:
+    runAsUser: 1000
+    fsGroup: 1000
+    runAsNonRoot: true
+rbac:
+  create: true
+sysctlImage:
+  enabled: false
+  command: []
+  registry: docker.io
+  repository: busybox
+  tag: 1.31.1
+  pullPolicy: Always
+  mountHostSys: false
+configure-multiple-schedulers/
+redis:
+  port: 6379
+  masterGroupName: mymaster
+  config:
+    min-replicas-to-write: 1unlimited.instance. Default is volatile-lru.with a new slave. The only way to prevent this is to enable diskless replication.
+    save: &quot;900 1&quot;the disk as intermediate storage. Default is false.
+    repl-diskless-sync: &quot;yes&quot;
+    rdbcompression: &quot;yes&quot;
+    rdbchecksum: &quot;yes&quot;
+  resources: {}
+
+sentinel:
+  port: 26379
+  quorum: 2
+  config:
+    down-after-milliseconds: 10000
+    failover-timeout: 180000
+    parallel-syncs: 5
+  resources: {}
+
+securityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+  runAsNonRoot: true
+assign-pod-node/#nodeselectorassign-pod-node/#taints-and-tolerations-beta-featureassign-pod-node/#affinity-and-anti-affinity
+nodeSelector: {}
+requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred.assign-pod-node/#inter-pod-affinity-and-anti-affinity-beta-feature
+hardAntiAffinity: true
+additionalAffinities: {}
+affinity: |
+exporter:
+  enabled: true
+  image: oliver006/redis_exporter
+  tag: v0.31.0
+  pullPolicy: IfNotPresent
+  port: 9121
+  scrapePath: /metrics
+  resources: {}
+  extraArgs: {}
+  serviceMonitor:
+    enabled: falsePrometheus Operator
+podDisruptionBudget: {}
+auth: true
+redisPassword: password
+authKey: auth
+persistentVolume:
+  enabled: true
+  storageClass: glusterfs-storage-class
+  accessModes:
+    - ReadWriteOnce
+  size: 100Mi
+  annotations: {}
+init:
+  resources: {}
+
+hostPath:
+  chown: true
+</code></pre>
+<p>从修改后的本地文件安装<code>redis-ha</code></p>
+<pre><code class="language-bash">$ helm install /root/redis-ha/ --name k8s-redis-ha --namespace env-prod
+NAME:   k8s-redis-ha
+LAST DEPLOYED: Mon Nov 18 22:13:20 2019
+NAMESPACE: env-prod
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/ConfigMap
+NAME                    DATA  AGE
+k8s-redis-ha-configmap  4     1s
+
+==&gt; v1/Pod(related)
+NAME                   READY  STATUS   RESTARTS  AGE
+k8s-redis-ha-server-0  0/3    Pending  0         0s
+
+==&gt; v1/Role
+NAME          AGE
+k8s-redis-ha  1s
+
+==&gt; v1/RoleBinding
+NAME          AGE
+k8s-redis-ha  1s
+
+==&gt; v1/Secret
+NAME          TYPE    DATA  AGE
+k8s-redis-ha  Opaque  1     1s
+
+==&gt; v1/Service
+NAME                     TYPE       CLUSTER-IP      EXTERNAL-IP  PORT(S)                      AGE
+k8s-redis-ha             ClusterIP  None            &lt;none&gt;       6379/TCP,26379/TCP,9121/TCP  1s
+k8s-redis-ha-announce-0  ClusterIP  10.101.55.132   &lt;none&gt;       6379/TCP,26379/TCP,9121/TCP  1s
+k8s-redis-ha-announce-1  ClusterIP  10.98.159.185   &lt;none&gt;       6379/TCP,26379/TCP,9121/TCP  1s
+k8s-redis-ha-announce-2  ClusterIP  10.102.215.171  &lt;none&gt;       6379/TCP,26379/TCP,9121/TCP  1s
+
+==&gt; v1/ServiceAccount
+NAME          SECRETS  AGE
+k8s-redis-ha  1        1s
+
+==&gt; v1/StatefulSet
+NAME                 READY  AGE
+k8s-redis-ha-server  0/3    1s
+
+
+NOTES:
+Redis can be accessed via port 6379 and Sentinel can be accessed via port 26379 on the following DNS name from within your cluster:
+k8s-redis-ha.env-prod.svc.cluster.local
+
+To connect to your Redis server:
+1. To retrieve the redis password:
+   echo $(kubectl get secret k8s-redis-ha -o &quot;jsonpath={.data['auth']}&quot; | base64 --decode)
+
+2. Connect to the Redis master pod that you can use as a client. By default the k8s-redis-ha-server-0 pod is configured as the master:
+
+   kubectl exec -it k8s-redis-ha-server-0 sh -n env-prod
+
+3. Connect using the Redis CLI (inside container):
+
+   redis-cli -a &lt;REDIS-PASS-FROM-SECRET&gt;
+
+</code></pre>
+<p>检查<code>pvc</code>创建情况</p>
+<pre><code class="language-bash">$ kubectl get pvc -n env-prod
+NAME                         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS              AGE
+data-k8s-redis-ha-server-0   Bound    pvc-9348a01f-0a0d-11ea-b6ce-000c298872e2   1Gi        RWO            glusterfs-storage-class   62m
+data-k8s-redis-ha-server-1   Bound    pvc-9a8defcf-0a0d-11ea-b6ce-000c298872e2   1Gi        RWO            glusterfs-storage-class   62m
+data-k8s-redis-ha-server-2   Bound    pvc-a1975bf8-0a0d-11ea-b6ce-000c298872e2   1Gi        RWO            glusterfs-storage-class   62m
+</code></pre>
+<p>检查<code>pv</code></p>
+<pre><code class="language-bash">$ kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                 STORAGECLASS              REASON   AGE
+pvc-7c4f94cd-0a04-11ea-b6ce-000c298872e2   1Gi        RWO            Delete           Bound    default/glusterfs-pvc                 glusterfs-storage-class            128m
+pvc-9348a01f-0a0d-11ea-b6ce-000c298872e2   1Gi        RWO            Delete           Bound    env-prod/data-k8s-redis-ha-server-0   glusterfs-storage-class            63m
+pvc-9a8defcf-0a0d-11ea-b6ce-000c298872e2   1Gi        RWO            Delete           Bound    env-prod/data-k8s-redis-ha-server-1   glusterfs-storage-class            63m
+pvc-a1975bf8-0a0d-11ea-b6ce-000c298872e2   1Gi        RWO            Delete           Bound    env-prod/data-k8s-redis-ha-server-2   glusterfs-storage-class            63m
+</code></pre>
+<p>配置<code>ingress-nginx</code>四层反向代理</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+data:
+  &quot;30001&quot;: default/heketi:80
+  &quot;30002&quot;: env-prod/k8s-redis-ha:6379
+  &quot;30003&quot;: env-prod/k8s-redis-ha:26379
+</code></pre>
+<p>使用<code>redis</code>客户端连接即可</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/k8s-jian-kong-ping-tai-da-jian">
+                                <h3 class="post-title">
+                                    k8s监控平台搭建
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85glusterfs">安装GlusterFs</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8glusterfs%E4%B8%8Eheketi">启动GlusterFs与heketi</a></li>
+<li><a href="#glusterfs%E5%88%9D%E5%A7%8B%E5%8C%96">GlusterFS初始化</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA">创建</a>
+<ul>
+<li><a href="#%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98">可能出现的问题</a>
+<ul>
+<li><a href="#1-%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96">1. 无法初始化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%AA%8C%E8%AF%81">验证</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9B%E5%BB%BAstorage-class">创建storage-class</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BApvc">创建PVC</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8Ehelm%E5%AE%89%E8%A3%85redis-ha">基于Helm安装Redis-HA</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
