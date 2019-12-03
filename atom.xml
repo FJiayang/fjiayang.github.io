@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fjiayang.github.io/</id>
     <title>F嘉阳</title>
-    <updated>2019-12-03T08:18:36.876Z</updated>
+    <updated>2019-12-03T08:27:41.448Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fjiayang.github.io/"/>
     <link rel="self" href="https://fjiayang.github.io//atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu">
         </link>
         <updated>2019-12-03T07:54:19.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="第1天-jewels-and-stones-771">第1天 Jewels and Stones （771）</h2>
+        <summary type="html"><![CDATA[<p>第1天 Jewels and Stones （771）</p>
 <ul>
 <li>
 <p>题号771 <a href="https://leetcode.com/problems/jewels-and-stones/">Jewels and Stones</a></p>
@@ -26,7 +26,7 @@
 </li>
 </ul>
 ]]></summary>
-        <content type="html"><![CDATA[<h2 id="第1天-jewels-and-stones-771">第1天 Jewels and Stones （771）</h2>
+        <content type="html"><![CDATA[<p>第1天 Jewels and Stones （771）</p>
 <ul>
 <li>
 <p>题号771 <a href="https://leetcode.com/problems/jewels-and-stones/">Jewels and Stones</a></p>
