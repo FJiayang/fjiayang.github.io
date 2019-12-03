@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fjiayang.github.io/</id>
     <title>F嘉阳</title>
-    <updated>2019-12-03T08:15:33.441Z</updated>
+    <updated>2019-12-03T08:18:36.876Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fjiayang.github.io/"/>
     <link rel="self" href="https://fjiayang.github.io//atom.xml"/>
@@ -16,6 +16,26 @@
         <link href="https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu">
         </link>
         <updated>2019-12-03T07:54:19.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="第1天-jewels-and-stones-771">第1天 Jewels and Stones （771）</h2>
+<ul>
+<li>
+<p>题号771 <a href="https://leetcode.com/problems/jewels-and-stones/">Jewels and Stones</a></p>
+</li>
+<li>
+<p>题目描述：</p>
+</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="第1天-jewels-and-stones-771">第1天 Jewels and Stones （771）</h2>
+<ul>
+<li>
+<p>题号771 <a href="https://leetcode.com/problems/jewels-and-stones/">Jewels and Stones</a></p>
+</li>
+<li>
+<p>题目描述：</p>
+</li>
+</ul>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[GitLab Api使用]]></title>
@@ -23,6 +43,12 @@
         <link href="https://fjiayang.github.io//post/gitlab-api-shi-yong">
         </link>
         <updated>2019-11-06T07:01:06.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="使用场景">使用场景</h2>
+<p>为了进行规范化配置管理工作，基于<code>gitlab</code>规范分支管理流程，经常需要新建分支、设置保护分支和操作分支封板等，若只有几个工程则直接在<code>gitlab</code> web界面上操作即可，一旦工程数量增多，则会消耗大量时间，故考虑可通过<code>gitlab</code>提供的web <code>api</code>编写脚本进行自动化操作</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="使用场景">使用场景</h2>
+<p>为了进行规范化配置管理工作，基于<code>gitlab</code>规范分支管理流程，经常需要新建分支、设置保护分支和操作分支封板等，若只有几个工程则直接在<code>gitlab</code> web界面上操作即可，一旦工程数量增多，则会消耗大量时间，故考虑可通过<code>gitlab</code>提供的web <code>api</code>编写脚本进行自动化操作</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Kubernetes基础命令学习]]></title>
@@ -30,6 +56,12 @@
         <link href="https://fjiayang.github.io//post/kubernetes-ji-chu-ming-ling-xue-xi">
         </link>
         <updated>2019-10-20T05:00:34.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="配置命令语法提示">配置命令语法提示</h2>
+<p>执行命令查看指南</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="配置命令语法提示">配置命令语法提示</h2>
+<p>执行命令查看指南</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Kubernetes 集群搭建]]></title>
@@ -37,5 +69,11 @@
         <link href="https://fjiayang.github.io//post/kubernetes-ji-qun-da-jian">
         </link>
         <updated>2019-10-20T04:31:00.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="搭建方法分类">搭建方法分类</h2>
+<p>如果是搭建<code>Kubernetes</code>的学习环境，则可以直接使用<code>minikube</code>快速搭建单节点的<code>Kubernetes</code>环境，官方推荐使用kubeadm搭建<code>Kubernetes</code>集群生产环境</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="搭建方法分类">搭建方法分类</h2>
+<p>如果是搭建<code>Kubernetes</code>的学习环境，则可以直接使用<code>minikube</code>快速搭建单节点的<code>Kubernetes</code>环境，官方推荐使用kubeadm搭建<code>Kubernetes</code>集群生产环境</p>
+]]></content>
     </entry>
 </feed>
