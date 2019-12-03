@@ -7,7 +7,7 @@
 <title>
     F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575360796156">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575360921810">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575360796156" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575360921810" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -1863,6 +1863,447 @@ public class BSTIterator {
             
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/gitlab-api-shi-yong">
+                        GitLab Api使用
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-11-06</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-error">
+            #GitLab
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            使用场景
+为了进行规范化配置管理工作，基于gitlab规范分支管理流程，经常需要新建分支、设置保护分支和操作分支封板等，若只有几个工程则直接在gitlab web界面上操作即可，一旦工程数量增多，则会消耗大量时间，故考虑可通过gitlab提供的web api编写脚本进行自动化操作
+Api指南
+此处摘要部分官网API文档指南，所有api操作都需要在gitlab上申请访问令牌，该令牌应当至少包含api访问权限
+
+获取工程列表
+支持多种参数过滤，非必传
+
+Get a list of all visible projects across GitLab for the authenticated user. When accessed without authentication, only public projects with “simple” fields are returned.
+GET /projects
+
+
+
+
+Attribute
+Type
+Required
+Description
+
+
+
+
+archived
+boolean
+no
+Limit by archived status
+
+
+visibility
+string
+no
+Limit by visibility public, internal, or private
+
+
+order_by
+string
+no
+Return projects ordered by id, name, path, created_at, updated_at, or last_activity_at fields. Default is created_at
+
+
+sort
+string
+no
+Return projects sorted in asc or desc order. Default is desc
+
+
+search
+string
+no
+Return list of projects matching the search criteria
+
+
+simple
+boolean
+no
+Return only limited fields for each project. This is a no-op without authentication as then only simple fields are returned.
+
+
+owned
+boolean
+no
+Limit by projects explicitly owned by the current user
+
+
+membership
+boolean
+no
+Limit by projects that the current user is a member of
+
+
+starred
+boolean
+no
+Limit by projects starred by the current user
+
+
+statistics
+boolean
+no
+Include project statistics
+
+
+with_custom_attributes
+boolean
+no
+Include custom attributes in response (admins only)
+
+
+with_issues_enabled
+boolean
+no
+Limit by enabled issues feature
+
+
+with_merge_requests_enabled
+boolean
+no
+Limit by enabled merge requests feature
+
+
+with_programming_language
+string
+no
+Limit by projects which use the given programming language
+
+
+wiki_checksum_failed
+boolean
+no
+Limit projects where the wiki checksum calculation has failed (Introduced in GitLab Premium 11.2)
+
+
+repository_checksum_failed
+boolean
+no
+Limit projects where the repository checksum calculation has failed (Introduced in GitLab Premium 11.2)
+
+
+min_access_level
+integer
+no
+Limit by current user minimal access level
+
+
+
+
+分支操作
+文档地址
+创建分支
+需要传递仓库ID、源分支名、新分支名称
+
+Create a new branch in the repository.
+POST /projects/:id/repository/branches
+
+Parameters:
+
+
+
+Attribute
+Type
+Required
+Description
+
+
+
+
+id
+integer
+yes
+ID or URL-encoded path of the project owned by the authenticated user.
+
+
+branch
+string
+yes
+Name of the branch.
+
+
+ref
+string
+yes
+Branch name or commit SHA to create branch from.
+
+
+
+Example request:
+curl --request POST --header &amp;quot;PRIVATE-TOKEN: &amp;lt;your_access_token&amp;gt;&amp;quot; https://gitlab.example.com/api/v4/projects/5/repository/branches?branch=newbranch&amp;amp;ref=master
+
+
+保护分支
+分支保护等级说明
+
+Valid access levels
+The access levels are defined in the ProtectedRefAccess.allowed_access_levels method. Currently, these levels are recognized:
+0  =&amp;gt; No access
+30 =&amp;gt; Developer access
+40 =&amp;gt; Maintainer access
+60 =&amp;gt; Admin access
+
+
+需要传递分支名称、访问级别等信息
+
+Protects a single repository branch or several project repository branches using a wildcard protected branch.
+POST /projects/:id/protected_branches
+curl --request POST --header &amp;quot;PRIVATE-TOKEN: &amp;lt;your_access_token&amp;gt;&amp;quot; &#39;https://gitlab.example.com/api/v4/projects/5/protected_branches?name=*-stable&amp;amp;push_access_level=30&amp;amp;merge_access_level=30&amp;amp;unprotect_access_level=40&#39;
+
+
+
+
+Attribute
+Type
+Required
+Description
+
+
+
+
+id
+integer/string
+yes
+The ID or URL-encoded path of the project owned by the authenticated user
+
+
+name
+string
+yes
+The name of the branch or wildcard
+
+
+push_access_level
+string
+no
+Access levels allowed to push (defaults: 40, maintainer access level)
+
+
+merge_access_level
+string
+no
+Access levels allowed to merge (defaults: 40, maintainer access level)
+
+
+unprotect_access_level
+string
+no
+Access levels allowed to unprotect (defaults: 40, maintainer access level)
+
+
+allowed_to_push
+array
+no
+Array of access levels allowed to push, with each described by a hash
+
+
+allowed_to_merge
+array
+no
+Array of access levels allowed to merge, with each described by a hash
+
+
+allowed_to_unprotect
+array
+no
+Array of access levels allowed to unprotect, with each described by a hash
+
+
+code_owner_approval_required
+boolean
+no
+Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)
+
+
+
+
+取消保护分支
+需要传递仓库ID、分支名称
+
+Unprotects the given protected branch or wildcard protected branch.
+DELETE /projects/:id/protected_branches/:name
+curl --request DELETE --header &amp;quot;PRIVATE-TOKEN: &amp;lt;your_access_token&amp;gt;&amp;quot; &#39;https://gitlab.example.com/api/v4/projects/5/protected_branches/*-stable&#39;
+
+
+
+
+Attribute
+Type
+Required
+Description
+
+
+
+
+id
+integer/string
+yes
+The ID or URL-encoded path of the project owned by the authenticated user
+
+
+name
+string
+yes
+The name of the branch
+
+
+
+
+删除分支
+需要传递仓库ID和分支名称
+
+Delete a branch from the repository.
+Note: In the case of an error, an explanation message is provided.
+DELETE /projects/:id/repository/branches/:branch
+
+Parameters:
+
+
+
+Attribute
+Type
+Required
+Description
+
+
+
+
+id
+integer/string
+yes
+ID or URL-encoded path of the project owned by the authenticated user.
+
+
+branch
+string
+yes
+Name of the branch.
+
+
+
+Example request:
+curl --request DELETE --header &amp;quot;PRIVATE-TOKEN: &amp;lt;your_access_token&amp;gt;&amp;quot; https://gitlab.example.com/api/v4/projects/5/repository/branches/newbranch
+
+
+接口测试
+使用postman对接口进行测试
+获取工程列表
+通过该接口可以查询所有工程的ID，注意，该接口默认使用了分页
+
+脚本编写
+批量创建分支
+定义工程ID数组，对数组进行遍历，并设置基础分支变量，方便调整，此处默认写死基础分支，有需要也可以通过变量传递
+#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&amp;quot;XXXX&amp;quot;
+# 分支名称
+branch_name=$1
+
+base_branch=&amp;quot;BasicBranch&amp;quot;
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &amp;quot;${projectids[@]}&amp;quot; ; do
+	curl --request POST --header &amp;quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&amp;quot; &amp;quot;http://10.139.6.26:7077/api/v4/projects/$id/repository/branches?branch=$branch_name&amp;amp;ref=$base_branch&amp;quot;
+done
+
+批量保护分支
+此处写死了分支访问级别，可参照上文的参数进行配置
+#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&amp;quot;XXXX&amp;quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &amp;quot;${projectids[@]}&amp;quot; ; do
+    # 访问权限均为 Maintainer access
+    curl --request POST --header &amp;quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&amp;quot; &amp;quot;http://10.139.6.26:7077/api/v4/projects/$id/protected_branches?name=$branch_name&amp;amp;push_access_level=40&amp;amp;merge_access_level=40&amp;amp;unprotect_access_level=40&amp;quot;
+done
+
+批量取消保护分支
+调用对应的删除接口即可
+#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&amp;quot;XXXX&amp;quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &amp;quot;${projectids[@]}&amp;quot; ; do
+    # 访问权限均为 Maintainer access
+    curl --request DELETE --header &amp;quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&amp;quot; &amp;quot;http://10.139.6.26:7077/api/v4/projects/$id/protected_branches/$branch_name&amp;quot;
+done
+
+批量分支封板
+分支封板即设置访问级别为no one
+#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&amp;quot;XXXX&amp;quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &amp;quot;${projectids[@]}&amp;quot; ; do
+    # 分支封板
+    curl --request POST --header &amp;quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&amp;quot; &amp;quot;http://10.139.6.26:7077/api/v4/projects/$id/protected_branches?name=$branch_name&amp;amp;push_access_level=0&amp;amp;merge_access_level=0&amp;amp;unprotect_access_level=40&amp;quot;
+done
+
+批量删除分支
+删除分支属于危险操作，操作需谨慎，因为不管是否为保护分支，都可以直接删除，而且通过api操作不会弹出确认操作
+#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&amp;quot;XXXX&amp;quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &amp;quot;${projectids[@]}&amp;quot; ; do
+    echo &amp;quot;删除项目ID：$id 的 $branch_name 分支&amp;quot;
+    curl --request DELETE --header &amp;quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&amp;quot; &amp;quot;http://10.139.6.26:7077/api/v4/projects/$id/repository/branches/$branch_name&amp;quot;
+done
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/gitlab-api-shi-yong">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://fjiayang.github.io//post/kubernetes-ji-chu-ming-ling-xue-xi">
                         Kubernetes基础命令学习
                     </a>
@@ -1871,12 +2312,12 @@ public class BSTIterator {
                     <time class="post-time">2019-10-20</time>
                     
                         <a href="https://fjiayang.github.io//tag/VwGnvPo1M" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-error">
             #学习
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/yb4HlP89R" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-success">
             #Kubernetes
         </a>
                         
@@ -2447,17 +2888,17 @@ nginx-deployment-9f46bb5      0         0         0       16m
                     <time class="post-time">2019-10-20</time>
                     
                         <a href="https://fjiayang.github.io//tag/yb4HlP89R" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-primary">
             #Kubernetes
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_3">
             #Docker
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/rjmWDGdyvm" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-error">
             #集群
         </a>
                         
@@ -2864,7 +3305,7 @@ kube-system   kube-scheduler-k8s-master            1/1     Running   0          
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575360796156)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575360921810)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

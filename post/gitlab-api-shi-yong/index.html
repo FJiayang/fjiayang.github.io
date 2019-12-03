@@ -1,0 +1,646 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    GitLab Api使用 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575360921810">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575360921810" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            GitLab Api使用
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-11-06</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
+                            i-tag-other_1">
+                            #GitLab
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="使用场景">使用场景</h2>
+<p>为了进行规范化配置管理工作，基于<code>gitlab</code>规范分支管理流程，经常需要新建分支、设置保护分支和操作分支封板等，若只有几个工程则直接在<code>gitlab</code> web界面上操作即可，一旦工程数量增多，则会消耗大量时间，故考虑可通过<code>gitlab</code>提供的web <code>api</code>编写脚本进行自动化操作</p>
+<h2 id="api指南">Api指南</h2>
+<p>此处摘要部分<a href="https://docs.gitlab.com/ee/api/">官网</a><code>API</code>文档指南，所有<code>api</code>操作都需要在<code>gitlab</code>上申请访问令牌，该令牌应当至少包含api访问权限</p>
+<figure data-type="image" tabindex="1"><img src="https://fjy8018.gitee.io/images/img/image-20191106101754287.png" alt="image-20191106101754287"></figure>
+<h3 id="获取工程列表">获取工程列表</h3>
+<p>支持多种参数过滤，非必传</p>
+<blockquote>
+<p>Get a list of all visible projects across GitLab for the authenticated user. When accessed without authentication, only public projects with “simple” fields are returned.</p>
+<pre><code>GET /projects
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>archived</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by archived status</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>visibility</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by visibility <code>public</code>, <code>internal</code>, or <code>private</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>order_by</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Return projects ordered by <code>id</code>, <code>name</code>, <code>path</code>, <code>created_at</code>, <code>updated_at</code>, or <code>last_activity_at</code> fields. Default is <code>created_at</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sort</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Return projects sorted in <code>asc</code> or <code>desc</code> order. Default is <code>desc</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>search</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Return list of projects matching the search criteria</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>simple</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Return only limited fields for each project. This is a no-op without authentication as then <em>only</em> simple fields are returned.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>owned</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by projects explicitly owned by the current user</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>membership</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by projects that the current user is a member of</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>starred</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by projects starred by the current user</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>statistics</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Include project statistics</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>with_custom_attributes</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Include <a href="https://docs.gitlab.com/ee/api/custom_attributes.html">custom attributes</a> in response (admins only)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>with_issues_enabled</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by enabled issues feature</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>with_merge_requests_enabled</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by enabled merge requests feature</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>with_programming_language</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by projects which use the given programming language</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>wiki_checksum_failed</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit projects where the wiki checksum calculation has failed (<a href="https://gitlab.com/gitlab-org/gitlab/merge_requests/6137">Introduced</a> in <a href="https://about.gitlab.com/pricing/">GitLab Premium</a> 11.2)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>repository_checksum_failed</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit projects where the repository checksum calculation has failed (<a href="https://gitlab.com/gitlab-org/gitlab/merge_requests/6137">Introduced</a> in <a href="https://about.gitlab.com/pricing/">GitLab Premium</a> 11.2)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>min_access_level</code></td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Limit by current user minimal <a href="https://docs.gitlab.com/ee/api/members.html">access level</a></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="分支操作">分支操作</h3>
+<p><a href="https://docs.gitlab.com/ee/api/branches.html">文档地址</a></p>
+<h4 id="创建分支">创建分支</h4>
+<p>需要传递仓库ID、源分支名、新分支名称</p>
+<blockquote>
+<p>Create a new branch in the repository.</p>
+<pre><code>POST /projects/:id/repository/branches
+</code></pre>
+<p>Parameters:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">ID or <a href="https://docs.gitlab.com/ee/api/README.html#namespaced-path-encoding">URL-encoded path of the project</a> owned by the authenticated user.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>branch</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">Name of the branch.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ref</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">Branch name or commit SHA to create branch from.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request:</p>
+<pre><code class="language-bash">curl --request POST --header &quot;PRIVATE-TOKEN: &lt;your_access_token&gt;&quot; https://gitlab.example.com/api/v4/projects/5/repository/branches?branch=newbranch&amp;ref=master
+</code></pre>
+</blockquote>
+<h4 id="保护分支">保护分支</h4>
+<p>分支保护等级说明</p>
+<blockquote>
+<p><strong>Valid access levels</strong></p>
+<p>The access levels are defined in the <code>ProtectedRefAccess.allowed_access_levels</code> method. Currently, these levels are recognized:</p>
+<pre><code class="language-bash">0  =&gt; No access
+30 =&gt; Developer access
+40 =&gt; Maintainer access
+60 =&gt; Admin access
+</code></pre>
+</blockquote>
+<p>需要传递分支名称、访问级别等信息</p>
+<blockquote>
+<p>Protects a single repository branch or several project repository branches using a wildcard protected branch.</p>
+<pre><code class="language-bash">POST /projects/:id/protected_branches
+curl --request POST --header &quot;PRIVATE-TOKEN: &lt;your_access_token&gt;&quot; 'https://gitlab.example.com/api/v4/projects/5/protected_branches?name=*-stable&amp;push_access_level=30&amp;merge_access_level=30&amp;unprotect_access_level=40'
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">integer/string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">The ID or <a href="https://docs.gitlab.com/ee/api/README.html#namespaced-path-encoding">URL-encoded path of the project</a> owned by the authenticated user</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">The name of the branch or wildcard</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>push_access_level</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Access levels allowed to push (defaults: <code>40</code>, maintainer access level)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>merge_access_level</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Access levels allowed to merge (defaults: <code>40</code>, maintainer access level)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unprotect_access_level</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Access levels allowed to unprotect (defaults: <code>40</code>, maintainer access level)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>allowed_to_push</code></td>
+<td style="text-align:left">array</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Array of access levels allowed to push, with each described by a hash</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>allowed_to_merge</code></td>
+<td style="text-align:left">array</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Array of access levels allowed to merge, with each described by a hash</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>allowed_to_unprotect</code></td>
+<td style="text-align:left">array</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Array of access levels allowed to unprotect, with each described by a hash</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>code_owner_approval_required</code></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">Prevent pushes to this branch if it matches an item in the <a href="https://docs.gitlab.com/ee/user/project/code_owners.html"><code>CODEOWNERS</code> file</a>. (defaults: false)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h4 id="取消保护分支">取消保护分支</h4>
+<p>需要传递仓库ID、分支名称</p>
+<blockquote>
+<p>Unprotects the given protected branch or wildcard protected branch.</p>
+<pre><code>DELETE /projects/:id/protected_branches/:name
+curl --request DELETE --header &quot;PRIVATE-TOKEN: &lt;your_access_token&gt;&quot; 'https://gitlab.example.com/api/v4/projects/5/protected_branches/*-stable'
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">integer/string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">The ID or <a href="https://docs.gitlab.com/ee/api/README.html#namespaced-path-encoding">URL-encoded path of the project</a> owned by the authenticated user</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">The name of the branch</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h4 id="删除分支">删除分支</h4>
+<p>需要传递仓库ID和分支名称</p>
+<blockquote>
+<p>Delete a branch from the repository.</p>
+<p><strong>Note:</strong> In the case of an error, an explanation message is provided.</p>
+<pre><code>DELETE /projects/:id/repository/branches/:branch
+</code></pre>
+<p>Parameters:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">integer/string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">ID or <a href="https://docs.gitlab.com/ee/api/README.html#namespaced-path-encoding">URL-encoded path of the project</a> owned by the authenticated user.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>branch</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">Name of the branch.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request:</p>
+<pre><code class="language-bash">curl --request DELETE --header &quot;PRIVATE-TOKEN: &lt;your_access_token&gt;&quot; https://gitlab.example.com/api/v4/projects/5/repository/branches/newbranch
+</code></pre>
+</blockquote>
+<h2 id="接口测试">接口测试</h2>
+<p>使用postman对接口进行测试</p>
+<h3 id="获取工程列表-2">获取工程列表</h3>
+<p>通过该接口可以查询所有工程的ID，注意，该接口默认使用了分页</p>
+<figure data-type="image" tabindex="2"><img src="https://fjy8018.gitee.io/images/img/image-20191106102650310.png" alt="image-20191106102650310"></figure>
+<h2 id="脚本编写">脚本编写</h2>
+<h3 id="批量创建分支">批量创建分支</h3>
+<p>定义工程ID数组，对数组进行遍历，并设置基础分支变量，方便调整，此处默认写死基础分支，有需要也可以通过变量传递</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&quot;XXXX&quot;
+# 分支名称
+branch_name=$1
+
+base_branch=&quot;BasicBranch&quot;
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &quot;${projectids[@]}&quot; ; do
+	curl --request POST --header &quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&quot; &quot;http://10.139.6.26:7077/api/v4/projects/$id/repository/branches?branch=$branch_name&amp;ref=$base_branch&quot;
+done
+</code></pre>
+<h3 id="批量保护分支">批量保护分支</h3>
+<p>此处写死了分支访问级别，可参照上文的参数进行配置</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&quot;XXXX&quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &quot;${projectids[@]}&quot; ; do
+    # 访问权限均为 Maintainer access
+    curl --request POST --header &quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&quot; &quot;http://10.139.6.26:7077/api/v4/projects/$id/protected_branches?name=$branch_name&amp;push_access_level=40&amp;merge_access_level=40&amp;unprotect_access_level=40&quot;
+done
+</code></pre>
+<h3 id="批量取消保护分支">批量取消保护分支</h3>
+<p>调用对应的删除接口即可</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&quot;XXXX&quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &quot;${projectids[@]}&quot; ; do
+    # 访问权限均为 Maintainer access
+    curl --request DELETE --header &quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&quot; &quot;http://10.139.6.26:7077/api/v4/projects/$id/protected_branches/$branch_name&quot;
+done
+</code></pre>
+<h3 id="批量分支封板">批量分支封板</h3>
+<p>分支封板即设置访问级别为<code>no one</code></p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&quot;XXXX&quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &quot;${projectids[@]}&quot; ; do
+    # 分支封板
+    curl --request POST --header &quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&quot; &quot;http://10.139.6.26:7077/api/v4/projects/$id/protected_branches?name=$branch_name&amp;push_access_level=0&amp;merge_access_level=0&amp;unprotect_access_level=40&quot;
+done
+</code></pre>
+<h3 id="批量删除分支">批量删除分支</h3>
+<p>删除分支属于危险操作，操作需谨慎，因为不管是否为保护分支，都可以直接删除，而且通过api操作不会弹出确认操作</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+# 访问令牌
+PRIVATE_TOKEN=&quot;XXXX&quot;
+# 分支名称
+branch_name=$1
+
+# 项目ID
+projectids=(47 48 50 51 52 54 55 56 58 59 60 62 63 64 65 67 68 69 70 71 74 75 89 90 91 92 93 95 103 104 113 114 115 143)
+
+for id in &quot;${projectids[@]}&quot; ; do
+    echo &quot;删除项目ID：$id 的 $branch_name 分支&quot;
+    curl --request DELETE --header &quot;PRIVATE-TOKEN: $PRIVATE_TOKEN&quot; &quot;http://10.139.6.26:7077/api/v4/projects/$id/repository/branches/$branch_name&quot;
+done
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/kubernetes-ji-chu-ming-ling-xue-xi">
+                                <h3 class="post-title">
+                                    Kubernetes基础命令学习
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">使用场景</a></li>
+<li><a href="#api%E6%8C%87%E5%8D%97">Api指南</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%88%97%E8%A1%A8">获取工程列表</a></li>
+<li><a href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C">分支操作</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF">创建分支</a></li>
+<li><a href="#%E4%BF%9D%E6%8A%A4%E5%88%86%E6%94%AF">保护分支</a></li>
+<li><a href="#%E5%8F%96%E6%B6%88%E4%BF%9D%E6%8A%A4%E5%88%86%E6%94%AF">取消保护分支</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF">删除分支</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95">接口测试</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%88%97%E8%A1%A8-2">获取工程列表</a></li>
+</ul>
+</li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99">脚本编写</a>
+<ul>
+<li><a href="#%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF">批量创建分支</a></li>
+<li><a href="#%E6%89%B9%E9%87%8F%E4%BF%9D%E6%8A%A4%E5%88%86%E6%94%AF">批量保护分支</a></li>
+<li><a href="#%E6%89%B9%E9%87%8F%E5%8F%96%E6%B6%88%E4%BF%9D%E6%8A%A4%E5%88%86%E6%94%AF">批量取消保护分支</a></li>
+<li><a href="#%E6%89%B9%E9%87%8F%E5%88%86%E6%94%AF%E5%B0%81%E6%9D%BF">批量分支封板</a></li>
+<li><a href="#%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF">批量删除分支</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
