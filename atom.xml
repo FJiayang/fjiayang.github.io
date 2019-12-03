@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fjiayang.github.io/</id>
     <title>F嘉阳</title>
-    <updated>2019-12-03T08:36:33.589Z</updated>
+    <updated>2019-12-03T08:38:40.015Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fjiayang.github.io/"/>
     <link rel="self" href="https://fjiayang.github.io//atom.xml"/>
@@ -115,30 +115,29 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[LeetCode刷题记录]]></title>
-        <id>https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu</id>
-        <link href="https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu">
+        <title type="html"><![CDATA[DevOps实践心得一]]></title>
+        <id>https://fjiayang.github.io//post/devops-shi-jian-xin-de-yi</id>
+        <link href="https://fjiayang.github.io//post/devops-shi-jian-xin-de-yi">
         </link>
-        <updated>2019-01-06T11:43:19.000Z</updated>
-        <summary type="html"><![CDATA[<p>第1天 Jewels and Stones （771）</p>
-<ul>
-<li>
-<p>题号771 <a href="https://leetcode.com/problems/jewels-and-stones/">Jewels and Stones</a></p>
-</li>
-<li>
-<p>题目描述：</p>
-</li>
-</ul>
+        <updated>2019-08-16T11:32:07.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="初遇devops">初遇DevOps</h2>
+<p>最早接触到<code>DevOps</code>是在2018年8月26日，那时首先接触到的就是大名鼎鼎的<code>Jenkins</code>，当时看了多篇关于持续集成和持续部署的文章，蠢蠢欲动，便开始了第一套<code>DevOps</code>环境的搭建</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>第1天 Jewels and Stones （771）</p>
-<ul>
-<li>
-<p>题号771 <a href="https://leetcode.com/problems/jewels-and-stones/">Jewels and Stones</a></p>
-</li>
-<li>
-<p>题目描述：</p>
-</li>
-</ul>
+        <content type="html"><![CDATA[<h2 id="初遇devops">初遇DevOps</h2>
+<p>最早接触到<code>DevOps</code>是在2018年8月26日，那时首先接触到的就是大名鼎鼎的<code>Jenkins</code>，当时看了多篇关于持续集成和持续部署的文章，蠢蠢欲动，便开始了第一套<code>DevOps</code>环境的搭建</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CentOS 7 安装KVM和WebVirtMgr管理面板]]></title>
+        <id>https://fjiayang.github.io//post/centos-7-an-zhuang-kvm-he-webvirtmgr-guan-li-mian-ban</id>
+        <link href="https://fjiayang.github.io//post/centos-7-an-zhuang-kvm-he-webvirtmgr-guan-li-mian-ban">
+        </link>
+        <updated>2019-08-11T10:35:02.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="配置静态ip">配置静态IP</h2>
+<p>此处使用VMware 模拟服务器环境，为防止IP在启动时动态分配，需要手动配置静态IP，如果是物理服务器可直接跳过</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="配置静态ip">配置静态IP</h2>
+<p>此处使用VMware 模拟服务器环境，为防止IP在启动时动态分配，需要手动配置静态IP，如果是物理服务器可直接跳过</p>
 ]]></content>
     </entry>
 </feed>
