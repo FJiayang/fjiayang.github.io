@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fjiayang.github.io/</id>
     <title>F嘉阳</title>
-    <updated>2019-12-03T08:11:29.758Z</updated>
+    <updated>2019-12-03T08:13:20.042Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fjiayang.github.io/"/>
     <link rel="self" href="https://fjiayang.github.io//atom.xml"/>
@@ -16,6 +16,13 @@
         <link href="https://fjiayang.github.io//post/leetcode-shua-ti-ji-lu">
         </link>
         <updated>2019-12-03T07:54:19.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Kubernetes基础命令学习]]></title>
+        <id>https://fjiayang.github.io//post/kubernetes-ji-chu-ming-ling-xue-xi</id>
+        <link href="https://fjiayang.github.io//post/kubernetes-ji-chu-ming-ling-xue-xi">
+        </link>
+        <updated>2019-10-20T05:00:34.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Kubernetes 集群搭建]]></title>
