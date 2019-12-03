@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    GitLab | F嘉阳
+    zookeeper | F嘉阳
 </title>
 <link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362136940">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -98,84 +98,61 @@
                     
     <div class="i-card">
         <b>标签：#
-        GitLab</b>
+        zookeeper</b>
     </div>
     
         
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="https://fjiayang.github.io//post/k8s-huan-jing-xia-gitlabhelmgitlab-runner-java-xiang-mu-cicd-luo-di-shi-jian">
-                        k8s环境下GitLab+Helm+GitLab Runner Java项目CICD落地实践
+                    <a href="https://fjiayang.github.io//post/ji-yu-mesosmarathon-de-devops-fen-bu-shi-huan-jing-da-jian">
+                        基于Mesos+Marathon的DevOps分布式环境搭建
                     </a>
                 </h2>
                 <div class="post-info">
-                    <time class="post-time">2019-11-27</time>
+                    <time class="post-time">2019-08-18</time>
                     
-                        <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-error">
-            #CICD
+                        <a href="https://fjiayang.github.io//tag/xTpEEjjmQ" class="post-tag i-tag
+                            i-tag-warning">
+            #mesos
         </a>
                         
-                        <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-other_1">
-            #GitLab
+                        <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
+                            i-tag-">
+            #DevOps
         </a>
                         
-                        <a href="https://fjiayang.github.io//tag/yb4HlP89R" class="post-tag i-tag
-                            i-tag-other_2">
-            #Kubernetes
+                        <a href="https://fjiayang.github.io//tag/FZ58cYbuWL" class="post-tag i-tag
+                            i-tag-banana">
+            #marathon
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/6peMWxmLrM" class="post-tag i-tag
+                            i-tag-other_3">
+            #vmware
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/DykPrKp3oQ" class="post-tag i-tag
+                            i-tag-banana">
+            #zookeeper
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-other_1">
             #Docker
         </a>
                         
                 </div>
                 <div class="post-article">
                     
-                        <a href="https://fjiayang.github.io//post/k8s-huan-jing-xia-gitlabhelmgitlab-runner-java-xiang-mu-cicd-luo-di-shi-jian" class="post-feature-image" style="background-image:url(https://s2.ax1x.com/2019/11/27/Qpybmn.png) ">
-                        </a>
-                        
                             <div class="post-content">
                                 
                                     <div class="post-content-abstract">
-                                        <h2 id="背景">背景</h2>
-<p>目前使用5台服务器搭建了<code>Kubernetes</code>集群环境，监控、日志采集均已落地，业务也手工迁移到集群中顺利运行，故需要将原本基于原生<code>docker</code>环境的CICD流程迁移到<code>Kubernetes</code>集群中</p>
+                                        <h2 id="基础环境">基础环境</h2>
+<p>本地准备了4台虚拟机配置如下</p>
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/k8s-huan-jing-xia-gitlabhelmgitlab-runner-java-xiang-mu-cicd-luo-di-shi-jian">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://fjiayang.github.io//post/gitlab-api-shi-yong">
-                        GitLab Api使用
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-11-06</time>
-                    
-                        <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-other_3">
-            #GitLab
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <h2 id="使用场景">使用场景</h2>
-<p>为了进行规范化配置管理工作，基于<code>gitlab</code>规范分支管理流程，经常需要新建分支、设置保护分支和操作分支封板等，若只有几个工程则直接在<code>gitlab</code> web界面上操作即可，一旦工程数量增多，则会消耗大量时间，故考虑可通过<code>gitlab</code>提供的web <code>api</code>编写脚本进行自动化操作</p>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/gitlab-api-shi-yong">Read More ~</a>
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/ji-yu-mesosmarathon-de-devops-fen-bu-shi-huan-jing-da-jian">Read More ~</a>
                             </div>
                 </div>
             </article>

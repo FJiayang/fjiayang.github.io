@@ -1,0 +1,566 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Elasticsearch Docker高可用环境搭建 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362136940">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362136940" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Elasticsearch Docker高可用环境搭建
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-09-10</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/8HTQ1PMKf" class="post-tag i-tag
+                            i-tag-other_4">
+                            #elasticsearch
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-other_4">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="介绍">介绍</h2>
+<p>作为Elastic Stack 的核心，Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，本次主要用于存储业务数据和基于业务日志进行数据统计分析。</p>
+<!-- more -->
+<h2 id="目标">目标</h2>
+<p>本次目标是搭建个人项目所使用的小型es高可用环境，目前需要使用es的服务有些部署在美国的服务器，有些部署在国内的服务器，带宽延迟各不相同，为了保证应用连接es延迟最小，计划同时在美国和中国都部署节点，不同区域的应用连接不同的节点</p>
+<h2 id="基础环境">基础环境</h2>
+<p>本次配置全局使用真实服务器，服务器配置如下</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>CPU</th>
+<th>内存</th>
+<th>系统</th>
+<th>Docker版本</th>
+<th>磁盘大小</th>
+<th>区域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>es01</td>
+<td>1</td>
+<td>2G</td>
+<td>CentOS 7</td>
+<td>19.03.1</td>
+<td>40 G</td>
+<td>亚洲</td>
+</tr>
+<tr>
+<td>es02</td>
+<td>1</td>
+<td>2G</td>
+<td>CentOS 7</td>
+<td>19.03.1</td>
+<td>20G</td>
+<td>美洲</td>
+</tr>
+<tr>
+<td>es03</td>
+<td>4</td>
+<td>4G</td>
+<td>CentOS 7</td>
+<td>19.03.1</td>
+<td>36G</td>
+<td>美洲</td>
+</tr>
+<tr>
+<td>es04</td>
+<td>1</td>
+<td>2G</td>
+<td>CentOS 7</td>
+<td>19.03.1</td>
+<td>50G</td>
+<td>亚洲</td>
+</tr>
+</tbody>
+</table>
+<p><strong>所有服务器部署的<code>es</code>版本均为：<code>6.6.2</code></strong></p>
+<p>从表中可见内存和磁盘都不大，如果是公司项目配置肯定比这个好很多，但对于个人使用来说足够了，至于为什么是需要4台而不是3台在最后搭建完成后会进行分析</p>
+<h2 id="部署前准备">部署前准备</h2>
+<p>就算使用了Docker容器，<code>elasticsearch</code>仍然不像普通镜像那么简单启动，es对虚拟内存敏感，因此服务器必须是内核虚拟化<code>KVM</code>架构，不支持<code>OpenVZ</code>虚拟，参考官方说明</p>
+<blockquote>
+<h4 id="production-modeedit">Production mode<a href="https://github.com/elastic/elasticsearch/edit/6.6/docs/reference/setup/install/docker.asciidoc">edit</a></h4>
+<p>The <code>vm.max_map_count</code> kernel setting needs to be set to at least <code>262144</code> for production use. Depending on your platform:</p>
+<ul>
+<li>
+<p>Linux</p>
+<p>The <code>vm.max_map_count</code> setting should be set permanently in /etc/sysctl.conf:</p>
+<pre><code class="language-sh">$ grep vm.max_map_count /etc/sysctl.conf
+vm.max_map_count=262144
+</code></pre>
+<p>To apply the setting on a live system type: <code>sysctl -w vm.max_map_count=262144</code></p>
+</li>
+<li>
+<p>macOS with <a href="https://docs.docker.com/engine/installation/mac/#/docker-for-mac">Docker for Mac</a></p>
+<p>The <code>vm.max_map_count</code> setting must be set within the xhyve virtual machine:</p>
+<pre><code class="language-sh">$ screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+</code></pre>
+<p>Just press enter and configure the <code>sysctl</code> setting as you would for Linux:</p>
+<pre><code class="language-sh">sysctl -w vm.max_map_count=262144
+</code></pre>
+</li>
+</ul>
+</blockquote>
+<h3 id="按照指引设置内存参数">按照指引设置内存参数</h3>
+<pre><code class="language-bash">$ sudo sysctl -w vm.max_map_count=262144
+</code></pre>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="裂脑事件">裂脑事件</h3>
+<p><code>Elasticsearch</code>牺牲了一致性，以确保可用性和分区容错。其背后的原因是短期的不良行为比短期的不可用性问题少。换句话说，当群集中的<code>Elasticsearch</code>节点无法复制对数据的更改时，它们将继续为应用程序提供服务。当节点能够复制其数据时，它们将尝试聚合副本并实现<em>最终的一致性</em>。</p>
+<p><code>Elasticsearch</code>通过<strong>选举</strong>主节点来解决之前的问题，主节点负责数据库操作，例如创建新索引，在群集节点周围移动分片等等。主节点与其他节点主动协调其操作，确保数据可以由非主节点汇聚。</p>
+<p>在某些情况下，先前的机制可能会失败，从而导致<strong>裂脑事件</strong>。当<code>Elasticsearch</code>集群分为两个区块时，<strong>若每个区块都有一个节点都认为它们是主节点</strong>，因为主节点将在数据上<strong>独立</strong>工作，数据一致性就会<strong>丢失</strong>。因此，节点将对相同的查询做出不同的响应。这将会是灾难性的事件，因为来自两个主节点的数据无法自动重新加入，并且需要相当多的手动工作来纠正这种情况。</p>
+<h2 id="节点部署">节点部署</h2>
+<p>3个主节点节点均使用<code>docker-compose</code>命令部署，需要自行安装好相关环境</p>
+<pre><code class="language-yaml">version: '2'
+services:
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+    container_name: es01
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;
+      - &quot;discovery.zen.ping.unicast.hosts=es2.xxx.com,es3.xxx.com,es4.xxx.com&quot;
+      - &quot;discovery.zen.minimum_master_nodes=2&quot;
+      - &quot;network.publish_host=es1..xxx.com&quot;
+      - &quot;node.name=es01-XXX&quot;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - fjyesnet
+    mem_limit: 1g
+
+networks:
+  fjyesnet:
+</code></pre>
+<p>其他节点配置均相同，修改服务发现域名配置即可，<strong>放行防火墙部分不再赘述，需要可以查看我以前发的文章</strong></p>
+<p>非主节点配置只需加入<code>node.master=false</code>配置即可</p>
+<pre><code class="language-yaml">version: '2'
+services:
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+    container_name: es04
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;
+      - &quot;discovery.zen.ping.unicast.hosts=es2.xxx.com,es3.xxx.com,es1.xxx.com&quot;
+      - &quot;discovery.zen.minimum_master_nodes=2&quot;
+      - &quot;network.publish_host=es4..xxx.com&quot;
+      - &quot;node.name=es04-XXX&quot;
+      - &quot;node.master=false&quot;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - fjyesnet
+    mem_limit: 1g
+
+networks:
+  fjyesnet:
+</code></pre>
+<p>参数解析</p>
+<ul>
+<li>
+<p><code>discovery.zen.ping.unicast.hosts</code>配置广播地址，用于节点发现，此处配置的是指向其他节点IP的域名地址，该域名在任何节点均可以被访问</p>
+</li>
+<li>
+<p><code>discovery.zen.minimum_master_nodes</code>配置主节点最小数量，该参数<strong>十分重要</strong>，用于防止脑裂（split-brain）事件的发生。</p>
+<p>原理：前面提到了脑裂事件发生的原因，而避免的方法就是保证<strong>至少3个节点可靠地工作</strong>，因为一个或两个节点不能形成多数投票，这也是为什么选择使用4个节点并将该值配置为2，确保分布式环境还可以随机宕机一个节点以保证不会出现脑裂问题，因此第4个节点最好配置为无法成为主节点的slave节点。而若仅配置为3个节点的高可用状态，其实是一种“伪高可用”，此时随机宕机一个节点将可能发生“脑裂”问题，2个节点的es环境无法进行主节点的选举，并且可能出现独立的分块。</p>
+</li>
+<li>
+<p><code>network.publish_host</code>用于提供其他节点服务发现的主机名，默认为本地主机名映射为IP的地址，但由于使用容器提供服务发现，并且不在同一个网段，故需要手工指定</p>
+</li>
+<li>
+<p><code>mem_limit</code>容器内存限制为1G</p>
+</li>
+</ul>
+<p>节点数量与配置的主节点数对应关系</p>
+<table>
+<thead>
+<tr>
+<th><code>Master nodes</code></th>
+<th><code>minimum_master_nodes</code></th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>如果另一个节点宕机，集群将停止工作!</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="对可能产生疑问的解释">对可能产生疑问的解释</h3>
+<h4 id="1当前docker-compose已经更新到37了为什么还使用2这个老版本">1.当前<code>docker-compose</code>已经更新到<code>3.7</code>了为什么还使用<code>2</code>这个老版本？</h4>
+<p>原因：最新<a href="https://docs.docker.com/compose/compose-file/">文档地址</a>，官方文档指出3.x版本已经不再支持<code>mem_limit</code>参数</p>
+<blockquote>
+<p><strong>Note</strong>: This replaces the <a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources">older resource constraint options</a> for non swarm mode in Compose files prior to version 3 (<code>cpu_shares</code>, <code>cpu_quota</code>, <code>cpuset</code>, <code>mem_limit</code>, <code>memswap_limit</code>, <code>mem_swappiness</code>), as described in <a href="https://docs.docker.com/compose/compose-file/compose-versioning/#upgrading">Upgrading version 2.x to 3.x</a>.</p>
+</blockquote>
+<p>但对小内存机器以及数据量不会非常的大的环境，内存限制参数尤为重要，经过实测，空载或者小负载（1000 doc）以下的es节点内存占用大约为1.5G左右，故各环境限制为1G不会影响性能，不仅如此，es官方提供的部署文档使用的也是<code>2.2</code>版本</p>
+<h4 id="2当前elasticsearch已经更新到73了为什么还使用66这个老版本">2.当前<code>Elasticsearch</code>已经更新到<code>7.3</code>了为什么还使用<code>6.6</code>这个老版本？</h4>
+<p>原因：<code>7.x</code>版本目前尚有许多外部服务不能兼容，例如<code>graylog</code>，并且<code>Spring</code>官方组件暂时也只能兼容到<code>6.x</code>的版本，所以综合考虑使用6.x的最新版<code>6.6.2</code></p>
+<p><code>graylog</code>官方文档</p>
+<blockquote>
+<p>Caution</p>
+<p>Graylog 3.x <strong>does not</strong> work with Elasticsearch 7.x!</p>
+</blockquote>
+<p><code>Spring</code>官方文档</p>
+<blockquote>
+<p><strong>Compatibility Matrix</strong></p>
+<table>
+<thead>
+<tr>
+<th>Spring Data Elasticsearch</th>
+<th>Elasticsearch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>3.2.x</em> (not yet released)</td>
+<td><em>6.8.1</em></td>
+</tr>
+<tr>
+<td>3.1.x</td>
+<td>6.2.2</td>
+</tr>
+<tr>
+<td>3.0.x</td>
+<td>5.5.0</td>
+</tr>
+<tr>
+<td>2.1.x</td>
+<td>2.4.0</td>
+</tr>
+<tr>
+<td>2.0.x</td>
+<td>2.2.0</td>
+</tr>
+<tr>
+<td>1.3.x</td>
+<td>1.5.2</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h4 id="3一般高可用不是部署3个节点就足够了吗为什么要4个节点">3.一般高可用不是部署3个节点就足够了吗，为什么要4个节点？</h4>
+<p>原因：本次总共部署了3个主节点和一个非主节点，即4个都是数据节点，但只有3个参与选举。如果仅部署3个节点，那么3个都必须为主节点，此时若其中一个主节点宕机，那么不满足选举“<strong>至少3个节点可靠地工作</strong>”的条件，故新增多一个冗余数据节点，其不能竞选为主节点，但能对节点竞选做出响应，依然满足条件，详细算法可以参考Raft协议的实现原理</p>
+<h2 id="节点启动">节点启动</h2>
+<p>使用<code>docker-compose</code>命令启动即可</p>
+<pre><code class="language-bash">$ docker-compose up -d
+</code></pre>
+<p>这种直接启动的方式会报文件夹无访问权限的错误，需要在命令<strong>执行后</strong>手动赋予文件夹访问权限</p>
+<pre><code class="language-bash">$ chmod 777 -R elasticsearch/
+$ chown 1000:1000 -R elasticsearch/
+</code></pre>
+<p>若此时es容器已经停止则再执行一次启动命令即可</p>
+<h2 id="部署结果">部署结果</h2>
+<p>使用<code>chrome</code>插件<code>elasticsearch-head</code>连接任意一个节点查看情况</p>
+<p>4节点在线，接入业务系统后各节点情况如下图。</p>
+<p>注意所有索引副本数都要是2或者3，否则都无法实现高可用效果</p>
+<figure data-type="image" tabindex="1"><img src="https://fjy8018.gitee.io/images/img/1568039948401.png" alt="1568039948401"></figure>
+<p>由于网络问题或者服务器问题导致其中一个节点下线，es会自动对各个节点的副本重新路由，此时集群颜色为黄色，仍然可用，稍等片刻会实现最终一致性</p>
+<p>若此时主节点下线，整个集群会立刻重新选举出新的主节点并路由各个分片，保证24小时服务都处在可用状态</p>
+<p>橙色表示尚未路由完成，但所有索引数据均可用</p>
+<figure data-type="image" tabindex="2"><img src="https://fjy8018.gitee.io/images/img/1568038733273.png" alt="1568038733273"></figure>
+<p><strong>注意</strong></p>
+<p>若某些索引的副本数设置为1，则当某个节点宕机且其刚好存储该索引的副本，则整个集群的状态将立刻变成红色，意思是数据丢失</p>
+<figure data-type="image" tabindex="3"><img src="https://fjy8018.gitee.io/images/img/1568038760406.png" alt="1568038760406"></figure>
+<p>灰色表示已经下线的分片并且无法被重新路由</p>
+<figure data-type="image" tabindex="4"><img src="https://fjy8018.gitee.io/images/img/1568041023184.png" alt="1568041023184"></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/ji-yu-mesosmarathon-de-devops-fen-bu-shi-huan-jing-da-jian">
+                                <h3 class="post-title">
+                                    基于Mesos+Marathon的DevOps分布式环境搭建
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E7%9B%AE%E6%A0%87">目标</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83">基础环境</a></li>
+<li><a href="#%E9%83%A8%E7%BD%B2%E5%89%8D%E5%87%86%E5%A4%87">部署前准备</a><br>
+*
+<ul>
+<li><a href="#production-modeedit">Production modeedit</a></li>
+<li><a href="#%E6%8C%89%E7%85%A7%E6%8C%87%E5%BC%95%E8%AE%BE%E7%BD%AE%E5%86%85%E5%AD%98%E5%8F%82%E6%95%B0">按照指引设置内存参数</a></li>
+</ul>
+</li>
+<li><a href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">前置知识</a>
+<ul>
+<li><a href="#%E8%A3%82%E8%84%91%E4%BA%8B%E4%BB%B6">裂脑事件</a></li>
+</ul>
+</li>
+<li><a href="#%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2">节点部署</a>
+<ul>
+<li><a href="#%E5%AF%B9%E5%8F%AF%E8%83%BD%E4%BA%A7%E7%94%9F%E7%96%91%E9%97%AE%E7%9A%84%E8%A7%A3%E9%87%8A">对可能产生疑问的解释</a>
+<ul>
+<li><a href="#1%E5%BD%93%E5%89%8Ddocker-compose%E5%B7%B2%E7%BB%8F%E6%9B%B4%E6%96%B0%E5%88%B037%E4%BA%86%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E4%BD%BF%E7%94%A82%E8%BF%99%E4%B8%AA%E8%80%81%E7%89%88%E6%9C%AC">1.当前<code>docker-compose</code>已经更新到<code>3.7</code>了为什么还使用<code>2</code>这个老版本？</a></li>
+<li><a href="#2%E5%BD%93%E5%89%8Delasticsearch%E5%B7%B2%E7%BB%8F%E6%9B%B4%E6%96%B0%E5%88%B073%E4%BA%86%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E4%BD%BF%E7%94%A866%E8%BF%99%E4%B8%AA%E8%80%81%E7%89%88%E6%9C%AC">2.当前<code>Elasticsearch</code>已经更新到<code>7.3</code>了为什么还使用<code>6.6</code>这个老版本？</a></li>
+<li><a href="#3%E4%B8%80%E8%88%AC%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B8%8D%E6%98%AF%E9%83%A8%E7%BD%B23%E4%B8%AA%E8%8A%82%E7%82%B9%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86%E5%90%97%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%814%E4%B8%AA%E8%8A%82%E7%82%B9">3.一般高可用不是部署3个节点就足够了吗，为什么要4个节点？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%8A%82%E7%82%B9%E5%90%AF%E5%8A%A8">节点启动</a></li>
+<li><a href="#%E9%83%A8%E7%BD%B2%E7%BB%93%E6%9E%9C">部署结果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

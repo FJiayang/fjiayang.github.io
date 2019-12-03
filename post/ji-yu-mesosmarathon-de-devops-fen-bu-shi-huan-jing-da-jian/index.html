@@ -1,0 +1,810 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    基于Mesos+Marathon的DevOps分布式环境搭建 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575362136940">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575362136940" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            基于Mesos+Marathon的DevOps分布式环境搭建
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-08-18</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/xTpEEjjmQ" class="post-tag i-tag
+                            i-tag-other_1">
+                            #mesos
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
+                            i-tag-success">
+                            #DevOps
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/FZ58cYbuWL" class="post-tag i-tag
+                            i-tag-warning">
+                            #marathon
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/6peMWxmLrM" class="post-tag i-tag
+                            i-tag-primary">
+                            #vmware
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/DykPrKp3oQ" class="post-tag i-tag
+                            i-tag-info">
+                            #zookeeper
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-other_4">
+                            #Docker
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="基础环境">基础环境</h2>
+<p>本地准备了4台虚拟机配置如下</p>
+<!-- more -->
+<table>
+<thead>
+<tr>
+<th>虚拟机名称</th>
+<th>IP</th>
+<th>CPU</th>
+<th>内存</th>
+<th>磁盘</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>129</td>
+<td>192.168.133.129</td>
+<td>1</td>
+<td>2G</td>
+<td>20G</td>
+</tr>
+<tr>
+<td>130</td>
+<td>192.168.133.130</td>
+<td>1</td>
+<td>2G</td>
+<td>20G</td>
+</tr>
+<tr>
+<td>131</td>
+<td>192.168.133.131</td>
+<td>1</td>
+<td>2G</td>
+<td>20G</td>
+</tr>
+<tr>
+<td>132</td>
+<td>192.168.133.132</td>
+<td>1</td>
+<td>2G</td>
+<td>20G</td>
+</tr>
+</tbody>
+</table>
+<h2 id="部署架构">部署架构</h2>
+<p>部署架构图如下</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/11/27/QCWiWt.png" alt="devops"></figure>
+<p>各服务详细部署情况</p>
+<h3 id="zookeeper">Zookeeper</h3>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>节点</th>
+<th>端口</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>129</td>
+<td>zk-1-docker</td>
+<td>2181</td>
+<td>3.4.14</td>
+</tr>
+<tr>
+<td>131</td>
+<td>zk-2-docker</td>
+<td>2181</td>
+<td>3.4.14</td>
+</tr>
+<tr>
+<td>132</td>
+<td>zk-3-docker</td>
+<td>2181</td>
+<td>3.4.14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mesosmaster">MesosMaster</h3>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>节点</th>
+<th>端口</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>132</td>
+<td>master</td>
+<td>5050</td>
+<td>1.7.0</td>
+</tr>
+<tr>
+<td>130</td>
+<td>master</td>
+<td>5050</td>
+<td>1.7.0</td>
+</tr>
+<tr>
+<td>131</td>
+<td>master</td>
+<td>5050</td>
+<td>1.7.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mesosslave">MesosSlave</h3>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>节点</th>
+<th>端口</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>131</td>
+<td>slave2</td>
+<td>5051</td>
+<td>1.7.0</td>
+</tr>
+<tr>
+<td>130</td>
+<td>slave1</td>
+<td>5051</td>
+<td>1.7.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="marathon">marathon</h3>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>服务</th>
+<th>端口</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>132</td>
+<td>marathonMaster</td>
+<td>8080</td>
+<td>v1.6.496</td>
+</tr>
+</tbody>
+</table>
+<h3 id="marathon-lb">marathon-lb</h3>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>服务</th>
+<th>端口</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>129</td>
+<td>marathon-lb</td>
+<td>9090</td>
+<td>v1.14.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="环境准备">环境准备</h2>
+<h3 id="开放防火墙">开放防火墙</h3>
+<p>本次服务各主机将可能使用到以下端口</p>
+<ul>
+<li>8080</li>
+<li>9090</li>
+<li>2181</li>
+<li>2888</li>
+<li>3888</li>
+<li>5050</li>
+<li>5051</li>
+</ul>
+<p>逐台登陆服务器执行放行防火墙脚本</p>
+<pre><code class="language-bash">firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --zone=public --add-port=2181/tcp --permanent
+firewall-cmd --zone=public --add-port=5050/tcp --permanent
+firewall-cmd --zone=public --add-port=5051/tcp --permanent
+firewall-cmd --zone=public --add-port=9090/tcp --permanent
+firewall-cmd --zone=public --add-port=2888/tcp --permanent
+firewall-cmd --zone=public --add-port=3888/tcp --permanent
+firewall-cmd --reload
+</code></pre>
+<h3 id="安装docker">安装Docker</h3>
+<p>本次所有服务均采用Docker方式部署，服务调度通过<code>Docker in Docker</code>的方式进行</p>
+<p>由于Docker有可能出现版本影响环境问题，参考文章<a href="https://blog.fjy8018.top/index.php/archives/208/">Docker 19.03 版本对原Gitlab-Runner的影响</a>，故建议安装时指定版本</p>
+<pre><code class="language-bash">$ yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+$ yum install docker-ce-19.03.1 docker-ce-cli-19.03.1 containerd.io
+</code></pre>
+<p>设置开机启动并运行服务</p>
+<pre><code class="language-bash">$ systemctl enable docker
+$ systemctl start docker
+</code></pre>
+<p>安装docker-compose，脚本参考<a href="https://docs.docker.com/compose/install/">官方文档</a></p>
+<pre><code class="language-bash">$ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre>
+<h2 id="安装zookeeper">安装Zookeeper</h2>
+<p>鉴于zk <code>3.4</code>和<code>3.5</code>版本的配置有一定差别，编写脚本时注意版本，此处使用的是<code>3.4.14</code>，以下配置文件注意<code>hosts</code>的微小差别</p>
+<p><code>docker-compose-zoo-129.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+  zoo1:
+    image: zookeeper:3.4.14
+    restart: always
+    network_mode: host
+    extra_hosts:
+      - &quot;zoo2: 192.168.133.131&quot;
+      - &quot;zoo3: 192.168.133.132&quot;
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+</code></pre>
+<p><code>docker-compose-zoo-131.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  zoo2:
+    image: zookeeper:3.4.14
+    restart: always
+    network_mode: host
+    extra_hosts:
+      - &quot;zoo1: 192.168.133.129&quot;
+      - &quot;zoo3: 192.168.133.132&quot;
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=0.0.0.0:2888:3888 server.3=zoo3:2888:3888
+</code></pre>
+<p><code>docker-compose-zoo-132.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  zoo3:
+    image: zookeeper:3.4.14
+    restart: always
+    network_mode: host
+    extra_hosts:
+      - &quot;zoo1: 192.168.133.129&quot;
+      - &quot;zoo2: 192.168.133.131&quot;
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=0.0.0.0:2888:3888
+</code></pre>
+<h2 id="安装mesosmaster">安装MesosMaster</h2>
+<p>MesosMaster也采用3节点高可用方案，由于要在各台机器上配置hosts过于麻烦，此处选择使用非hosts注册方式，故需要配置<strong>各自</strong>的<code>IP</code>地址</p>
+<p><code>docker-compose-mesos-master-130.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  mesos-master:
+    image: mesosphere/mesos-master:1.7.0
+    restart: always
+    network_mode: host
+    hostname: master
+    command: --no-hostname_lookup --ip=192.168.133.130
+    ports:
+      - 5050:5050
+    environment:
+      MESOS_PORT: 5050
+      MESOS_ZK: zk://192.168.133.129:2181/mesos
+      MESOS_QUORUM: 1
+      MESOS_REGISTRY: in_memory
+      MESOS_LOG_DIR: /var/log/mesos
+      MESOS_WORK_DIR: /var/tmp/mesos
+</code></pre>
+<p><code>docker-compose-mesos-master-131.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  mesos-master:
+    image: mesosphere/mesos-master:1.7.0
+    restart: always
+    network_mode: host
+    hostname: master
+    command: --no-hostname_lookup --ip=192.168.133.131
+    ports:
+      - 5050:5050
+    environment:
+      MESOS_PORT: 5050
+      MESOS_ZK: zk://192.168.133.129:2181/mesos
+      MESOS_QUORUM: 1
+      MESOS_REGISTRY: in_memory
+      MESOS_LOG_DIR: /var/log/mesos
+      MESOS_WORK_DIR: /var/tmp/mesos
+</code></pre>
+<p><code>docker-compose-mesos-master-132.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  mesos-master:
+    image: mesosphere/mesos-master:1.7.0
+    restart: always
+    network_mode: host
+    hostname: master
+    command: --no-hostname_lookup --ip=192.168.133.132
+    ports:
+      - 5050:5050
+    environment:
+      MESOS_PORT: 5050
+      MESOS_ZK: zk://192.168.133.129:2181/mesos
+      MESOS_QUORUM: 1
+      MESOS_REGISTRY: in_memory
+      MESOS_LOG_DIR: /var/log/mesos
+      MESOS_WORK_DIR: /var/tmp/mesos
+</code></pre>
+<h2 id="安装mesosslave">安装MesosSlave</h2>
+<p>需要选择与master对应的版本号，同时也使用<code>IP</code>注册的方式</p>
+<p><code>docker-compose-mesos-slave1.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  mesos-slave1:
+    image: mesosphere/mesos-slave:1.7.0
+    restart: always
+    network_mode: host
+    hostname: slave1
+    command: --no-systemd_enable_support --no-hostname_lookup --ip=192.168.133.131
+    ports:
+      - 5051:5051
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /cgroup:/cgroup
+      - /sys:/sys
+      - /usr/bin/docker:/usr/local/bin/docker
+    environment:
+      MESOS_PORT: 5051
+      MESOS_MASTER: zk://192.168.133.129:2181/mesos
+      MESOS_SWITCH_USER: 0
+      MESOS_CONTAINERIZERS: docker,mesos
+      MESOS_LOG_DIR: /var/log/mesos
+      MESOS_WORK_DIR: /var/tmp/mesos
+    privileged: true
+</code></pre>
+<p><code>docker-compose-mesos-slave2.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  mesos-slave2:
+    image: mesosphere/mesos-slave:1.7.0
+    restart: always
+    network_mode: host
+    hostname: slave2
+    command: --no-systemd_enable_support --no-hostname_lookup --ip=192.168.133.130
+    ports:
+      - 5051:5051
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /cgroup:/cgroup
+      - /sys:/sys
+      - /usr/bin/docker:/usr/local/bin/docker
+    environment:
+      MESOS_PORT: 5051
+      MESOS_MASTER: zk://192.168.133.129:2181/mesos
+      MESOS_SWITCH_USER: 0
+      MESOS_CONTAINERIZERS: docker,mesos
+      MESOS_LOG_DIR: /var/log/mesos
+      MESOS_WORK_DIR: /var/tmp/mesos
+    privileged: true
+</code></pre>
+<h2 id="marathon-2">Marathon</h2>
+<p><code>marathon</code>在高版本会出现收不到<code>mesos</code>心跳自动停止的问题，暂时没找到可以配置的方式，故使用<code>1.6</code>的版本，问题链接如下</p>
+<p><a href="https://jira.mesosphere.com/browse/MARATHON-8345">Missing heartbeats from Mesos, eventually disconnecting and dying</a></p>
+<p><code>docker-compose-marathon.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  marathon:
+    image: mesosphere/marathon:v1.6.496
+    hostname: marathon
+    restart: always
+    command: --master zk://192.168.133.129:2181/mesos --zk zk://192.168.133.129:2181/marathon
+    ports:
+      - 8080:8080
+</code></pre>
+<h2 id="安装marathon-lb">安装marathon-lb</h2>
+<p>marathon-lb 与marathon没有版本的对应关系，故使用当前最新的版本<code>1.14</code>，新版和旧版的配置也有所不同，在早期版本无需指定端口的环境变量，翻阅官网也指出其应该是自动配置的，但如果使用Docker默认运行脚本则需要手动指定</p>
+<blockquote>
+<p>if you use the built-in <code>run</code> script, you'll need to pass an env var that contains a comma separated list of the ports HAProxy binds to</p>
+</blockquote>
+<p>参考ISSUES：</p>
+<p><a href="https://github.com/mesosphere/marathon-lb/issues/59">unbound variable PORTS v1.1.0</a></p>
+<p><code>docker-compose-marathon-lb.yml</code></p>
+<pre><code class="language-yaml">version: '3.1'
+
+services:
+
+  marathon-lb:
+    image: mesosphere/marathon-lb:v1.14.0
+    network_mode: host
+    hostname: marathon-lb
+    restart: always
+    command: sse --group external --marathon http://192.168.133.132:8080
+    environment:
+      PORTS: 9090
+    ports:
+      - 9090:9090
+</code></pre>
+<h2 id="启动">启动</h2>
+<p>启动顺序：</p>
+<ol>
+<li>zookeeper</li>
+<li>mesosMaster</li>
+<li>mesosSlave</li>
+<li>marathon</li>
+<li>marathon-lb</li>
+</ol>
+<p>由于全使用docker-compose脚本编写，启动时只需指定文件名即可</p>
+<pre><code class="language-bash">$ docker-compose -f xx.yml up -d
+</code></pre>
+<p>查看日志命令，<code>-f</code>表示跟踪最新的日志</p>
+<pre><code class="language-bash">$ docker-compose -f xx.yml logs [-f]
+</code></pre>
+<h2 id="效果">效果</h2>
+<p>随便打开一个节点的mesos端口，可看到当前的服务注册数量和当前的leader，其采用与ZK类似的选举算法来选出leader实现高可用</p>
+<figure data-type="image" tabindex="2"><img src="https://fjy8018.gitee.io/images/img/1566123331161.png" alt=""></figure>
+<p>slave信息</p>
+<figure data-type="image" tabindex="3"><img src="https://fjy8018.gitee.io/images/img/1566123374166.png" alt=""></figure>
+<p>查看框架注册情况</p>
+<figure data-type="image" tabindex="4"><img src="https://fjy8018.gitee.io/images/img/1566124680011.png" alt="1566124680011"></figure>
+<p>查看marathon-lb情况</p>
+<figure data-type="image" tabindex="5"><img src="https://fjy8018.gitee.io/images/img/1566124772689.png" alt="1566124772689"></figure>
+<p>marathon面板</p>
+<figure data-type="image" tabindex="6"><img src="https://fjy8018.gitee.io/images/img/1566123387054.png" alt="1566123387054"></figure>
+<p>marathon支持通过面板创建任务和通过rest接口创建任务</p>
+<p>使用postman创建任务测试</p>
+<p>请求路径http://192.168.133.132:8080/v2/apps</p>
+<p>内容</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;basic-0&quot;, 
+    &quot;cmd&quot;: &quot;while [ true ] ; do echo 'Hello Marathon' ; sleep 5 ; done&quot;,
+    &quot;cpus&quot;: 0.1,
+    &quot;mem&quot;: 10.0,
+    &quot;instances&quot;: 1
+}
+</code></pre>
+<p>结果</p>
+<figure data-type="image" tabindex="7"><img src="https://fjy8018.gitee.io/images/img/1566123482678.png" alt="1566123482678"></figure>
+<p>面板同步显示</p>
+<figure data-type="image" tabindex="8"><img src="https://fjy8018.gitee.io/images/img/1566123506660.png" alt="1566123506660"></figure>
+<p>运行状态正常</p>
+<figure data-type="image" tabindex="9"><img src="https://fjy8018.gitee.io/images/img/1566124822675.png" alt="1566124822675"></figure>
+<p>查看详情可知其运行在130服务器上</p>
+<figure data-type="image" tabindex="10"><img src="https://fjy8018.gitee.io/images/img/1566124853340.png" alt="1566124853340"></figure>
+<p>通过面板创建</p>
+<figure data-type="image" tabindex="11"><img src="https://fjy8018.gitee.io/images/img/1566124949525.png" alt="1566124949525"></figure>
+<p>切换为json格式可以编辑更多内容</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;demo-springboot&quot;,
+  &quot;cmd&quot;: null,
+  &quot;cpus&quot;: 0.3,
+  &quot;mem&quot;: 128,
+  &quot;disk&quot;: 0,
+  &quot;instances&quot;: 1,
+  &quot;container&quot;: {
+    &quot;docker&quot;: {
+      &quot;image&quot;: &quot;fjy8018/demo-springboot:2.1.6.RELEASE&quot;,
+      &quot;forcePullImage&quot;: true
+    },
+    &quot;type&quot;: &quot;DOCKER&quot;,
+    &quot;portMappings&quot;: [
+      {
+        &quot;containerPort&quot;: 8080,
+        &quot;protocol&quot;: &quot;tcp&quot;,
+        &quot;servicePort&quot;: 18080
+      }
+    ]
+  },
+  &quot;networks&quot;: [
+    {
+      &quot;mode&quot;: &quot;container/bridge&quot;
+    }
+  ]
+}
+</code></pre>
+<figure data-type="image" tabindex="12"><img src="https://fjy8018.gitee.io/images/img/1566125064780.png" alt="1566125064780"></figure>
+<p>运行成功</p>
+<figure data-type="image" tabindex="13"><img src="https://fjy8018.gitee.io/images/img/1566125104507.png" alt="1566125104507"></figure>
+<p>访问成功</p>
+<figure data-type="image" tabindex="14"><img src="https://fjy8018.gitee.io/images/img/1566125318702.png" alt="1566125318702"></figure>
+<p>查看资源调度情况</p>
+<figure data-type="image" tabindex="15"><img src="https://fjy8018.gitee.io/images/img/1566125350396.png" alt="1566125350396"></figure>
+<figure data-type="image" tabindex="16"><img src="https://fjy8018.gitee.io/images/img/1566125370134.png" alt="1566125370134"></figure>
+<p>配置扩缩容</p>
+<figure data-type="image" tabindex="17"><img src="https://fjy8018.gitee.io/images/img/1566125437096.png" alt="1566125437096"></figure>
+<p>配置成功</p>
+<figure data-type="image" tabindex="18"><img src="https://fjy8018.gitee.io/images/img/1566125461566.png" alt="1566125461566"></figure>
+<p>两个实例被分别调度到不同的机器上</p>
+<figure data-type="image" tabindex="19"><img src="https://fjy8018.gitee.io/images/img/1566125537165.png" alt="1566125537165"></figure>
+<figure data-type="image" tabindex="20"><img src="https://fjy8018.gitee.io/images/img/1566125544430.png" alt="1566125544430"></figure>
+<p>配置健康检查</p>
+<figure data-type="image" tabindex="21"><img src="https://fjy8018.gitee.io/images/img/1566125749835.png" alt="1566125749835"></figure>
+<p>自动轮询接口</p>
+<figure data-type="image" tabindex="22"><img src="https://fjy8018.gitee.io/images/img/1566125738241.png" alt="1566125738241"></figure>
+<p>错误告警</p>
+<figure data-type="image" tabindex="23"><img src="https://fjy8018.gitee.io/images/img/1566125926856.png" alt="1566125926856"></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83">基础环境</a></li>
+<li><a href="#%E9%83%A8%E7%BD%B2%E6%9E%B6%E6%9E%84">部署架构</a>
+<ul>
+<li><a href="#zookeeper">Zookeeper</a></li>
+<li><a href="#mesosmaster">MesosMaster</a></li>
+<li><a href="#mesosslave">MesosSlave</a></li>
+<li><a href="#marathon">marathon</a></li>
+<li><a href="#marathon-lb">marathon-lb</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87">环境准备</a>
+<ul>
+<li><a href="#%E5%BC%80%E6%94%BE%E9%98%B2%E7%81%AB%E5%A2%99">开放防火墙</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85docker">安装Docker</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85zookeeper">安装Zookeeper</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85mesosmaster">安装MesosMaster</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85mesosslave">安装MesosSlave</a></li>
+<li><a href="#marathon-2">Marathon</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85marathon-lb">安装marathon-lb</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8">启动</a></li>
+<li><a href="#%E6%95%88%E6%9E%9C">效果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<!--覆盖默认样式-->
+<style type="text/css">
+			.header {   
+					height:64px !important;
+			}
+			.post-title{
+					border:none !important;
+			}
+			.btn-text{    
+					width: 80px;
+					height: 18px;
+					overflow: hidden;
+			}
+			.site-title h1{
+					font-weight:400 !important;
+					margin-left:10px !important;
+					margin-right:0 !inportant;
+			}
+
+			.id_card .id_card-avatar{
+					padding:4px !important;
+			}
+			.post-content-abstract{
+					max-width: 600px !important;
+					max-height: 100px !important;
+					overflow: hidden;
+			}
+			.post-content-abstract *{
+					font-size:14px !important;
+					display:inline-block !important;
+					margin:0 0 2px 0 !important;
+					font-weight:300 !important;
+			}
+
+</style> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
