@@ -7,7 +7,7 @@
 <title>
     F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531758880">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531758880" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2018-12-27</time>
                     
                         <a href="https://fjiayang.github.io//tag/dYu0hrq6S" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-other_3">
             #Mybatis
         </a>
                         
@@ -117,7 +117,7 @@
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-info">
             #SpringBoot
         </a>
                         
@@ -230,7 +230,7 @@ You may want to specify a custom annotation or a marker interface for scanning. 
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/O_eaS7gae-" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-success">
             #Hadoop
         </a>
                         
@@ -548,7 +548,7 @@ drwxr-xr-x   - hadoop supergroup          0 2018-12-15 17:14 /test
                     <time class="post-time">2018-12-15</time>
                     
                         <a href="https://fjiayang.github.io//tag/Of4MIljUs" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_2">
             #HBase
         </a>
                         
@@ -810,7 +810,7 @@ HMaster失效
                     <time class="post-time">2018-12-09</time>
                     
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-warning">
             #Java
         </a>
                         
@@ -1187,7 +1187,7 @@ catalina.sh 搜索jpda,可看到jpda使用说明
                     <time class="post-time">2018-12-09</time>
                     
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-other_3">
             #Java
         </a>
                         
@@ -1409,7 +1409,7 @@ spring:
                     <time class="post-time">2018-12-09</time>
                     
                         <a href="https://fjiayang.github.io//tag/4ecKp1nP2" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-warning">
             #IDE
         </a>
                         
@@ -1449,7 +1449,7 @@ ctrl+D
                     <time class="post-time">2018-12-09</time>
                     
                         <a href="https://fjiayang.github.io//tag/mwAPVTrct" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-info">
             #Scala
         </a>
                         
@@ -1777,12 +1777,12 @@ val file = Source.fromFile(&amp;quot;tmp/file.txt&amp;quot;)(Codec.UTF8)
                     <time class="post-time">2018-12-09</time>
                     
                         <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-other_2">
             #评测
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/P0Y0B_QdTG" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-info">
             #宝塔
         </a>
                         
@@ -1848,6 +1848,283 @@ APPNODE适合对服务器操作熟悉，需要更大灵活度的定制服务器�
                 </div>
             </article>
             
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/redis-duo-chong-qi-dong-pei-zhi-fang-shi">
+                        redis多种启动配置方式
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/4QCDLcnCA" class="post-tag i-tag
+                            i-tag-other_1">
+            #Redis
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            总览
+三种启动方式：
+
+动态参数启动（指定端口号）
+配置文件启动（生产环境推荐）
+最简单启动
+
+官方安装指南
+安装前置环境gcc-c++
+$ yum install -y gcc-c++
+
+官方下载安装文档
+$ wget http://download.redis.io/releases/redis-5.0.0.tar.gz
+$ tar xzf redis-5.0.0.tar.gz
+$ cd redis-5.0.0
+$ make MALLOC=libc
+$ make install
+
+编译后在src目录下生成可执行文件
+$ ls | grep redis-
+
+redis-benchmark ——性能测试
+redis-benchmark.c
+redis-benchmark.o
+redis-check-aof ——aof修复
+redis-check-aof.c
+redis-check-aof.o
+redis-check-rdb ——rdb修复
+redis-check-rdb.c
+redis-check-rdb.o
+redis-cli ——客户端
+redis-cli.c
+redis-cli.o
+redis-sentinel ——集群
+redis-server ——服务器
+redis-trib.rb
+
+启动
+简单启动
+$ redis-server 
+2660:C 21 Nov 2018 20:01:10.958 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+2660:C 21 Nov 2018 20:01:10.958 # Redis version=5.0.0, bits=64, commit=00000000, modified=0, pid=2660, just started
+2660:C 21 Nov 2018 20:01:10.958 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+2660:M 21 Nov 2018 20:01:10.959 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ &#39;&#39;-._                                             
+      _.-``    `.  `_.  &#39;&#39;-._           Redis 5.0.0 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ &#39;&#39;-._                                   
+ (    &#39;      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|&#39;` _.-&#39;|     Port: 6379
+ |    `-._   `._    /     _.-&#39;    |     PID: 2660
+  `-._    `-._  `-./  _.-&#39;    _.-&#39;                                   
+ |`-._`-._    `-.__.-&#39;    _.-&#39;_.-&#39;|                                  
+ |    `-._`-._        _.-&#39;_.-&#39;    |           http://redis.io        
+  `-._    `-._`-.__.-&#39;_.-&#39;    _.-&#39;                                   
+ |`-._`-._    `-.__.-&#39;    _.-&#39;_.-&#39;|                                  
+ |    `-._`-._        _.-&#39;_.-&#39;    |                                  
+  `-._    `-._`-.__.-&#39;_.-&#39;    _.-&#39;                                   
+      `-._    `-.__.-&#39;    _.-&#39;                                       
+          `-._        _.-&#39;                                           
+              `-.__.-&#39;                                               
+
+2660:M 21 Nov 2018 20:01:10.961 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+2660:M 21 Nov 2018 20:01:10.961 # Server initialized
+2660:M 21 Nov 2018 20:01:10.961 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add &#39;vm.overcommit_memory = 1&#39; to /etc/sysctl.conf and then reboot or run the command &#39;sysctl vm.overcommit_memory=1&#39; for this to take effect.
+2660:M 21 Nov 2018 20:01:10.961 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command &#39;echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled&#39; as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+2660:M 21 Nov 2018 20:01:10.961 * Ready to accept connections
+
+客户端连接测试
+$ redis-cli -h 127.0.0.1 -p 6379
+127.0.0.1:6379&amp;gt; ping
+PONG
+127.0.0.1:6379&amp;gt; set hello world
+OK
+127.0.0.1:6379&amp;gt; get hello
+&amp;quot;world&amp;quot;
+
+动态参数启动
+$ redis-server --port 6380
+
+连接默认端口测试
+$ redis-cli -h 127.0.0.1 -p 6379
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+not connected&amp;gt; exit
+
+连接新端口测试
+$ redis-cli -h 127.0.0.1 -p 6380
+127.0.0.1:6380&amp;gt; ping
+PONG
+127.0.0.1:6380&amp;gt; exit
+
+通过进程查看
+$ ps -ef | grep redis-server |grep -v grep
+root       2666   1469  0 20:04 pts/0    00:00:00 redis-server *:6380
+
+配置文件启动
+拷贝默认配置
+$ pwd
+/root/redis-5.0.0
+$ mkdir config
+$ cp redis.conf config/
+$ cd config/
+$ ls
+redis.conf
+
+查看默认配置，以下命令用于去除注释和空格
+$ cat redis.conf | grep -v &amp;quot;#&amp;quot; | grep -v &amp;quot;^$&amp;quot; &amp;gt; redis-default.conf
+$ cat redis-default.conf 
+bind 127.0.0.1
+protected-mode yes
+port 6379 #端口号
+tcp-backlog 511
+timeout 0
+tcp-keepalive 300
+daemonize no #默认非守护进程启动
+supervised no
+pidfile /var/run/redis_6379.pid
+loglevel notice
+logfile &amp;quot;&amp;quot; #日志文件名称
+databases 16
+always-show-logo yes
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+dir ./ #工作目录
+replica-serve-stale-data yes
+replica-read-only yes
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+repl-disable-tcp-nodelay no
+replica-priority 100
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+replica-lazy-flush no
+appendonly no
+appendfilename &amp;quot;appendonly.aof&amp;quot;
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+aof-load-truncated yes
+aof-use-rdb-preamble yes
+lua-time-limit 5000
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+latency-monitor-threshold 0
+notify-keyspace-events &amp;quot;&amp;quot;
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+list-max-ziplist-size -2
+list-compress-depth 0
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+hll-sparse-max-bytes 3000
+stream-node-max-bytes 4096
+stream-node-max-entries 100
+activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit replica 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
+dynamic-hz yes
+aof-rewrite-incremental-fsync yes
+rdb-save-incremental-fsync yes
+
+由于默认配置redis为单线程，故一台服务器一般起多个redis实例，配置文件以端口号区分
+$ cp redis-default.conf redis-6379.conf
+$ ll
+总用量 72
+-rw-r--r--. 1 root root    65 11月 21 20:46 redis-6379.conf
+-rw-r--r--. 1 root root 62155 11月 21 20:36 redis.conf
+-rw-r--r--. 1 root root  1425 11月 21 20:41 redis-default.conf
+
+简化配置如下：
+port 6380
+daemonize yes
+logfile &amp;quot;6380.log&amp;quot;
+dir &amp;quot;/root/tmp/redis&amp;quot;
+
+配置文件启动
+ $ redis-server config/redis-6380.conf
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/redis-duo-chong-qi-dong-pei-zhi-fang-shi">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/ji-li-tui-jian-de-wang-luo-jia-su-ti-zi-fu-wu">
+                        极力推荐的网络加速（梯子）服务
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
+                            i-tag-primary">
+            #评测
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            地址
+5折圣诞优惠码：CHRISTMASANDNEWYEAR ，账户内现有产品可使用优惠码 RENEW2019 获得 35% off 续约折扣
+AAEX
+原因
+从最开始使用免费账号到坚持自建服务器搭建专线梯子，一直认为专线梯子才是王道，何必花钱购买别人的昂贵加速服务，然而。。直到发现AAEX。。其与自建服务器区别如下
+默认套餐
+默认套餐对自建服务器的吸引不大而且和其他服务提供商产品类型差不多，适用于视频搬运。另外，因为自建服务器成本和套餐差距不大，除了需要自己维护之外没太大区别，而且自建服务器还有台服务器可以折腾
+
+对于本人来说一般就偶尔看个视频，自建服务器一个月才3-5刀，还不限流量，但缺点也是节点有限，而且带宽流量极大浪费，然后发现了另一个隐藏套餐
+固定流量包
+这个就比较有意思了，按量付费，和买运营商流量包一样，按需购买，还不清零，永久有效，对于查阅资料，游戏玩家来说还是非常友好的，而且所有节点均可用
+
+
+本人试了下买了200多G的流量套餐100块，38个节点随便用，全平台支持（好评，特别是苹果用户，下载客户端非常麻烦，而且一般还要付费），AAEX官方提供appleID下载梯子app（满分）
+
+效果
+常见的控制台，多个香港节点，延迟低带宽大
+
+使用RSS订阅客户端自动更新节点，同时带有流量统计，比原生的SSR体验好了不少
+
+全节点均可用
+
+通过在线视频和网页测试基本秒开，在线4K无压力，带宽也能跑满本地带宽（20M）
+总结
+一趟测试下来，优点如下
+
+无需自己购买和搭建服务器
+无需担心IP被墙
+多节点选择，延迟低（自建服务器香港、日本机房贼贵）
+固定流量包，不清零
+全平台支持
+
+用了这个之后基本就告别自建服务器的梯子了。。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/ji-li-tui-jian-de-wang-luo-jia-su-ti-zi-fu-wu">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
                 <!-- 翻页 -->
                 
     <div class="pagination-container">
@@ -1855,6 +2132,8 @@ APPNODE适合对服务器操作熟悉，需要更大灵活度的定制服务器�
             <a href="https://fjiayang.github.io//page/2/" class="page-btn btn">上一页</a>
             
                 
+                    <a href="https://fjiayang.github.io//page/4/" class="page-btn btn">下一页</a>
+                    
     </div>
     
                 </div>
@@ -1866,7 +2145,7 @@ APPNODE适合对服务器操作熟悉，需要更大灵活度的定制服务器�
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531653467)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531758880)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

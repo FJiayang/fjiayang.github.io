@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    阿里云CDN + nginx多级代理获取客户端IP | F嘉阳
+    极力推荐的网络加速（梯子）服务 | F嘉阳
 </title>
 <link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531758880">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,120 +99,52 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            阿里云CDN + nginx多级代理获取客户端IP
+                            极力推荐的网络加速（梯子）服务
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-04-03</time>
+                            <time class="post-time">2018-12-09</time>
                             
-                                <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-other_4">
-                            #Java
-                        </a>
-                                
-                                <a href="https://fjiayang.github.io//tag/wYlRrVT0US" class="post-tag i-tag
-                            i-tag-other_3">
-                            #CDN
-                        </a>
-                                
-                                <a href="https://fjiayang.github.io//tag/ZugDp5bXgc" class="post-tag i-tag
-                            i-tag-other_4">
-                            #nginx
+                                <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
+                            i-tag-other_2">
+                            #评测
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <h2 id="无nginx代理场景">无Nginx代理场景</h2>
-<p>业务层通过获取请求头参数即可拿到客户端IP</p>
-<!-- more -->
-<pre><code class="language-java">request.getRemoteAddr();
-</code></pre>
-<h2 id="一级nginx代理">一级Nginx代理</h2>
-<p>使用代理后直接读取请求头参数会读取到代理服务器的IP地址，而非真实客户端IP</p>
-<p>解决方法是添加Nginx请求头参数提前保存客户端IP</p>
-<p><code>nginx.conf</code>配置加入内容</p>
-<pre><code>location / {
-    ...
-    # IP地址转发
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Real-Port $remote_port;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
-</code></pre>
-<p>业务层读取nginx配置的请求头参数即可</p>
-<pre><code class="language-java">public static String getIpAddr(HttpServletRequest request) {
-        String ip = request.getHeader(&quot;X-Real-IP&quot;);
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(&quot;Proxy-Client-IP&quot;);
-            log.info(&quot;【Proxy-Client-IP】 {}&quot;, ip);
-        }
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(&quot;WL-Proxy-Client-IP&quot;);
-            log.info(&quot;【WL-Proxy-Client-IP】{}&quot;, ip);
-        }
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(&quot;X-Forwarded-For&quot;);
-            log.info(&quot;【X-Forwarded-For】{}&quot;, ip);
-        }
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
-            log.info(&quot;【unknown】{}&quot;, ip);
-        }
-        return ip;
-    }
-</code></pre>
-<h2 id="多级nginx代理">多级Nginx代理</h2>
-<p>若存在多级Nginx代理，则需要在第一级代理时获取客户端IP，在后续代理逐层传递</p>
-<p>第一级代理配置同上，第N级代理配置<code>nginx.conf</code>如下</p>
-<pre><code>location /{
-   # IP地址转发
-   proxy_set_header X-Real-IP $X-Real-IP;
-   proxy_set_header X-Real-Port $X-Real-Port;
-   proxy_set_header X-Forwarded-For $X-Forwarded-For;
-}
-</code></pre>
-<p>业务层保持不变即可读取到传递的IP地址</p>
-<h2 id="阿里云cdn转发">阿里云CDN转发</h2>
-<p>在已经存在nginx代理的场景下，加入CDN后源客户端IP在CDN处被转发，故第一级nginx代理使用<code>$remote_addr</code>参数读取到的是CDN服务的地址，而根据一般约定，CDN转发会将IP地址存放在<code>X-Forwarded-For</code>参数下</p>
-<p>修改顶级Nginx配置以支持优先获取CDN代理地址，也可以通过修改业务层读取优先级实现</p>
-<pre><code>location / {
-    ...
-    # IP地址转发
-    # proxy_set_header X-Real-IP $remote_addr;
-    # proxy_set_header X-Real-Port $remote_port;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
-</code></pre>
-<p>但经过对阿里云CDN测试，发现<code>X-Forwarded-For</code>下不仅包含真实客户端IP也包含CDN服务IP，故业务层需要做一定的处理进行区分</p>
-<p>如图，第一个为真实客户端IP，第二个为CDN代理IP</p>
-<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2019/04/03/5ca413f53a191.png"><img src="https://i.loli.net/2019/04/03/5ca413f53a191.png" alt="1554256476626.png"></a></figure>
-<pre><code class="language-java">public static String getIpAddr(HttpServletRequest request) {
-        String ip = request.getHeader(&quot;X-Real-IP&quot;);
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(&quot;Proxy-Client-IP&quot;);
-            log.info(&quot;【Proxy-Client-IP】 {}&quot;, ip);
-        }
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(&quot;WL-Proxy-Client-IP&quot;);
-            log.info(&quot;【WL-Proxy-Client-IP】{}&quot;, ip);
-        }
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(&quot;X-Forwarded-For&quot;);
-            if (ip.contains(&quot;,&quot;)) {
-                // 通过阿里云CDN转发后可能读取到2个IP地址
-                String[] cdnMutilIp = ip.split(&quot;,&quot;);
-                ip = cdnMutilIp[0];
-            }
-            log.info(&quot;【X-Forwarded-For】{}&quot;, ip);
-        }
-        if (ip == null || ip.length() == 0 || &quot; unknown &quot;.equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
-            log.info(&quot;【unknown】{}&quot;, ip);
-        }
-        return ip;
-    }
-}
-</code></pre>
+                                    <h2 id="地址">地址</h2>
+<p><s>5折圣诞优惠码：<strong>CHRISTMASANDNEWYEAR</strong> ，账户内现有产品可使用优惠码 <strong>RENEW2019</strong> 获得 35% off 续约折扣</s></p>
+<p><a href="https://aaex.cloud/aff.php?aff=704">AAEX</a></p>
+<h2 id="原因">原因</h2>
+<p>从最开始使用免费账号到坚持自建服务器搭建专线梯子，一直认为专线梯子才是王道，何必花钱购买别人的昂贵加速服务，然而。。直到发现AAEX。。其与自建服务器区别如下</p>
+<h3 id="默认套餐">默认套餐</h3>
+<p>默认套餐对自建服务器的吸引不大而且和其他服务提供商产品类型差不多，适用于视频搬运。另外，因为自建服务器成本和套餐差距不大，除了需要自己维护之外没太大区别，而且自建服务器还有台服务器可以折腾</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2018/12/09/5c0c8412d2b5e.png"><img src="https://i.loli.net/2018/12/09/5c0c8412d2b5e.png" alt="aaex7.png"></a></figure>
+<p>对于本人来说一般就偶尔看个视频，自建服务器一个月才3-5刀，还不限流量，但缺点也是节点有限，而且带宽流量极大浪费，然后发现了另一个隐藏套餐</p>
+<h3 id="固定流量包">固定流量包</h3>
+<p>这个就比较有意思了，按量付费，和买运营商流量包一样，按需购买，还不清零，永久有效，对于查阅资料，游戏玩家来说还是非常友好的，而且所有节点均可用</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2018/12/09/5c0c8412d4b8f.png"><img src="https://i.loli.net/2018/12/09/5c0c8412d4b8f.png" alt="aaex6.png"></a></figure>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2018/12/09/5c0c8412679ee.png"><img src="https://i.loli.net/2018/12/09/5c0c8412679ee.png" alt="aaex8.png"></a></figure>
+<p>本人试了下买了200多G的流量套餐100块，38个节点随便用，全平台支持（好评，特别是苹果用户，下载客户端非常麻烦，而且一般还要付费），AAEX官方提供appleID下载梯子app（满分）</p>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2018/12/09/5c0c8412623bf.png"><img src="https://i.loli.net/2018/12/09/5c0c8412623bf.png" alt="aaex5.png"></a></figure>
+<h2 id="效果">效果</h2>
+<p>常见的控制台，多个香港节点，延迟低带宽大</p>
+<figure data-type="image" tabindex="5"><a href="https://i.loli.net/2018/12/09/5c0c8412cfe7a.png"><img src="https://i.loli.net/2018/12/09/5c0c8412cfe7a.png" alt="aaex4.png"></a></figure>
+<p>使用RSS订阅客户端自动更新节点，同时带有流量统计，比原生的SSR体验好了不少</p>
+<figure data-type="image" tabindex="6"><a href="https://i.loli.net/2018/12/09/5c0c8412c9acc.png"><img src="https://i.loli.net/2018/12/09/5c0c8412c9acc.png" alt="aaex2.png"></a></figure>
+<p>全节点均可用</p>
+<figure data-type="image" tabindex="7"><a href="https://i.loli.net/2018/12/09/5c0c8412d2363.png"><img src="https://i.loli.net/2018/12/09/5c0c8412d2363.png" alt="aaex3.png"></a></figure>
+<p>通过在线视频和网页测试基本秒开，在线4K无压力，带宽也能跑满本地带宽（20M）</p>
+<h2 id="总结">总结</h2>
+<p>一趟测试下来，优点如下</p>
+<ul>
+<li>无需自己购买和搭建服务器</li>
+<li>无需担心IP被墙</li>
+<li>多节点选择，延迟低（自建服务器香港、日本机房贼贵）</li>
+<li><strong>固定流量包，不清零</strong></li>
+<li>全平台支持</li>
+</ul>
+<p>用了这个之后基本就告别自建服务器的梯子了。。</p>
 
                                 </div>
                     </article>
@@ -220,9 +152,9 @@
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://fjiayang.github.io//post/tyk-wang-guan-docker-an-zhuang">
+                            <a href="https://fjiayang.github.io//post/mesos-ji-qun-an-zhuang">
                                 <h3 class="post-title">
-                                    Tyk网关Docker安装
+                                    Mesos集群安装
                                 </h3>
                             </a>
                         </div>
@@ -243,10 +175,15 @@
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%97%A0nginx%E4%BB%A3%E7%90%86%E5%9C%BA%E6%99%AF">无Nginx代理场景</a></li>
-<li><a href="#%E4%B8%80%E7%BA%A7nginx%E4%BB%A3%E7%90%86">一级Nginx代理</a></li>
-<li><a href="#%E5%A4%9A%E7%BA%A7nginx%E4%BB%A3%E7%90%86">多级Nginx代理</a></li>
-<li><a href="#%E9%98%BF%E9%87%8C%E4%BA%91cdn%E8%BD%AC%E5%8F%91">阿里云CDN转发</a></li>
+<li><a href="#%E5%9C%B0%E5%9D%80">地址</a></li>
+<li><a href="#%E5%8E%9F%E5%9B%A0">原因</a>
+<ul>
+<li><a href="#%E9%BB%98%E8%AE%A4%E5%A5%97%E9%A4%90">默认套餐</a></li>
+<li><a href="#%E5%9B%BA%E5%AE%9A%E6%B5%81%E9%87%8F%E5%8C%85">固定流量包</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%88%E6%9E%9C">效果</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
 </ul>
 </li>
 </ul>

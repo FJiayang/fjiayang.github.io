@@ -1,0 +1,402 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    redis多种启动配置方式 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531758880">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531758880" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            redis多种启动配置方式
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-12-09</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/4QCDLcnCA" class="post-tag i-tag
+                            i-tag-other_4">
+                            #Redis
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="总览">总览</h2>
+<p>三种启动方式：</p>
+<ol>
+<li>动态参数启动（指定端口号）</li>
+<li>配置文件启动（生产环境推荐）</li>
+<li>最简单启动</li>
+</ol>
+<h2 id="官方安装指南">官方安装指南</h2>
+<p>安装前置环境<code>gcc-c++</code></p>
+<pre><code class="language-bash">$ yum install -y gcc-c++
+</code></pre>
+<p><a href="https://redis.io/download">官方下载安装文档</a></p>
+<pre><code class="language-bash">$ wget http://download.redis.io/releases/redis-5.0.0.tar.gz
+$ tar xzf redis-5.0.0.tar.gz
+$ cd redis-5.0.0
+$ make MALLOC=libc
+$ make install
+</code></pre>
+<p>编译后在<code>src</code>目录下生成可执行文件</p>
+<pre><code class="language-bash">$ ls | grep redis-
+</code></pre>
+<pre><code>redis-benchmark ——性能测试
+redis-benchmark.c
+redis-benchmark.o
+redis-check-aof ——aof修复
+redis-check-aof.c
+redis-check-aof.o
+redis-check-rdb ——rdb修复
+redis-check-rdb.c
+redis-check-rdb.o
+redis-cli ——客户端
+redis-cli.c
+redis-cli.o
+redis-sentinel ——集群
+redis-server ——服务器
+redis-trib.rb
+</code></pre>
+<h2 id="启动">启动</h2>
+<h3 id="简单启动">简单启动</h3>
+<pre><code class="language-bash">$ redis-server 
+2660:C 21 Nov 2018 20:01:10.958 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+2660:C 21 Nov 2018 20:01:10.958 # Redis version=5.0.0, bits=64, commit=00000000, modified=0, pid=2660, just started
+2660:C 21 Nov 2018 20:01:10.958 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+2660:M 21 Nov 2018 20:01:10.959 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 5.0.0 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 2660
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+2660:M 21 Nov 2018 20:01:10.961 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+2660:M 21 Nov 2018 20:01:10.961 # Server initialized
+2660:M 21 Nov 2018 20:01:10.961 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+2660:M 21 Nov 2018 20:01:10.961 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+2660:M 21 Nov 2018 20:01:10.961 * Ready to accept connections
+</code></pre>
+<p>客户端连接测试</p>
+<pre><code class="language-bash">$ redis-cli -h 127.0.0.1 -p 6379
+127.0.0.1:6379&gt; ping
+PONG
+127.0.0.1:6379&gt; set hello world
+OK
+127.0.0.1:6379&gt; get hello
+&quot;world&quot;
+</code></pre>
+<h3 id="动态参数启动">动态参数启动</h3>
+<pre><code class="language-bash">$ redis-server --port 6380
+</code></pre>
+<p>连接默认端口测试</p>
+<pre><code class="language-bash">$ redis-cli -h 127.0.0.1 -p 6379
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+not connected&gt; exit
+</code></pre>
+<p>连接新端口测试</p>
+<pre><code class="language-bash">$ redis-cli -h 127.0.0.1 -p 6380
+127.0.0.1:6380&gt; ping
+PONG
+127.0.0.1:6380&gt; exit
+</code></pre>
+<p>通过进程查看</p>
+<pre><code class="language-bash">$ ps -ef | grep redis-server |grep -v grep
+root       2666   1469  0 20:04 pts/0    00:00:00 redis-server *:6380
+</code></pre>
+<h3 id="配置文件启动">配置文件启动</h3>
+<p>拷贝默认配置</p>
+<pre><code class="language-bash">$ pwd
+/root/redis-5.0.0
+$ mkdir config
+$ cp redis.conf config/
+$ cd config/
+$ ls
+redis.conf
+</code></pre>
+<p>查看默认配置，以下命令用于去除注释和空格</p>
+<pre><code class="language-bash">$ cat redis.conf | grep -v &quot;#&quot; | grep -v &quot;^$&quot; &gt; redis-default.conf
+$ cat redis-default.conf 
+bind 127.0.0.1
+protected-mode yes
+port 6379 #端口号
+tcp-backlog 511
+timeout 0
+tcp-keepalive 300
+daemonize no #默认非守护进程启动
+supervised no
+pidfile /var/run/redis_6379.pid
+loglevel notice
+logfile &quot;&quot; #日志文件名称
+databases 16
+always-show-logo yes
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+dir ./ #工作目录
+replica-serve-stale-data yes
+replica-read-only yes
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+repl-disable-tcp-nodelay no
+replica-priority 100
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+replica-lazy-flush no
+appendonly no
+appendfilename &quot;appendonly.aof&quot;
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+aof-load-truncated yes
+aof-use-rdb-preamble yes
+lua-time-limit 5000
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+latency-monitor-threshold 0
+notify-keyspace-events &quot;&quot;
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+list-max-ziplist-size -2
+list-compress-depth 0
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+hll-sparse-max-bytes 3000
+stream-node-max-bytes 4096
+stream-node-max-entries 100
+activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit replica 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
+dynamic-hz yes
+aof-rewrite-incremental-fsync yes
+rdb-save-incremental-fsync yes
+</code></pre>
+<p>由于默认配置redis为单线程，故一台服务器一般起多个redis实例，配置文件以端口号区分</p>
+<pre><code class="language-bash">$ cp redis-default.conf redis-6379.conf
+$ ll
+总用量 72
+-rw-r--r--. 1 root root    65 11月 21 20:46 redis-6379.conf
+-rw-r--r--. 1 root root 62155 11月 21 20:36 redis.conf
+-rw-r--r--. 1 root root  1425 11月 21 20:41 redis-default.conf
+</code></pre>
+<p>简化配置如下：</p>
+<pre><code>port 6380
+daemonize yes
+logfile &quot;6380.log&quot;
+dir &quot;/root/tmp/redis&quot;
+</code></pre>
+<p>配置文件启动</p>
+<pre><code class="language-bash"> $ redis-server config/redis-6380.conf
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/ji-li-tui-jian-de-wang-luo-jia-su-ti-zi-fu-wu">
+                                <h3 class="post-title">
+                                    极力推荐的网络加速（梯子）服务
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%80%BB%E8%A7%88">总览</a></li>
+<li><a href="#%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">官方安装指南</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8">启动</a>
+<ul>
+<li><a href="#%E7%AE%80%E5%8D%95%E5%90%AF%E5%8A%A8">简单启动</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E5%90%AF%E5%8A%A8">动态参数启动</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%AF%E5%8A%A8">配置文件启动</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

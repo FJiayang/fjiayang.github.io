@@ -1,0 +1,415 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Mesos集群安装 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531758880">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531758880" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Mesos集群安装
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-10-03</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/xTpEEjjmQ" class="post-tag i-tag
+                            i-tag-banana">
+                            #mesos
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
+                            i-tag-other_1">
+                            #Docker
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/rjmWDGdyvm" class="post-tag i-tag
+                            i-tag-other_2">
+                            #集群
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="基础环境">基础环境</h2>
+<p>4台服务器，一台外部客户机</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2018/10/03/5bb4cd4019de8.png"><img src="https://i.loli.net/2018/10/03/5bb4cd4019de8.png" alt="mesos.png"></a></figure>
+<h2 id="安装指南">安装指南</h2>
+<p>官方支持C++源码编译安装和Docker安装</p>
+<p><a href="http://mesos.apache.org/downloads/">C++源码编译安装地址</a></p>
+<p><a href="https://hub.docker.com/u/mesosphere/">Docker镜像仓库</a></p>
+<h2 id="停止所有容器命令">停止所有容器命令</h2>
+<pre><code class="language-bash">docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+</code></pre>
+<h2 id="安装">安装</h2>
+<h3 id="mesos主节点">mesos主节点</h3>
+<ul>
+<li>
+<p>node1</p>
+<pre><code class="language-bash">docker pull mesosphere/mesos-master:1.7.0
+</code></pre>
+</li>
+<li>
+<p>node2(host)</p>
+<pre><code class="language-bash">docker run --name mesos-zookeeper -p 2181:2181 --restart always -d zookeeper:3.5
+</code></pre>
+</li>
+</ul>
+<p>node1执行脚本(需替换zk IP地址)</p>
+<p><code>MESOS_QUORUM=1</code>即1为单机运行，3个节点为2，计算方式为 <code>n÷2+1 \</code></p>
+<p>若不手动指定<code>hostname</code>映射的IP，则所有节点默认通过主机名进行通信</p>
+<ul>
+<li>
+<p>使用host通信脚本</p>
+<pre><code class="language-bash">docker run -d --net=host \
+  -e MESOS_PORT=5050 \
+  -e MESOS_ZK=zk://192.168.0.32:2181/mesos \
+  -e MESOS_QUORUM=1 \
+  -e MESOS_REGISTRY=in_memory \
+  -e MESOS_LOG_DIR=/var/log/mesos \
+  -e MESOS_WORK_DIR=/var/tmp/mesos \
+  -v &quot;$(pwd)/log/mesos:/var/log/mesos&quot; \
+  -v &quot;$(pwd)/work/mesos:/var/tmp/mesos&quot; \
+  -p 5050:5050 \
+  --name=mesos-master \
+  mesosphere/mesos-master:1.7.0 \
+</code></pre>
+</li>
+<li>
+<p>使用IP通信脚本</p>
+<pre><code class="language-bash">docker run -d --net=host \
+  --hostname=192.168.0.32 \
+  -e MESOS_PORT=5050 \
+  -e MESOS_ZK=zk://192.168.0.32:2181/mesos \
+  -e MESOS_QUORUM=1 \
+  -e MESOS_REGISTRY=in_memory \
+  -e MESOS_LOG_DIR=/var/log/mesos \
+  -e MESOS_WORK_DIR=/var/tmp/mesos \
+  -v &quot;$(pwd)/log/mesos:/var/log/mesos&quot; \
+  -v &quot;$(pwd)/work/mesos:/var/tmp/mesos&quot; \
+  -p 5050:5050 \
+  --name=mesos-master \
+  mesosphere/mesos-master:1.7.0 \
+  --no-hostname_lookup \
+  --ip=192.168.0.33
+</code></pre>
+</li>
+</ul>
+<p>查看日志</p>
+<pre><code class="language-bash">docker logs mesos-master
+</code></pre>
+<p>成功输出日志</p>
+<pre><code class="language-bash">I1003 08:41:29.868827    14 group.cpp:341] Group process (zookeeper-group(2)@192.168.0.33:5050) connected to ZooKeeper
+I1003 08:41:29.868902    14 group.cpp:831] Syncing group operations: queue size (joins, cancels, datas) = (0, 0, 0)
+I1003 08:41:29.868921    14 group.cpp:419] Trying to create path '/mesos' in ZooKeeper
+I1003 08:41:29.902194    14 contender.cpp:268] New candidate (id='1') has entered the contest for leadership
+I1003 08:41:29.904409     8 detector.cpp:152] Detected a new leader: (id='1')
+I1003 08:41:29.904513     8 group.cpp:700] Trying to get '/mesos/json.info_0000000001' in ZooKeeper
+I1003 08:41:29.912968     8 zookeeper.cpp:262] A new leading master (UPID=master@192.168.0.33:5050) is detected
+I1003 08:41:29.913091     8 master.cpp:2113] Elected as the leading master!
+I1003 08:41:29.913115     8 master.cpp:1668] Recovering from registrar
+I1003 08:41:29.916913    11 registrar.cpp:383] Successfully fetched the registry (0B) in 3.734016ms
+I1003 08:41:29.917054    11 registrar.cpp:487] Applied 1 operations in 26us; attempting to update the registry
+I1003 08:41:29.918582    11 registrar.cpp:544] Successfully updated the registry in 1.449984ms
+I1003 08:41:29.918630    11 registrar.cpp:416] Successfully recovered registrar
+I1003 08:41:29.918772     8 master.cpp:1782] Recovered 0 agents from the registry (121B); allowing 10mins for agents to reregister
+</code></pre>
+<p>访问IP:5050，对于PWD，可以访问<code>http://SSHIP-5050.direct.labs.play-with-docker.com/#/</code>，将SSH ip替换成实际提供的IP即可</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2018/10/03/5bb4cd40025d2.png"><img src="https://i.loli.net/2018/10/03/5bb4cd40025d2.png" alt="mesos-master1.png"></a></figure>
+<h3 id="mesos从节点">mesos从节点</h3>
+<ul>
+<li>
+<p>node3 (slave-1)、node4(slave-2)</p>
+<p>启动脚本</p>
+<ul>
+<li>
+<p>使用host通信脚本</p>
+<pre><code class="language-bash">mkdir /cgroup
+docker run -d --net=host --privileged \
+  -e MESOS_PORT=5051 \
+  -e MESOS_MASTER=zk://192.168.0.32:2181/mesos \
+  -e MESOS_SWITCH_USER=0 \
+  -e MESOS_CONTAINERIZERS=docker,mesos \
+  -e MESOS_LOG_DIR=/var/log/mesos \
+  -e MESOS_WORK_DIR=/var/tmp/mesos \
+  -v &quot;$(pwd)/log/mesos:/var/log/mesos&quot; \
+  -v &quot;$(pwd)/tmp/mesos:/var/tmp/mesos&quot; \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /cgroup:/cgroup \
+  -v /sys:/sys \
+  -v &quot;$(which docker):/usr/local/bin/docker&quot; \
+  --name=mesos-slave \
+  -p 5051:5051 \
+  mesosphere/mesos-slave:1.7.0 \
+  --no-systemd_enable_support
+</code></pre>
+</li>
+<li>
+<p>使用IP通信脚本，<code>--ip</code>需要改成实际IP</p>
+<pre><code class="language-bash">mkdir /cgroup
+docker run -d --net=host --privileged \
+  -e MESOS_PORT=5051 \
+  -e MESOS_MASTER=zk://192.168.0.32:2181/mesos \
+  -e MESOS_SWITCH_USER=0 \
+  -e MESOS_CONTAINERIZERS=docker,mesos \
+  -e MESOS_LOG_DIR=/var/log/mesos \
+  -e MESOS_WORK_DIR=/var/tmp/mesos \
+  -v &quot;$(pwd)/log/mesos:/var/log/mesos&quot; \
+  -v &quot;$(pwd)/tmp/mesos:/var/tmp/mesos&quot; \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /cgroup:/cgroup \
+  -v /sys:/sys \
+  -v &quot;$(which docker):/usr/local/bin/docker&quot; \
+  --name=mesos-slave \
+  -p 5051:5051 \
+  mesosphere/mesos-slave:1.7.0 \
+  --no-systemd_enable_support \
+  --no-hostname_lookup \
+  --ip=192.168.0.31
+</code></pre>
+</li>
+</ul>
+<p>查看日志</p>
+<pre><code class="language-bash">docker logs mesos-slave
+</code></pre>
+<p>启动成功日志</p>
+<pre><code class="language-bash">I1003 09:05:08.615039    12 group.cpp:341] Group process (zookeeper-group(1)@192.168.0.31:5051) connected to ZooKeeper
+I1003 09:05:08.615104    12 group.cpp:831] Syncing group operations: queue size (joins, cancels, datas) = (0, 0, 0)
+I1003 09:05:08.615121    12 group.cpp:419] Trying to create path '/mesos' in ZooKeeper
+I1003 09:05:08.618291    13 state.cpp:66] Recovering state from '/var/tmp/mesos/meta'
+I1003 09:05:08.618405    15 slave.cpp:6930] Finished recovering checkpointed state from '/var/tmp/mesos/meta', beginning agent recovery
+I1003 09:05:08.618475     8 task_status_update_manager.cpp:207] Recovering task status update manager
+I1003 09:05:08.618628     8 docker.cpp:908] Recovering Docker containers
+I1003 09:05:08.626359    13 detector.cpp:152] Detected a new leader: (id='3')
+I1003 09:05:08.626487    15 group.cpp:700] Trying to get '/mesos/json.info_0000000003' in ZooKeeper
+I1003 09:05:08.628664    15 zookeeper.cpp:262] A new leading master (UPID=master@192.168.0.33:5050) is detected
+I1003 09:05:08.997036    15 docker.cpp:921] Got the list of Docker containers
+I1003 09:05:08.997324    15 docker.cpp:1157] Finished processing orphaned Docker containers
+I1003 09:05:08.997436     8 slave.cpp:7159] Recovering executors
+I1003 09:05:08.997553     8 slave.cpp:7312] Finished recovery
+I1003 09:05:08.998044    11 task_status_update_manager.cpp:181] Pausing sending task status updates
+I1003 09:05:08.998045     8 slave.cpp:1275] New master detected at master@192.168.0.33:5050
+I1003 09:05:08.998159     8 slave.cpp:1329] No credentials provided. Attempting to register without authentication
+I1003 09:05:08.998181     8 slave.cpp:1340] Detecting new master
+I1003 09:05:09.446756    11 slave.cpp:1500] Registered with master master@192.168.0.33:5050; given agent ID b597695d-6e37-418a-9879-4ffe46117e17-S0
+I1003 09:05:09.449091    10 task_status_update_manager.cpp:188] Resuming sending task status updates
+</code></pre>
+<p>访问主节点web界面可看见资源邀约有效</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2018/10/03/5bb4cd4005732.png"><img src="https://i.loli.net/2018/10/03/5bb4cd4005732.png" alt="mesos-master2.png"></a></figure>
+<p>节点情况</p>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2018/10/03/5bb4cd3fdf9aa.png"><img src="https://i.loli.net/2018/10/03/5bb4cd3fdf9aa.png" alt="mesos-master3.png"></a></figure>
+<h3 id="marathon安装">marathon安装</h3>
+<ul>
+<li>node5</li>
+</ul>
+<p>启动脚本</p>
+<pre><code class="language-bash">docker run -d --net=host \
+  -p 8080:8080 \
+  mesosphere/marathon:latest \
+  --master zk://192.168.0.32:2181/mesos \
+  --zk zk://192.168.0.32:2181/marathon
+</code></pre>
+<p>通过IP:8080查看运行结果</p>
+<figure data-type="image" tabindex="5"><a href="https://i.loli.net/2018/10/03/5bb4cd3fe60d2.png"><img src="https://i.loli.net/2018/10/03/5bb4cd3fe60d2.png" alt="marathon1.png"></a></figure>
+<h3 id="marathon-lb安装">marathon-lb安装</h3>
+<ul>
+<li>
+<p>node6</p>
+<p>启动脚本</p>
+<pre><code class="language-bash">docker run -d -e PORTS=9090 --net=host \
+  -p 9090:9090 \
+  mesosphere/marathon-lb sse \
+  --group external \
+  --marathon http://192.168.0.29:8080
+</code></pre>
+<p>访问<code>IP:9090/haproxy?stats</code>可查看启动状态</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="6"><a href="https://i.loli.net/2018/10/03/5bb4cd4000f2b.png"><img src="https://i.loli.net/2018/10/03/5bb4cd4000f2b.png" alt="marathon-lb1.png"></a></figure>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83">基础环境</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南</a></li>
+<li><a href="#%E5%81%9C%E6%AD%A2%E6%89%80%E6%9C%89%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4">停止所有容器命令</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#mesos%E4%B8%BB%E8%8A%82%E7%82%B9">mesos主节点</a></li>
+<li><a href="#mesos%E4%BB%8E%E8%8A%82%E7%82%B9">mesos从节点</a></li>
+<li><a href="#marathon%E5%AE%89%E8%A3%85">marathon安装</a></li>
+<li><a href="#marathon-lb%E5%AE%89%E8%A3%85">marathon-lb安装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
