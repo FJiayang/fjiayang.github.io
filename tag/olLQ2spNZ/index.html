@@ -7,7 +7,7 @@
 <title>
     SpringBoot | F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575532089328">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575532169296">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575532089328" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575532169296" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -112,12 +112,12 @@
                     <time class="post-time">2019-07-29</time>
                     
                         <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-info">
             #SpringBoot
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/yipNJ12QTf" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-primary">
             #Quartz
         </a>
                         
@@ -152,12 +152,12 @@
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-success">
             #SpringBoot
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/VwGnvPo1M" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-">
             #学习
         </a>
                         
@@ -186,12 +186,12 @@
                     <time class="post-time">2018-12-27</time>
                     
                         <a href="https://fjiayang.github.io//tag/dYu0hrq6S" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_3">
             #Mybatis
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_3">
             #Java
         </a>
                         
@@ -205,90 +205,18 @@
                     
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            mysql驱动问题
-问题描述
-问题发生时间（2018-12-27）
-环境版本：
+                                    <div class="post-content-abstract">
+                                        <h2 id="mysql驱动问题">mysql驱动问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>问题发生时间（2018-12-27）</p>
+<p>环境版本：</p>
+<ul>
+<li>SpringBoot 2.1.1</li>
+<li>Mybatis 1.3.2</li>
+</ul>
 
-SpringBoot 2.1.1
-Mybatis 1.3.2
-
-原始配置
-spring:
-  datasource:
-    driver-class-name:  com.mysql.jdbc.Driver
-    username: hikaricp
-    password: hikaricp
-    url: jdbc:mysql://localhost:3306/db_test?characterEncoding=utf-8&amp;amp;useSSL=false
-
-报错信息
-Registered driver with driverClassName=com.mysql.jdbc.Driver was not found,
-
-报错提示
-Loading class `com.mysql.jdbc.Driver&#39;. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver&#39;. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
-
-解决办法
-从提示中可看出，驱动名称有变，更正驱动名称即可
-更正后配置
-spring:
-  datasource:
-    driver-class-name:  com.mysql.cj.jdbc.Driver
-    username: hikaricp
-    password: hikaricp
-    url: jdbc:mysql://localhost:3306/db_test?characterEncoding=utf-8&amp;amp;useSSL=false
-
-同时若使用IDEA自带提示也可看出问题，有两种驱动都存在的问题，希望后续修复
-
-另一种解决方案，从SpringBoot2.0之后连接池使用hikari，可根据url自动识别驱动，即如下配置也可成功运行
-spring:
-  datasource:
-    username: hikaricp
-    password: hikaricp
-    url: jdbc:mysql://localhost:3306/db_test?characterEncoding=utf-8&amp;amp;useSSL=false
-
-注解使用简化
-前景提要
-进入SpringBoot时代后“注解驱动开发”就已经成为趋势，mybatis官方也提供注解替代xml配置的方案
-问题描述
-问题发现时间（2018-12-27）
-环境版本：
-
-SpringBoot 2.1.1
-Mybatis 1.3.2
-
-在早期版本的mybatis-starter还需要进行实体映射xml文件配置，这次在使用1.3.2版本时再次查了下官方源码，发现已经无需使用映射文件，其底层会自动通过反射识别对象属性类型，并且去除了不少早期版本使用的注解（当前仍可以使用，但不使用功能正常）
-
-无需手动创建SqlSession或DataSource
-官方文档说明：
-
-As you may already know, to use MyBatis with Spring you need at least an SqlSessionFactory and at least one mapper interface.
-MyBatis-Spring-Boot-Starter will:
-
-Autodetect an existing DataSource.
-Will create and register an instance of a SqlSessionFactory passing that DataSource as an input using the SqlSessionFactoryBean.
-Will create and register an instance of a SqlSessionTemplate got out of the SqlSessionFactory.
-Autoscan your mappers, link them to the SqlSessionTemplate and register them to Spring context so they can be injected into your beans.
-
-
-支持版本为Spring 4.3+
-
-You just need to create a normal Spring boot application and let the mapper be injected like follows(available on Spring 4.3+):
-
-@MapperScan -&amp;gt; @Mapper
-早期版本需要在启动类上加上@MapperScan(basePackages = &amp;quot;xxx&amp;quot;)注解扫描mapper类，新版本可直接在mapper包上使用@Mapper注解即可
-
-The MyBatis-Spring-Boot-Starter will search, by default, for mappers marked with the @Mapper annotation.
-
-除非需要自定义注解或者不使用@Mapper才需要加上@MapperScan
-
-You may want to specify a custom annotation or a marker interface for scanning. If so, you must use the @MapperScan annotation.
-
-@Results与Mapper.xml
-早期版本需要手动指定类型映射，并在resources目录下进行xml配置，新版本自动通过反射识别属性类型，无需进行xml配置
-
-                                        </div>
-                                        
+                                    </div>
+                                    
                                             <a class="btn btn-text" href="https://fjiayang.github.io//post/mybatis-zhong-yu-dao-de-keng">Read More ~</a>
                             </div>
                 </div>
@@ -305,7 +233,7 @@ You may want to specify a custom annotation or a marker interface for scanning. 
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575532089328)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575532169296)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

@@ -7,7 +7,7 @@
 <title>
     F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575532089328">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575532169296">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575532089328" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575532169296" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,17 +107,17 @@
                     <time class="post-time">2019-07-31</time>
                     
                         <a href="https://fjiayang.github.io//tag/n6QgzvrGB" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-error">
             #GitHub
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_1">
             #CICD
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_4">
             #Docker
         </a>
                         
@@ -126,63 +126,12 @@
                     
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            环境
-DockerHub账号、GitHub账号
-步骤
-构建脚本
-此处以构建mycat的docker镜像为例，在本地准备好可以运行的构建脚本Dockerfile，尽可能不使用准备好的配置文件，保证镜像的安全、纯净，并且利用环境变量配置精简构建脚本
-FROM openjdk:8-jre
-MAINTAINER fjy8018 fjy8018@gmail.com
+                                    <div class="post-content-abstract">
+                                        <h2 id="环境">环境</h2>
+<p><code>DockerHub</code>账号、<code>GitHub</code>账号</p>
 
-# Mycat 版本
-ENV MYCAT_VERSION 1.6-RELEASE
-ENV MYCAT_PKG Mycat-server-1.6-RELEASE-20161028204710-linux.tar.gz
-
-WORKDIR /usr/local
-
-# 缓存层
-RUN wget http://dl.mycat.io/$MYCAT_VERSION/$MYCAT_PKG
-RUN apt-get update &amp;amp;&amp;amp; \
-    apt-get install -y procps &amp;amp;&amp;amp; \
-    apt-get clean &amp;amp;&amp;amp; \
-    tar -zxf /usr/local/$MYCAT_PKG &amp;amp;&amp;amp; \
-    rm -rf /usr/local/$MYCAT_PKG
-
-VOLUME /usr/local/mycat/conf
-
-EXPOSE 8066 9066
-
-ENTRYPOINT /usr/local/mycat/bin/mycat console
-
-创建GitHub仓库
-在GitHub上创建对应的仓库，并推送Dockerfile
-
-链接DockerHub与GitHub
-登陆DockerHub选择repository新建仓库
-
-首次链接可以参照指引操作，主要是做OAuth授权
-
-创建构建分支和标签
-连接GitHub后可以选择需要构建的仓库，同时展开构建选项，可以指定不同分支构建出的标签，默认master分支构建为latest版本
-
-触发构建
-第一次会自动触发构建，随后代码推送都会触发构建
-
-构建结果
-在管理页面可以查看构建时长和构建结果
-
-结果
-用户视角
-用户视角可以看到构建的GitHub仓库
-
-自动构建产生的分支
-
-构建历史记录
-
-
-                                        </div>
-                                        
+                                    </div>
+                                    
                                             <a class="btn btn-text" href="https://fjiayang.github.io//post/shi-yong-github-he-dockerhub-zi-dong-gou-jian-jing-xiang">Read More ~</a>
                             </div>
                 </div>
@@ -198,12 +147,12 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
                     <time class="post-time">2019-07-29</time>
                     
                         <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-error">
             #SpringBoot
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/yipNJ12QTf" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-info">
             #Quartz
         </a>
                         
@@ -233,7 +182,7 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
                     <time class="post-time">2019-07-28</time>
                     
                         <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-warning">
             #CICD
         </a>
                         
@@ -243,7 +192,7 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-other_1">
             #Docker
         </a>
                         
@@ -275,22 +224,22 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
                     <time class="post-time">2019-04-03</time>
                     
                         <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-info">
             #DevOps
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
             #CICD
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-success">
             #GitLab
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-warning">
             #Docker
         </a>
                         
@@ -547,22 +496,22 @@ CICD全套流程目标实现！
                     <time class="post-time">2019-04-03</time>
                     
                         <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-other_3">
             #DevOps
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-error">
             #CICD
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-other_3">
             #GitLab
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-info">
             #Docker
         </a>
                         
@@ -591,22 +540,22 @@ CICD全套流程目标实现！
                     <time class="post-time">2019-04-03</time>
                     
                         <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-banana">
             #DevOps
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-success">
             #CICD
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-error">
             #GitLab
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-banana">
             #Docker
         </a>
                         
@@ -641,17 +590,17 @@ CICD全套流程目标实现！
                     <time class="post-time">2019-04-03</time>
                     
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-">
             #Java
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/wYlRrVT0US" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-primary">
             #CDN
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/ZugDp5bXgc" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-other_4">
             #nginx
         </a>
                         
@@ -681,7 +630,7 @@ CICD全套流程目标实现！
                     <time class="post-time">2019-03-31</time>
                     
                         <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-error">
             #Docker
         </a>
                         
@@ -712,12 +661,12 @@ CICD全套流程目标实现！
                     <time class="post-time">2019-03-30</time>
                     
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-warning">
             #Java
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
             #SpringBoot
         </a>
                         
@@ -751,17 +700,17 @@ CICD全套流程目标实现！
                     <time class="post-time">2019-01-06</time>
                     
                         <a href="https://fjiayang.github.io//tag/7QUk2XDeI" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-other_4">
             #LeetCode
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/4Sg7FqlvEq" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-other_4">
             #算法
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/VwGnvPo1M" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-">
             #学习
         </a>
                         
@@ -808,7 +757,7 @@ CICD全套流程目标实现！
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575532089328)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575532169296)">
         </div>
         <h1 class="id_card-title">
             F嘉阳
