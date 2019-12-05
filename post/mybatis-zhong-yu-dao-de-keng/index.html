@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    使用GitHub和DockerHub自动构建镜像 | F嘉阳
+    mybatis中遇到的坑 | F嘉阳
 </title>
 <link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531442838">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,82 +99,109 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            使用GitHub和DockerHub自动构建镜像
+                            mybatis中遇到的坑
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-07-31</time>
+                            <time class="post-time">2018-12-27</time>
                             
-                                <a href="https://fjiayang.github.io//tag/n6QgzvrGB" class="post-tag i-tag
-                            i-tag-error">
-                            #GitHub
+                                <a href="https://fjiayang.github.io//tag/dYu0hrq6S" class="post-tag i-tag
+                            i-tag-success">
+                            #Mybatis
                         </a>
                                 
-                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
-                            i-tag-error">
-                            #CICD
+                                <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-">
+                            #Java
                         </a>
                                 
-                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-error">
-                            #Docker
+                                <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
+                            i-tag-">
+                            #SpringBoot
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <h2 id="环境">环境</h2>
-<p><code>DockerHub</code>账号、<code>GitHub</code>账号</p>
-<h2 id="步骤">步骤</h2>
-<h3 id="构建脚本">构建脚本</h3>
-<p>此处以构建<code>mycat</code>的<code>docker</code>镜像为例，在本地准备好可以运行的构建脚本<code>Dockerfile</code>，尽可能不使用准备好的配置文件，保证镜像的安全、纯净，并且利用环境变量配置精简构建脚本</p>
-<pre><code class="language-dockerfile">FROM openjdk:8-jre
-MAINTAINER fjy8018 fjy8018@gmail.com
-
-# Mycat 版本
-ENV MYCAT_VERSION 1.6-RELEASE
-ENV MYCAT_PKG Mycat-server-1.6-RELEASE-20161028204710-linux.tar.gz
-
-WORKDIR /usr/local
-
-# 缓存层
-RUN wget http://dl.mycat.io/$MYCAT_VERSION/$MYCAT_PKG
-RUN apt-get update &amp;&amp; \
-    apt-get install -y procps &amp;&amp; \
-    apt-get clean &amp;&amp; \
-    tar -zxf /usr/local/$MYCAT_PKG &amp;&amp; \
-    rm -rf /usr/local/$MYCAT_PKG
-
-VOLUME /usr/local/mycat/conf
-
-EXPOSE 8066 9066
-
-ENTRYPOINT /usr/local/mycat/bin/mycat console
+                                    <h2 id="mysql驱动问题">mysql驱动问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>问题发生时间（2018-12-27）</p>
+<p>环境版本：</p>
+<ul>
+<li>SpringBoot 2.1.1</li>
+<li>Mybatis 1.3.2</li>
+</ul>
+<p>原始配置</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    username: hikaricp
+    password: hikaricp
+    url: jdbc:mysql://localhost:3306/db_test?characterEncoding=utf-8&amp;useSSL=false
 </code></pre>
-<h3 id="创建github仓库">创建GitHub仓库</h3>
-<p>在<code>GitHub</code>上创建对应的仓库，并推送<code>Dockerfile</code></p>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/07/31/5d41a6b6dfd8192366.png" alt="1564572008865.png"></figure>
-<h3 id="链接dockerhub与github">链接DockerHub与GitHub</h3>
-<p>登陆<code>DockerHub</code>选择<code>repository</code>新建仓库</p>
-<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/07/31/5d41a6b6ca75420080.png" alt="1564572101153.png"></figure>
-<p>首次链接可以参照<a href="https://docs.docker.com/docker-hub/builds/link-source/">指引</a>操作，主要是做<code>OAuth</code>授权</p>
-<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/07/31/5d41a6b6b3cd010635.png" alt="1564572489753.png"></figure>
-<h3 id="创建构建分支和标签">创建构建分支和标签</h3>
-<p>连接<code>GitHub</code>后可以选择需要构建的仓库，同时展开构建选项，可以指定不同分支构建出的标签，默认<code>master</code>分支构建为<code>latest</code>版本</p>
-<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2019/07/31/5d41a6b6d5f8a31891.png" alt="1564580799275.png"></figure>
-<h3 id="触发构建">触发构建</h3>
-<p>第一次会自动触发构建，随后代码推送都会触发构建</p>
-<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2019/07/31/5d41a6b6b319370352.png" alt="1564572890867.png"></figure>
-<h3 id="构建结果">构建结果</h3>
-<p>在管理页面可以查看构建时长和构建结果</p>
-<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2019/07/31/5d41a6b6d559a89403.png" alt="1564573686044.png"></figure>
-<h2 id="结果">结果</h2>
-<h3 id="用户视角">用户视角</h3>
-<p>用户视角可以看到构建的GitHub仓库</p>
-<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2019/07/31/5d41a6b6e89a952064.png" alt="1564583383061.png"></figure>
-<p>自动构建产生的分支</p>
-<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2019/07/31/5d41a6b6be96a97983.png" alt="1564583424202.png"></figure>
-<p>构建历史记录</p>
-<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2019/07/31/5d41a6b6d671469520.png" alt="1564583451660.png"></figure>
+<p>报错信息</p>
+<pre><code>Registered driver with driverClassName=com.mysql.jdbc.Driver was not found,
+</code></pre>
+<p>报错提示</p>
+<pre><code>Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+</code></pre>
+<h3 id="解决办法">解决办法</h3>
+<p>从提示中可看出，驱动名称有变，更正驱动名称即可</p>
+<p>更正后配置</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    username: hikaricp
+    password: hikaricp
+    url: jdbc:mysql://localhost:3306/db_test?characterEncoding=utf-8&amp;useSSL=false
+</code></pre>
+<p>同时若使用IDEA自带提示也可看出问题，有两种驱动都存在的问题，希望后续修复</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2018/12/27/5c244679d8870.jpg"><img src="https://i.loli.net/2018/12/27/5c244679d8870.jpg" alt="mybatis1.jpg"></a></figure>
+<p>另一种解决方案，从SpringBoot2.0之后连接池使用hikari，可根据url自动识别驱动，即如下配置也可成功运行</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    username: hikaricp
+    password: hikaricp
+    url: jdbc:mysql://localhost:3306/db_test?characterEncoding=utf-8&amp;useSSL=false
+</code></pre>
+<h2 id="注解使用简化">注解使用简化</h2>
+<h3 id="前景提要">前景提要</h3>
+<p>进入SpringBoot时代后“注解驱动开发”就已经成为趋势，mybatis官方也提供注解替代xml配置的方案</p>
+<h3 id="问题描述-2">问题描述</h3>
+<p>问题发现时间（2018-12-27）</p>
+<p>环境版本：</p>
+<ul>
+<li>SpringBoot 2.1.1</li>
+<li>Mybatis 1.3.2</li>
+</ul>
+<p>在早期版本的mybatis-starter还需要进行实体映射xml文件配置，这次在使用1.3.2版本时再次查了下官方源码，发现已经无需使用映射文件，其底层会自动通过反射识别对象属性类型，并且去除了不少早期版本使用的注解（当前仍可以使用，但不使用功能正常）</p>
+<h4 id=""></h4>
+<h4 id="无需手动创建sqlsession或datasource">无需手动创建SqlSession或DataSource</h4>
+<p>官方文档说明：</p>
+<blockquote>
+<p>As you may already know, to use MyBatis with Spring you need at least an <code>SqlSessionFactory</code> and at least one mapper interface.</p>
+<p>MyBatis-Spring-Boot-Starter will:</p>
+<ul>
+<li>Autodetect an existing <code>DataSource</code>.</li>
+<li>Will create and register an instance of a <code>SqlSessionFactory</code> passing that <code>DataSource</code> as an input using the <code>SqlSessionFactoryBean</code>.</li>
+<li>Will create and register an instance of a <code>SqlSessionTemplate</code> got out of the <code>SqlSessionFactory</code>.</li>
+<li>Autoscan your mappers, link them to the <code>SqlSessionTemplate</code> and register them to Spring context so they can be injected into your beans.</li>
+</ul>
+</blockquote>
+<p>支持版本为Spring 4.3+</p>
+<blockquote>
+<p>You just need to create a normal Spring boot application and let the mapper be injected like follows(available on Spring 4.3+):</p>
+</blockquote>
+<h4 id="mapperscan-mapper">@MapperScan -&gt; @Mapper</h4>
+<p>早期版本需要在启动类上加上<code>@MapperScan(basePackages = &quot;xxx&quot;)</code>注解扫描mapper类，新版本可直接在mapper包上使用<code>@Mapper</code>注解即可</p>
+<blockquote>
+<p>The MyBatis-Spring-Boot-Starter will search, by default, for mappers marked with the <code>@Mapper</code> annotation.</p>
+</blockquote>
+<p>除非需要自定义注解或者不使用@Mapper才需要加上@MapperScan</p>
+<blockquote>
+<p>You may want to specify a custom annotation or a marker interface for scanning. If so, you must use the <code>@MapperScan</code> annotation.</p>
+</blockquote>
+<h4 id="results与mapperxml">@Results与Mapper.xml</h4>
+<p>早期版本需要手动指定类型映射，并在resources目录下进行xml配置，新版本自动通过反射识别属性类型，无需进行xml配置</p>
 
                                 </div>
                     </article>
@@ -182,9 +209,9 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://fjiayang.github.io//post/springboot-2x-quartz-duo-shu-ju-ding-shi-ren-wu-yuan-pei-zhi">
+                            <a href="https://fjiayang.github.io//post/hbase-wei-fen-bu-shi-an-zhuang">
                                 <h3 class="post-title">
-                                    SpringBoot 2.x quartz多数据定时任务源配置
+                                    HBase伪分布式安装
                                 </h3>
                             </a>
                         </div>
@@ -205,20 +232,23 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li>
-<li><a href="#%E6%AD%A5%E9%AA%A4">步骤</a>
+<li><a href="#mysql%E9%A9%B1%E5%8A%A8%E9%97%AE%E9%A2%98">mysql驱动问题</a>
 <ul>
-<li><a href="#%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC">构建脚本</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93">创建GitHub仓库</a></li>
-<li><a href="#%E9%93%BE%E6%8E%A5dockerhub%E4%B8%8Egithub">链接DockerHub与GitHub</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BA%E6%9E%84%E5%BB%BA%E5%88%86%E6%94%AF%E5%92%8C%E6%A0%87%E7%AD%BE">创建构建分支和标签</a></li>
-<li><a href="#%E8%A7%A6%E5%8F%91%E6%9E%84%E5%BB%BA">触发构建</a></li>
-<li><a href="#%E6%9E%84%E5%BB%BA%E7%BB%93%E6%9E%9C">构建结果</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">解决办法</a></li>
 </ul>
 </li>
-<li><a href="#%E7%BB%93%E6%9E%9C">结果</a>
+<li><a href="#%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8C%96">注解使用简化</a>
 <ul>
-<li><a href="#%E7%94%A8%E6%88%B7%E8%A7%86%E8%A7%92">用户视角</a></li>
+<li><a href="#%E5%89%8D%E6%99%AF%E6%8F%90%E8%A6%81">前景提要</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2">问题描述</a><br>
+*
+<ul>
+<li><a href="#%E6%97%A0%E9%9C%80%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BAsqlsession%E6%88%96datasource">无需手动创建SqlSession或DataSource</a></li>
+<li><a href="#mapperscan-mapper">@MapperScan -&gt; @Mapper</a></li>
+<li><a href="#results%E4%B8%8Emapperxml">@Results与Mapper.xml</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

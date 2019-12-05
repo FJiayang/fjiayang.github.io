@@ -1,0 +1,760 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    HBase | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531442838">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531442838" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        HBase</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/hbase-wei-fen-bu-shi-an-zhuang">
+                        HBase伪分布式安装
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-15</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/Of4MIljUs" class="post-tag i-tag
+                            i-tag-error">
+            #HBase
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/O_eaS7gae-" class="post-tag i-tag
+                            i-tag-primary">
+            #Hadoop
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            Hadoop伪分布式安装
+基础环境
+
+Hadoop：版本2.7.3，下载地址
+HBase：版本1.2.4，下载地址
+JDK8
+
+jdk 安装命令
+$ yum -y install java-devel java
+
+查看当前系统jre和jdk路径，输入update-alternatives --config java和update-alternatives --config javac
+$ update-alternatives --config java
+
+共有 1 个提供“java”的程序。
+
+  选项    命令
+-----------------------------------------------
+*+ 1           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64/jre/bin/java)
+
+$ update-alternatives --config javac
+
+共有 1 个提供“javac”的程序。
+
+  选项    命令
+-----------------------------------------------
+*+ 1           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64/bin/javac)
+
+
+
+查看环境
+$ ll
+总用量 311132
+-rw-------. 1 root root      1241 8月  11 10:53 anaconda-ks.cfg
+-rw-r--r--. 1 root root 214092195 8月  26 2016 hadoop-2.7.3.tar.gz
+-rw-r--r--. 1 root root 104497899 10月 26 2016 hbase-1.2.4-bin.tar.gz
+$ java -version
+openjdk version &amp;quot;1.8.0_191&amp;quot;
+OpenJDK Runtime Environment (build 1.8.0_191-b12)
+OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
+$ javac -version
+javac 1.8.0_191
+
+免密登录
+新建hadoop用户，忽略密码强度提示
+$ adduser hadoop
+$ passwd hadoop
+
+为方便远程连接和学习，同时授予root权限，输入whereis sudoers查看权限控制文件位置
+$ whereis sudoers
+sudoers: /etc/sudoers /etc/sudoers.d /usr/libexec/sudoers.so /usr/share/man/man5/sudoers.5.gz
+
+vi /etc/sudoers修改内容为
+root    ALL=(ALL)       ALL
+hadoop  ALL=(ALL)       ALL
+
+切换至hadoop用户，使用 ssh-keygen -t rsa生成私钥信息，位置在/home/hadoop/，并且忽略所有提示输入的信息
+查看生成的文件，该SSH文件夹为隐藏文件夹，故用ls -a查看，可见自动生成了.ssh目录和id_rsa,id_rsa.pub两个文件
+$ ls /home/hadoop/.ssh/
+id_rsa  id_rsa.pub
+
+复制公钥到.ssh目录
+$ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+
+免密测试
+$ ssh localhost
+The authenticity of host &#39;localhost (::1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:3UEr3lx2jznmN3FL3SflViR05IZe6AWweb3TeSsfX0M.
+ECDSA key fingerprint is MD5:0f:31:c1:cc:54:69:7f:d8:8d:7c:8c:22:95:2e:03:4e.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &#39;localhost&#39; (ECDSA) to the list of known hosts.
+Last login: Sat Dec 15 11:14:27 2018
+$ exit
+登出
+Connection to localhost closed.
+
+安装Hadoop
+解压文件
+$ tar -zxvf hadoop-2.7.3.tar.gz
+
+修改配置文件
+$ vi /hadoop-2.7.3/etc/hadoop/hadoop-env.sh
+
+配置Java路径
+# The java implementation to use.
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+
+修改HDFS配置
+$ vi /hadoop-2.7.3/etc/hadoop/hdfs-site.xml
+
+配置内容
+&amp;lt;configuration&amp;gt;
+	&amp;lt;property&amp;gt;
+	    &amp;lt;name&amp;gt;dfs.replication&amp;lt;/name&amp;gt;
+	    &amp;lt;!-- 配置副本数量--&amp;gt;
+	    &amp;lt;value&amp;gt;1&amp;lt;/value&amp;gt;
+	&amp;lt;/property&amp;gt;
+	&amp;lt;property&amp;gt;
+	    &amp;lt;name&amp;gt;dfs.namenode.name.dir&amp;lt;/name&amp;gt;
+	    &amp;lt;value&amp;gt;file:/home/hadoop/hadoop_data/dfs/name&amp;lt;/value&amp;gt;
+	&amp;lt;/property&amp;gt;
+	&amp;lt;property&amp;gt;
+	    &amp;lt;name&amp;gt;dfs.namenode.data.dir&amp;lt;/name&amp;gt;
+	    &amp;lt;value&amp;gt;file:/home/hadoop/hadoop_data/dfs/data&amp;lt;/value&amp;gt;
+	&amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+
+手动创建相关目录
+$ mkdir -p /home/hadoop/hadoop_data/dfs/name
+$ mkdir -p /home/hadoop/hadoop_data/dfs/data
+
+配置core-site.xml，内容为
+&amp;lt;configuration&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;fs.defaultFS&amp;lt;/name&amp;gt;
+        &amp;lt;!-- 配置主机IP--&amp;gt;
+        &amp;lt;value&amp;gt;hdfs://0.0.0.0:8020&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;!-- 配置临时文件位置--&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;hadoop.tmp.dir&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;file:/home/hadoop/hadoop_data&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+
+放行端口并重载
+$ firewall-cmd --zone=public --add-port=8020/tcp --add-port=50070/tcp --permanent
+$ firewall-cmd --reload
+
+启动Hadoop
+初始化
+进入/hadoop-2.7.3/bin目录，使用如下语句初始化Hadoop，该操作仅执行一次即可，以后使用无需重复执行，否则执行后会删除当前hadoop上的所有文件
+$ hadoop namenode -format
+
+滚动均为info级别的日志并且status 0表示已初始化成功
+...
+18/12/15 17:07:32 INFO namenode.FSImage: Allocated new BlockPoolId: BP-99731851-127.0.0.1-1544864852133
+18/12/15 17:07:32 INFO common.Storage: Storage directory /home/hadoop/hadoop_data/dfs/name has been successfully formatted.
+18/12/15 17:07:32 INFO namenode.FSImageFormatProtobuf: Saving image file /home/hadoop/hadoop_data/dfs/name/current/fsimage.ckpt_0000000000000000000 using no compression
+18/12/15 17:07:32 INFO namenode.FSImageFormatProtobuf: Image file /home/hadoop/hadoop_data/dfs/name/current/fsimage.ckpt_0000000000000000000 of size 353 bytes saved in 0 seconds.
+18/12/15 17:07:32 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid &amp;gt;= 0
+18/12/15 17:07:32 INFO util.ExitUtil: Exiting with status 0
+18/12/15 17:07:32 INFO namenode.NameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at localhost/127.0.0.1
+************************************************************/
+
+启动HDFS
+进入/hadoop-2.7.3/sbin目录输入./start-dfs.sh启动HDFS服务
+$ ./start-dfs.sh
+Starting namenodes on [0.0.0.0]
+The authenticity of host &#39;0.0.0.0 (0.0.0.0)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:3UEr3lx2jznmN3FL3SflViR05IZe6AWweb3TeSsfX0M.
+ECDSA key fingerprint is MD5:0f:31:c1:cc:54:69:7f:d8:8d:7c:8c:22:95:2e:03:4e.
+Are you sure you want to continue connecting (yes/no)? yes
+0.0.0.0: Warning: Permanently added &#39;0.0.0.0&#39; (ECDSA) to the list of known hosts.
+0.0.0.0: starting namenode, logging to /home/hadoop/hadoop-2.7.3/logs/hadoop-hadoop-namenode-localhost.localdomain.out
+localhost: starting datanode, logging to /home/hadoop/hadoop-2.7.3/logs/hadoop-hadoop-datanode-localhost.localdomain.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /home/hadoop/hadoop-2.7.3/logs/hadoop-hadoop-secondarynamenode-localhost.localdomain.out
+
+进程验证，若出现如下四个进程表示HDFS服务启动成功
+$ jps
+28930 Jps
+28821 SecondaryNameNode
+28663 DataNode
+28541 NameNode
+
+配置hdfs命令
+使用vi ~/.bash_profile进入配置文件，按如下配置
+export HADOOP_HOME=/home/hadoop/hadoop-2.7.3
+export PATH=$HADOOP_HOME/bin:$PATH
+
+使配置文件生效source ~/.bash_profile
+输入hdfs回车测试命令是否生效，若出现如下画面则表示命令已经生效
+$ hdfs
+Usage: hdfs [--config confdir] [--loglevel loglevel] COMMAND
+       where COMMAND is one of:
+  dfs                  run a filesystem command on the file systems supported in Hadoop.
+  classpath            prints the classpath
+  namenode -format     format the DFS filesystem
+  secondarynamenode    run the DFS secondary namenode
+  namenode             run the DFS namenode
+  journalnode          run the DFS journalnode
+  zkfc                 run the ZK Failover Co
+  ...
+
+命令测试
+$ hadoop fs -mkdir /test
+$ hadoop fs -ls /
+Found 1 items
+drwxr-xr-x   - hadoop supergroup          0 2018-12-15 17:14 /test
+
+HBase伪分布式搭建
+HBase安装
+解压安装包，目录如下
+$ ll
+总用量 320
+drwxr-xr-x.  4 hadoop hadoop   4096 1月  29 2016 bin
+-rw-r--r--.  1 hadoop hadoop 122439 10月 26 2016 CHANGES.txt
+drwxr-xr-x.  2 hadoop hadoop    178 1月  29 2016 conf
+drwxr-xr-x. 12 hadoop hadoop   4096 10月 26 2016 docs
+drwxr-xr-x.  7 hadoop hadoop     80 10月 26 2016 hbase-webapps
+-rw-rw-r--.  1 hadoop hadoop    261 10月 26 2016 LEGAL
+drwxrwxr-x.  3 hadoop hadoop   8192 12月 15 11:24 lib
+-rw-rw-r--.  1 hadoop hadoop 130696 10月 26 2016 LICENSE.txt
+-rw-rw-r--.  1 hadoop hadoop  42025 10月 26 2016 NOTICE.txt
+-rw-r--r--.  1 hadoop hadoop   1477 12月 27 2015 README.txt
+
+拷贝Hadoop配置文件到/conf目录
+$ cp /home/hadoop/hadoop-2.7.3/etc/hadoop/hdfs-site.xml .
+$ cp /home/hadoop/hadoop-2.7.3/etc/hadoop/core-site.xml .
+
+修改hbase-env.sh文件，增加JDK路径
+# The java implementation to use.  Java 1.7+ required.
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+
+由于使用的是jdk8，主要注释内存配置
+# Configure PermSize. Only needed in JDK7. You can safely remove it for JDK8+
+#export HBASE_MASTER_OPTS=&amp;quot;$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m&amp;quot;
+#export HBASE_REGIONSERVER_OPTS=&amp;quot;$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m&amp;quot;
+
+另外打开文件最后zookeeper配置，设置为使用内置的zookeeper
+# Tell HBase whether it should manage it&#39;s own instance of Zookeeper or not.
+export HBASE_MANAGES_ZK=true
+
+修改hbase-site.xml文件，内容如下
+&amp;lt;configuration&amp;gt;
+	&amp;lt;property&amp;gt;
+		&amp;lt;name&amp;gt;hbase.rootdir&amp;lt;/name&amp;gt;
+        &amp;lt;!-- 配置文件根目录--&amp;gt;
+		&amp;lt;value&amp;gt;hdfs://localhost:8020/hbase&amp;lt;/value&amp;gt;
+	&amp;lt;/property&amp;gt;
+	&amp;lt;property&amp;gt;
+		&amp;lt;name&amp;gt;hbase.zookeeper.property.dataDir&amp;lt;/name&amp;gt;
+		&amp;lt;value&amp;gt;/home/hadoop/hadoop_data/zookeeper&amp;lt;/value&amp;gt;
+	&amp;lt;/property&amp;gt;
+	&amp;lt;property&amp;gt;
+		&amp;lt;name&amp;gt;hbase.cluster.distributed&amp;lt;/name&amp;gt;
+        &amp;lt;!-- 配置以集群方式运行--&amp;gt;
+		&amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt;
+	&amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+
+参考文档
+启动HBase
+在/bin目录下执行./start-hbase.sh启动HBase
+$ ./start-hbase.sh 
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+localhost: starting zookeeper, logging to /home/hadoop/hbase-1.2.4/bin/../logs/hbase-hadoop-zookeeper-localhost.localdomain.out
+localhost: OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+starting master, logging to /home/hadoop/hbase-1.2.4/bin/../logs/hbase-hadoop-master-localhost.localdomain.out
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+starting regionserver, logging to /home/hadoop/hbase-1.2.4/bin/../logs/hbase-hadoop-1-regionserver-localhost.localdomain.out
+
+由于虚拟机只分配了单核单线程，GC警告暂时忽略
+进程验证，确认启动成功
+$ jps
+28821 SecondaryNameNode
+28663 DataNode
+29911 HRegionServer
+29785 HMaster
+29724 HQuorumPeer
+28541 NameNode
+30303 Jps
+
+进入HBase命令行测试
+$ ./hbase shell
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hadoop/hbase-1.2.4/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hadoop/hadoop-2.7.3/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+HBase Shell; enter &#39;help&amp;lt;RETURN&amp;gt;&#39; for list of supported commands.
+Type &amp;quot;exit&amp;lt;RETURN&amp;gt;&amp;quot; to leave the HBase Shell
+Version 1.2.4, r67592f3d062743907f8c5ae00dbbe1ae4f69e5af, Tue Oct 25 18:10:20 CDT 2016
+
+hbase(main):001:0&amp;gt; status
+1 active master, 0 backup masters, 1 servers, 0 dead, 2.0000 average load
+
+hbase(main):002:0&amp;gt; 
+
+查看其是否自动在HDFS上创建目录/hbase
+$ hadoop fs -ls /
+Found 2 items
+drwxr-xr-x   - hadoop supergroup          0 2018-12-15 18:43 /hbase
+drwxr-xr-x   - hadoop supergroup          0 2018-12-15 17:14 /test
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/hbase-wei-fen-bu-shi-an-zhuang">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/hbase-xue-xi-bi-ji">
+                        HBase 学习笔记
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-15</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/Of4MIljUs" class="post-tag i-tag
+                            i-tag-other_4">
+            #HBase
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/O_eaS7gae-" class="post-tag i-tag
+                            i-tag-success">
+            #Hadoop
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            概述
+HBase 简介
+
+Hbase是一个分布式的、面向列的开源数据库
+
+列式数据库：将列值统一存储
+行式数据库：关系型数据库，将每一行值统一存储
+
+
+Hbase在Hadoop之上提供了类似于Bigtable的能力
+
+Bigtable是压缩、高性能、高可扩展性的基于Google GFS文件系统的数据库，用于存储大规模的结构化数据，在扩展性和性能上有很大的优势
+
+
+Hbase不同于一般的关系数据库，它适合非结构化数据存储
+
+非结构化数据：不能用二维表进行存储的数据，例如图片、文档等
+
+
+
+Hbase地位
+
+Apache基金会顶级项目
+基于Hadoop核心HDFS系统进行数据存储，类似于Hive
+可以存储超大数据并适合用来进行大数据的的实时查询
+
+Hbase与HDFS
+
+Hbase建立在Hadoop文件系统上，利用了Hadoop文件系统的容错能力
+Hbase提供对数据随机实时读/写访问功能
+Hbase内部使用哈希表存储索引，可将HDFS文件中的数据进行快速查找
+
+适用场景
+
+瞬间写入量很大，常用数据库不好支持或者需要很高的成本支撑
+数据需要长久保存，且数据量会持久增长到比较大的场景
+Hbase不适合用于有join、多级索引、表关系复杂的数据模型
+
+存储模型与原理
+CAP定理
+分布式系统的CAP理论：理论首先把分布式系统中的三个特性进行了如下归纳：
+
+
+一致性（C）：所有节点在同一时间具有相同的数据
+
+
+可用性（A）：保证每个请求不管成功或者失败（包含节点宕机）都有响应，但不保证获取数据的正确性
+
+
+分区容错性（P）：系统中任意信息的丢失或失败不会影响系统的继续运作。系统如果不能在时限内达成数据一致性，必须就当前操作在C和A之间做出选择。
+
+
+Hbase为CP特性
+ACID
+ACID的定义：
+
+Atomic原子性:所有的步骤要么全部完成要么一个也不会完成
+Consistent一致性: 通过各种途径包括外键约束等任何写入数据库的数据都是有效的，不能发生表与表之间存在外键约束
+Isolated隔离性: 一个未完成事务不会影响另外一个未完成事务
+Durable持久性: 一旦一个事务被提交，它应该持久保存
+
+HBase非强ACID
+HBase概念
+
+
+
+字段
+概念
+备注
+
+
+
+
+NameSpace
+类似RDBMS的“数据库”
+
+
+
+Table
+表名必须是能用在文件路径里的合法名字
+原因：每个表都会映射为HDFS的文件
+
+
+Row
+在表里，每一行代表一个数据对象，每一行都以一个行键（Row Key）来唯一标识的，行键没有特定的数据类型，以二进制的字节进行存储
+
+
+
+Row Key
+唯一标识一行记录，不可改变，只能删除
+
+
+
+Column
+由Column family和Column qualifier组成，由（：）进行分隔
+例如：family：qualifier
+
+
+Column family
+在定义HBase表的时候需要提前设置好列族，表中所有的列都需要组织在列族里面
+同一个列族的成员有相同的前缀，物理上，一个列族的成员都是储存在一起，用于存储优化
+
+
+Column qualifier（列限定符）
+列族中的数据通过列标识来进行映射，可以理解为一个键值对，Column qualifier就是Key
+类似具体的列名
+
+
+Cell
+每一个行键，列族和列标识共同组成的一个单元
+无特定的数据类型，以二进制字节存储
+
+
+Timestamp
+每个值都有一个Timestamp，作为该值特定版本的标识符
+读未指定版本则返回最新版，写未指定时间则使用当前时间，HBase默认保留3个版本数据
+
+
+
+HBase与传统关系数据库的区别
+
+
+
+
+Hbase
+RDBMS
+
+
+
+
+数据库大小
+PB
+GB、TB
+
+
+数据类型
+Bytes
+丰富的数据类型
+
+
+事务支持
+ACID只支持单个Row级别
+全面的ACID支持
+
+
+索引
+只支持Row-Key
+支持
+
+
+吞吐量
+百万查询/每秒
+数千查询/每秒
+
+
+
+HBase基础架构
+
+HBase分布式系统简介
+
+HMaster
+
+HBase主/从集群架构中的中央节点
+负责将region（HBase中存储最小单元，表格的基本单位）分配给RegionServer，协调RegionServer的负载并维护集群状态
+维护表和Region的元数据，不参与数据的输入/输出过程
+
+
+RegionServer
+
+维护HMaster分配给他的region，处理对这些region的IO请求
+负责切分正在运行过程中变得过大的region
+
+
+Zookeeper
+
+集群协调器，保证至少一个节点出于active状态
+HMaster启动将系统表加载到ZK（用于服务发现）
+提供HBase RegionServer状态信息
+
+
+
+HBase原理
+HBase写流程
+
+
+Client先访问zookeeper，得到对应的RegionServer地址
+Client对RegionServer发起写请求，RegionServer接受数据写入内存
+当MemStore的大小达到一定值后，flush到StoreFile并存储到HDFS
+
+
+HBase特殊点在于其先写内存再写日志，通过类似MySQL中MVCC机制保证一致性
+HBase读流程
+
+
+Client先访问zookeeper，得到对应的RegionServer地址
+Client对RegionServer发起读请求
+当RegionServer收到client的读请求后，先扫描自己的Memstore，再扫描BlockCache（加速读内容缓存区）如果还没找到则从StoreFile中读取数据，然后将数据返回给Client
+
+读特点
+
+读过程与HMaster无关，只和ZK有关，有效的减小HMaster负载
+
+HBase模块协作
+有关HBase的三个问题
+
+HBase启动时发生了什么
+当RegionServer失效后会发生什么
+当HMaster失效后会发生什么
+
+HBase启动
+
+HBase启动，注册到zookeeper，等待RegionServer汇报
+RegionServer注册到zookeeper，并向HMaster汇报
+对各个RegionServer（包括失效的）的数据进行整理，分配Region和meta信息（所有表的索引）
+
+RegionServer失效
+
+HMaster将失效RegionServer上的Region分配到其他节点
+HMaster更新HBase：meta表保证数据正常访问
+
+HMaster失效
+配置高可用后
+
+出于Backup状态的其他HMaster节点选举出一个转为Active状态
+
+未配置高可用
+
+数据能正常读写，但不能创建删除表，也不能更改表结构，因为涉及meta表更新
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/hbase-xue-xi-bi-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531442838)">
+        </div>
+        <h1 class="id_card-title">
+            F嘉阳
+        </h1>
+        <h2 class="id_card-description">
+            温故而知新
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                <a href="https://weibo.com/2007780675" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-weibo"></i></a>
+                                
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+    <div class="notice-card i-card ">
+        <div class="notice-title i-card-title">公告</div>
+        <div class="notice-content">
+            主博客：https://blog.fjy8018.top/
+        </div>
+    </div>
+    
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

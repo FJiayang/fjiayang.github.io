@@ -1,0 +1,468 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    HBase 学习笔记 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531442838">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531442838" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            HBase 学习笔记
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-12-15</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/Of4MIljUs" class="post-tag i-tag
+                            i-tag-">
+                            #HBase
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/O_eaS7gae-" class="post-tag i-tag
+                            i-tag-other_4">
+                            #Hadoop
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="概述">概述</h2>
+<h3 id="hbase-简介">HBase 简介</h3>
+<ul>
+<li>Hbase是一个分布式的、面向列的开源数据库
+<ul>
+<li>列式数据库：将列值统一存储</li>
+<li>行式数据库：关系型数据库，将每一行值统一存储</li>
+</ul>
+</li>
+<li>Hbase在Hadoop之上提供了类似于Bigtable的能力
+<ul>
+<li>Bigtable是压缩、高性能、高可扩展性的基于Google GFS文件系统的数据库，用于存储大规模的结构化数据，在扩展性和性能上有很大的优势</li>
+</ul>
+</li>
+<li>Hbase不同于一般的关系数据库，它适合非结构化数据存储
+<ul>
+<li>非结构化数据：不能用二维表进行存储的数据，例如图片、文档等</li>
+</ul>
+</li>
+</ul>
+<h3 id="hbase地位">Hbase地位</h3>
+<ul>
+<li>Apache基金会顶级项目</li>
+<li>基于Hadoop核心HDFS系统进行数据存储，类似于Hive</li>
+<li>可以存储超大数据并适合用来进行大数据的的<strong>实时查询</strong></li>
+</ul>
+<h3 id="hbase与hdfs">Hbase与HDFS</h3>
+<ul>
+<li>Hbase建立在Hadoop文件系统上，利用了Hadoop文件系统的容错能力</li>
+<li>Hbase提供对数据<strong>随机实时读/写</strong>访问功能</li>
+<li>Hbase内部使用<strong>哈希表</strong>存储索引，可将HDFS文件中的数据进行快速查找</li>
+</ul>
+<h3 id="适用场景">适用场景</h3>
+<ul>
+<li>瞬间写入量很大，常用数据库不好支持或者需要很高的成本支撑</li>
+<li>数据需要长久保存，且数据量会持久增长到比较大的场景</li>
+<li>Hbase不适合用于有join、多级索引、表关系复杂的数据模型</li>
+</ul>
+<h2 id="存储模型与原理">存储模型与原理</h2>
+<h3 id="cap定理">CAP定理</h3>
+<p>分布式系统的CAP理论：理论首先把分布式系统中的三个特性进行了如下归纳：</p>
+<ul>
+<li>
+<p>一致性（C）：所有节点在同一时间具有相同的数据</p>
+</li>
+<li>
+<p>可用性（A）：保证每个请求不管成功或者失败（包含节点宕机）都有响应，但不保证获取数据的正确性</p>
+</li>
+<li>
+<p>分区容错性（P）：系统中任意信息的丢失或失败不会影响系统的继续运作。系统如果不能在时限内达成数据一致性，必须就当前操作在C和A之间做出选择。</p>
+</li>
+</ul>
+<p>Hbase为CP特性</p>
+<h3 id="acid">ACID</h3>
+<p>ACID的定义：</p>
+<ul>
+<li><strong>Atomic原子性</strong>:所有的步骤要么全部完成要么一个也不会完成</li>
+<li><strong>Consistent一致性</strong>: 通过各种途径包括外键约束等任何写入数据库的数据都是有效的，不能发生表与表之间存在外键约束</li>
+<li><strong>Isolated</strong>隔离性: 一个未完成事务不会影响另外一个未完成事务</li>
+<li><strong>Durable</strong>持久性: 一旦一个事务被提交，它应该持久保存</li>
+</ul>
+<p>HBase非强ACID</p>
+<h3 id="hbase概念">HBase概念</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>概念</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NameSpace</td>
+<td>类似RDBMS的“数据库”</td>
+<td></td>
+</tr>
+<tr>
+<td>Table</td>
+<td>表名必须是能用在文件路径里的合法名字</td>
+<td>原因：每个表都会映射为HDFS的文件</td>
+</tr>
+<tr>
+<td>Row</td>
+<td>在表里，每一行代表一个数据对象，每一行都以一个行键（Row Key）来唯一标识的，行键没有特定的数据类型，以二进制的字节进行存储</td>
+<td></td>
+</tr>
+<tr>
+<td>Row Key</td>
+<td>唯一标识一行记录，不可改变，只能删除</td>
+<td></td>
+</tr>
+<tr>
+<td>Column</td>
+<td>由Column family和Column qualifier组成，由（：）进行分隔</td>
+<td>例如：family：qualifier</td>
+</tr>
+<tr>
+<td>Column family</td>
+<td>在定义HBase表的时候需要提前设置好列族，表中所有的列都需要组织在列族里面</td>
+<td>同一个列族的成员有相同的前缀，物理上，一个列族的成员都是储存在一起，用于存储优化</td>
+</tr>
+<tr>
+<td>Column qualifier（列限定符）</td>
+<td>列族中的数据通过列标识来进行映射，可以理解为一个键值对，Column qualifier就是Key</td>
+<td>类似具体的列名</td>
+</tr>
+<tr>
+<td>Cell</td>
+<td>每一个行键，列族和列标识共同组成的一个单元</td>
+<td>无特定的数据类型，以二进制字节存储</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>每个值都有一个Timestamp，作为该值特定版本的标识符</td>
+<td>读未指定版本则返回最新版，写未指定时间则使用当前时间，HBase默认保留3个版本数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hbase与传统关系数据库的区别">HBase与传统关系数据库的区别</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hbase</th>
+<th>RDBMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库大小</td>
+<td>PB</td>
+<td>GB、TB</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>Bytes</td>
+<td>丰富的数据类型</td>
+</tr>
+<tr>
+<td>事务支持</td>
+<td>ACID只支持单个Row级别</td>
+<td>全面的ACID支持</td>
+</tr>
+<tr>
+<td>索引</td>
+<td>只支持Row-Key</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td>百万查询/每秒</td>
+<td>数千查询/每秒</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hbase基础架构">HBase基础架构</h2>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2018/12/15/5c14dd85593e5.jpg"><img src="https://i.loli.net/2018/12/15/5c14dd85593e5.jpg" alt="hbase1.jpg"></a></figure>
+<h3 id="hbase分布式系统简介">HBase分布式系统简介</h3>
+<ul>
+<li>HMaster
+<ul>
+<li>HBase主/从集群架构中的中央节点</li>
+<li>负责将region（HBase中存储最小单元，表格的基本单位）分配给RegionServer，协调RegionServer的负载并维护集群状态</li>
+<li>维护表和Region的元数据，不参与数据的输入/输出过程</li>
+</ul>
+</li>
+<li>RegionServer
+<ul>
+<li>维护HMaster分配给他的region，处理对这些region的IO请求</li>
+<li>负责切分正在运行过程中变得过大的region</li>
+</ul>
+</li>
+<li>Zookeeper
+<ul>
+<li>集群协调器，保证至少一个节点出于active状态</li>
+<li>HMaster启动将系统表加载到ZK（用于服务发现）</li>
+<li>提供HBase RegionServer状态信息</li>
+</ul>
+</li>
+</ul>
+<h2 id="hbase原理">HBase原理</h2>
+<h3 id="hbase写流程">HBase写流程</h3>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2018/12/15/5c14eab0b66f1.jpg"><img src="https://i.loli.net/2018/12/15/5c14eab0b66f1.jpg" alt="hbase2.jpg"></a></figure>
+<ol>
+<li>Client先访问zookeeper，得到对应的RegionServer地址</li>
+<li>Client对RegionServer发起写请求，RegionServer接受数据写入内存</li>
+<li>当MemStore的大小达到一定值后，flush到StoreFile并存储到HDFS</li>
+</ol>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2018/12/15/5c14f18fb8065.jpg"><img src="https://i.loli.net/2018/12/15/5c14f18fb8065.jpg" alt="hbase3.jpg"></a></figure>
+<p>HBase特殊点在于其先写内存再写日志，通过类似MySQL中MVCC机制保证一致性</p>
+<h3 id="hbase读流程">HBase读流程</h3>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2018/12/15/5c14f377038f9.jpg"><img src="https://i.loli.net/2018/12/15/5c14f377038f9.jpg" alt="hbase4.jpg"></a></figure>
+<ol>
+<li>Client先访问zookeeper，得到对应的RegionServer地址</li>
+<li>Client对RegionServer发起读请求</li>
+<li>当RegionServer收到client的读请求后，先扫描自己的Memstore，再扫描BlockCache（加速读内容缓存区）如果还没找到则从StoreFile中读取数据，然后将数据返回给Client</li>
+</ol>
+<h4 id="读特点">读特点</h4>
+<ul>
+<li>读过程与HMaster无关，只和ZK有关，有效的减小HMaster负载</li>
+</ul>
+<h3 id="hbase模块协作">HBase模块协作</h3>
+<p>有关HBase的三个问题</p>
+<ol>
+<li>HBase启动时发生了什么</li>
+<li>当RegionServer失效后会发生什么</li>
+<li>当HMaster失效后会发生什么</li>
+</ol>
+<h4 id="hbase启动">HBase启动</h4>
+<ol>
+<li>HBase启动，注册到zookeeper，等待RegionServer汇报</li>
+<li>RegionServer注册到zookeeper，并向HMaster汇报</li>
+<li>对各个RegionServer（包括失效的）的数据进行整理，分配Region和meta信息（所有表的索引）</li>
+</ol>
+<h4 id="regionserver失效">RegionServer失效</h4>
+<ol>
+<li>HMaster将失效RegionServer上的Region分配到其他节点</li>
+<li>HMaster更新HBase：meta表保证数据正常访问</li>
+</ol>
+<h4 id="hmaster失效">HMaster失效</h4>
+<p>配置高可用后</p>
+<ol>
+<li>出于Backup状态的其他HMaster节点选举出一个转为Active状态</li>
+</ol>
+<p>未配置高可用</p>
+<ol>
+<li>数据能正常读写，但不能创建删除表，也不能更改表结构，因为涉及meta表更新</li>
+</ol>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a>
+<ul>
+<li><a href="#hbase-%E7%AE%80%E4%BB%8B">HBase 简介</a></li>
+<li><a href="#hbase%E5%9C%B0%E4%BD%8D">Hbase地位</a></li>
+<li><a href="#hbase%E4%B8%8Ehdfs">Hbase与HDFS</a></li>
+<li><a href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF">适用场景</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%8E%9F%E7%90%86">存储模型与原理</a>
+<ul>
+<li><a href="#cap%E5%AE%9A%E7%90%86">CAP定理</a></li>
+<li><a href="#acid">ACID</a></li>
+<li><a href="#hbase%E6%A6%82%E5%BF%B5">HBase概念</a></li>
+<li><a href="#hbase%E4%B8%8E%E4%BC%A0%E7%BB%9F%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8C%BA%E5%88%AB">HBase与传统关系数据库的区别</a></li>
+</ul>
+</li>
+<li><a href="#hbase%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84">HBase基础架构</a>
+<ul>
+<li><a href="#hbase%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B">HBase分布式系统简介</a></li>
+</ul>
+</li>
+<li><a href="#hbase%E5%8E%9F%E7%90%86">HBase原理</a>
+<ul>
+<li><a href="#hbase%E5%86%99%E6%B5%81%E7%A8%8B">HBase写流程</a></li>
+<li><a href="#hbase%E8%AF%BB%E6%B5%81%E7%A8%8B">HBase读流程</a>
+<ul>
+<li><a href="#%E8%AF%BB%E7%89%B9%E7%82%B9">读特点</a></li>
+</ul>
+</li>
+<li><a href="#hbase%E6%A8%A1%E5%9D%97%E5%8D%8F%E4%BD%9C">HBase模块协作</a>
+<ul>
+<li><a href="#hbase%E5%90%AF%E5%8A%A8">HBase启动</a></li>
+<li><a href="#regionserver%E5%A4%B1%E6%95%88">RegionServer失效</a></li>
+<li><a href="#hmaster%E5%A4%B1%E6%95%88">HMaster失效</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
