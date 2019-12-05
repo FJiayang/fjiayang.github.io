@@ -7,7 +7,7 @@
 <title>
     Java | F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531442838">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531442838" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -112,17 +112,17 @@
                     <time class="post-time">2019-04-03</time>
                     
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-success">
             #Java
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/wYlRrVT0US" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-">
             #CDN
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/ZugDp5bXgc" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-success">
             #nginx
         </a>
                         
@@ -152,7 +152,7 @@
                     <time class="post-time">2019-03-30</time>
                     
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_2">
             #Java
         </a>
                         
@@ -162,7 +162,7 @@
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/VwGnvPo1M" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-info">
             #学习
         </a>
                         
@@ -191,17 +191,17 @@
                     <time class="post-time">2018-12-27</time>
                     
                         <a href="https://fjiayang.github.io//tag/dYu0hrq6S" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-banana">
             #Mybatis
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-other_4">
             #Java
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-banana">
             #SpringBoot
         </a>
                         
@@ -299,6 +299,605 @@ You may want to specify a custom annotation or a marker interface for scanning. 
                 </div>
             </article>
             
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/java8-sheng-chan-huan-jing-xia-xing-neng-jian-kong-yu-diao-you-xiang-jie-bi-ji">
+                        Java8生产环境下性能监控与调优详解笔记
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-other_3">
+            #Java
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            [toc]
+官方文档
+JDK命令行参数
+标准化参数，各个jvm版本中不变
+-参数
+-help
+-version
+-server
+-client
+非标准化参数，不同jvm版本可能会变化
+-X参数
+-Xint:解释执行
+-Xcomp:第一次全部编译成本地代码（首次运行速度慢）
+-Xmixed:混合模式（默认），JVM自己决定是否编译成本地代码
+PS C:\Users\11860&amp;gt; java -version
+java version &amp;quot;1.8.0_151&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
+
+-XX参数
+布尔类型
+格式：-XX:[+-]表示启用或禁用
+-XX:+UseConcMarkSweepGC 表示启用CMS垃圾回收器
+-XX:+UseG1GC 表示启用G1垃圾回收器
+值类型
+格式：-XX:=表示name属性的值是value
+-XX:MaxGCPauseMillis=500 表示GC最大停顿时间为500
+-XX:GCTimeRatio=19
+-Xms -Xmx
+-Xms等价于-XX:InitialHeapSize 即初始化堆大小
+-Xmx等价于-XX:MaxHeapSize 最大堆大小
+JVM运行时参数
+-XX:+PrintFlagsInitial 查看初始值
+-XX:+PrintFlagsFinal 查看最终值
+-XX:+UnlockDiagnosticVMOptions 解锁诊断参数
+-XX:+PrintCommandLineFlags 打印命令行参数
++PrintFlagsFinal
+= 即默认值
+:= 即用户或JVM修改后的值
+PS C:\Users\11860&amp;gt; java -XX:+PrintFlagsFinal -version
+[Global flags]
+    uintx AdaptiveSizeDecrementScaleFactor          = 4                                   {product}
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10                                  {product}
+    uintx AdaptiveSizePausePolicy                   = 0                                   {product}
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50                                  {product}
+    uintx InitialCodeCacheSize                      = 2555904                             {pd product}
+    uintx InitialHeapSize                          := 268435456                           {product}
+    bool UseG1GC                                    = false                                {product}
+
+jps
+专用于查看java进程
+PS C:\Users\11860&amp;gt; jps
+14624 Jps
+10248
+14168 proxyee-down.exe
+2120 RemoteMavenServer
+5192 main\proxyee-down-core.jar
+
+
+jps -l显示全称
+
+PS C:\Users\11860&amp;gt; jps -l
+10248
+14168 proxyee-down-2.54\proxyee-down.exe
+1800 sun.tools.jps.Jps
+2120 org.jetbrains.idea.maven.server.RemoteMavenServer
+5192 /proxyee-down-2.54/main\proxyee-down-core.jar
+
+命令参考地址
+jinfo
+查看正在运行的java程序参数
+PS C:\Users\11860&amp;gt; jinfo
+Usage:
+    jinfo [option] &amp;lt;pid&amp;gt;
+        (to connect to running process)
+    jinfo [option] &amp;lt;executable &amp;lt;core&amp;gt;
+        (to connect to a core file)
+    jinfo [option] [server_id@]&amp;lt;remote server IP or hostname&amp;gt;
+        (to connect to remote debug server)
+
+where &amp;lt;option&amp;gt; is one of:
+    -flag &amp;lt;name&amp;gt;         to print the value of the named VM flag
+    -flag [+|-]&amp;lt;name&amp;gt;    to enable or disable the named VM flag
+    -flag &amp;lt;name&amp;gt;=&amp;lt;value&amp;gt; to set the named VM flag to the given value
+    -flags               to print VM flags
+    -sysprops            to print Java system properties
+    &amp;lt;no option&amp;gt;          to print both of the above
+    -h | -help           to print this help message
+
+查看最大内存
+
+jinfo -flag MaxHeapSize
+
+PS C:\Users\11860&amp;gt; jinfo -flag MaxHeapSize 2120
+-XX:MaxHeapSize=805306368
+
+查看垃圾回收器
+
+jinfo -flag  UseG1GC
+
+jstat
+查看jvm统计信息
+PS C:\Users\11860&amp;gt; jstat -help
+Usage: jstat -help|-options
+       jstat -&amp;lt;option&amp;gt; [-t] [-h&amp;lt;lines&amp;gt;] &amp;lt;vmid&amp;gt; [&amp;lt;interval&amp;gt; [&amp;lt;count&amp;gt;]]
+
+Definitions:
+  &amp;lt;option&amp;gt;      An option reported by the -options option
+  &amp;lt;vmid&amp;gt;        Virtual Machine Identifier. A vmid takes the following form:
+                     &amp;lt;lvmid&amp;gt;[@&amp;lt;hostname&amp;gt;[:&amp;lt;port&amp;gt;]]
+                Where &amp;lt;lvmid&amp;gt; is the local vm identifier for the target
+                Java virtual machine, typically a process id; &amp;lt;hostname&amp;gt; is
+                the name of the host running the target Java virtual machine;
+                and &amp;lt;port&amp;gt; is the port number for the rmiregistry on the
+                target host. See the jvmstat documentation for a more complete
+                description of the Virtual Machine Identifier.
+  &amp;lt;lines&amp;gt;       Number of samples between header lines.
+  &amp;lt;interval&amp;gt;    Sampling interval. The following forms are allowed:
+                    &amp;lt;n&amp;gt;[&amp;quot;ms&amp;quot;|&amp;quot;s&amp;quot;]
+                Where &amp;lt;n&amp;gt; is an integer and the suffix specifies the units as
+                milliseconds(&amp;quot;ms&amp;quot;) or seconds(&amp;quot;s&amp;quot;). The default units are &amp;quot;ms&amp;quot;.
+  &amp;lt;count&amp;gt;       Number of samples to take before terminating.
+  -J&amp;lt;flag&amp;gt;      Pass &amp;lt;flag&amp;gt; directly to the runtime system.
+
+官方文档
+可选参数
+
+-statOption
+Determines the statistics information the jstat command displays. The following lists the available options. Use the -options general option to display the list of options for a particular platform installation. See Stat Options and Output.
+class: Displays statistics about the behavior of the class loader.
+
+compiler: Displays statistics about the behavior of the Java HotSpot VM Just-in-Time compiler.
+
+gc: Displays statistics about the behavior of the garbage collected heap.
+
+gccapacity: Displays statistics about the capacities of the generations and their corresponding spaces.
+
+gccause: Displays a summary about garbage collection statistics (same as -gcutil), with the cause of the last and current (when applicable) garbage collection events.
+
+gcnew: Displays statistics of the behavior of the new generation.
+
+gcnewcapacity: Displays statistics about the sizes of the new generations and its corresponding spaces.
+
+gcold: Displays statistics about the behavior of the old generation and metaspace statistics.
+
+gcoldcapacity: Displays statistics about the sizes of the old generation.
+
+gcmetacapacity: Displays statistics about the sizes of the metaspace.
+
+gcutil: Displays a summary about garbage collection statistics.
+
+printcompilation: Displays Java HotSpot VM compilation method statistics.
+
+
+类加载
+
+-class
+Stat Options and Output
+The following information summarizes the columns that the jstat command outputs for each statOption.
+-class option
+Class loader statistics.
+Loaded: Number of classes loaded.
+
+Bytes: Number of kBs loaded.
+
+Unloaded: Number of classes unloaded.
+
+Bytes: Number of Kbytes unloaded.
+
+Time: Time spent performing class loading and unloading operations.
+
+
+PS C:\Users\11860&amp;gt; jstat -class 2120
+Loaded  Bytes  Unloaded  Bytes     Time
+  4271  7387.1       98   137.6       3.28
+
+垃圾收集
+-gc
+输出含义
+S0C、S1C、S0U、S1U：S0和S1的总用量与使用量
+EC、EU：Eden区总量与使用量
+OC、OU：Old区总量与使用量
+MC、MU：Metaspace区总量与使用量
+CCSC、CCSU：压缩类空间总量与使用量
+YGC、YGCT：YoungGC的次数与时间
+FGC、FGCT：FullGC的次数与时间
+GCT：总的GC时间
+解释：S0=S1，同一时间只启用s1或s0，S0+S1+Eden=Young，内存堆=Young+Old
+默认命令只输出一次
+PS C:\Users\11860&amp;gt; jstat -gc 2120
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT
+35840.0 51712.0  0.0    0.0   158720.0 11900.5   102400.0    9199.6   24192.0 22964.4 2944.0 2550.2      8    0.314   2      0.154    0.468
+
+指定输出参数为每隔一秒输出一次，共输出10次
+PS C:\Users\11860&amp;gt; jstat -gc 5192 1000 10
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT
+4352.0 4352.0 2228.1  0.0   34944.0  19156.1   87424.0    75913.1   36864.0 35975.9  0.0    0.0     2338    7.004   8      0.459    7.463
+4352.0 4352.0  0.0   2131.3 34944.0   7184.2   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2339    7.006   8      0.459    7.466
+4352.0 4352.0  0.0   2131.3 34944.0  31117.2   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2339    7.006   8      0.459    7.466
+4352.0 4352.0 2320.3  0.0   34944.0   8482.5   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2340    7.009   8      0.459    7.468
+4352.0 4352.0 2320.3  0.0   34944.0  29236.0   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2340    7.009   8      0.459    7.468
+4352.0 4352.0  0.0   2058.5 34944.0  11809.7   87424.0    76348.8   36864.0 35975.9  0.0    0.0     2341    7.012   8      0.459    7.471
+4352.0 4352.0 2339.3  0.0   34944.0    0.0     87424.0    76348.8   36864.0 35975.9  0.0    0.0     2342    7.015   8      0.459    7.474
+4352.0 4352.0 2339.3  0.0   34944.0  11533.3   87424.0    76348.8   36864.0 35975.9  0.0    0.0     2342    7.015   8      0.459    7.474
+4352.0 4352.0  0.0   2076.1 34944.0   3826.1   87424.0    76520.6   36864.0 35975.9  0.0    0.0     2343    7.017   8      0.459    7.476
+4352.0 4352.0  0.0   2076.1 34944.0  11102.7   87424.0    76520.6   36864.0 35975.9  0.0    0.0     2343    7.017   8      0.459    7.476
+
+JIT编译
+-complier
+PS C:\Users\11860&amp;gt; jstat -compiler 2120
+Compiled Failed Invalid   Time   FailedType FailedMethod
+    5234      0       0    16.70          0
+
+JVM内存结构
+
+内存溢出
+堆区内存溢出
+非堆区内存溢出
+导出内存映像文件
+当内存溢出时自动导出
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=./
+jmap命令手动导出
+PS C:\Users\11860&amp;gt; jmap -help
+Usage:
+    jmap [option] &amp;lt;pid&amp;gt;
+        (to connect to running process)
+    jmap [option] &amp;lt;executable &amp;lt;core&amp;gt;
+        (to connect to a core file)
+    jmap [option] [server_id@]&amp;lt;remote server IP or hostname&amp;gt;
+        (to connect to remote debug server)
+
+where &amp;lt;option&amp;gt; is one of:
+    &amp;lt;none&amp;gt;               to print same info as Solaris pmap
+    -heap                to print java heap summary
+    -histo[:live]        to print histogram of java object heap; if the &amp;quot;live&amp;quot;
+                         suboption is specified, only count live objects
+    -clstats             to print class loader statistics
+    -finalizerinfo       to print information on objects awaiting finalization
+    -dump:&amp;lt;dump-options&amp;gt; to dump java heap in hprof binary format
+                         dump-options:
+                           live         dump only live objects; if not specified,
+                                        all objects in the heap are dumped.
+                           format=b     binary format
+                           file=&amp;lt;file&amp;gt;  dump heap to &amp;lt;file&amp;gt;
+                         Example: jmap -dump:live,format=b,file=heap.bin &amp;lt;pid&amp;gt;
+    -F                   force. Use with -dump:&amp;lt;dump-options&amp;gt; &amp;lt;pid&amp;gt; or -histo
+                         to force a heap dump or histogram when &amp;lt;pid&amp;gt; does not
+                         respond. The &amp;quot;live&amp;quot; suboption is not supported
+                         in this mode.
+    -h | -help           to print this help message
+    -J&amp;lt;flag&amp;gt;             to pass &amp;lt;flag&amp;gt; directly to the runtime system
+
+手动导出映像文件
+PS C:\Users\11860&amp;gt; jmap -dump:format=b,file=heap.hprof 11720
+Dumping heap to L:\heap.hprof ...
+Heap dump file created
+
+jmap相关命令
+PS C:\Users\11860&amp;gt; jmap -heap 11720
+Attaching to process ID 11720, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 25.151-b12
+
+using thread-local object allocation.
+Parallel GC with 8 thread(s)
+
+Heap Configuration:
+   MinHeapFreeRatio         = 0
+   MaxHeapFreeRatio         = 100
+   MaxHeapSize              = 33554432 (32.0MB)
+   NewSize                  = 11010048 (10.5MB)
+   MaxNewSize               = 11010048 (10.5MB)
+   OldSize                  = 22544384 (21.5MB)
+   NewRatio                 = 2
+   SurvivorRatio            = 8
+   MetaspaceSize            = 21807104 (20.796875MB)
+   CompressedClassSpaceSize = 1073741824 (1024.0MB)
+   MaxMetaspaceSize         = 17592186044415 MB
+   G1HeapRegionSize         = 0 (0.0MB)
+
+Heap Usage:
+PS Young Generation
+Eden Space:
+   capacity = 7864320 (7.5MB)
+   used     = 6748264 (6.435646057128906MB)
+   free     = 1116056 (1.0643539428710938MB)
+   85.80861409505208% used
+From Space:
+   capacity = 1572864 (1.5MB)
+   used     = 950272 (0.90625MB)
+   free     = 622592 (0.59375MB)
+   60.416666666666664% used
+To Space:
+   capacity = 1572864 (1.5MB)
+   used     = 0 (0.0MB)
+   free     = 1572864 (1.5MB)
+   0.0% used
+PS Old Generation
+   capacity = 22544384 (21.5MB)
+   used     = 21187512 (20.20598602294922MB)
+   free     = 1356872 (1.2940139770507812MB)
+   93.9813303392987% used
+
+16212 interned Strings occupying 2160560 bytes.
+
+MAT分析内存溢出
+工具下载
+导入文件显示怀疑内存溢出（Leak suspects）
+
+选择直方图
+
+找到影响最大的项目，右键查看强引用以判断这些占用内存大的对象由谁引用，由此定位内存溢出问题
+
+
+选择实体树
+
+也可看出存在大量对象加载
+
+jstack
+分析线程状态
+PS C:\Users\11860&amp;gt; jstack
+Usage:
+    jstack [-l] &amp;lt;pid&amp;gt;
+        (to connect to running process)
+    jstack -F [-m] [-l] &amp;lt;pid&amp;gt;
+        (to connect to a hung process)
+    jstack [-m] [-l] &amp;lt;executable&amp;gt; &amp;lt;core&amp;gt;
+        (to connect to a core file)
+    jstack [-m] [-l] [server_id@]&amp;lt;remote server IP or hostname&amp;gt;
+        (to connect to a remote debug server)
+
+Options:
+    -F  to force a thread dump. Use when jstack &amp;lt;pid&amp;gt; does not respond (process is hung)
+    -m  to print both java and native frames (mixed mode)
+    -l  long listing. Prints additional information about locks
+    -h or -help to print this help message
+
+手动导出
+jstack 23276 &amp;gt; RemoteMavenServerJstack
+
+线程状态官方文档
+[线程状态互相转化]https://mp.weixin.qq.com/s/GsxeFM7QWuR--Kbpb7At2w)
+jstack定位CPU飙高问题
+tomcat 远程监控
+开启tomcat远程监控
+startup.sh 在最后一行的&#39;start &amp;quot;$@&amp;quot;&#39;前加上&#39;jpda&#39;
+catalina.sh 搜索jpda,可看到jpda使用说明
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/java8-sheng-chan-huan-jing-xia-xing-neng-jian-kong-yu-diao-you-xiang-jie-bi-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/spring-data-jpa-zhi-shi-ji-lu">
+                        Spring Data JPA 知识记录
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-success">
+            #Java
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            jpa方法命名规则
+
+
+
+关键字
+方法命名
+sql where字句
+
+
+
+
+And
+findByNameAndPwd
+where name= ? and pwd =?
+
+
+Or
+findByNameOrSex
+where name= ? or sex=?
+
+
+Is,Equals
+findById,findByIdEquals
+where id= ?
+
+
+Between
+findByIdBetween
+where id between ? and ?
+
+
+LessThan
+findByIdLessThan
+where id &amp;lt; ?
+
+
+LessThanEquals
+findByIdLessThanEquals
+where id &amp;lt;= ?
+
+
+GreaterThan
+findByIdGreaterThan
+where id &amp;gt; ?
+
+
+GreaterThanEquals
+findByIdGreaterThanEquals
+where id &amp;gt; = ?
+
+
+After
+findByIdAfter
+where id &amp;gt; ?
+
+
+Before
+findByIdBefore
+where id &amp;lt; ?
+
+
+IsNull
+findByNameIsNull
+where name is null
+
+
+isNotNull,NotNull
+findByNameNotNull
+where name is not null
+
+
+Like
+findByNameLike
+where name like ?
+
+
+NotLike
+findByNameNotLike
+where name not like ?
+
+
+StartingWith
+findByNameStartingWith
+where name like &#39;?%&#39;
+
+
+EndingWith
+findByNameEndingWith
+where name like &#39;%?&#39;
+
+
+Containing
+findByNameContaining
+where name like &#39;%?%&#39;
+
+
+OrderBy
+findByIdOrderByXDesc
+where id=? order by x desc
+
+
+Not
+findByNameNot
+where name &amp;lt;&amp;gt; ?
+
+
+In
+findByIdIn(Collection&amp;lt;?&amp;gt; c)
+where id in (?)
+
+
+NotIn
+findByIdNotIn(Collection&amp;lt;?&amp;gt; c)
+where id not  in (?)
+
+
+TRUE
+findByAaaTue
+where aaa = true
+
+
+FALSE
+findByAaaFalse
+where aaa = false
+
+
+IgnoreCase
+findByNameIgnoreCase
+where UPPER(name)=UPPER(?)
+
+
+
+常用注解
+自动生成时间和修改者
+@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy
+在spring jpa中，支持在字段或者方法上进行注解@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy，从字面意思可以很清楚的了解，这几个注解的用处。
+@CreatedDate
+表示该字段为创建时间时间字段，在这个实体被insert的时候，会设置值
+@CreatedBy
+表示该字段为创建人，在这个实体被insert的时候，会设置值
+@LastModifiedDate、@LastModifiedBy同理。
+自动建表引擎设置
+使用SpringDataJpa自动建表默认为MyISAM，而主流大多数场景都需要使用InnoDB，可通过配置文件配置即可
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL55Dialect
+
+注意：类名有所变化
+早期通过网上搜索的类名都说为org.hibernate.dialect.MySQL5InnoDBDialect，当实际测试时发现引擎依然为MyISAM，通过进一步查询源码发现早期类名已经弃用
+/*
+ * Hibernate, Relational Persistence for Idiomatic Java
+ *
+ * License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+ * See the lgpl.txt file in the root directory or &amp;lt;http://www.gnu.org/licenses/lgpl-2.1.html&amp;gt;.
+ */
+package org.hibernate.dialect;
+
+/** A Dialect for MySQL 5 using InnoDB engine
+ *
+ * @author Gavin King,
+ * @author Scott Marlow
+ * @deprecated Use &amp;quot;hibernate.dialect.storage_engine=innodb&amp;quot; environment variable or JVM system property instead.
+ */
+@Deprecated
+public class MySQL5InnoDBDialect extends MySQL5Dialect {
+
+	@Override
+	protected MySQLStorageEngine getDefaultMySQLStorageEngine() {
+		return InnoDBStorageEngine.INSTANCE;
+	}
+}
+
+
+但注释里并没有指明新的替代类名，而是建议通过配置实现，但SpringDataJpa自动装配的类里没有支持该配置，故如果不单独引入hibernate依赖是无法使用该配置的
+最后在stackoverflow上看到解决方案：where to put hibernate.dialect.storage_engine property
+即使用新的类名org.hibernate.dialect.MySQL55Dialect替换即可，尽管两个类名初看没差别，实际上差了一个数字5，影响比较大
+MySQL驱动变化
+在使用了新版的驱动类后，不管是MyBatis还是Jpa，都会报时区不一致和报错信息乱码的错误需要将连接URL更新
+新配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 
+    url: jdbc:mysql://localhost/pw_manager?useSSL=false&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=UTC
+
+原配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: cmsspringcloud
+    password: cmsdbadmin
+    url: jdbc:mysql://localhost:3306/cms_springcloud?characterEncoding=utf-8&amp;amp;useSSL=false
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/spring-data-jpa-zhi-shi-ji-lu">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
                 <!-- 翻页 -->
                 
                 </div>
@@ -310,7 +909,7 @@ You may want to specify a custom annotation or a marker interface for scanning. 
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531442838)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531653467)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

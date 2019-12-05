@@ -7,7 +7,7 @@
 <title>
     F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531442838">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531442838" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,12 +107,12 @@
                     <time class="post-time">2018-12-27</time>
                     
                         <a href="https://fjiayang.github.io//tag/dYu0hrq6S" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_1">
             #Mybatis
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-banana">
             #Java
         </a>
                         
@@ -225,7 +225,7 @@ You may want to specify a custom annotation or a marker interface for scanning. 
                     <time class="post-time">2018-12-15</time>
                     
                         <a href="https://fjiayang.github.io//tag/Of4MIljUs" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-other_1">
             #HBase
         </a>
                         
@@ -548,7 +548,7 @@ drwxr-xr-x   - hadoop supergroup          0 2018-12-15 17:14 /test
                     <time class="post-time">2018-12-15</time>
                     
                         <a href="https://fjiayang.github.io//tag/Of4MIljUs" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-info">
             #HBase
         </a>
                         
@@ -800,6 +800,1054 @@ HMaster失效
                 </div>
             </article>
             
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/java8-sheng-chan-huan-jing-xia-xing-neng-jian-kong-yu-diao-you-xiang-jie-bi-ji">
+                        Java8生产环境下性能监控与调优详解笔记
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-info">
+            #Java
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            [toc]
+官方文档
+JDK命令行参数
+标准化参数，各个jvm版本中不变
+-参数
+-help
+-version
+-server
+-client
+非标准化参数，不同jvm版本可能会变化
+-X参数
+-Xint:解释执行
+-Xcomp:第一次全部编译成本地代码（首次运行速度慢）
+-Xmixed:混合模式（默认），JVM自己决定是否编译成本地代码
+PS C:\Users\11860&amp;gt; java -version
+java version &amp;quot;1.8.0_151&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
+
+-XX参数
+布尔类型
+格式：-XX:[+-]表示启用或禁用
+-XX:+UseConcMarkSweepGC 表示启用CMS垃圾回收器
+-XX:+UseG1GC 表示启用G1垃圾回收器
+值类型
+格式：-XX:=表示name属性的值是value
+-XX:MaxGCPauseMillis=500 表示GC最大停顿时间为500
+-XX:GCTimeRatio=19
+-Xms -Xmx
+-Xms等价于-XX:InitialHeapSize 即初始化堆大小
+-Xmx等价于-XX:MaxHeapSize 最大堆大小
+JVM运行时参数
+-XX:+PrintFlagsInitial 查看初始值
+-XX:+PrintFlagsFinal 查看最终值
+-XX:+UnlockDiagnosticVMOptions 解锁诊断参数
+-XX:+PrintCommandLineFlags 打印命令行参数
++PrintFlagsFinal
+= 即默认值
+:= 即用户或JVM修改后的值
+PS C:\Users\11860&amp;gt; java -XX:+PrintFlagsFinal -version
+[Global flags]
+    uintx AdaptiveSizeDecrementScaleFactor          = 4                                   {product}
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10                                  {product}
+    uintx AdaptiveSizePausePolicy                   = 0                                   {product}
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50                                  {product}
+    uintx InitialCodeCacheSize                      = 2555904                             {pd product}
+    uintx InitialHeapSize                          := 268435456                           {product}
+    bool UseG1GC                                    = false                                {product}
+
+jps
+专用于查看java进程
+PS C:\Users\11860&amp;gt; jps
+14624 Jps
+10248
+14168 proxyee-down.exe
+2120 RemoteMavenServer
+5192 main\proxyee-down-core.jar
+
+
+jps -l显示全称
+
+PS C:\Users\11860&amp;gt; jps -l
+10248
+14168 proxyee-down-2.54\proxyee-down.exe
+1800 sun.tools.jps.Jps
+2120 org.jetbrains.idea.maven.server.RemoteMavenServer
+5192 /proxyee-down-2.54/main\proxyee-down-core.jar
+
+命令参考地址
+jinfo
+查看正在运行的java程序参数
+PS C:\Users\11860&amp;gt; jinfo
+Usage:
+    jinfo [option] &amp;lt;pid&amp;gt;
+        (to connect to running process)
+    jinfo [option] &amp;lt;executable &amp;lt;core&amp;gt;
+        (to connect to a core file)
+    jinfo [option] [server_id@]&amp;lt;remote server IP or hostname&amp;gt;
+        (to connect to remote debug server)
+
+where &amp;lt;option&amp;gt; is one of:
+    -flag &amp;lt;name&amp;gt;         to print the value of the named VM flag
+    -flag [+|-]&amp;lt;name&amp;gt;    to enable or disable the named VM flag
+    -flag &amp;lt;name&amp;gt;=&amp;lt;value&amp;gt; to set the named VM flag to the given value
+    -flags               to print VM flags
+    -sysprops            to print Java system properties
+    &amp;lt;no option&amp;gt;          to print both of the above
+    -h | -help           to print this help message
+
+查看最大内存
+
+jinfo -flag MaxHeapSize
+
+PS C:\Users\11860&amp;gt; jinfo -flag MaxHeapSize 2120
+-XX:MaxHeapSize=805306368
+
+查看垃圾回收器
+
+jinfo -flag  UseG1GC
+
+jstat
+查看jvm统计信息
+PS C:\Users\11860&amp;gt; jstat -help
+Usage: jstat -help|-options
+       jstat -&amp;lt;option&amp;gt; [-t] [-h&amp;lt;lines&amp;gt;] &amp;lt;vmid&amp;gt; [&amp;lt;interval&amp;gt; [&amp;lt;count&amp;gt;]]
+
+Definitions:
+  &amp;lt;option&amp;gt;      An option reported by the -options option
+  &amp;lt;vmid&amp;gt;        Virtual Machine Identifier. A vmid takes the following form:
+                     &amp;lt;lvmid&amp;gt;[@&amp;lt;hostname&amp;gt;[:&amp;lt;port&amp;gt;]]
+                Where &amp;lt;lvmid&amp;gt; is the local vm identifier for the target
+                Java virtual machine, typically a process id; &amp;lt;hostname&amp;gt; is
+                the name of the host running the target Java virtual machine;
+                and &amp;lt;port&amp;gt; is the port number for the rmiregistry on the
+                target host. See the jvmstat documentation for a more complete
+                description of the Virtual Machine Identifier.
+  &amp;lt;lines&amp;gt;       Number of samples between header lines.
+  &amp;lt;interval&amp;gt;    Sampling interval. The following forms are allowed:
+                    &amp;lt;n&amp;gt;[&amp;quot;ms&amp;quot;|&amp;quot;s&amp;quot;]
+                Where &amp;lt;n&amp;gt; is an integer and the suffix specifies the units as
+                milliseconds(&amp;quot;ms&amp;quot;) or seconds(&amp;quot;s&amp;quot;). The default units are &amp;quot;ms&amp;quot;.
+  &amp;lt;count&amp;gt;       Number of samples to take before terminating.
+  -J&amp;lt;flag&amp;gt;      Pass &amp;lt;flag&amp;gt; directly to the runtime system.
+
+官方文档
+可选参数
+
+-statOption
+Determines the statistics information the jstat command displays. The following lists the available options. Use the -options general option to display the list of options for a particular platform installation. See Stat Options and Output.
+class: Displays statistics about the behavior of the class loader.
+
+compiler: Displays statistics about the behavior of the Java HotSpot VM Just-in-Time compiler.
+
+gc: Displays statistics about the behavior of the garbage collected heap.
+
+gccapacity: Displays statistics about the capacities of the generations and their corresponding spaces.
+
+gccause: Displays a summary about garbage collection statistics (same as -gcutil), with the cause of the last and current (when applicable) garbage collection events.
+
+gcnew: Displays statistics of the behavior of the new generation.
+
+gcnewcapacity: Displays statistics about the sizes of the new generations and its corresponding spaces.
+
+gcold: Displays statistics about the behavior of the old generation and metaspace statistics.
+
+gcoldcapacity: Displays statistics about the sizes of the old generation.
+
+gcmetacapacity: Displays statistics about the sizes of the metaspace.
+
+gcutil: Displays a summary about garbage collection statistics.
+
+printcompilation: Displays Java HotSpot VM compilation method statistics.
+
+
+类加载
+
+-class
+Stat Options and Output
+The following information summarizes the columns that the jstat command outputs for each statOption.
+-class option
+Class loader statistics.
+Loaded: Number of classes loaded.
+
+Bytes: Number of kBs loaded.
+
+Unloaded: Number of classes unloaded.
+
+Bytes: Number of Kbytes unloaded.
+
+Time: Time spent performing class loading and unloading operations.
+
+
+PS C:\Users\11860&amp;gt; jstat -class 2120
+Loaded  Bytes  Unloaded  Bytes     Time
+  4271  7387.1       98   137.6       3.28
+
+垃圾收集
+-gc
+输出含义
+S0C、S1C、S0U、S1U：S0和S1的总用量与使用量
+EC、EU：Eden区总量与使用量
+OC、OU：Old区总量与使用量
+MC、MU：Metaspace区总量与使用量
+CCSC、CCSU：压缩类空间总量与使用量
+YGC、YGCT：YoungGC的次数与时间
+FGC、FGCT：FullGC的次数与时间
+GCT：总的GC时间
+解释：S0=S1，同一时间只启用s1或s0，S0+S1+Eden=Young，内存堆=Young+Old
+默认命令只输出一次
+PS C:\Users\11860&amp;gt; jstat -gc 2120
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT
+35840.0 51712.0  0.0    0.0   158720.0 11900.5   102400.0    9199.6   24192.0 22964.4 2944.0 2550.2      8    0.314   2      0.154    0.468
+
+指定输出参数为每隔一秒输出一次，共输出10次
+PS C:\Users\11860&amp;gt; jstat -gc 5192 1000 10
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT
+4352.0 4352.0 2228.1  0.0   34944.0  19156.1   87424.0    75913.1   36864.0 35975.9  0.0    0.0     2338    7.004   8      0.459    7.463
+4352.0 4352.0  0.0   2131.3 34944.0   7184.2   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2339    7.006   8      0.459    7.466
+4352.0 4352.0  0.0   2131.3 34944.0  31117.2   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2339    7.006   8      0.459    7.466
+4352.0 4352.0 2320.3  0.0   34944.0   8482.5   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2340    7.009   8      0.459    7.468
+4352.0 4352.0 2320.3  0.0   34944.0  29236.0   87424.0    76050.5   36864.0 35975.9  0.0    0.0     2340    7.009   8      0.459    7.468
+4352.0 4352.0  0.0   2058.5 34944.0  11809.7   87424.0    76348.8   36864.0 35975.9  0.0    0.0     2341    7.012   8      0.459    7.471
+4352.0 4352.0 2339.3  0.0   34944.0    0.0     87424.0    76348.8   36864.0 35975.9  0.0    0.0     2342    7.015   8      0.459    7.474
+4352.0 4352.0 2339.3  0.0   34944.0  11533.3   87424.0    76348.8   36864.0 35975.9  0.0    0.0     2342    7.015   8      0.459    7.474
+4352.0 4352.0  0.0   2076.1 34944.0   3826.1   87424.0    76520.6   36864.0 35975.9  0.0    0.0     2343    7.017   8      0.459    7.476
+4352.0 4352.0  0.0   2076.1 34944.0  11102.7   87424.0    76520.6   36864.0 35975.9  0.0    0.0     2343    7.017   8      0.459    7.476
+
+JIT编译
+-complier
+PS C:\Users\11860&amp;gt; jstat -compiler 2120
+Compiled Failed Invalid   Time   FailedType FailedMethod
+    5234      0       0    16.70          0
+
+JVM内存结构
+
+内存溢出
+堆区内存溢出
+非堆区内存溢出
+导出内存映像文件
+当内存溢出时自动导出
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=./
+jmap命令手动导出
+PS C:\Users\11860&amp;gt; jmap -help
+Usage:
+    jmap [option] &amp;lt;pid&amp;gt;
+        (to connect to running process)
+    jmap [option] &amp;lt;executable &amp;lt;core&amp;gt;
+        (to connect to a core file)
+    jmap [option] [server_id@]&amp;lt;remote server IP or hostname&amp;gt;
+        (to connect to remote debug server)
+
+where &amp;lt;option&amp;gt; is one of:
+    &amp;lt;none&amp;gt;               to print same info as Solaris pmap
+    -heap                to print java heap summary
+    -histo[:live]        to print histogram of java object heap; if the &amp;quot;live&amp;quot;
+                         suboption is specified, only count live objects
+    -clstats             to print class loader statistics
+    -finalizerinfo       to print information on objects awaiting finalization
+    -dump:&amp;lt;dump-options&amp;gt; to dump java heap in hprof binary format
+                         dump-options:
+                           live         dump only live objects; if not specified,
+                                        all objects in the heap are dumped.
+                           format=b     binary format
+                           file=&amp;lt;file&amp;gt;  dump heap to &amp;lt;file&amp;gt;
+                         Example: jmap -dump:live,format=b,file=heap.bin &amp;lt;pid&amp;gt;
+    -F                   force. Use with -dump:&amp;lt;dump-options&amp;gt; &amp;lt;pid&amp;gt; or -histo
+                         to force a heap dump or histogram when &amp;lt;pid&amp;gt; does not
+                         respond. The &amp;quot;live&amp;quot; suboption is not supported
+                         in this mode.
+    -h | -help           to print this help message
+    -J&amp;lt;flag&amp;gt;             to pass &amp;lt;flag&amp;gt; directly to the runtime system
+
+手动导出映像文件
+PS C:\Users\11860&amp;gt; jmap -dump:format=b,file=heap.hprof 11720
+Dumping heap to L:\heap.hprof ...
+Heap dump file created
+
+jmap相关命令
+PS C:\Users\11860&amp;gt; jmap -heap 11720
+Attaching to process ID 11720, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 25.151-b12
+
+using thread-local object allocation.
+Parallel GC with 8 thread(s)
+
+Heap Configuration:
+   MinHeapFreeRatio         = 0
+   MaxHeapFreeRatio         = 100
+   MaxHeapSize              = 33554432 (32.0MB)
+   NewSize                  = 11010048 (10.5MB)
+   MaxNewSize               = 11010048 (10.5MB)
+   OldSize                  = 22544384 (21.5MB)
+   NewRatio                 = 2
+   SurvivorRatio            = 8
+   MetaspaceSize            = 21807104 (20.796875MB)
+   CompressedClassSpaceSize = 1073741824 (1024.0MB)
+   MaxMetaspaceSize         = 17592186044415 MB
+   G1HeapRegionSize         = 0 (0.0MB)
+
+Heap Usage:
+PS Young Generation
+Eden Space:
+   capacity = 7864320 (7.5MB)
+   used     = 6748264 (6.435646057128906MB)
+   free     = 1116056 (1.0643539428710938MB)
+   85.80861409505208% used
+From Space:
+   capacity = 1572864 (1.5MB)
+   used     = 950272 (0.90625MB)
+   free     = 622592 (0.59375MB)
+   60.416666666666664% used
+To Space:
+   capacity = 1572864 (1.5MB)
+   used     = 0 (0.0MB)
+   free     = 1572864 (1.5MB)
+   0.0% used
+PS Old Generation
+   capacity = 22544384 (21.5MB)
+   used     = 21187512 (20.20598602294922MB)
+   free     = 1356872 (1.2940139770507812MB)
+   93.9813303392987% used
+
+16212 interned Strings occupying 2160560 bytes.
+
+MAT分析内存溢出
+工具下载
+导入文件显示怀疑内存溢出（Leak suspects）
+
+选择直方图
+
+找到影响最大的项目，右键查看强引用以判断这些占用内存大的对象由谁引用，由此定位内存溢出问题
+
+
+选择实体树
+
+也可看出存在大量对象加载
+
+jstack
+分析线程状态
+PS C:\Users\11860&amp;gt; jstack
+Usage:
+    jstack [-l] &amp;lt;pid&amp;gt;
+        (to connect to running process)
+    jstack -F [-m] [-l] &amp;lt;pid&amp;gt;
+        (to connect to a hung process)
+    jstack [-m] [-l] &amp;lt;executable&amp;gt; &amp;lt;core&amp;gt;
+        (to connect to a core file)
+    jstack [-m] [-l] [server_id@]&amp;lt;remote server IP or hostname&amp;gt;
+        (to connect to a remote debug server)
+
+Options:
+    -F  to force a thread dump. Use when jstack &amp;lt;pid&amp;gt; does not respond (process is hung)
+    -m  to print both java and native frames (mixed mode)
+    -l  long listing. Prints additional information about locks
+    -h or -help to print this help message
+
+手动导出
+jstack 23276 &amp;gt; RemoteMavenServerJstack
+
+线程状态官方文档
+[线程状态互相转化]https://mp.weixin.qq.com/s/GsxeFM7QWuR--Kbpb7At2w)
+jstack定位CPU飙高问题
+tomcat 远程监控
+开启tomcat远程监控
+startup.sh 在最后一行的&#39;start &amp;quot;$@&amp;quot;&#39;前加上&#39;jpda&#39;
+catalina.sh 搜索jpda,可看到jpda使用说明
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/java8-sheng-chan-huan-jing-xia-xing-neng-jian-kong-yu-diao-you-xiang-jie-bi-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/spring-data-jpa-zhi-shi-ji-lu">
+                        Spring Data JPA 知识记录
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-success">
+            #Java
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            jpa方法命名规则
+
+
+
+关键字
+方法命名
+sql where字句
+
+
+
+
+And
+findByNameAndPwd
+where name= ? and pwd =?
+
+
+Or
+findByNameOrSex
+where name= ? or sex=?
+
+
+Is,Equals
+findById,findByIdEquals
+where id= ?
+
+
+Between
+findByIdBetween
+where id between ? and ?
+
+
+LessThan
+findByIdLessThan
+where id &amp;lt; ?
+
+
+LessThanEquals
+findByIdLessThanEquals
+where id &amp;lt;= ?
+
+
+GreaterThan
+findByIdGreaterThan
+where id &amp;gt; ?
+
+
+GreaterThanEquals
+findByIdGreaterThanEquals
+where id &amp;gt; = ?
+
+
+After
+findByIdAfter
+where id &amp;gt; ?
+
+
+Before
+findByIdBefore
+where id &amp;lt; ?
+
+
+IsNull
+findByNameIsNull
+where name is null
+
+
+isNotNull,NotNull
+findByNameNotNull
+where name is not null
+
+
+Like
+findByNameLike
+where name like ?
+
+
+NotLike
+findByNameNotLike
+where name not like ?
+
+
+StartingWith
+findByNameStartingWith
+where name like &#39;?%&#39;
+
+
+EndingWith
+findByNameEndingWith
+where name like &#39;%?&#39;
+
+
+Containing
+findByNameContaining
+where name like &#39;%?%&#39;
+
+
+OrderBy
+findByIdOrderByXDesc
+where id=? order by x desc
+
+
+Not
+findByNameNot
+where name &amp;lt;&amp;gt; ?
+
+
+In
+findByIdIn(Collection&amp;lt;?&amp;gt; c)
+where id in (?)
+
+
+NotIn
+findByIdNotIn(Collection&amp;lt;?&amp;gt; c)
+where id not  in (?)
+
+
+TRUE
+findByAaaTue
+where aaa = true
+
+
+FALSE
+findByAaaFalse
+where aaa = false
+
+
+IgnoreCase
+findByNameIgnoreCase
+where UPPER(name)=UPPER(?)
+
+
+
+常用注解
+自动生成时间和修改者
+@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy
+在spring jpa中，支持在字段或者方法上进行注解@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy，从字面意思可以很清楚的了解，这几个注解的用处。
+@CreatedDate
+表示该字段为创建时间时间字段，在这个实体被insert的时候，会设置值
+@CreatedBy
+表示该字段为创建人，在这个实体被insert的时候，会设置值
+@LastModifiedDate、@LastModifiedBy同理。
+自动建表引擎设置
+使用SpringDataJpa自动建表默认为MyISAM，而主流大多数场景都需要使用InnoDB，可通过配置文件配置即可
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL55Dialect
+
+注意：类名有所变化
+早期通过网上搜索的类名都说为org.hibernate.dialect.MySQL5InnoDBDialect，当实际测试时发现引擎依然为MyISAM，通过进一步查询源码发现早期类名已经弃用
+/*
+ * Hibernate, Relational Persistence for Idiomatic Java
+ *
+ * License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+ * See the lgpl.txt file in the root directory or &amp;lt;http://www.gnu.org/licenses/lgpl-2.1.html&amp;gt;.
+ */
+package org.hibernate.dialect;
+
+/** A Dialect for MySQL 5 using InnoDB engine
+ *
+ * @author Gavin King,
+ * @author Scott Marlow
+ * @deprecated Use &amp;quot;hibernate.dialect.storage_engine=innodb&amp;quot; environment variable or JVM system property instead.
+ */
+@Deprecated
+public class MySQL5InnoDBDialect extends MySQL5Dialect {
+
+	@Override
+	protected MySQLStorageEngine getDefaultMySQLStorageEngine() {
+		return InnoDBStorageEngine.INSTANCE;
+	}
+}
+
+
+但注释里并没有指明新的替代类名，而是建议通过配置实现，但SpringDataJpa自动装配的类里没有支持该配置，故如果不单独引入hibernate依赖是无法使用该配置的
+最后在stackoverflow上看到解决方案：where to put hibernate.dialect.storage_engine property
+即使用新的类名org.hibernate.dialect.MySQL55Dialect替换即可，尽管两个类名初看没差别，实际上差了一个数字5，影响比较大
+MySQL驱动变化
+在使用了新版的驱动类后，不管是MyBatis还是Jpa，都会报时区不一致和报错信息乱码的错误需要将连接URL更新
+新配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 
+    url: jdbc:mysql://localhost/pw_manager?useSSL=false&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=UTC
+
+原配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: cmsspringcloud
+    password: cmsdbadmin
+    url: jdbc:mysql://localhost:3306/cms_springcloud?characterEncoding=utf-8&amp;amp;useSSL=false
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/spring-data-jpa-zhi-shi-ji-lu">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/idea-chang-yong-kuai-jie-jian-windows">
+                        IDEA常用快捷键-windows
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/4ecKp1nP2" class="post-tag i-tag
+                            i-tag-banana">
+            #IDE
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            查看方法的具体实现
+ctrl+alt+鼠标点击
+查找接口实现类
+ctrl + alt +B
+自动补全函数返回值
+IDEA的ctrl+alt+v相当于eclipse的CTRL+F1
+查找源码类
+ctrl+N
+查找方法
+ctrl+F12
+复制当前行到下一行
+ctrl+D
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/idea-chang-yong-kuai-jie-jian-windows">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/scala-xue-xi-bi-ji">
+                        Scala 学习笔记
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/mwAPVTrct" class="post-tag i-tag
+                            i-tag-other_1">
+            #Scala
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            伴生类与伴生对象
+特点
+
+同名的class与同名的object互为伴生类和伴生对象
+若object中有名为apply的方法，则通过类名()会在类初始化完成后调用object的apply方法
+若class有名为apply的方法，则通过对象()默认调用class的apply方法
+
+object A{
+    def apply(){
+        ...
+    }
+}
+class A{
+    def apply(){
+        ...
+    }
+}
+
+val b = A() //此处默认调用object 的apply方法
+
+val c = new A()
+c() // 此处调用class 的apply方法
+
+
+最佳实践：在object的apply方法中new class
+trait
+类似java的接口
+用法
+class A extends B with C with D ...
+
+集合
+List
+特点
+
+Nil 为不可变的空List
+List由head和tail组成，head为第一个元素，剩余元素为tail
+List组装通过::实现
+
+val l1 = 1 :: Nil // 返回包含一个元素的集合List(1)，即把1作为head，Nil作为tail
+
+
+List可通过:_*转成可变参数
+
+l1.tail:_*
+
+模式匹配
+特点
+
+类似java中的switch
+支持多重过滤
+支持内容、类型匹配
+
+函数高级操作
+字符串高级操作
+插值
+字符串前通过字母s声明，内容通过$接变量名即可
+  val h = &amp;quot;hello&amp;quot;
+  val name = &amp;quot;FJY&amp;quot;
+  println(h +&amp;quot; &amp;quot;+ name) // hello FJY
+
+  println(s&amp;quot;hello $name&amp;quot;) // hello FJY
+
+输出结果相同
+多行字符串
+IDEA创建多行字符串：Shift+’ 按3次即可，创建结果为
+  val b =
+    &amp;quot;&amp;quot;&amp;quot;
+      |
+    &amp;quot;&amp;quot;&amp;quot;.stripMargin
+
+
+样例
+
+  val b =
+    &amp;quot;&amp;quot;&amp;quot;
+      |多行字符串样例
+      |Hello Scala
+    &amp;quot;&amp;quot;&amp;quot;.stripMargin
+
+  println(b)
+
+最终结果为原样输出
+匿名函数
+函数可以命名，也可以不命名
+定义方式：（参数名：参数类型...）=&amp;gt; 函数体
+
+样例1
+
+    val m = (x:Int) =&amp;gt; x+1
+    println(m(10)) // 11
+
+(x:Int) =&amp;gt; x+1为匿名函数，等价于{(x:Int) =&amp;gt; x+1}
+匿名函数可传给变量，也可传给函数
+
+样例2
+
+    def plus = (x:Int,y:Int)=&amp;gt; x+y
+    println(plus(2,3)) // 5
+
+柯里化函数
+
+样例
+
+    // 原函数
+    def plus1(x:Int,y:Int)= x+y
+    println(plus1(2,3))
+    
+    // 柯里化后
+    def plus2(x:Int)(y:Int)= x+y
+    println(plus2(2)(3))
+
+即将多参数分拆
+高阶函数
+map
+作用：逐个操作集合中的元素
+list.map((x)=&amp;gt;x+1) // 对集合中的每个元素执行+1操作
+list.map(_ * 2) // 集合中每个元素*2，_ 为占位符
+
+其中x=&amp;gt;x+1为匿名函数，只有一个元素参数的函数括号可以省略
+filter
+作用：过滤
+list.filter(_ &amp;gt; 2) // 只拿出大于2的元素
+
+reduce
+作用：操作两个元素
+list.reduce(_ + _) // 集合中相邻的元素两两相加，即求和
+
+reduceXX方法
+reduceLeft,reduceRight,foldLeft,foldRight方法
+val a = List(1,7,2,9)
+val a1 = a.reduceLeft(_ - _)//      ((1-7) - 2) - 9 = -17
+val a2 = a.foldLeft(0)(_ - _) //    0-1-7-2-9 = -19
+
+对于foldLeft方法还有一种简写，这种写法的本意是让你通过/:来联想一棵树的样子
+对/:操作符来说，初始值是第一个操作元本题中是0，：后是第二个操作元a
+val a3 = (0 /: a)(_ - _) //      等价于a.foldLeft(0)(_ - _
+
+
+foldRight或:\的变体
+
+val a4 = a.foldRight(0)(_ - _)//    1-(7-(2-(9-0))) = -13
+val a5 = (a :\ 0)(_ - _)   //    等价于a.foldRight(0)(_ - _)
+
+flatten
+作用：将多个集合元素转成一个集合元素
+flatMap
+作用：将多个集合元素转成一个集合后对每个元素执行操作
+
+Spark word count
+
+text_file.flatMap(lambda line : line.split()).map(lambda word:(word,1)).reduceByKey(lambda a, b:a+b)
+
+即将文件中的元素拆分，再映射上一个初值，最后两两相加
+
+原生scala实现wordcount
+
+txts.flatMap(_.split(&amp;quot;,&amp;quot;)).map(x =&amp;gt; (x,1)).groupBy(_._1).mapValues(_.size).foreach(println)
+
+偏函数
+含义：被包在花括号内没有match的一组case语句
+一般通过match实现方式
+  val names = Array(&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;C&amp;quot;)
+  val name = names(Random.nextInt(names.length))
+  name match {
+    case &amp;quot;A&amp;quot; =&amp;gt; &amp;quot;AAAAAAAA&amp;quot;
+    case &amp;quot;B&amp;quot; =&amp;gt; &amp;quot;BBBBBBBB&amp;quot;
+    case _ =&amp;gt; &amp;quot;CCCCCCCC&amp;quot;
+  }
+
+通过偏函数实现
+  // -A 输入参数类型 -B 输出参数类型
+  def say:PartialFunction[String,String]={
+    case &amp;quot;A&amp;quot; =&amp;gt; &amp;quot;AAAAAAAA&amp;quot;
+    case &amp;quot;B&amp;quot; =&amp;gt; &amp;quot;BBBBBBBB&amp;quot;
+    case _ =&amp;gt; &amp;quot;CCCCCCCC&amp;quot;
+  }
+
+能自动进行模式匹配
+隐式转换
+解决问题：为一个已经存在的类添加一个方法
+Java实现方式：动态代理
+Scala实现方式：隐式转换
+注意：该特性为双刃剑，容易使代码难以理解
+
+Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用implicit关键字修饰的类。在对应的作用域内，带有这个关键字的类的主构造函数可用于隐式转换。
+
+
+样例
+
+object ImplicitApp extends App {
+
+  // 定义隐式转换函数，传入源对象，输出目标对象
+  implicit def  man2superman(man: Man):Superman=new Superman(man.name)
+
+  val man = new Man(&amp;quot;FJY&amp;quot;)
+  man.fly()
+}
+
+class Man(val name:String){
+  def eat(): Unit ={
+    printf(s&amp;quot;man[ $name ] eat...&amp;quot;)
+  }
+}
+
+class Superman(val name:String){
+  def fly(): Unit ={
+    printf(s&amp;quot;superman[ $name ] fly...&amp;quot;)
+  }
+}
+
+
+样例2：为Java IO类增加读取文件内容方法
+
+object RichFileApp extends App {
+
+  // 目的在于为Java IO类增加读取文件内容方法
+  implicit def file2RichFile(file: File):RichFile=new RichFile(file)
+
+  val f = new File(&amp;quot;tmp/hello.txt&amp;quot;)
+  println(f.readConent)
+}
+
+class RichFile(file:File){
+  def readConent={
+    Source.fromFile(file.getPath).mkString
+  }
+}
+
+隐式参数
+隐式参数会自动寻找方法、类内部、伴生类内类型匹配的唯一参数，不推荐使用
+
+样例
+
+object ImplicitParaApp {
+
+  implicit val test = &amp;quot;test&amp;quot;
+  def main(args: Array[String]): Unit = {
+
+    // 隐式参数会自动寻找方法、类内部、伴生类内类型匹配的唯一参数
+    // 若外部定义了多个隐式参数则报错
+    def testPara(implicit name:String): Unit ={
+      println(name + &amp;quot;...&amp;quot;)
+    }
+
+    testPara
+  }
+
+}
+
+隐式类
+使用隐式类时，类名必须在当前作用域内可见且无歧义，这一要求与隐式值等其他隐式类型转换方式类似。
+object ImplicitClassApp extends App {
+
+  implicit class Calculator(x:Int){
+    def add(a:Int) = a+x
+  }
+  // 原本整数1不具有add方法，使用隐式类后拥有该方法
+  println(1.add(2))
+
+}
+
+操作外部数据
+scala.io.Source
+该对象支持操作文件、网络流等，例如读取文件方法源码支持通过柯里化指定字符集
+  def fromFile(name: String)(implicit codec: Codec): BufferedSource =
+    fromFile(new JFile(name))(codec)
+
+
+样例——读取文件
+
+val file = Source.fromFile(&amp;quot;tmp/file.txt&amp;quot;)(Codec.UTF8)
+
+
+样例——逐行读取
+
+  def readLine(file: BufferedSource): Unit ={
+    for (line &amp;lt;- file.getLines()){
+      println(line)
+    }
+  }
+
+
+样例——逐个字符读取
+
+  def readChar(file: BufferedSource): Unit ={
+    for (ele &amp;lt;- file){
+      print(ele)
+    }
+  }
+
+
+样例——网络读取
+
+  def readNet(url:String): Unit ={
+    val file = Source.fromURL(url)
+    for (line &amp;lt;- file.getLines()){
+      println(line)
+    }
+  }
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/scala-xue-xi-bi-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/linux-mian-ban-appnode-yu-bao-ta-heng-ping">
+                        Linux面板APPNODE与宝塔横评
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
+                            i-tag-other_4">
+            #评测
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/P0Y0B_QdTG" class="post-tag i-tag
+                            i-tag-">
+            #宝塔
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            宝塔
+宝塔从2017年底开始接触并全面在自己服务器上推广使用，到目前为止手上的服务器需要建站数据库之类的都部署了宝塔，同时开发测试环境的服务器为了方便管理也部署了宝塔，可以说用了也算比较长时间了，宝塔的优势也比较明显
+1. 界面简单，逻辑明确
+系统信息一目了然
+
+2. 软件安装简单
+基本都是无脑安装，之前在开发测试环境搭建Redis和MySQL就是通过宝塔快速安装的，5分钟内搭建完毕快速测试，而且卸载的比较干净，特别是如果小白自己下载MySQL编译包安装很容易出现卸载残留导致无法安装新的MySQL
+
+3. 快捷的防火墙管理
+宝塔提供的防火墙管理基本满足需求，比使用防火墙命令逐个放行便捷
+
+总结
+总的来说宝塔适合建站管理，快速应用部署，但对于复杂的操作还是需要自行通过终端解决，而且防火墙功能有限，抗CC攻击等都需要付费或者搭建其他软件
+APPNODE
+在最近看到APPNODE这个管理面板，在虚拟机跑了一下发现其功能强大，还是有点意思的。
+以下逐一说明（无广告费）
+1. 简单安装
+其实APPNODE和宝塔都是一键安装，自选服务器环境这些共同点，从这点上来说没什么差别，两者甚至连默认端口号都是一样的。。
+
+装好后的首页，默认展示建站指引（好评，第一次在宝塔建站还是摸索了一会的）
+
+更详细的服务器信息
+展示的服务器信息比宝塔详细很多，各项指标都有展示
+
+
+
+更多的系统软件
+可以安装许多软件目前都是免费的，软件也和宝塔类型类似，但有一些特别的，比如frp内网穿透之类还是不错的，比自己部署简单不少，不知道以后会不会收费
+
+网络测试软件看看就好
+
+更丰富的软件市场
+和宝塔类似的软件市场，同样种类更多，有些2017年才兴起的小众软件也在里面，也有不少刚需平台例如owncloud、nextcloud，而同样用宝塔搭建私有云还是挺折腾的
+
+功能完备的防火墙管理（重点）
+在我看来这个是与宝塔最大的不同，前面那些只要宝塔想加入其实也不难，但这个支持自己配置的防火墙规则，其实内部实现应该是通过nginx代理配置实现，但比宝塔收费的要良心，通过简单设置参数即可抵抗简单的DDOS攻击
+
+攻击测试，通过Apache ab压测进行DDOS攻击
+未开启之前所有请求顺利通过
+
+在配置1秒内最大访问次数后成功拦截，1000个请求只有70个有效，说明DDOS流量劫持被成功拦截
+
+更灵活的网站控制
+日志、SSL、负载情况、网站更新自动提醒重载nginx等
+另外还提供免费SSL证书自动续租，十分好评
+
+总结
+APPNODE适合对服务器操作熟悉，需要更大灵活度的定制服务器功能的用户，对于建站灵活度也非常高，而缺点也比较明显，功能多必然带来操作复杂，许多功能小白可能没听过，乱操作一波可能会翻车。。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/linux-mian-ban-appnode-yu-bao-ta-heng-ping">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
                 <!-- 翻页 -->
                 
     <div class="pagination-container">
@@ -818,7 +1866,7 @@ HMaster失效
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531442838)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531653467)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

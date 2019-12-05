@@ -1,0 +1,550 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Scala 学习笔记 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Scala 学习笔记
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-12-09</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/mwAPVTrct" class="post-tag i-tag
+                            i-tag-">
+                            #Scala
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="伴生类与伴生对象">伴生类与伴生对象</h2>
+<p>特点</p>
+<ol>
+<li>同名的class与同名的object互为伴生类和伴生对象</li>
+<li>若object中有名为apply的方法，则通过<code>类名()</code>会在类初始化完成后调用object的apply方法</li>
+<li>若class有名为apply的方法，则通过<code>对象()</code>默认调用class的apply方法</li>
+</ol>
+<pre><code class="language-scala">object A{
+    def apply(){
+        ...
+    }
+}
+class A{
+    def apply(){
+        ...
+    }
+}
+
+val b = A() //此处默认调用object 的apply方法
+
+val c = new A()
+c() // 此处调用class 的apply方法
+
+</code></pre>
+<p><strong>最佳实践：在object的apply方法中new class</strong></p>
+<h2 id="trait">trait</h2>
+<p>类似java的接口<br>
+用法</p>
+<pre><code class="language-scala">class A extends B with C with D ...
+</code></pre>
+<h2 id="集合">集合</h2>
+<h3 id="list">List</h3>
+<p>特点</p>
+<ol>
+<li>Nil 为不可变的空List</li>
+<li>List由head和tail组成，head为第一个元素，剩余元素为tail</li>
+<li>List组装通过<code>::</code>实现</li>
+</ol>
+<pre><code class="language-scala">val l1 = 1 :: Nil // 返回包含一个元素的集合List(1)，即把1作为head，Nil作为tail
+</code></pre>
+<ol start="4">
+<li>List可通过<code>:_*</code>转成可变参数</li>
+</ol>
+<pre><code class="language-scala">l1.tail:_*
+</code></pre>
+<h2 id="模式匹配">模式匹配</h2>
+<p>特点</p>
+<ol>
+<li>类似java中的switch</li>
+<li>支持多重过滤</li>
+<li>支持内容、类型匹配</li>
+</ol>
+<h2 id="函数高级操作">函数高级操作</h2>
+<h3 id="字符串高级操作">字符串高级操作</h3>
+<h4 id="插值">插值</h4>
+<p>字符串前通过字母s声明，内容通过$接变量名即可</p>
+<pre><code class="language-scala">  val h = &quot;hello&quot;
+  val name = &quot;FJY&quot;
+  println(h +&quot; &quot;+ name) // hello FJY
+
+  println(s&quot;hello $name&quot;) // hello FJY
+</code></pre>
+<p>输出结果相同</p>
+<h4 id="多行字符串">多行字符串</h4>
+<p>IDEA创建多行字符串：Shift+’ 按3次即可，创建结果为</p>
+<pre><code class="language-scala">  val b =
+    &quot;&quot;&quot;
+      |
+    &quot;&quot;&quot;.stripMargin
+</code></pre>
+<ul>
+<li>样例</li>
+</ul>
+<pre><code class="language-scala">  val b =
+    &quot;&quot;&quot;
+      |多行字符串样例
+      |Hello Scala
+    &quot;&quot;&quot;.stripMargin
+
+  println(b)
+</code></pre>
+<p>最终结果为原样输出</p>
+<h3 id="匿名函数">匿名函数</h3>
+<p>函数可以命名，也可以不命名</p>
+<p>定义方式：（参数名：参数类型...）=&gt; 函数体</p>
+<ul>
+<li>样例1</li>
+</ul>
+<pre><code class="language-scala">    val m = (x:Int) =&gt; x+1
+    println(m(10)) // 11
+</code></pre>
+<p><code>(x:Int) =&gt; x+1</code>为匿名函数，等价于<code>{(x:Int) =&gt; x+1}</code></p>
+<p>匿名函数可传给变量，也可传给函数</p>
+<ul>
+<li>样例2</li>
+</ul>
+<pre><code class="language-scala">    def plus = (x:Int,y:Int)=&gt; x+y
+    println(plus(2,3)) // 5
+</code></pre>
+<h3 id="柯里化函数">柯里化函数</h3>
+<ul>
+<li>样例</li>
+</ul>
+<pre><code class="language-scala">    // 原函数
+    def plus1(x:Int,y:Int)= x+y
+    println(plus1(2,3))
+    
+    // 柯里化后
+    def plus2(x:Int)(y:Int)= x+y
+    println(plus2(2)(3))
+</code></pre>
+<p>即将多参数分拆</p>
+<h2 id="高阶函数">高阶函数</h2>
+<h3 id="map">map</h3>
+<p>作用：逐个操作集合中的元素</p>
+<pre><code class="language-scala">list.map((x)=&gt;x+1) // 对集合中的每个元素执行+1操作
+list.map(_ * 2) // 集合中每个元素*2，_ 为占位符
+</code></pre>
+<p>其中<code>x=&gt;x+1</code>为匿名函数，只有一个元素参数的函数括号可以省略</p>
+<h3 id="filter">filter</h3>
+<p>作用：过滤</p>
+<pre><code class="language-scala">list.filter(_ &gt; 2) // 只拿出大于2的元素
+</code></pre>
+<h3 id="reduce">reduce</h3>
+<p>作用：操作两个元素</p>
+<pre><code class="language-scala">list.reduce(_ + _) // 集合中相邻的元素两两相加，即求和
+</code></pre>
+<h4 id="reducexx方法">reduceXX方法</h4>
+<p>reduceLeft,reduceRight,foldLeft,foldRight方法</p>
+<pre><code class="language-scala">val a = List(1,7,2,9)
+val a1 = a.reduceLeft(_ - _)//      ((1-7) - 2) - 9 = -17
+val a2 = a.foldLeft(0)(_ - _) //    0-1-7-2-9 = -19
+</code></pre>
+<p>对于foldLeft方法还有一种简写，这种写法的本意是让你通过/:来联想一棵树的样子<br>
+对/:操作符来说，初始值是第一个操作元本题中是0，：后是第二个操作元a</p>
+<pre><code class="language-scala">val a3 = (0 /: a)(_ - _) //      等价于a.foldLeft(0)(_ - _
+</code></pre>
+<ul>
+<li>foldRight或:\的变体</li>
+</ul>
+<pre><code class="language-scala">val a4 = a.foldRight(0)(_ - _)//    1-(7-(2-(9-0))) = -13
+val a5 = (a :\ 0)(_ - _)   //    等价于a.foldRight(0)(_ - _)
+</code></pre>
+<h3 id="flatten">flatten</h3>
+<p>作用：将多个集合元素转成一个集合元素</p>
+<h3 id="flatmap">flatMap</h3>
+<p>作用：将多个集合元素转成一个集合后对每个元素执行操作</p>
+<ul>
+<li>Spark word count</li>
+</ul>
+<pre><code class="language-scala">text_file.flatMap(lambda line : line.split()).map(lambda word:(word,1)).reduceByKey(lambda a, b:a+b)
+</code></pre>
+<p>即将文件中的元素拆分，再映射上一个初值，最后两两相加</p>
+<ul>
+<li>原生scala实现wordcount</li>
+</ul>
+<pre><code class="language-scala">txts.flatMap(_.split(&quot;,&quot;)).map(x =&gt; (x,1)).groupBy(_._1).mapValues(_.size).foreach(println)
+</code></pre>
+<h2 id="偏函数">偏函数</h2>
+<p>含义：被包在花括号内没有match的一组case语句</p>
+<p>一般通过match实现方式</p>
+<pre><code class="language-scala">  val names = Array(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
+  val name = names(Random.nextInt(names.length))
+  name match {
+    case &quot;A&quot; =&gt; &quot;AAAAAAAA&quot;
+    case &quot;B&quot; =&gt; &quot;BBBBBBBB&quot;
+    case _ =&gt; &quot;CCCCCCCC&quot;
+  }
+</code></pre>
+<p>通过偏函数实现</p>
+<pre><code class="language-scala">  // -A 输入参数类型 -B 输出参数类型
+  def say:PartialFunction[String,String]={
+    case &quot;A&quot; =&gt; &quot;AAAAAAAA&quot;
+    case &quot;B&quot; =&gt; &quot;BBBBBBBB&quot;
+    case _ =&gt; &quot;CCCCCCCC&quot;
+  }
+</code></pre>
+<p>能自动进行模式匹配</p>
+<h2 id="隐式转换">隐式转换</h2>
+<p>解决问题：为一个已经存在的类添加一个方法</p>
+<p>Java实现方式：动态代理</p>
+<p>Scala实现方式：隐式转换</p>
+<p>注意：该特性为双刃剑，容易使代码难以理解</p>
+<blockquote>
+<p>Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用implicit关键字修饰的类。在对应的作用域内，带有这个关键字的类的主构造函数可用于隐式转换。</p>
+</blockquote>
+<ul>
+<li>样例</li>
+</ul>
+<pre><code class="language-scala">object ImplicitApp extends App {
+
+  // 定义隐式转换函数，传入源对象，输出目标对象
+  implicit def  man2superman(man: Man):Superman=new Superman(man.name)
+
+  val man = new Man(&quot;FJY&quot;)
+  man.fly()
+}
+
+class Man(val name:String){
+  def eat(): Unit ={
+    printf(s&quot;man[ $name ] eat...&quot;)
+  }
+}
+
+class Superman(val name:String){
+  def fly(): Unit ={
+    printf(s&quot;superman[ $name ] fly...&quot;)
+  }
+}
+</code></pre>
+<ul>
+<li>样例2：为Java IO类增加读取文件内容方法</li>
+</ul>
+<pre><code class="language-scala">object RichFileApp extends App {
+
+  // 目的在于为Java IO类增加读取文件内容方法
+  implicit def file2RichFile(file: File):RichFile=new RichFile(file)
+
+  val f = new File(&quot;tmp/hello.txt&quot;)
+  println(f.readConent)
+}
+
+class RichFile(file:File){
+  def readConent={
+    Source.fromFile(file.getPath).mkString
+  }
+}
+</code></pre>
+<h3 id="隐式参数">隐式参数</h3>
+<p>隐式参数会自动寻找方法、类内部、伴生类内类型匹配的唯一参数，不推荐使用</p>
+<ul>
+<li>样例</li>
+</ul>
+<pre><code class="language-scala">object ImplicitParaApp {
+
+  implicit val test = &quot;test&quot;
+  def main(args: Array[String]): Unit = {
+
+    // 隐式参数会自动寻找方法、类内部、伴生类内类型匹配的唯一参数
+    // 若外部定义了多个隐式参数则报错
+    def testPara(implicit name:String): Unit ={
+      println(name + &quot;...&quot;)
+    }
+
+    testPara
+  }
+
+}
+</code></pre>
+<h3 id="隐式类">隐式类</h3>
+<p>使用隐式类时，类名必须在当前作用域内可见且无歧义，这一要求与隐式值等其他隐式类型转换方式类似。</p>
+<pre><code class="language-scala">object ImplicitClassApp extends App {
+
+  implicit class Calculator(x:Int){
+    def add(a:Int) = a+x
+  }
+  // 原本整数1不具有add方法，使用隐式类后拥有该方法
+  println(1.add(2))
+
+}
+</code></pre>
+<h2 id="操作外部数据">操作外部数据</h2>
+<h3 id="scalaiosource">scala.io.Source</h3>
+<p>该对象支持操作文件、网络流等，例如读取文件方法源码支持通过柯里化指定字符集</p>
+<pre><code class="language-scala">  def fromFile(name: String)(implicit codec: Codec): BufferedSource =
+    fromFile(new JFile(name))(codec)
+</code></pre>
+<ul>
+<li>样例——读取文件</li>
+</ul>
+<pre><code class="language-scala">val file = Source.fromFile(&quot;tmp/file.txt&quot;)(Codec.UTF8)
+</code></pre>
+<ul>
+<li>样例——逐行读取</li>
+</ul>
+<pre><code class="language-scala">  def readLine(file: BufferedSource): Unit ={
+    for (line &lt;- file.getLines()){
+      println(line)
+    }
+  }
+</code></pre>
+<ul>
+<li>样例——逐个字符读取</li>
+</ul>
+<pre><code class="language-scala">  def readChar(file: BufferedSource): Unit ={
+    for (ele &lt;- file){
+      print(ele)
+    }
+  }
+</code></pre>
+<ul>
+<li>样例——网络读取</li>
+</ul>
+<pre><code class="language-scala">  def readNet(url:String): Unit ={
+    val file = Source.fromURL(url)
+    for (line &lt;- file.getLines()){
+      println(line)
+    }
+  }
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/linux-mian-ban-appnode-yu-bao-ta-heng-ping">
+                                <h3 class="post-title">
+                                    Linux面板APPNODE与宝塔横评
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BC%B4%E7%94%9F%E7%B1%BB%E4%B8%8E%E4%BC%B4%E7%94%9F%E5%AF%B9%E8%B1%A1">伴生类与伴生对象</a></li>
+<li><a href="#trait">trait</a></li>
+<li><a href="#%E9%9B%86%E5%90%88">集合</a>
+<ul>
+<li><a href="#list">List</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D">模式匹配</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C">函数高级操作</a>
+<ul>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C">字符串高级操作</a>
+<ul>
+<li><a href="#%E6%8F%92%E5%80%BC">插值</a></li>
+<li><a href="#%E5%A4%9A%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2">多行字符串</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0">匿名函数</a></li>
+<li><a href="#%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0">柯里化函数</a></li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0">高阶函数</a>
+<ul>
+<li><a href="#map">map</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#reduce">reduce</a>
+<ul>
+<li><a href="#reducexx%E6%96%B9%E6%B3%95">reduceXX方法</a></li>
+</ul>
+</li>
+<li><a href="#flatten">flatten</a></li>
+<li><a href="#flatmap">flatMap</a></li>
+</ul>
+</li>
+<li><a href="#%E5%81%8F%E5%87%BD%E6%95%B0">偏函数</a></li>
+<li><a href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2">隐式转换</a>
+<ul>
+<li><a href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0">隐式参数</a></li>
+<li><a href="#%E9%9A%90%E5%BC%8F%E7%B1%BB">隐式类</a></li>
+</ul>
+</li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE">操作外部数据</a>
+<ul>
+<li><a href="#scalaiosource">scala.io.Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

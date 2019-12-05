@@ -1,0 +1,407 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Spring Data JPA 知识记录 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Spring Data JPA 知识记录
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-12-09</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/qV7V2kVvY" class="post-tag i-tag
+                            i-tag-info">
+                            #Java
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="jpa方法命名规则">jpa方法命名规则</h2>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>方法命名</th>
+<th>sql where字句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>And</td>
+<td>findByNameAndPwd</td>
+<td>where name= ? and pwd =?</td>
+</tr>
+<tr>
+<td>Or</td>
+<td>findByNameOrSex</td>
+<td>where name= ? or sex=?</td>
+</tr>
+<tr>
+<td>Is,Equals</td>
+<td>findById,findByIdEquals</td>
+<td>where id= ?</td>
+</tr>
+<tr>
+<td>Between</td>
+<td>findByIdBetween</td>
+<td>where id between ? and ?</td>
+</tr>
+<tr>
+<td>LessThan</td>
+<td>findByIdLessThan</td>
+<td>where id &lt; ?</td>
+</tr>
+<tr>
+<td>LessThanEquals</td>
+<td>findByIdLessThanEquals</td>
+<td>where id &lt;= ?</td>
+</tr>
+<tr>
+<td>GreaterThan</td>
+<td>findByIdGreaterThan</td>
+<td>where id &gt; ?</td>
+</tr>
+<tr>
+<td>GreaterThanEquals</td>
+<td>findByIdGreaterThanEquals</td>
+<td>where id &gt; = ?</td>
+</tr>
+<tr>
+<td>After</td>
+<td>findByIdAfter</td>
+<td>where id &gt; ?</td>
+</tr>
+<tr>
+<td>Before</td>
+<td>findByIdBefore</td>
+<td>where id &lt; ?</td>
+</tr>
+<tr>
+<td>IsNull</td>
+<td>findByNameIsNull</td>
+<td>where name is null</td>
+</tr>
+<tr>
+<td>isNotNull,NotNull</td>
+<td>findByNameNotNull</td>
+<td>where name is not null</td>
+</tr>
+<tr>
+<td>Like</td>
+<td>findByNameLike</td>
+<td>where name like ?</td>
+</tr>
+<tr>
+<td>NotLike</td>
+<td>findByNameNotLike</td>
+<td>where name not like ?</td>
+</tr>
+<tr>
+<td>StartingWith</td>
+<td>findByNameStartingWith</td>
+<td>where name like '?%'</td>
+</tr>
+<tr>
+<td>EndingWith</td>
+<td>findByNameEndingWith</td>
+<td>where name like '%?'</td>
+</tr>
+<tr>
+<td>Containing</td>
+<td>findByNameContaining</td>
+<td>where name like '%?%'</td>
+</tr>
+<tr>
+<td>OrderBy</td>
+<td>findByIdOrderByXDesc</td>
+<td>where id=? order by x desc</td>
+</tr>
+<tr>
+<td>Not</td>
+<td>findByNameNot</td>
+<td>where name &lt;&gt; ?</td>
+</tr>
+<tr>
+<td>In</td>
+<td>findByIdIn(Collection&lt;?&gt; c)</td>
+<td>where id in (?)</td>
+</tr>
+<tr>
+<td>NotIn</td>
+<td>findByIdNotIn(Collection&lt;?&gt; c)</td>
+<td>where id not  in (?)</td>
+</tr>
+<tr>
+<td>TRUE</td>
+<td>findByAaaTue</td>
+<td>where aaa = true</td>
+</tr>
+<tr>
+<td>FALSE</td>
+<td>findByAaaFalse</td>
+<td>where aaa = false</td>
+</tr>
+<tr>
+<td>IgnoreCase</td>
+<td>findByNameIgnoreCase</td>
+<td>where UPPER(name)=UPPER(?)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用注解">常用注解</h2>
+<h3 id="自动生成时间和修改者">自动生成时间和修改者</h3>
+<p>@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy</p>
+<p>在spring jpa中，支持在字段或者方法上进行注解@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy，从字面意思可以很清楚的了解，这几个注解的用处。</p>
+<p>@CreatedDate<br>
+表示该字段为创建时间时间字段，在这个实体被insert的时候，会设置值</p>
+<p>@CreatedBy<br>
+表示该字段为创建人，在这个实体被insert的时候，会设置值</p>
+<p>@LastModifiedDate、@LastModifiedBy同理。</p>
+<h2 id="自动建表引擎设置">自动建表引擎设置</h2>
+<p>使用SpringDataJpa自动建表默认为MyISAM，而主流大多数场景都需要使用InnoDB，可通过配置文件配置即可</p>
+<pre><code class="language-yaml">spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL55Dialect
+</code></pre>
+<p><strong>注意：类名有所变化</strong></p>
+<p>早期通过网上搜索的类名都说为<code>org.hibernate.dialect.MySQL5InnoDBDialect</code>，当实际测试时发现引擎依然为MyISAM，通过进一步查询源码发现早期类名已经弃用</p>
+<pre><code class="language-java">/*
+ * Hibernate, Relational Persistence for Idiomatic Java
+ *
+ * License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+ * See the lgpl.txt file in the root directory or &lt;http://www.gnu.org/licenses/lgpl-2.1.html&gt;.
+ */
+package org.hibernate.dialect;
+
+/** A Dialect for MySQL 5 using InnoDB engine
+ *
+ * @author Gavin King,
+ * @author Scott Marlow
+ * @deprecated Use &quot;hibernate.dialect.storage_engine=innodb&quot; environment variable or JVM system property instead.
+ */
+@Deprecated
+public class MySQL5InnoDBDialect extends MySQL5Dialect {
+
+	@Override
+	protected MySQLStorageEngine getDefaultMySQLStorageEngine() {
+		return InnoDBStorageEngine.INSTANCE;
+	}
+}
+
+</code></pre>
+<p>但注释里并没有指明新的替代类名，而是建议通过配置实现，但SpringDataJpa自动装配的类里没有支持该配置，故如果不单独引入hibernate依赖是无法使用该配置的</p>
+<p>最后在<code>stackoverflow</code>上看到解决方案：<a href="https://stackoverflow.com/questions/48062256/where-to-put-hibernate-dialect-storage-engine-property">where to put hibernate.dialect.storage_engine property</a></p>
+<p>即使用新的类名<code>org.hibernate.dialect.MySQL55Dialect</code>替换即可，尽管两个类名初看没差别，实际上差了一个数字<code>5</code>，影响比较大</p>
+<h2 id="mysql驱动变化">MySQL驱动变化</h2>
+<p>在使用了新版的驱动类后，不管是MyBatis还是Jpa，都会报时区不一致和报错信息乱码的错误需要将连接URL更新</p>
+<p>新配置</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 
+    url: jdbc:mysql://localhost/pw_manager?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC
+</code></pre>
+<p>原配置</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: cmsspringcloud
+    password: cmsdbadmin
+    url: jdbc:mysql://localhost:3306/cms_springcloud?characterEncoding=utf-8&amp;useSSL=false
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/idea-chang-yong-kuai-jie-jian-windows">
+                                <h3 class="post-title">
+                                    IDEA常用快捷键-windows
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#jpa%E6%96%B9%E6%B3%95%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99">jpa方法命名规则</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3">常用注解</a>
+<ul>
+<li><a href="#%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%97%B6%E9%97%B4%E5%92%8C%E4%BF%AE%E6%94%B9%E8%80%85">自动生成时间和修改者</a></li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%BB%BA%E8%A1%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE">自动建表引擎设置</a></li>
+<li><a href="#mysql%E9%A9%B1%E5%8A%A8%E5%8F%98%E5%8C%96">MySQL驱动变化</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

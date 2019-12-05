@@ -1,0 +1,268 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Linux面板APPNODE与宝塔横评 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Linux面板APPNODE与宝塔横评
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-12-09</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
+                            i-tag-">
+                            #评测
+                        </a>
+                                
+                                <a href="https://fjiayang.github.io//tag/P0Y0B_QdTG" class="post-tag i-tag
+                            i-tag-error">
+                            #宝塔
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="宝塔">宝塔</h2>
+<p>宝塔从2017年底开始接触并全面在自己服务器上推广使用，到目前为止手上的服务器需要建站数据库之类的都部署了宝塔，同时开发测试环境的服务器为了方便管理也部署了宝塔，可以说用了也算比较长时间了，宝塔的优势也比较明显</p>
+<h3 id="1-界面简单逻辑明确">1. 界面简单，逻辑明确</h3>
+<p>系统信息一目了然</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2018/12/09/5c0ccc44a9fb9.png" alt="appnode13.png"></figure>
+<h3 id="2-软件安装简单">2. 软件安装简单</h3>
+<p>基本都是无脑安装，之前在开发测试环境搭建Redis和MySQL就是通过宝塔快速安装的，5分钟内搭建完毕快速测试，而且卸载的比较干净，特别是如果小白自己下载MySQL编译包安装很容易出现卸载残留导致无法安装新的MySQL</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2018/12/09/5c0ccc44b2aa0.png" alt="appnode14.png"></figure>
+<h3 id="3-快捷的防火墙管理">3. 快捷的防火墙管理</h3>
+<p>宝塔提供的防火墙管理基本满足需求，比使用防火墙命令逐个放行便捷</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2018/12/09/5c0ccdc2585ae.png" alt="appnode15.png"></figure>
+<h3 id="总结">总结</h3>
+<p>总的来说宝塔适合建站管理，快速应用部署，但对于复杂的操作还是需要自行通过终端解决，而且防火墙功能有限，抗CC攻击等都需要付费或者搭建其他软件</p>
+<h2 id="appnode">APPNODE</h2>
+<p>在最近看到APPNODE这个管理面板，在虚拟机跑了一下发现其功能强大，还是有点意思的。</p>
+<p>以下逐一说明（无广告费）</p>
+<h3 id="1-简单安装">1. 简单安装</h3>
+<p>其实APPNODE和宝塔都是一键安装，自选服务器环境这些共同点，从这点上来说没什么差别，两者甚至连默认端口号都是一样的。。<img src="https://i.loli.net/2018/12/09/5c0cc7fc74ae2.png" alt="appnode.png"></p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2018/12/09/5c0cc7fde89d0.png" alt="appnode1.png"></figure>
+<p>装好后的首页，默认展示建站指引（好评，第一次在宝塔建站还是摸索了一会的）</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2018/12/09/5c0cc7fded4d6.png" alt="appnode2.png"></figure>
+<h3 id="更详细的服务器信息">更详细的服务器信息</h3>
+<p>展示的服务器信息比宝塔详细很多，各项指标都有展示</p>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2018/12/09/5c0cc7fd8f30e.png" alt="appnode3.png"></figure>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2018/12/09/5c0cc7fc74af9.png" alt="appnode4.png"></figure>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2018/12/09/5c0cc7fc6f3e1.png" alt="appnode5.png"></figure>
+<h3 id="更多的系统软件">更多的系统软件</h3>
+<p>可以安装许多软件目前都是免费的，软件也和宝塔类型类似，但有一些特别的，比如frp内网穿透之类还是不错的，比自己部署简单不少，不知道以后会不会收费</p>
+<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2018/12/09/5c0cc7fd9862d.png" alt="appnode6.png"></figure>
+<p>网络测试软件看看就好</p>
+<figure data-type="image" tabindex="10"><img src="https://i.loli.net/2018/12/09/5c0cc7fc700c8.png" alt="appnode7.png"></figure>
+<h3 id="更丰富的软件市场">更丰富的软件市场</h3>
+<p>和宝塔类似的软件市场，同样种类更多，有些2017年才兴起的小众软件也在里面，也有不少刚需平台例如owncloud、nextcloud，而同样用宝塔搭建私有云还是挺折腾的</p>
+<figure data-type="image" tabindex="11"><img src="https://i.loli.net/2018/12/09/5c0cc7fd768f6.png" alt="appnode8.png"></figure>
+<h3 id="功能完备的防火墙管理重点">功能完备的防火墙管理（重点）</h3>
+<p>在我看来这个是与宝塔最大的不同，前面那些只要宝塔想加入其实也不难，但这个支持自己配置的防火墙规则，其实内部实现应该是通过nginx代理配置实现，但比宝塔收费的要良心，通过简单设置参数即可抵抗简单的DDOS攻击</p>
+<figure data-type="image" tabindex="12"><img src="https://i.loli.net/2018/12/09/5c0cc7fbc2bba.png" alt="appnode9.png"></figure>
+<p>攻击测试，通过Apache ab压测进行DDOS攻击</p>
+<p>未开启之前所有请求顺利通过</p>
+<figure data-type="image" tabindex="13"><img src="https://i.loli.net/2018/12/09/5c0cd1adb8123.png" alt="appnode10.png"></figure>
+<p>在配置1秒内最大访问次数后成功拦截，1000个请求只有70个有效，说明DDOS流量劫持被成功拦截</p>
+<figure data-type="image" tabindex="14"><img src="https://i.loli.net/2018/12/09/5c0cc800ef439.png" alt="appnode11.png"></figure>
+<h3 id="更灵活的网站控制">更灵活的网站控制</h3>
+<p>日志、SSL、负载情况、网站更新自动提醒重载nginx等</p>
+<p>另外还提供免费SSL证书自动续租，十分好评</p>
+<figure data-type="image" tabindex="15"><img src="https://i.loli.net/2018/12/09/5c0cd266efcf0.png" alt="appnode12.png"></figure>
+<h3 id="总结-2">总结</h3>
+<p>APPNODE适合对服务器操作熟悉，需要更大灵活度的定制服务器功能的用户，对于建站灵活度也非常高，而缺点也比较明显，功能多必然带来操作复杂，许多功能小白可能没听过，乱操作一波可能会翻车。。</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%AE%9D%E5%A1%94">宝塔</a>
+<ul>
+<li><a href="#1-%E7%95%8C%E9%9D%A2%E7%AE%80%E5%8D%95%E9%80%BB%E8%BE%91%E6%98%8E%E7%A1%AE">1. 界面简单，逻辑明确</a></li>
+<li><a href="#2-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%80%E5%8D%95">2. 软件安装简单</a></li>
+<li><a href="#3-%E5%BF%AB%E6%8D%B7%E7%9A%84%E9%98%B2%E7%81%AB%E5%A2%99%E7%AE%A1%E7%90%86">3. 快捷的防火墙管理</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+<li><a href="#appnode">APPNODE</a>
+<ul>
+<li><a href="#1-%E7%AE%80%E5%8D%95%E5%AE%89%E8%A3%85">1. 简单安装</a></li>
+<li><a href="#%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF">更详细的服务器信息</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6">更多的系统软件</a></li>
+<li><a href="#%E6%9B%B4%E4%B8%B0%E5%AF%8C%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B8%82%E5%9C%BA">更丰富的软件市场</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD%E5%AE%8C%E5%A4%87%E7%9A%84%E9%98%B2%E7%81%AB%E5%A2%99%E7%AE%A1%E7%90%86%E9%87%8D%E7%82%B9">功能完备的防火墙管理（重点）</a></li>
+<li><a href="#%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E7%BD%91%E7%AB%99%E6%8E%A7%E5%88%B6">更灵活的网站控制</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93-2">总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

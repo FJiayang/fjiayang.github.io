@@ -1,0 +1,503 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Scala | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        Scala</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/scala-xue-xi-bi-ji">
+                        Scala 学习笔记
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/mwAPVTrct" class="post-tag i-tag
+                            i-tag-banana">
+            #Scala
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            伴生类与伴生对象
+特点
+
+同名的class与同名的object互为伴生类和伴生对象
+若object中有名为apply的方法，则通过类名()会在类初始化完成后调用object的apply方法
+若class有名为apply的方法，则通过对象()默认调用class的apply方法
+
+object A{
+    def apply(){
+        ...
+    }
+}
+class A{
+    def apply(){
+        ...
+    }
+}
+
+val b = A() //此处默认调用object 的apply方法
+
+val c = new A()
+c() // 此处调用class 的apply方法
+
+
+最佳实践：在object的apply方法中new class
+trait
+类似java的接口
+用法
+class A extends B with C with D ...
+
+集合
+List
+特点
+
+Nil 为不可变的空List
+List由head和tail组成，head为第一个元素，剩余元素为tail
+List组装通过::实现
+
+val l1 = 1 :: Nil // 返回包含一个元素的集合List(1)，即把1作为head，Nil作为tail
+
+
+List可通过:_*转成可变参数
+
+l1.tail:_*
+
+模式匹配
+特点
+
+类似java中的switch
+支持多重过滤
+支持内容、类型匹配
+
+函数高级操作
+字符串高级操作
+插值
+字符串前通过字母s声明，内容通过$接变量名即可
+  val h = &amp;quot;hello&amp;quot;
+  val name = &amp;quot;FJY&amp;quot;
+  println(h +&amp;quot; &amp;quot;+ name) // hello FJY
+
+  println(s&amp;quot;hello $name&amp;quot;) // hello FJY
+
+输出结果相同
+多行字符串
+IDEA创建多行字符串：Shift+’ 按3次即可，创建结果为
+  val b =
+    &amp;quot;&amp;quot;&amp;quot;
+      |
+    &amp;quot;&amp;quot;&amp;quot;.stripMargin
+
+
+样例
+
+  val b =
+    &amp;quot;&amp;quot;&amp;quot;
+      |多行字符串样例
+      |Hello Scala
+    &amp;quot;&amp;quot;&amp;quot;.stripMargin
+
+  println(b)
+
+最终结果为原样输出
+匿名函数
+函数可以命名，也可以不命名
+定义方式：（参数名：参数类型...）=&amp;gt; 函数体
+
+样例1
+
+    val m = (x:Int) =&amp;gt; x+1
+    println(m(10)) // 11
+
+(x:Int) =&amp;gt; x+1为匿名函数，等价于{(x:Int) =&amp;gt; x+1}
+匿名函数可传给变量，也可传给函数
+
+样例2
+
+    def plus = (x:Int,y:Int)=&amp;gt; x+y
+    println(plus(2,3)) // 5
+
+柯里化函数
+
+样例
+
+    // 原函数
+    def plus1(x:Int,y:Int)= x+y
+    println(plus1(2,3))
+    
+    // 柯里化后
+    def plus2(x:Int)(y:Int)= x+y
+    println(plus2(2)(3))
+
+即将多参数分拆
+高阶函数
+map
+作用：逐个操作集合中的元素
+list.map((x)=&amp;gt;x+1) // 对集合中的每个元素执行+1操作
+list.map(_ * 2) // 集合中每个元素*2，_ 为占位符
+
+其中x=&amp;gt;x+1为匿名函数，只有一个元素参数的函数括号可以省略
+filter
+作用：过滤
+list.filter(_ &amp;gt; 2) // 只拿出大于2的元素
+
+reduce
+作用：操作两个元素
+list.reduce(_ + _) // 集合中相邻的元素两两相加，即求和
+
+reduceXX方法
+reduceLeft,reduceRight,foldLeft,foldRight方法
+val a = List(1,7,2,9)
+val a1 = a.reduceLeft(_ - _)//      ((1-7) - 2) - 9 = -17
+val a2 = a.foldLeft(0)(_ - _) //    0-1-7-2-9 = -19
+
+对于foldLeft方法还有一种简写，这种写法的本意是让你通过/:来联想一棵树的样子
+对/:操作符来说，初始值是第一个操作元本题中是0，：后是第二个操作元a
+val a3 = (0 /: a)(_ - _) //      等价于a.foldLeft(0)(_ - _
+
+
+foldRight或:\的变体
+
+val a4 = a.foldRight(0)(_ - _)//    1-(7-(2-(9-0))) = -13
+val a5 = (a :\ 0)(_ - _)   //    等价于a.foldRight(0)(_ - _)
+
+flatten
+作用：将多个集合元素转成一个集合元素
+flatMap
+作用：将多个集合元素转成一个集合后对每个元素执行操作
+
+Spark word count
+
+text_file.flatMap(lambda line : line.split()).map(lambda word:(word,1)).reduceByKey(lambda a, b:a+b)
+
+即将文件中的元素拆分，再映射上一个初值，最后两两相加
+
+原生scala实现wordcount
+
+txts.flatMap(_.split(&amp;quot;,&amp;quot;)).map(x =&amp;gt; (x,1)).groupBy(_._1).mapValues(_.size).foreach(println)
+
+偏函数
+含义：被包在花括号内没有match的一组case语句
+一般通过match实现方式
+  val names = Array(&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;C&amp;quot;)
+  val name = names(Random.nextInt(names.length))
+  name match {
+    case &amp;quot;A&amp;quot; =&amp;gt; &amp;quot;AAAAAAAA&amp;quot;
+    case &amp;quot;B&amp;quot; =&amp;gt; &amp;quot;BBBBBBBB&amp;quot;
+    case _ =&amp;gt; &amp;quot;CCCCCCCC&amp;quot;
+  }
+
+通过偏函数实现
+  // -A 输入参数类型 -B 输出参数类型
+  def say:PartialFunction[String,String]={
+    case &amp;quot;A&amp;quot; =&amp;gt; &amp;quot;AAAAAAAA&amp;quot;
+    case &amp;quot;B&amp;quot; =&amp;gt; &amp;quot;BBBBBBBB&amp;quot;
+    case _ =&amp;gt; &amp;quot;CCCCCCCC&amp;quot;
+  }
+
+能自动进行模式匹配
+隐式转换
+解决问题：为一个已经存在的类添加一个方法
+Java实现方式：动态代理
+Scala实现方式：隐式转换
+注意：该特性为双刃剑，容易使代码难以理解
+
+Scala 2.10引入了一种叫做隐式类的新特性。隐式类指的是用implicit关键字修饰的类。在对应的作用域内，带有这个关键字的类的主构造函数可用于隐式转换。
+
+
+样例
+
+object ImplicitApp extends App {
+
+  // 定义隐式转换函数，传入源对象，输出目标对象
+  implicit def  man2superman(man: Man):Superman=new Superman(man.name)
+
+  val man = new Man(&amp;quot;FJY&amp;quot;)
+  man.fly()
+}
+
+class Man(val name:String){
+  def eat(): Unit ={
+    printf(s&amp;quot;man[ $name ] eat...&amp;quot;)
+  }
+}
+
+class Superman(val name:String){
+  def fly(): Unit ={
+    printf(s&amp;quot;superman[ $name ] fly...&amp;quot;)
+  }
+}
+
+
+样例2：为Java IO类增加读取文件内容方法
+
+object RichFileApp extends App {
+
+  // 目的在于为Java IO类增加读取文件内容方法
+  implicit def file2RichFile(file: File):RichFile=new RichFile(file)
+
+  val f = new File(&amp;quot;tmp/hello.txt&amp;quot;)
+  println(f.readConent)
+}
+
+class RichFile(file:File){
+  def readConent={
+    Source.fromFile(file.getPath).mkString
+  }
+}
+
+隐式参数
+隐式参数会自动寻找方法、类内部、伴生类内类型匹配的唯一参数，不推荐使用
+
+样例
+
+object ImplicitParaApp {
+
+  implicit val test = &amp;quot;test&amp;quot;
+  def main(args: Array[String]): Unit = {
+
+    // 隐式参数会自动寻找方法、类内部、伴生类内类型匹配的唯一参数
+    // 若外部定义了多个隐式参数则报错
+    def testPara(implicit name:String): Unit ={
+      println(name + &amp;quot;...&amp;quot;)
+    }
+
+    testPara
+  }
+
+}
+
+隐式类
+使用隐式类时，类名必须在当前作用域内可见且无歧义，这一要求与隐式值等其他隐式类型转换方式类似。
+object ImplicitClassApp extends App {
+
+  implicit class Calculator(x:Int){
+    def add(a:Int) = a+x
+  }
+  // 原本整数1不具有add方法，使用隐式类后拥有该方法
+  println(1.add(2))
+
+}
+
+操作外部数据
+scala.io.Source
+该对象支持操作文件、网络流等，例如读取文件方法源码支持通过柯里化指定字符集
+  def fromFile(name: String)(implicit codec: Codec): BufferedSource =
+    fromFile(new JFile(name))(codec)
+
+
+样例——读取文件
+
+val file = Source.fromFile(&amp;quot;tmp/file.txt&amp;quot;)(Codec.UTF8)
+
+
+样例——逐行读取
+
+  def readLine(file: BufferedSource): Unit ={
+    for (line &amp;lt;- file.getLines()){
+      println(line)
+    }
+  }
+
+
+样例——逐个字符读取
+
+  def readChar(file: BufferedSource): Unit ={
+    for (ele &amp;lt;- file){
+      print(ele)
+    }
+  }
+
+
+样例——网络读取
+
+  def readNet(url:String): Unit ={
+    val file = Source.fromURL(url)
+    for (line &amp;lt;- file.getLines()){
+      println(line)
+    }
+  }
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/scala-xue-xi-bi-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531653467)">
+        </div>
+        <h1 class="id_card-title">
+            F嘉阳
+        </h1>
+        <h2 class="id_card-description">
+            温故而知新
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                <a href="https://weibo.com/2007780675" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-weibo"></i></a>
+                                
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+    <div class="notice-card i-card ">
+        <div class="notice-title i-card-title">公告</div>
+        <div class="notice-content">
+            主博客：https://blog.fjy8018.top/
+        </div>
+    </div>
+    
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

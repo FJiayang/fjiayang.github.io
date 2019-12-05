@@ -1,0 +1,256 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    宝塔 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531653467">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575531653467" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        宝塔</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/linux-mian-ban-appnode-yu-bao-ta-heng-ping">
+                        Linux面板APPNODE与宝塔横评
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-09</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
+                            i-tag-other_2">
+            #评测
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/P0Y0B_QdTG" class="post-tag i-tag
+                            i-tag-primary">
+            #宝塔
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            宝塔
+宝塔从2017年底开始接触并全面在自己服务器上推广使用，到目前为止手上的服务器需要建站数据库之类的都部署了宝塔，同时开发测试环境的服务器为了方便管理也部署了宝塔，可以说用了也算比较长时间了，宝塔的优势也比较明显
+1. 界面简单，逻辑明确
+系统信息一目了然
+
+2. 软件安装简单
+基本都是无脑安装，之前在开发测试环境搭建Redis和MySQL就是通过宝塔快速安装的，5分钟内搭建完毕快速测试，而且卸载的比较干净，特别是如果小白自己下载MySQL编译包安装很容易出现卸载残留导致无法安装新的MySQL
+
+3. 快捷的防火墙管理
+宝塔提供的防火墙管理基本满足需求，比使用防火墙命令逐个放行便捷
+
+总结
+总的来说宝塔适合建站管理，快速应用部署，但对于复杂的操作还是需要自行通过终端解决，而且防火墙功能有限，抗CC攻击等都需要付费或者搭建其他软件
+APPNODE
+在最近看到APPNODE这个管理面板，在虚拟机跑了一下发现其功能强大，还是有点意思的。
+以下逐一说明（无广告费）
+1. 简单安装
+其实APPNODE和宝塔都是一键安装，自选服务器环境这些共同点，从这点上来说没什么差别，两者甚至连默认端口号都是一样的。。
+
+装好后的首页，默认展示建站指引（好评，第一次在宝塔建站还是摸索了一会的）
+
+更详细的服务器信息
+展示的服务器信息比宝塔详细很多，各项指标都有展示
+
+
+
+更多的系统软件
+可以安装许多软件目前都是免费的，软件也和宝塔类型类似，但有一些特别的，比如frp内网穿透之类还是不错的，比自己部署简单不少，不知道以后会不会收费
+
+网络测试软件看看就好
+
+更丰富的软件市场
+和宝塔类似的软件市场，同样种类更多，有些2017年才兴起的小众软件也在里面，也有不少刚需平台例如owncloud、nextcloud，而同样用宝塔搭建私有云还是挺折腾的
+
+功能完备的防火墙管理（重点）
+在我看来这个是与宝塔最大的不同，前面那些只要宝塔想加入其实也不难，但这个支持自己配置的防火墙规则，其实内部实现应该是通过nginx代理配置实现，但比宝塔收费的要良心，通过简单设置参数即可抵抗简单的DDOS攻击
+
+攻击测试，通过Apache ab压测进行DDOS攻击
+未开启之前所有请求顺利通过
+
+在配置1秒内最大访问次数后成功拦截，1000个请求只有70个有效，说明DDOS流量劫持被成功拦截
+
+更灵活的网站控制
+日志、SSL、负载情况、网站更新自动提醒重载nginx等
+另外还提供免费SSL证书自动续租，十分好评
+
+总结
+APPNODE适合对服务器操作熟悉，需要更大灵活度的定制服务器功能的用户，对于建站灵活度也非常高，而缺点也比较明显，功能多必然带来操作复杂，许多功能小白可能没听过，乱操作一波可能会翻车。。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/linux-mian-ban-appnode-yu-bao-ta-heng-ping">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575531653467)">
+        </div>
+        <h1 class="id_card-title">
+            F嘉阳
+        </h1>
+        <h2 class="id_card-description">
+            温故而知新
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                <a href="https://weibo.com/2007780675" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-weibo"></i></a>
+                                
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+    <div class="notice-card i-card ">
+        <div class="notice-title i-card-title">公告</div>
+        <div class="notice-content">
+            主博客：https://blog.fjy8018.top/
+        </div>
+    </div>
+    
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>
