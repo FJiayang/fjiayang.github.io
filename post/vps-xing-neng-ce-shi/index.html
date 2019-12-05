@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    使用GitHub和DockerHub自动构建镜像 | F嘉阳
+    VPS性能测试 | F嘉阳
 </title>
 <link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575531807323">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,96 +99,43 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            使用GitHub和DockerHub自动构建镜像
+                            VPS性能测试
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-07-31</time>
+                            <time class="post-time">2018-09-13</time>
                             
-                                <a href="https://fjiayang.github.io//tag/n6QgzvrGB" class="post-tag i-tag
-                            i-tag-other_1">
-                            #GitHub
-                        </a>
-                                
-                                <a href="https://fjiayang.github.io//tag/XZTzL_2aJ" class="post-tag i-tag
+                                <a href="https://fjiayang.github.io//tag/d2Pd4JZcy" class="post-tag i-tag
                             i-tag-primary">
-                            #CICD
-                        </a>
-                                
-                                <a href="https://fjiayang.github.io//tag/kTPZcu1_NZ" class="post-tag i-tag
-                            i-tag-other_4">
-                            #Docker
+                            #评测
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <h2 id="环境">环境</h2>
-<p><code>DockerHub</code>账号、<code>GitHub</code>账号</p>
-<h2 id="步骤">步骤</h2>
-<h3 id="构建脚本">构建脚本</h3>
-<p>此处以构建<code>mycat</code>的<code>docker</code>镜像为例，在本地准备好可以运行的构建脚本<code>Dockerfile</code>，尽可能不使用准备好的配置文件，保证镜像的安全、纯净，并且利用环境变量配置精简构建脚本</p>
-<pre><code class="language-dockerfile">FROM openjdk:8-jre
-MAINTAINER fjy8018 fjy8018@gmail.com
-
-# Mycat 版本
-ENV MYCAT_VERSION 1.6-RELEASE
-ENV MYCAT_PKG Mycat-server-1.6-RELEASE-20161028204710-linux.tar.gz
-
-WORKDIR /usr/local
-
-# 缓存层
-RUN wget http://dl.mycat.io/$MYCAT_VERSION/$MYCAT_PKG
-RUN apt-get update &amp;&amp; \
-    apt-get install -y procps &amp;&amp; \
-    apt-get clean &amp;&amp; \
-    tar -zxf /usr/local/$MYCAT_PKG &amp;&amp; \
-    rm -rf /usr/local/$MYCAT_PKG
-
-VOLUME /usr/local/mycat/conf
-
-EXPOSE 8066 9066
-
-ENTRYPOINT /usr/local/mycat/bin/mycat console
+                                    <h2 id="测试命令">测试命令</h2>
+<p>采用superbench</p>
+<pre><code class="language-shell">wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
 </code></pre>
-<h3 id="创建github仓库">创建GitHub仓库</h3>
-<p>在<code>GitHub</code>上创建对应的仓库，并推送<code>Dockerfile</code></p>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/07/31/5d41a6b6dfd8192366.png" alt="1564572008865.png"></figure>
-<h3 id="链接dockerhub与github">链接DockerHub与GitHub</h3>
-<p>登陆<code>DockerHub</code>选择<code>repository</code>新建仓库</p>
-<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/07/31/5d41a6b6ca75420080.png" alt="1564572101153.png"></figure>
-<p>首次链接可以参照<a href="https://docs.docker.com/docker-hub/builds/link-source/">指引</a>操作，主要是做<code>OAuth</code>授权</p>
-<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/07/31/5d41a6b6b3cd010635.png" alt="1564572489753.png"></figure>
-<h3 id="创建构建分支和标签">创建构建分支和标签</h3>
-<p>连接<code>GitHub</code>后可以选择需要构建的仓库，同时展开构建选项，可以指定不同分支构建出的标签，默认<code>master</code>分支构建为<code>latest</code>版本</p>
-<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2019/07/31/5d41a6b6d5f8a31891.png" alt="1564580799275.png"></figure>
-<h3 id="触发构建">触发构建</h3>
-<p>第一次会自动触发构建，随后代码推送都会触发构建</p>
-<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2019/07/31/5d41a6b6b319370352.png" alt="1564572890867.png"></figure>
-<h3 id="构建结果">构建结果</h3>
-<p>在管理页面可以查看构建时长和构建结果</p>
-<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2019/07/31/5d41a6b6d559a89403.png" alt="1564573686044.png"></figure>
-<h2 id="结果">结果</h2>
-<h3 id="用户视角">用户视角</h3>
-<p>用户视角可以看到构建的GitHub仓库</p>
-<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2019/07/31/5d41a6b6e89a952064.png" alt="1564583383061.png"></figure>
-<p>自动构建产生的分支</p>
-<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2019/07/31/5d41a6b6be96a97983.png" alt="1564583424202.png"></figure>
-<p>构建历史记录</p>
-<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2019/07/31/5d41a6b6d671469520.png" alt="1564583451660.png"></figure>
+<h2 id="openvz">OpenVZ</h2>
+<p>以手上的HiFormance VPS为例，superbench自动识别虚拟化平台和硬件信息，并对国内不同地点、不同运营商的上行、下行速度测试和延迟测试</p>
+<p>HiFormance 亚洲优化线路，由于HiFormance 亚洲优化线路虚拟化平台是OpenVZ+lxc，故无法安装BBR加速</p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2018/09/13/5b99ea259b4f6.png"><img src="https://i.loli.net/2018/09/13/5b99ea259b4f6.png" alt="vps6.png"></a></figure>
+<p>HiFormance 普通线路，启用了BBR加速</p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2018/09/13/5b99ebdd050a0.png"><img src="https://i.loli.net/2018/09/13/5b99ebdd050a0.png" alt="vps4.png"></a></figure>
+<h2 id="kvm">KVM</h2>
+<p>以搬瓦工VPS为例，平台识别正常</p>
+<p>搬瓦工VPS，亚洲优化，启用BBR</p>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2018/09/13/5b99eccc9c3e7.png"><img src="https://i.loli.net/2018/09/13/5b99eccc9c3e7.png" alt="vps3.png"></a></figure>
+<p>阿里云ECS 1Mbps带宽，识别正常</p>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2018/09/13/5b99eda58e8b5.png"><img src="https://i.loli.net/2018/09/13/5b99eda58e8b5.png" alt="vps2.png"></a></figure>
+<h2 id="物理机">物理机</h2>
+<p>识别平台为独立主机</p>
+<figure data-type="image" tabindex="5"><a href="https://i.loli.net/2018/09/13/5b99dcd864753.png"><img src="https://i.loli.net/2018/09/13/5b99dcd864753.png" alt="vps1.png"></a></figure>
 
                                 </div>
                     </article>
                     <!--  -->
                     
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="https://fjiayang.github.io//post/springboot-2x-quartz-duo-shu-ju-ding-shi-ren-wu-yuan-pei-zhi">
-                                <h3 class="post-title">
-                                    SpringBoot 2.x quartz多数据定时任务源配置
-                                </h3>
-                            </a>
-                        </div>
-                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -205,22 +152,10 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li>
-<li><a href="#%E6%AD%A5%E9%AA%A4">步骤</a>
-<ul>
-<li><a href="#%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC">构建脚本</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93">创建GitHub仓库</a></li>
-<li><a href="#%E9%93%BE%E6%8E%A5dockerhub%E4%B8%8Egithub">链接DockerHub与GitHub</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BA%E6%9E%84%E5%BB%BA%E5%88%86%E6%94%AF%E5%92%8C%E6%A0%87%E7%AD%BE">创建构建分支和标签</a></li>
-<li><a href="#%E8%A7%A6%E5%8F%91%E6%9E%84%E5%BB%BA">触发构建</a></li>
-<li><a href="#%E6%9E%84%E5%BB%BA%E7%BB%93%E6%9E%9C">构建结果</a></li>
-</ul>
-</li>
-<li><a href="#%E7%BB%93%E6%9E%9C">结果</a>
-<ul>
-<li><a href="#%E7%94%A8%E6%88%B7%E8%A7%86%E8%A7%92">用户视角</a></li>
-</ul>
-</li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4">测试命令</a></li>
+<li><a href="#openvz">OpenVZ</a></li>
+<li><a href="#kvm">KVM</a></li>
+<li><a href="#%E7%89%A9%E7%90%86%E6%9C%BA">物理机</a></li>
 </ul>
 </li>
 </ul>
