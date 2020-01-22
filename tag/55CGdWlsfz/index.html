@@ -7,7 +7,7 @@
 <title>
     Jenkins | F嘉阳
 </title>
-<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1575532169296">
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1579679636106">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fjiayang.github.io/">
-                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1575532169296" alt="">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1579679636106" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -112,32 +112,32 @@
                     <time class="post-time">2019-08-16</time>
                     
                         <a href="https://fjiayang.github.io//tag/dgP0uMsX9" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_3">
             #Ansible
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
             #Jenkins
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/xTpEEjjmQ" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-">
             #mesos
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/tAci1rZfHp" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-">
             #DevOps
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/FZ58cYbuWL" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_3">
             #marathon
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-banana">
             #GitLab
         </a>
                         
@@ -172,17 +172,17 @@
                     <time class="post-time">2018-09-01</time>
                     
                         <a href="https://fjiayang.github.io//tag/dgP0uMsX9" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-error">
             #Ansible
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_4">
             #Jenkins
         </a>
                         
                         <a href="https://fjiayang.github.io//tag/3x3ut1pT9" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_1">
             #GitLab
         </a>
                         
@@ -415,6 +415,481 @@ ansible-playbook -i inventory/$deploy_env ./deploy.yml -e project=nginx -e branc
                 </div>
             </article>
             
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/jenkins-yu-maven-ji-cheng">
+                        Jenkins 与Maven集成
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-08-26</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/mBLSimdZa" class="post-tag i-tag
+                            i-tag-error">
+            #Maven
+        </a>
+                        
+                        <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
+                            i-tag-error">
+            #Jenkins
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            环境准备
+安装jdk
+yum -y install java-devel java
+
+检测安装结果
+[root@localhost maven-freestyle-job]# javac -version
+javac 1.8.0_181
+[root@localhost maven-freestyle-job]# java -version
+openjdk version &amp;quot;1.8.0_181&amp;quot;
+OpenJDK Runtime Environment (build 1.8.0_181-b13)
+OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
+
+安装maven环境
+wget http://apache.osuosl.org/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+
+解压，并指定解压路径
+tar -zxvf apache-maven-3.5.4-bin.tar.gz -C /opt
+
+查看安装结果
+[root@localhost ~]# cd /opt/
+[root@localhost opt]# cd apache-maven-3.5.4/
+[root@localhost apache-maven-3.5.4]# cd bin/
+[root@localhost bin]# ./mvn -v
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T02:33:14+08:00)
+Maven home: /opt/apache-maven-3.5.4
+Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-3.b13.el7_5.x86_64/jre
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: &amp;quot;linux&amp;quot;, version: &amp;quot;3.10.0-862.el7.x86_64&amp;quot;, arch: &amp;quot;amd64&amp;quot;, family: &amp;quot;unix&amp;quot;
+[root@localhost bin]# pwd
+/opt/apache-maven-3.5.4/bin
+
+
+配置环境
+进入Jenkins系统管理中的全局工具配置，配置本地的maven地址
+
+此处的jdk报错正常，若不配置则会自动调用系统环境里的jdk
+
+指定maven名称和路径
+
+准备maven工程
+提前在gitlab中装备一个简单的Springboot web工程，通过springboot脚手架快速生成，pom文件如下
+
+新建构建
+新建构建并填写目标仓库地址
+
+添加构建设置为maven构建
+
+添加构建参数，即在命令行mvn之后的参数
+
+选择maven版本
+
+构建
+构建成功
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/jenkins-yu-maven-ji-cheng">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/jenkins-job-bian-xie-ce-shi">
+                        Jenkins job编写测试
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-08-26</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
+                            i-tag-primary">
+            #Jenkins
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            系统预配置
+关闭防止跨站请求伪造
+测试期间系统设置中临时关闭防止跨站请求伪造，否则容易出现登录超时无法新建任务
+
+
+添加远程仓库配置
+GitLab的用户邮箱、用户名、密码，用于拉取远程仓库代码
+
+凭据
+添加凭据，凭据为用户的标识
+
+选择全局凭据
+
+添加凭据
+
+添加为Git用户
+
+Jenkins job
+freestyle Job
+freestyle Job简介
+
+需要在页面添加模块配置项与参数完成配置
+每个Job仅能实现一个开发功能
+无法将配置代码化，不利于Job配置迁移与版本控制
+没有版本日志记录
+逻辑简单
+
+新建freestyle Job
+新建任务
+
+添加选项参数
+
+添加文本参数
+
+指定远程仓库地址
+
+添加Shell脚本
+
+
+保存后选择通过参数构建
+
+构建报错
+
+检查后发现Shell脚本开头的#!/bin/bash写成了#! /bin/bash，中间包含空格后系统无法识别
+修正错误后重新构建
+
+报语法错误，12行缺少空格
+
+检查发现if [ -s test.properties ]写成了if [ -s test.properties]，修正错误后再次构建
+修正后的Shell脚本为
+#!/bin/bash
+# export PATH=&amp;quot;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&amp;quot;
+
+# 打印环境变量
+echo &amp;quot;[INFO] 打印环境变量&amp;quot;
+echo &amp;quot;[INFO] 当前发布环境为 $deploy_env&amp;quot; &amp;gt;&amp;gt; test.properties
+echo &amp;quot;[INFO] 构建版本为 $version &amp;quot; &amp;gt;&amp;gt; test.properties
+echo &amp;quot;[INFO] 打印环境变量完成...&amp;quot;
+
+# 检查test.properties
+echo &amp;quot;[INFO] 检查test.properties&amp;quot;
+if [ -s test.properties ]
+then
+  cat test.properties
+  echo &amp;quot;[INFO] 检查完成...&amp;quot;
+else
+  echo &amp;quot;[WARN] test.properties为空&amp;quot;
+fi
+
+echo &amp;quot;[INFO] 构建完成...&amp;quot;
+
+构建成功，输出正常
+
+查看构建历史
+
+
+同时显示构建稳定性
+
+pipeline job
+pipeline job简介
+
+所有代码包裹在pipeline{}内
+stages{}用来包含pipeline所有子层
+stage(管道名称){}每个子层可以执行一个任务，并不互相影响
+steps{}用来添加具体需要调用的模块语句
+
+新建pipeline任务
+
+编写pipeline 脚本
+#!groovy
+
+pipeline {
+    // agent 定义pipeline在何处运行，使用any、none或者Jenkins node主机名
+	agent {node {label &#39;master&#39;}}
+	// 声明环境变量，environment 定义系统环境变量，可以应用于所有stages
+	// 定义局部环境变量则于steps平级即可
+	environment {
+		PATH=&amp;quot;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&amp;quot;
+	}
+
+	parameters {
+		// 声明可选参数
+		choice(
+				// 可选参数为两个，以空行分隔
+				choices: &#39;dev\nprod&#39;,
+				// 设置参数描述
+				description: &#39;选择发布环境&#39;,
+				// 声明参数变量名
+				name: &#39;deploy_env&#39;
+			)
+		// 声明文本参数，和默认值
+		string (name: &#39;version&#39;, defaultValue: &#39;0.0.1&#39;,description: &#39;构建版本号&#39;)
+	}
+
+	stages {
+		// 执行一个任务
+		stage(&amp;quot;切换到测试版本仓库&amp;quot;) {
+			// 添加具体需要调用的模块语句
+			steps {
+				// 关闭Git ssl安全认证
+				sh &#39;git config --system http.sslVerify false&#39;
+				// 指定工作空间
+				dir (&amp;quot;${env.WORKSPACE}&amp;quot;) {
+					// 指定分支和Jenkins凭据ID
+					git branch: &#39;master&#39;,
+						credentialsId: &#39;52f4c34f-544c-4830-828d-6691d603b8e4&#39;,
+						url: &#39;http://home.fjy8018.top:8099/jenkins/test-repo.git&#39;
+				}
+			}
+		}
+		stage(&amp;quot;打印环境变量&amp;quot;) {
+			steps {
+				dir (&amp;quot;${env.WORKSPACE}&amp;quot;) {
+					sh &amp;quot;&amp;quot;&amp;quot;
+						echo &amp;quot;[INFO] 打印环境变量&amp;quot;
+						echo &amp;quot;[INFO] 当前发布环境为 $deploy_env&amp;quot; &amp;gt;&amp;gt; test.properties
+						echo &amp;quot;[INFO] 构建版本为 $version &amp;quot; &amp;gt;&amp;gt; test.properties
+						echo &amp;quot;[INFO] 打印环境变量完成...&amp;quot;
+					&amp;quot;&amp;quot;&amp;quot;
+				}
+			}
+		}
+		stage(&amp;quot;检查test.properties&amp;quot;) {
+			steps {
+				dir (&amp;quot;${env.WORKSPACE}&amp;quot;) {
+					sh &amp;quot;&amp;quot;&amp;quot;
+						echo &amp;quot;[INFO] 检查test.properties&amp;quot;
+						if [ -s test.properties ]
+						then
+						  cat test.properties
+						  echo &amp;quot;[INFO] 检查完成...&amp;quot;
+						else
+						  echo &amp;quot;[WARN] test.properties为空&amp;quot;
+						fi
+					&amp;quot;&amp;quot;&amp;quot;
+					echo &amp;quot;[INFO] 构建完成...&amp;quot;
+				}
+			}
+		}
+	}
+}
+
+其中credentialsId来自用户的凭据唯一标识，可在凭据页面查看
+
+写入Shell脚本
+
+执行报错，error: could not lock config file /etc/gitconfig: ????
+
+由于使用root用户执行同样命令不会报错，故猜测没有权限，修改语法为git config --global http.sslVerify false即可
+重新构建
+
+日志符合预期
+
+freestyle shell Job
+新建任务
+
+写入shell脚本如下
+#!/bin/bash
+
+user=`whoami`
+
+if [ $user == &#39;deploy&#39; ]; then
+	echo &amp;quot;成功，当前用户为 $user&amp;quot;
+else
+	echo &amp;quot;失败，当前用户不是 $user&amp;quot;
+fi
+# 查看主机ip
+ip addr
+# 查看系统版本
+cat /etc/system-release
+# 查看内存状态
+free -m
+# 查看磁盘状态
+df -h
+# 将python安装位置赋值给变量
+py_cmd=`which python`
+# 查看python版本号
+$py_cmd --version
+
+
+运行并查看日志，符合预期
+
+参数任务
+新建参数化构建任务
+
+添加选项参数等
+
+添加shell构建参数
+
+构建
+
+输出符合预期
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/jenkins-job-bian-xie-ce-shi">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://fjiayang.github.io//post/jenkins-an-zhuang-pei-zhi">
+                        Jenkins 安装配置
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-08-26</time>
+                    
+                        <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
+                            i-tag-error">
+            #Jenkins
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            使用Docker安装
+基础环境
+docker环境
+查看docker版本
+[root@localhost ~]# docker -v
+Docker version 18.06.0-ce, build 0ffa825
+
+新建用户目录，用户挂载容器存储
+useradd jenkins-docker
+
+
+运行docker命令
+docker run -p 8081:8080 -p 50001:50000  -v /home/jenkins-docker:/var/jenkins_home hub.c.163.com/library/jenkins:latest
+
+
+命令中没有使用后台启动为了查看输出的管理员密码
+
+若使用了挂载目录也可以在挂载的目录下查看
+
+访问web界面，输入密码即可
+
+使用原生系统安装
+基础环境
+CentOS7 1804最小安装
+安装基础wget工具yum install -y wget
+
+导入仓库源
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+
+下载并导入仓库的key，用于验证仓库安全性
+rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+安装java8
+yum -y install java
+
+验证java版本
+[root@localhost ~]# java -version
+openjdk version &amp;quot;1.8.0_181&amp;quot;
+OpenJDK Runtime Environment (build 1.8.0_181-b13)
+OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
+
+关闭防火墙
+[root@localhost ~]# systemctl stop firewalld
+
+关闭防火墙开机启动
+[root@localhost ~]# systemctl disable firewalld
+Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.
+Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+
+关闭强制访问控制安全策略
+vi /etc/sysconfig/selinux
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=enforcing
+# SELINUXTYPE= can take one of three two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+
+SELINUX=enforcing
+
+改成
+SELINUX=disabled
+
+reboot使禁用操作生效
+查看操作是否生效
+[root@localhost ~]# getenforce
+Disabled
+
+安装jenkins
+直接安装
+yum -y install jenkins
+
+
+安装后会自动添加jenkins，此时可以自定义发布用户
+[root@localhost ~]# useradd jenkins
+useradd：用户“jenkins”已存在
+[root@localhost ~]# useradd deploy
+
+配置
+编辑配置文件
+[root@localhost ~]# vi /etc/sysconfig/jenkins 
+
+将用户改为新建的用户JENKINS_USER=&amp;quot;deploy&amp;quot;，端口号默认为8080
+
+修改log目录和权限
+[root@localhost ~]# chown -R deploy:deploy /var/lib/jenkins
+[root@localhost ~]# chown -R deploy:deploy /var/log/jenkins
+[root@localhost ~]# chown -R deploy:deploy /var/cache/jenkins
+
+启动jenkins
+[root@localhost ~]# systemctl start jenkins
+
+查看服务是否启动
+[root@localhost ~]# ps -ef | grep jenkins
+root       1445   1311  0 19:06 pts/0    00:00:00 grep --color=auto jenkins
+
+或者使用lsof（需要额外安装）
+[root@localhost jenkins]# lsof -i:8080
+COMMAND  PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+java    1683 deploy  161u  IPv6  24353      0t0  TCP *:webcache (LISTEN)
+
+访问web界面
+地址为ip:8080
+
+去提示的目录下查找密码
+
+安装推荐配置插件
+
+新建管理员用户
+
+安装成功
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/jenkins-an-zhuang-pei-zhi">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
                 <!-- 翻页 -->
                 
                 </div>
@@ -426,7 +901,7 @@ ansible-playbook -i inventory/$deploy_env ./deploy.yml -e project=nginx -e branc
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1575532169296)">
+        <div class="id_card-avatar" style="background-image: url(https://fjiayang.github.io//images/avatar.png?v=1579679636106)">
         </div>
         <h1 class="id_card-title">
             F嘉阳

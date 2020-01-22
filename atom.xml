@@ -2,14 +2,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fjiayang.github.io/</id>
     <title>F嘉阳</title>
-    <updated>2019-12-05T07:49:36.219Z</updated>
+    <updated>2020-01-22T07:54:07.126Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fjiayang.github.io/"/>
     <link rel="self" href="https://fjiayang.github.io//atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://fjiayang.github.io//images/avatar.png</logo>
     <icon>https://fjiayang.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, F嘉阳</rights>
+    <rights>All rights reserved 2020, F嘉阳</rights>
+    <entry>
+        <title type="html"><![CDATA[设计模式——原则]]></title>
+        <id>https://fjiayang.github.io//post/she-ji-mo-shi-yuan-ze</id>
+        <link href="https://fjiayang.github.io//post/she-ji-mo-shi-yuan-ze">
+        </link>
+        <updated>2020-01-22T07:47:05.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="开闭原则">开闭原则</h2>
+<h3 id="介绍">介绍</h3>
+<p>定义：一个软件实体如类、模块和函数应该对扩展开放,对修改关闭</p>
+<p>用抽象构建框架,用实现扩展细节</p>
+<p>优点：提高软件系统的可复用性及可维护性</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="开闭原则">开闭原则</h2>
+<h3 id="介绍">介绍</h3>
+<p>定义：一个软件实体如类、模块和函数应该对扩展开放,对修改关闭</p>
+<p>用抽象构建框架,用实现扩展细节</p>
+<p>优点：提高软件系统的可复用性及可维护性</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[k8s环境下GitLab+Helm+GitLab Runner Java项目CICD落地实践]]></title>
         <id>https://fjiayang.github.io//post/k8s-huan-jing-xia-gitlabhelmgitlab-runner-java-xiang-mu-cicd-luo-di-shi-jian</id>
@@ -125,19 +144,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="初遇devops">初遇DevOps</h2>
 <p>最早接触到<code>DevOps</code>是在2018年8月26日，那时首先接触到的就是大名鼎鼎的<code>Jenkins</code>，当时看了多篇关于持续集成和持续部署的文章，蠢蠢欲动，便开始了第一套<code>DevOps</code>环境的搭建</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CentOS 7 安装KVM和WebVirtMgr管理面板]]></title>
-        <id>https://fjiayang.github.io//post/centos-7-an-zhuang-kvm-he-webvirtmgr-guan-li-mian-ban</id>
-        <link href="https://fjiayang.github.io//post/centos-7-an-zhuang-kvm-he-webvirtmgr-guan-li-mian-ban">
-        </link>
-        <updated>2019-08-11T10:35:02.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="配置静态ip">配置静态IP</h2>
-<p>此处使用VMware 模拟服务器环境，为防止IP在启动时动态分配，需要手动配置静态IP，如果是物理服务器可直接跳过</p>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="配置静态ip">配置静态IP</h2>
-<p>此处使用VMware 模拟服务器环境，为防止IP在启动时动态分配，需要手动配置静态IP，如果是物理服务器可直接跳过</p>
 ]]></content>
     </entry>
 </feed>

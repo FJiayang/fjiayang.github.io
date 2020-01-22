@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Quartz | F嘉阳
+    Maven | F嘉阳
 </title>
 <link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1579679636106">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -98,27 +98,27 @@
                     
     <div class="i-card">
         <b>标签：#
-        Quartz</b>
+        Maven</b>
     </div>
     
         
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="https://fjiayang.github.io//post/springboot-2x-quartz-duo-shu-ju-ding-shi-ren-wu-yuan-pei-zhi">
-                        SpringBoot 2.x quartz多数据定时任务源配置
+                    <a href="https://fjiayang.github.io//post/jenkins-yu-maven-ji-cheng">
+                        Jenkins 与Maven集成
                     </a>
                 </h2>
                 <div class="post-info">
-                    <time class="post-time">2019-07-29</time>
+                    <time class="post-time">2018-08-26</time>
                     
-                        <a href="https://fjiayang.github.io//tag/olLQ2spNZ" class="post-tag i-tag
-                            i-tag-banana">
-            #SpringBoot
+                        <a href="https://fjiayang.github.io//tag/mBLSimdZa" class="post-tag i-tag
+                            i-tag-other_3">
+            #Maven
         </a>
                         
-                        <a href="https://fjiayang.github.io//tag/yipNJ12QTf" class="post-tag i-tag
-                            i-tag-other_3">
-            #Quartz
+                        <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
+                            i-tag-primary">
+            #Jenkins
         </a>
                         
                 </div>
@@ -126,13 +126,65 @@
                     
                             <div class="post-content">
                                 
-                                    <div class="post-content-abstract">
-                                        <h2 id="基础环境">基础环境</h2>
-<p><code>SpringBoot</code> 2.0 开始官方提供了对<code>quartz</code>定时任务的自动配置支持依赖<code>spring-boot-starter-quartz</code>组件，无需自行集成</p>
+                                        <div class="post-content-content">
+                                            环境准备
+安装jdk
+yum -y install java-devel java
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/springboot-2x-quartz-duo-shu-ju-ding-shi-ren-wu-yuan-pei-zhi">Read More ~</a>
+检测安装结果
+[root@localhost maven-freestyle-job]# javac -version
+javac 1.8.0_181
+[root@localhost maven-freestyle-job]# java -version
+openjdk version &amp;quot;1.8.0_181&amp;quot;
+OpenJDK Runtime Environment (build 1.8.0_181-b13)
+OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
+
+安装maven环境
+wget http://apache.osuosl.org/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+
+解压，并指定解压路径
+tar -zxvf apache-maven-3.5.4-bin.tar.gz -C /opt
+
+查看安装结果
+[root@localhost ~]# cd /opt/
+[root@localhost opt]# cd apache-maven-3.5.4/
+[root@localhost apache-maven-3.5.4]# cd bin/
+[root@localhost bin]# ./mvn -v
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T02:33:14+08:00)
+Maven home: /opt/apache-maven-3.5.4
+Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-3.b13.el7_5.x86_64/jre
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: &amp;quot;linux&amp;quot;, version: &amp;quot;3.10.0-862.el7.x86_64&amp;quot;, arch: &amp;quot;amd64&amp;quot;, family: &amp;quot;unix&amp;quot;
+[root@localhost bin]# pwd
+/opt/apache-maven-3.5.4/bin
+
+
+配置环境
+进入Jenkins系统管理中的全局工具配置，配置本地的maven地址
+
+此处的jdk报错正常，若不配置则会自动调用系统环境里的jdk
+
+指定maven名称和路径
+
+准备maven工程
+提前在gitlab中装备一个简单的Springboot web工程，通过springboot脚手架快速生成，pom文件如下
+
+新建构建
+新建构建并填写目标仓库地址
+
+添加构建设置为maven构建
+
+添加构建参数，即在命令行mvn之后的参数
+
+选择maven版本
+
+构建
+构建成功
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fjiayang.github.io//post/jenkins-yu-maven-ji-cheng">Read More ~</a>
                             </div>
                 </div>
             </article>

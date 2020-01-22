@@ -1,0 +1,445 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Jenkins job编写测试 | F嘉阳
+</title>
+<link rel="shortcut icon" href="https://fjiayang.github.io//favicon.ico?v=1579679636106">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://fjiayang.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://fjiayang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://fjiayang.github.io/">
+                <img class="avatar" src="https://fjiayang.github.io//images/avatar.png?v=1579679636106" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    F嘉阳
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Jenkins job编写测试
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-08-26</time>
+                            
+                                <a href="https://fjiayang.github.io//tag/55CGdWlsfz" class="post-tag i-tag
+                            i-tag-other_1">
+                            #Jenkins
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="系统预配置">系统预配置</h2>
+<h3 id="关闭防止跨站请求伪造">关闭防止跨站请求伪造</h3>
+<p>测试期间系统设置中临时关闭防止跨站请求伪造，否则容易出现登录超时无法新建任务<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7039ead.png"><img src="https://i.loli.net/2018/08/26/5b821f7039ead.png" alt="Jenkins10.png"></a></p>
+<figure data-type="image" tabindex="1"><a href="https://i.loli.net/2018/08/26/5b821f77db05d.png"><img src="https://i.loli.net/2018/08/26/5b821f77db05d.png" alt="Jenkins22.png"></a></figure>
+<h3 id="添加远程仓库配置">添加远程仓库配置</h3>
+<p>GitLab的用户邮箱、用户名、密码，用于拉取远程仓库代码<br>
+<a href="https://i.loli.net/2018/08/26/5b821f702fa6f.png"><img src="https://i.loli.net/2018/08/26/5b821f702fa6f.png" alt="Jenkins11.png"></a></p>
+<h3 id="凭据">凭据</h3>
+<p>添加凭据，凭据为用户的标识<br>
+<a href="https://i.loli.net/2018/08/26/5b821f70357fd.png"><img src="https://i.loli.net/2018/08/26/5b821f70357fd.png" alt="Jenkins12.png"></a></p>
+<p>选择全局凭据<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7033e32.png"><img src="https://i.loli.net/2018/08/26/5b821f7033e32.png" alt="Jenkins13.png"></a></p>
+<p>添加凭据<br>
+<a href="https://i.loli.net/2018/08/26/5b821f703124d.png"><img src="https://i.loli.net/2018/08/26/5b821f703124d.png" alt="Jenkins14.png"></a></p>
+<p>添加为Git用户<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7038826.png"><img src="https://i.loli.net/2018/08/26/5b821f7038826.png" alt="Jenkins15.png"></a></p>
+<h2 id="jenkins-job">Jenkins job</h2>
+<h3 id="freestyle-job">freestyle Job</h3>
+<h4 id="freestyle-job简介">freestyle Job简介</h4>
+<ol>
+<li>需要在页面添加模块配置项与参数完成配置</li>
+<li>每个Job仅能实现一个开发功能</li>
+<li>无法将配置代码化，不利于Job配置迁移与版本控制</li>
+<li>没有版本日志记录</li>
+<li>逻辑简单</li>
+</ol>
+<h4 id="新建freestyle-job">新建freestyle Job</h4>
+<p>新建任务<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7036e38.png"><img src="https://i.loli.net/2018/08/26/5b821f7036e38.png" alt="Jenkins16.png"></a></p>
+<p>添加选项参数<br>
+<a href="https://i.loli.net/2018/08/26/5b821f70329b8.png"><img src="https://i.loli.net/2018/08/26/5b821f70329b8.png" alt="Jenkins17.png"></a></p>
+<p>添加文本参数<br>
+<a href="https://i.loli.net/2018/08/26/5b821f702e141.png"><img src="https://i.loli.net/2018/08/26/5b821f702e141.png" alt="Jenkins18.png"></a></p>
+<p>指定远程仓库地址<br>
+<a href="https://i.loli.net/2018/08/26/5b821f702a326.png"><img src="https://i.loli.net/2018/08/26/5b821f702a326.png" alt="Jenkins19.png"></a></p>
+<p>添加Shell脚本<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77dc787.png"><img src="https://i.loli.net/2018/08/26/5b821f77dc787.png" alt="Jenkins20.png"></a></p>
+<figure data-type="image" tabindex="2"><a href="https://i.loli.net/2018/08/26/5b821f77e46e7.png"><img src="https://i.loli.net/2018/08/26/5b821f77e46e7.png" alt="Jenkins21.png"></a></figure>
+<p>保存后选择通过参数构建<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77dde13.png"><img src="https://i.loli.net/2018/08/26/5b821f77dde13.png" alt="Jenkins23.png"></a></p>
+<p>构建报错<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77e2de2.png"><img src="https://i.loli.net/2018/08/26/5b821f77e2de2.png" alt="Jenkins28.png"></a></p>
+<p>检查后发现Shell脚本开头的<code>#!/bin/bash</code>写成了<code>#! /bin/bash</code>，中间包含空格后系统无法识别</p>
+<p>修正错误后重新构建<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77e5ba4.png"><img src="https://i.loli.net/2018/08/26/5b821f77e5ba4.png" alt="Jenkins24.png"></a></p>
+<p>报语法错误，12行缺少空格<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d24a0b.png"><img src="https://i.loli.net/2018/08/26/5b821f7d24a0b.png" alt="Jenkins30.png"></a></p>
+<p>检查发现<code>if [ -s test.properties ]</code>写成了<code>if [ -s test.properties]</code>，修正错误后再次构建<br>
+修正后的Shell脚本为</p>
+<pre><code>#!/bin/bash
+# export PATH=&quot;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&quot;
+
+# 打印环境变量
+echo &quot;[INFO] 打印环境变量&quot;
+echo &quot;[INFO] 当前发布环境为 $deploy_env&quot; &gt;&gt; test.properties
+echo &quot;[INFO] 构建版本为 $version &quot; &gt;&gt; test.properties
+echo &quot;[INFO] 打印环境变量完成...&quot;
+
+# 检查test.properties
+echo &quot;[INFO] 检查test.properties&quot;
+if [ -s test.properties ]
+then
+  cat test.properties
+  echo &quot;[INFO] 检查完成...&quot;
+else
+  echo &quot;[WARN] test.properties为空&quot;
+fi
+
+echo &quot;[INFO] 构建完成...&quot;
+</code></pre>
+<p>构建成功，输出正常<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77df647.png"><img src="https://i.loli.net/2018/08/26/5b821f77df647.png" alt="Jenkins29.png"></a></p>
+<p>查看构建历史<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77d9a0b.png"><img src="https://i.loli.net/2018/08/26/5b821f77d9a0b.png" alt="Jenkins25.png"></a></p>
+<figure data-type="image" tabindex="3"><a href="https://i.loli.net/2018/08/26/5b821f77e1271.png"><img src="https://i.loli.net/2018/08/26/5b821f77e1271.png" alt="Jenkins27.png"></a></figure>
+<p>同时显示构建稳定性<br>
+<a href="https://i.loli.net/2018/08/26/5b821f77d85c4.png"><img src="https://i.loli.net/2018/08/26/5b821f77d85c4.png" alt="Jenkins26.png"></a></p>
+<h3 id="pipeline-job">pipeline job</h3>
+<h4 id="pipeline-job简介">pipeline job简介</h4>
+<ol>
+<li>所有代码包裹在pipeline{}内</li>
+<li>stages{}用来包含pipeline所有子层</li>
+<li>stage(管道名称){}每个子层可以执行一个任务，并不互相影响</li>
+<li>steps{}用来添加具体需要调用的模块语句</li>
+</ol>
+<h4 id="新建pipeline任务">新建pipeline任务</h4>
+<figure data-type="image" tabindex="4"><a href="https://i.loli.net/2018/08/26/5b821f7d279f0.png"><img src="https://i.loli.net/2018/08/26/5b821f7d279f0.png" alt="Jenkins31.png"></a></figure>
+<h4 id="编写pipeline-脚本">编写pipeline 脚本</h4>
+<pre><code>#!groovy
+
+pipeline {
+    // agent 定义pipeline在何处运行，使用any、none或者Jenkins node主机名
+	agent {node {label 'master'}}
+	// 声明环境变量，environment 定义系统环境变量，可以应用于所有stages
+	// 定义局部环境变量则于steps平级即可
+	environment {
+		PATH=&quot;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&quot;
+	}
+
+	parameters {
+		// 声明可选参数
+		choice(
+				// 可选参数为两个，以空行分隔
+				choices: 'dev\nprod',
+				// 设置参数描述
+				description: '选择发布环境',
+				// 声明参数变量名
+				name: 'deploy_env'
+			)
+		// 声明文本参数，和默认值
+		string (name: 'version', defaultValue: '0.0.1',description: '构建版本号')
+	}
+
+	stages {
+		// 执行一个任务
+		stage(&quot;切换到测试版本仓库&quot;) {
+			// 添加具体需要调用的模块语句
+			steps {
+				// 关闭Git ssl安全认证
+				sh 'git config --system http.sslVerify false'
+				// 指定工作空间
+				dir (&quot;${env.WORKSPACE}&quot;) {
+					// 指定分支和Jenkins凭据ID
+					git branch: 'master',
+						credentialsId: '52f4c34f-544c-4830-828d-6691d603b8e4',
+						url: 'http://home.fjy8018.top:8099/jenkins/test-repo.git'
+				}
+			}
+		}
+		stage(&quot;打印环境变量&quot;) {
+			steps {
+				dir (&quot;${env.WORKSPACE}&quot;) {
+					sh &quot;&quot;&quot;
+						echo &quot;[INFO] 打印环境变量&quot;
+						echo &quot;[INFO] 当前发布环境为 $deploy_env&quot; &gt;&gt; test.properties
+						echo &quot;[INFO] 构建版本为 $version &quot; &gt;&gt; test.properties
+						echo &quot;[INFO] 打印环境变量完成...&quot;
+					&quot;&quot;&quot;
+				}
+			}
+		}
+		stage(&quot;检查test.properties&quot;) {
+			steps {
+				dir (&quot;${env.WORKSPACE}&quot;) {
+					sh &quot;&quot;&quot;
+						echo &quot;[INFO] 检查test.properties&quot;
+						if [ -s test.properties ]
+						then
+						  cat test.properties
+						  echo &quot;[INFO] 检查完成...&quot;
+						else
+						  echo &quot;[WARN] test.properties为空&quot;
+						fi
+					&quot;&quot;&quot;
+					echo &quot;[INFO] 构建完成...&quot;
+				}
+			}
+		}
+	}
+}
+</code></pre>
+<p>其中<code>credentialsId</code>来自用户的凭据唯一标识，可在凭据页面查看<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d23347.png"><img src="https://i.loli.net/2018/08/26/5b821f7d23347.png" alt="Jenkins32.png"></a></p>
+<h4 id="写入shell脚本">写入Shell脚本</h4>
+<figure data-type="image" tabindex="5"><a href="https://i.loli.net/2018/08/26/5b821f7d204fe.png"><img src="https://i.loli.net/2018/08/26/5b821f7d204fe.png" alt="Jenkins33.png"></a></figure>
+<p>执行报错，<code>error: could not lock config file /etc/gitconfig: ????</code><br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d21c71.png"><img src="https://i.loli.net/2018/08/26/5b821f7d21c71.png" alt="Jenkins34.png"></a></p>
+<p>由于使用root用户执行同样命令不会报错，故猜测没有权限，修改语法为<code>git config --global http.sslVerify false</code>即可<br>
+重新构建<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d294a2.png"><img src="https://i.loli.net/2018/08/26/5b821f7d294a2.png" alt="Jenkins35.png"></a></p>
+<p>日志符合预期<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d1bde0.png"><img src="https://i.loli.net/2018/08/26/5b821f7d1bde0.png" alt="Jenkins36.png"></a></p>
+<h3 id="freestyle-shell-job">freestyle shell Job</h3>
+<p>新建任务<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d1ec30.png"><img src="https://i.loli.net/2018/08/26/5b821f7d1ec30.png" alt="Jenkins37.png"></a></p>
+<p>写入shell脚本如下</p>
+<pre><code>#!/bin/bash
+
+user=`whoami`
+
+if [ $user == 'deploy' ]; then
+	echo &quot;成功，当前用户为 $user&quot;
+else
+	echo &quot;失败，当前用户不是 $user&quot;
+fi
+# 查看主机ip
+ip addr
+# 查看系统版本
+cat /etc/system-release
+# 查看内存状态
+free -m
+# 查看磁盘状态
+df -h
+# 将python安装位置赋值给变量
+py_cmd=`which python`
+# 查看python版本号
+$py_cmd --version
+</code></pre>
+<figure data-type="image" tabindex="6"><a href="https://i.loli.net/2018/08/26/5b821f7d1d3a0.png"><img src="https://i.loli.net/2018/08/26/5b821f7d1d3a0.png" alt="Jenkins38.png"></a></figure>
+<p>运行并查看日志，符合预期<br>
+<a href="https://i.loli.net/2018/08/26/5b821f7d26264.png"><img src="https://i.loli.net/2018/08/26/5b821f7d26264.png" alt="Jenkins39.png"></a></p>
+<h3 id="参数任务">参数任务</h3>
+<p>新建参数化构建任务<br>
+<a href="https://i.loli.net/2018/08/26/5b82700347046.png"><img src="https://i.loli.net/2018/08/26/5b82700347046.png" alt="Jenkins44.png"></a></p>
+<p>添加选项参数等<br>
+<a href="https://i.loli.net/2018/08/26/5b8270034698e.png"><img src="https://i.loli.net/2018/08/26/5b8270034698e.png" alt="Jenkins45.png"></a></p>
+<p>添加shell构建参数<br>
+<a href="https://i.loli.net/2018/08/26/5b8270034511c.png"><img src="https://i.loli.net/2018/08/26/5b8270034511c.png" alt="Jenkins46.png"></a></p>
+<p>构建<br>
+<a href="https://i.loli.net/2018/08/26/5b82700345d4a.png"><img src="https://i.loli.net/2018/08/26/5b82700345d4a.png" alt="Jenkins47.png"></a></p>
+<p>输出符合预期<br>
+<a href="https://i.loli.net/2018/08/26/5b82700341009.png"><img src="https://i.loli.net/2018/08/26/5b82700341009.png" alt="Jenkins48.png"></a></p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://fjiayang.github.io//post/jenkins-an-zhuang-pei-zhi">
+                                <h3 class="post-title">
+                                    Jenkins 安装配置
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E9%A2%84%E9%85%8D%E7%BD%AE">系统预配置</a>
+<ul>
+<li><a href="#%E5%85%B3%E9%97%AD%E9%98%B2%E6%AD%A2%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0">关闭防止跨站请求伪造</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE">添加远程仓库配置</a></li>
+<li><a href="#%E5%87%AD%E6%8D%AE">凭据</a></li>
+</ul>
+</li>
+<li><a href="#jenkins-job">Jenkins job</a>
+<ul>
+<li><a href="#freestyle-job">freestyle Job</a>
+<ul>
+<li><a href="#freestyle-job%E7%AE%80%E4%BB%8B">freestyle Job简介</a></li>
+<li><a href="#%E6%96%B0%E5%BB%BAfreestyle-job">新建freestyle Job</a></li>
+</ul>
+</li>
+<li><a href="#pipeline-job">pipeline job</a>
+<ul>
+<li><a href="#pipeline-job%E7%AE%80%E4%BB%8B">pipeline job简介</a></li>
+<li><a href="#%E6%96%B0%E5%BB%BApipeline%E4%BB%BB%E5%8A%A1">新建pipeline任务</a></li>
+<li><a href="#%E7%BC%96%E5%86%99pipeline-%E8%84%9A%E6%9C%AC">编写pipeline 脚本</a></li>
+<li><a href="#%E5%86%99%E5%85%A5shell%E8%84%9A%E6%9C%AC">写入Shell脚本</a></li>
+</ul>
+</li>
+<li><a href="#freestyle-shell-job">freestyle shell Job</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E4%BB%BB%E5%8A%A1">参数任务</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a href="https://blog.fjy8018.top/" target="_blank">F嘉阳 博客</a> | 
+  <a class="rss" href="https://fjiayang.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
