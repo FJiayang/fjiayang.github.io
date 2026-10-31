@@ -69,10 +69,12 @@ class MigrationTests(unittest.TestCase):
         statements = []
         def fake_query(sql):
             statements.append(sql)
-            return []
+            return [{'_collection': 'contents'}, {'cid': 1}, {'_collection': 'links'}, {'name': 'friend'}]
         with patch.object(migration, 'query', fake_query):
-            migration.extract()
-        self.assertEqual(len(statements), 4)
+            data = migration.extract()
+        self.assertEqual(data['contents'], [{'cid': 1}])
+        self.assertEqual(data['links'], [{'name': 'friend'}])
+        self.assertEqual(len(statements), 1)
         self.assertNotIn('typecho_comments', '\n'.join(statements))
         for sql in statements[:3]:
             self.assertIn("c.status='publish'", sql)

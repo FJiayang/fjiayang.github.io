@@ -47,7 +47,7 @@ comments: false
 
 ## 一次性迁移工具
 
-迁移源为 `typecho_offical`。数据库只读访问，密码仅从 `WARP_PASSWORD` 环境变量读取，传给 MySQL 子进程的 `MYSQL_PWD`，不写文件或输出。默认 MySQL 路径是 `/opt/homebrew/opt/mysql-client/bin/mysql`，可用 `MYSQL_BIN` 覆盖。
+迁移源为 `typecho_offical`。每次导出只建立一个 MySQL 连接，所有查询复用该连接，认证或查询失败时立即停止、不自动重试。数据库只读访问，密码仅从 `WARP_PASSWORD` 环境变量读取，传给 MySQL 子进程的 `MYSQL_PWD`，不写文件或输出。默认 MySQL 路径是 `/opt/homebrew/opt/mysql-client/bin/mysql`，可用 `MYSQL_BIN` 覆盖。
 
 ```sh
 # 首次或最终增量核对：需要已设置 WARP_PASSWORD

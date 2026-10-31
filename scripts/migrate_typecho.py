@@ -29,11 +29,25 @@ def query(sql):
 
 def extract():
     # JSON encoding preserves real newlines and literal backslashes without mysql TSV escaping.
-    contents = query(f"SELECT JSON_OBJECT('cid',c.cid,'title',c.title,'slug',c.slug,'type',c.type,'created',c.created,'modified',c.modified,'text',c.text) FROM {DB}.typecho_contents c WHERE {SELECTED} ORDER BY c.cid")
-    fields = query(f"SELECT JSON_OBJECT('cid',f.cid,'name',f.name,'value',CASE f.type WHEN 'int' THEN CAST(f.int_value AS CHAR) WHEN 'float' THEN CAST(f.float_value AS CHAR) ELSE f.str_value END) FROM {DB}.typecho_fields f JOIN {DB}.typecho_contents c ON f.cid=c.cid WHERE {SELECTED}")
-    metas = query(f"SELECT JSON_OBJECT('cid',r.cid,'name',m.name,'slug',m.slug,'type',m.type) FROM {DB}.typecho_relationships r JOIN {DB}.typecho_metas m ON m.mid=r.mid JOIN {DB}.typecho_contents c ON c.cid=r.cid WHERE {SELECTED}")
-    links = query(f"SELECT JSON_OBJECT('name',name,'url',url,'image',image,'description',description) FROM {DB}.typecho_links ORDER BY `order`,lid")
-    return dict(contents=contents, fields=fields, metas=metas, links=links)
+    # One mysql process / connection for the entire export; never retry failed authentication.
+    statements = {
+        'contents': f"SELECT JSON_OBJECT('cid',c.cid,'title',c.title,'slug',c.slug,'type',c.type,'created',c.created,'modified',c.modified,'text',c.text) FROM {DB}.typecho_contents c WHERE {SELECTED} ORDER BY c.cid",
+        'fields': f"SELECT JSON_OBJECT('cid',f.cid,'name',f.name,'value',CASE f.type WHEN 'int' THEN CAST(f.int_value AS CHAR) WHEN 'float' THEN CAST(f.float_value AS CHAR) ELSE f.str_value END) FROM {DB}.typecho_fields f JOIN {DB}.typecho_contents c ON f.cid=c.cid WHERE {SELECTED}",
+        'metas': f"SELECT JSON_OBJECT('cid',r.cid,'name',m.name,'slug',m.slug,'type',m.type) FROM {DB}.typecho_relationships r JOIN {DB}.typecho_metas m ON m.mid=r.mid JOIN {DB}.typecho_contents c ON c.cid=r.cid WHERE {SELECTED}",
+        'links': f"SELECT JSON_OBJECT('name',name,'url',url,'image',image,'description',description) FROM {DB}.typecho_links ORDER BY `order`,lid",
+    }
+    sql = ';\n'.join(
+        f"SELECT JSON_OBJECT('_collection','{name}');\n{statement}"
+        for name, statement in statements.items()
+    ) + ';'
+    data = {name: [] for name in statements}
+    collection = None
+    for row in query(sql):
+        if '_collection' in row:
+            collection = row['_collection']
+        else:
+            data[collection].append(row)
+    return data
 
 def absolute(url):
     if url.startswith(('data:', '#', 'mailto:', 'tel:')):
