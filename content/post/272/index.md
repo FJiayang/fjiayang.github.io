@@ -44,11 +44,11 @@
 
 创建需要的实例模板
 
-![1623574362360](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574362360.png)
+![1623574362360](/images/recovered/5c831a7d7681e5d9eaff.png)
 
 配置操作系统、资源等，注意放行防火墙
 
-![1623574465544](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574465544.png)
+![1623574465544](/images/recovered/9d577af2fe0f8b8ac7e4.png)
 
 
 
@@ -68,7 +68,7 @@
 
 等待实例创建
 
-![1623575697993](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623575697993.png)
+![1623575697993](/images/recovered/c2438d50aaf14694217d.png)
 
 由于资源调度问题，最终只成功分配两台虚拟机，不过对于演示环境安装过程一样。
 
@@ -356,7 +356,7 @@ spec:
 
 此时，在虚拟机安装代理即可查看虚拟机监控
 
-![1623579284817](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579284817.png)
+![1623579284817](/images/recovered/0dd005930909278cb808.png)
 
 
 
@@ -523,7 +523,7 @@ spec:
 $ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath='{.items[0].metadata.name}') -f
 ```
 
-![1623580089627](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623580089627.png)
+![1623580089627](/images/recovered/e27887a4970faa223d7a.png)
 
 
 

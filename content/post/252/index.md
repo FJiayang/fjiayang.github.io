@@ -270,7 +270,7 @@ recousumeTimes: 3
 
 集群环境拓扑图
 
-![image-20200710111127488](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200710111127488.png)
+![image-20200710111127488](/images/recovered/6b691a8ced02a19be58b.png)
 
 分类
 

@@ -71,7 +71,7 @@ True
 ```bash
 python train_pretrain.py
 ```
-![file-20250329180305778](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/本地LLM训练/file-20250329180305778.png)
+![file-20250329180305778](/images/recovered/ed35f099beb68ef9c0d6.png)
 在我的环境下需要3小时才能完成预训练
 
 
@@ -82,7 +82,7 @@ python train_pretrain.py
 python train_full_sft.py
 ```
 执行监督全参数微调，在我的环境下需要2.5小时
-![file-20250329210505564](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/本地LLM训练/file-20250329210505564.png)
+![file-20250329210505564](/images/recovered/27840e78e795fa10d888.png)
 
 ![file-20250329233223537](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/本地LLM训练/file-20250329233223537.png)
 ## 效果测试

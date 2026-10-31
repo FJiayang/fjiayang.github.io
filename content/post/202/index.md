@@ -1147,7 +1147,7 @@ spring:
 
 启动工程发现自动建表生效
 
-[![1553913556405.png](https://i.loli.net/2019/03/30/5c9ed6dba2070.png)](https://i.loli.net/2019/03/30/5c9ed6dba2070.png)
+[![1553913556405.png](/images/recovered/b4cd43a2e3a3c1f61c6b.png)](/images/recovered/b4cd43a2e3a3c1f61c6b.png)
 
 查看数据库情况，与预期一致，主库只包含主库的表，备份库只包含备份库的表，多数据配置完成
 

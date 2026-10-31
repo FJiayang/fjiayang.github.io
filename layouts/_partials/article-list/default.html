@@ -1,0 +1,4 @@
+{{ $image := partial "helper/image" (dict "Image" (partialCached "helper/article-cover-url" . .RelPermalink) "Resources" .Resources "Context" .) }}
+<article class="{{ if $image }}has-image{{ end }}">
+    {{ partial "article/components/header" (dict "Page" . "IsList" true) }}
+</article>

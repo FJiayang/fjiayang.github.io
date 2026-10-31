@@ -104,7 +104,7 @@
 
 ## 官方架构图
 
- ![pw-cloud-v2架构图](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/pw-cloud-v2%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
+ ![pw-cloud-v2架构图](/images/recovered/2d0eba65095a8b8cd0e8.jpg)
 
 ## 截图
 
@@ -210,7 +210,7 @@ Nexus内网私服，提供maven和npm包
 
 graylog日志采集
 
-![1588580515850](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580515850.png)
+![1588580515850](/images/recovered/e611ef9ba81da5b064b2.png)
 
 三节点ES集群支持日志存储
 

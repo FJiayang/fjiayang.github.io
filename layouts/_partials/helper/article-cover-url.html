@@ -1,0 +1,11 @@
+{{- /* Prefer the author's cover; otherwise use the first rendered body image.
+      Rendered HTML supports Markdown, reference images and native HTML while
+      excluding image examples in code blocks. Keep Stack's image helper intact. */ -}}
+{{- $cover := .Params.image | default "" -}}
+{{- if and (not $cover) (eq .Section "post") -}}
+    {{- $images := findRESubmatch `(?i)<img\b[^>]*\bsrc=["']([^"']+)["']` .Content 1 -}}
+    {{- with $images -}}
+        {{- $cover = index (index . 0) 1 | htmlUnescape -}}
+    {{- end -}}
+{{- end -}}
+{{- return $cover -}}

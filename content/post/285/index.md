@@ -56,7 +56,7 @@ GPU：RTX 2060 SUPER 8G
 
 对话流畅度与chatgpt类似，精准度不如gpt4
 
-![chatglm-6b](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/chatglm-6b.gif)
+![chatglm-6b](/images/recovered/444041181a77eac5f2bc.gif)
 
 
 
@@ -100,7 +100,7 @@ GPU：RTX 2060 SUPER 8G
 
 主动提供正确数据内容后再询问，此时回答正确
 
-![image-20230528121339750](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528121339750.png)
+![image-20230528121339750](/images/recovered/51ab890433412ae2daae.png)
 
 
 
@@ -114,7 +114,7 @@ GPU：RTX 2060 SUPER 8G
 
 系统设计问题
 
-![image-20230528122234702](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528122234702.png)
+![image-20230528122234702](/images/recovered/6c613fea21606bae426d.png)
 
 
 
@@ -124,7 +124,7 @@ GPU：RTX 2060 SUPER 8G
 
 直接使用读取文档并对话的方式很容易脱离文档内容，导致答非所问
 
-![image-20230528132251350](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528132251350.png)
+![image-20230528132251350](/images/recovered/d32b89cddc41a2a39649.png)
 
 
 
@@ -146,7 +146,7 @@ GLM文档分析实际上是将文档识别后转换为特定prompt进行问答�
 
 手动复制文档内容进行模拟对话，内容回答正确
 
-![image-20230528132206338](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528132206338.png)
+![image-20230528132206338](/images/recovered/1714594fabbe13ed8d62.png)
 
 
 
@@ -160,7 +160,7 @@ GLM文档分析实际上是将文档识别后转换为特定prompt进行问答�
 
 其会自己列提纲，并逐个扩展，无需手工操作
 
-![chatglm-6b-autogpt](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/chatglm-6b-autogpt.gif)
+![chatglm-6b-autogpt](/images/recovered/180d6fc3afd209fa69f4.gif)
 
 
 

@@ -38,6 +38,8 @@ jobs:
           key: hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}-${{ github.sha }}
           restore-keys: |
             hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}-
+      - name: Download pinned theme modules
+        run: hugo mod get
       - name: Test migration converter
         run: python3 -m unittest discover -s tests -v
       - name: Build

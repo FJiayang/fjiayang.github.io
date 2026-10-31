@@ -254,13 +254,13 @@ public class ActorGraphQLQueryResolver implements GraphQLQueryResolver {
 
 启动工程后，浏览器打开`http://localhost:8080/graphiql`
 
-![image-20211105172013228](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105172013228.png)
+![image-20211105172013228](/images/recovered/820f0e61977abfc45058.png)
 
 
 
 ### 列表查询
 
-![image-20211105172501790](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105172501790.png)
+![image-20211105172501790](/images/recovered/e92e1a1d5824d992e5cf.png)
 
 
 

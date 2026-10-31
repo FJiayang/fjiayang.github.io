@@ -21,7 +21,7 @@
 
 本系列笔记是对慕课网课程的学习与总结[MySQL数据库集群-PXC方案](https://coding.imooc.com/class/274.html)
 
-![1577620098597](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577620098597.png)
+![1577620098597](/images/recovered/a47970ffb70cfa0ad0a9.png)
 
 
 
