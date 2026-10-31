@@ -143,8 +143,8 @@ nextcloud还需其他的PHP扩展环境，运行命令```apt-get  install php-my
 登陆后nextcloud安装完成！
 ![nextcloud23.png][25]
 
- [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykrLR.png
- [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yknwd.png
+ [1]: /images/recovered/105114d1832cde042c55.png
+ [2]: /images/recovered/59e081402b983d81bef7.png
  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygYhe.png
  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygd9s.png
  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygKeN.png
@@ -164,7 +164,7 @@ nextcloud还需其他的PHP扩展环境，运行命令```apt-get  install php-my
  [19]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykc4v.png
  [20]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk1KL.png
  [21]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykmji.png
- [22]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykAMg.png
+ [22]: /images/recovered/31df481befd24dd07644.png
  [23]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykHvw.png
  [24]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykGlW.png
- [25]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk8f8.png
+ [25]: /images/recovered/927ab954b160a4adc75a.png

@@ -22,7 +22,7 @@ python3 scripts/report_resources.py .migration/hugo-build.log
 
 站点图标和侧栏头像使用原仓库的 `/images/avatar.png`，原文件恢复到 `static/images/avatar.png`。
 
-除下文已从本地恢复的 36 个图片地址外，其余文章图片、封面和附件保留原地址。**保留 Stack 默认图片模板**：Hugo 构建会下载远程图片以读取元数据；关闭生成缩略图及响应式派生图，页面继续使用原地址。不可达图片产生警告，不阻止发布。原站及图床需要继续提供资源。首次构建受图片网络速度影响，缓存可加快后续构建。
+除下文已从本地恢复的 49 个图片地址外，其余文章图片、封面和附件保留原地址。**保留 Stack 默认图片模板**：Hugo 构建会下载远程图片以读取元数据；关闭生成缩略图及响应式派生图，页面继续使用原地址。不可达图片产生警告，不阻止发布。原站及图床需要继续提供资源。首次构建受图片网络速度影响，缓存可加快后续构建。
 
 `reports/resources.json` 记录本次本地构建的图片请求警告；没有警告不代表链接永久可用，HTML 原生图片、附件和友情链接不会因 Hugo 构建而获得完整的可用性检查。
 
@@ -85,12 +85,14 @@ python3 scripts/migrate_typecho.py
 
 首页文章卡片和文章页顶部优先使用 front matter 的 `image`。未设置封面时，模板自动取正文第一张图片，支持 Markdown、引用式图片和 HTML 图片，代码示例不参与选取。没有图片的文章保留文字卡片。默认 Stack 图片下载模板保持不变。
 
-已从本地草稿资源恢复 36 个失败图片地址，涉及 15 篇已发布文章，文件保存在 `static/images/recovered/`，使用 SHA-256 命名并去重。`reports/image-recovery.json` 记录原 URL、本地来源、校验值、关联文章和剩余 15 个未找到本地文件的地址；这些未确认图片继续保留原 URL。
+已从本地草稿和图片仓库恢复 49 个失败图片地址，涉及 27 篇已发布文章，文件保存在 `static/images/recovered/`，使用 SHA-256 命名并去重。`reports/image-recovery.json` 记录原 URL、本地来源、校验值、关联文章和剩余 2 个未找到本地文件的地址；这些未确认图片继续保留原 URL。
 
 需要复现修复时运行（只读取本地草稿，不访问网络和数据库）：
 
 ```sh
 python3 scripts/recover_images.py '/Users/fjy/Documents/workspace/blog-note/01博客'
+# 可继续从其他图片目录恢复未解决项；已有恢复文件及记录会保留
+python3 scripts/recover_images.py '/Users/fjy/Documents/workspace/images/img'
 ```
 
 若重新执行一次性 Typecho 导入，请在导入后运行恢复命令以重新应用本地图片引用。原草稿不修改，草稿正文不导入站点。

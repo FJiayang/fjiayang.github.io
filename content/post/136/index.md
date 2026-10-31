@@ -55,7 +55,7 @@
   [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5RMR.png
   [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5pYv.png
   [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5jjD.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5BUW.png
+  [5]: /images/recovered/f257c41e141ceda08e4e.png
   [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5Sui.png
   [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5P6w.png
   [8]: https://www.fjy8018.xin/

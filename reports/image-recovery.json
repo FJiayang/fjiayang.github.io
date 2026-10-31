@@ -2,6 +2,62 @@
   "baseline_failed_urls": 51,
   "recovered": [
     {
+      "original_url": "https://fjy8018.gitee.io/images/img/git.png",
+      "url": "/images/recovered/7029ed877105a9b0efec.png",
+      "source": "git.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "7029ed877105a9b0efec885a50a370dc817a1e0ee23ebabc2fbbf4c208561090",
+      "bytes": 4669,
+      "articles": [
+        {
+          "cid": 240,
+          "title": "Git工作使用笔记"
+        }
+      ]
+    },
+    {
+      "original_url": "https://fjy8018.gitee.io/images/img/logo_0_1.png",
+      "url": "/images/recovered/de47efcb191c722de4a9.png",
+      "source": "logo_0_1.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "de47efcb191c722de4a90b5d459efc74f0393cb4c3b0d3dd5c8b432a2afafa07",
+      "bytes": 10489,
+      "articles": [
+        {
+          "cid": 230,
+          "title": "PXC系列学习笔记（一）——PXC单节点安装配置"
+        },
+        {
+          "cid": 231,
+          "title": "PXC系列学习笔记（二）——PXC集群安装配置"
+        },
+        {
+          "cid": 232,
+          "title": "PXC系列学习笔记（三）——MyCat安装和读写分离配置"
+        },
+        {
+          "cid": 233,
+          "title": "PXC系列学习笔记（四）——搭建双机热备的MyCat集群"
+        },
+        {
+          "cid": 234,
+          "title": "PXC系列学习笔记（五）——Sysbench基准测试 "
+        },
+        {
+          "cid": 235,
+          "title": "PXC系列学习笔记（六）——Java千万数据量导入和查询优化 "
+        },
+        {
+          "cid": 236,
+          "title": "PXC系列学习笔记（七）——大数据归档——冷热数据分离"
+        }
+      ]
+    },
+    {
       "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/%E5%9F%BA%E4%BA%8EChatGLM2-6B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/20.png",
       "url": "/images/recovered/5a72b19c32c396a54a30.png",
       "source": "asset/基于 ChatGLM2-6B 搭建个人知识库/20.png",
@@ -333,6 +389,182 @@
       ]
     },
     {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnIer.png",
+      "url": "/images/recovered/6d3b91eec2ec6159544e.png",
+      "source": "2HnIer.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "6d3b91eec2ec6159544eec38a66c594f090cd42ff01aa89fbab50e624bba83aa",
+      "bytes": 781727,
+      "articles": [
+        {
+          "cid": 146,
+          "title": "单节点MapReduce开发"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5BUW.png",
+      "url": "/images/recovered/f257c41e141ceda08e4e.png",
+      "source": "2J5BUW.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "f257c41e141ceda08e4e92b41177e2ea05644528037793f1951978d18d0a43c0",
+      "bytes": 166491,
+      "articles": [
+        {
+          "cid": 136,
+          "title": "Typecho  Pinghsu 主题加入备案信息"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2JymHv.jpg",
+      "url": "/images/recovered/d988710b0cba1688d53b.jpg",
+      "source": "2JymHv.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "d988710b0cba1688d53b391d79aec62dd606c2bb6b1f66a7032bbd9b4d747f7c",
+      "bytes": 799750,
+      "articles": [
+        {
+          "cid": 134,
+          "title": "我们一直过得更好，却不知珍惜"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk8f8.png",
+      "url": "/images/recovered/927ab954b160a4adc75a.png",
+      "source": "2yk8f8.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "927ab954b160a4adc75a0eaf9499f2ca1cfea2536ca1c3e6b6a4f4f13c42dba2",
+      "bytes": 692449,
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykAMg.png",
+      "url": "/images/recovered/31df481befd24dd07644.png",
+      "source": "2ykAMg.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "31df481befd24dd076441838b03a227eded67ad9ede92a1e5505ef2fd65dfaf7",
+      "bytes": 2124294,
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yknwd.png",
+      "url": "/images/recovered/59e081402b983d81bef7.png",
+      "source": "2yknwd.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "59e081402b983d81bef7a1e8f0fa85ffaf040a1a0873ef673f40580427951c1c",
+      "bytes": 986133,
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykouL.jpg",
+      "url": "/images/recovered/091757ba220ae07673e0.jpg",
+      "source": "2ykouL.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "091757ba220ae07673e0b025e6cc05ef13af5a53234e2195063aff176a33639f",
+      "bytes": 1436847,
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykrLR.png",
+      "url": "/images/recovered/105114d1832cde042c55.png",
+      "source": "2ykrLR.png",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "105114d1832cde042c55190875d68ab46ec887c398e83e18031cc98440bc7529",
+      "bytes": 2447990,
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yt2sw.jpg",
+      "url": "/images/recovered/5f292066ce13c2d2fa33.jpg",
+      "source": "2yt2sw.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "5f292066ce13c2d2fa33bf4f268c53bfd72cce06e1a61897f4ec6751e444a72e",
+      "bytes": 1986643,
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ytV6R.jpg",
+      "url": "/images/recovered/fae4d71614ee92547fe2.jpg",
+      "source": "2ytV6R.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "fae4d71614ee92547fe23be06eee474a7205317a30254d954030f97a2cbbe3e0",
+      "bytes": 2206609,
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yty3W.jpg",
+      "url": "/images/recovered/e0da53493331f5c435d6.jpg",
+      "source": "2yty3W.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "e0da53493331f5c435d658d6f3d6766f4478a675fb2f5664db06e82779f68705",
+      "bytes": 1797514,
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ]
+    },
+    {
       "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/9919411-b8b4cfdba4c58e12.png",
       "url": "/images/recovered/5f1205dd00a28d164de3.png",
       "source": "assets/9919411-b8b4cfdba4c58e12.png",
@@ -650,160 +882,6 @@
     },
     {
       "original_url": "http://img.zcool.cn/community/01c0285a03daf1a801204a0ed5d8f4.jpg@1280w_1l_2o_100sh.webp",
-      "articles": [
-        {
-          "cid": 16,
-          "title": "合成案例教学作品1——恐龙入侵"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://fjy8018.gitee.io/images/img/git.png",
-      "articles": [
-        {
-          "cid": 240,
-          "title": "Git工作使用笔记"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://fjy8018.gitee.io/images/img/logo_0_1.png",
-      "articles": [
-        {
-          "cid": 230,
-          "title": "PXC系列学习笔记（一）——PXC单节点安装配置"
-        },
-        {
-          "cid": 231,
-          "title": "PXC系列学习笔记（二）——PXC集群安装配置"
-        },
-        {
-          "cid": 232,
-          "title": "PXC系列学习笔记（三）——MyCat安装和读写分离配置"
-        },
-        {
-          "cid": 233,
-          "title": "PXC系列学习笔记（四）——搭建双机热备的MyCat集群"
-        },
-        {
-          "cid": 234,
-          "title": "PXC系列学习笔记（五）——Sysbench基准测试 "
-        },
-        {
-          "cid": 235,
-          "title": "PXC系列学习笔记（六）——Java千万数据量导入和查询优化 "
-        },
-        {
-          "cid": 236,
-          "title": "PXC系列学习笔记（七）——大数据归档——冷热数据分离"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnIer.png",
-      "articles": [
-        {
-          "cid": 146,
-          "title": "单节点MapReduce开发"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5BUW.png",
-      "articles": [
-        {
-          "cid": 136,
-          "title": "Typecho  Pinghsu 主题加入备案信息"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2JymHv.jpg",
-      "articles": [
-        {
-          "cid": 134,
-          "title": "我们一直过得更好，却不知珍惜"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk8f8.png",
-      "articles": [
-        {
-          "cid": 53,
-          "title": "使用宝塔安装nextcloud私有云服务"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykAMg.png",
-      "articles": [
-        {
-          "cid": 53,
-          "title": "使用宝塔安装nextcloud私有云服务"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yknwd.png",
-      "articles": [
-        {
-          "cid": 53,
-          "title": "使用宝塔安装nextcloud私有云服务"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykouL.jpg",
-      "articles": [
-        {
-          "cid": 16,
-          "title": "合成案例教学作品1——恐龙入侵"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykrLR.png",
-      "articles": [
-        {
-          "cid": 53,
-          "title": "使用宝塔安装nextcloud私有云服务"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yt2sw.jpg",
-      "articles": [
-        {
-          "cid": 16,
-          "title": "合成案例教学作品1——恐龙入侵"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ytV6R.jpg",
-      "articles": [
-        {
-          "cid": 16,
-          "title": "合成案例教学作品1——恐龙入侵"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yty3W.jpg",
       "articles": [
         {
           "cid": 16,

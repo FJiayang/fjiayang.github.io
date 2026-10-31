@@ -58,6 +58,15 @@ class RecoveryTests(unittest.TestCase):
         self.assertIn(r['recovered'][0]['url'],self.article.read_text())
         self.assertNotIn(raw,self.article.read_text())
 
+    def test_previous_recovery_survives_a_different_source_directory(self):
+        (self.drafts/'screenshot.png').write_bytes(PNG)
+        first = self.run_recovery()
+        (self.drafts/'screenshot.png').unlink()
+        self.drafts = Path(self.temp.name)/'another-image-source'
+        self.drafts.mkdir()
+        self.assertEqual(self.run_recovery(), first)
+        self.assertIn(first['recovered'][0]['url'], self.article.read_text())
+
     def test_does_not_guess_ambiguous_files(self):
         for name,data in [('a',PNG),('b',PNG+b'different')]:
             p=self.drafts/name/'screenshot.png';p.parent.mkdir();p.write_bytes(data)
