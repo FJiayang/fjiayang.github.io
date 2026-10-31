@@ -22,8 +22,10 @@ timeout = '15m'
 [params]
   mainSections = ['post']
   description = 'F嘉阳的博客'
+  favicon = '/images/avatar.png'
   rssFullContent = true
   [params.sidebar]
+    avatar = '/images/avatar.png'
     subtitle = '开发、云原生与工程实践'
   [params.footer]
     since = 2018
