@@ -45,7 +45,7 @@ def main():
             errors.append(f'Unexpected publication flags: {p.relative_to(ROOT)}')
     if expected != actual or len(actual) != manifest['posts']:
         errors.append('Article manifest and content differ')
-    for url in ['/', '/archives/', '/categories/', '/tags/', '/search/', '/search/index.json', '/project.html', '/links.html', '/404.html', '/index.xml', '/sitemap.xml', '/robots.txt'] + [item['url'] for item in manifest['items']]:
+    for url in ['/', '/archives/', '/categories/', '/tags/', '/search/', '/search/index.json', '/project.html', '/links.html', '/404.html', '/index.xml', '/sitemap.xml', '/robots.txt', '/images/avatar.png'] + [item['url'] for item in manifest['items']]:
         p = public/url.lstrip('/')
         if url.endswith('/'):
             p = p/'index.html'

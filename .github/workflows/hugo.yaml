@@ -1,7 +1,7 @@
 name: Build and deploy Hugo
 on:
   push:
-    branches: [master, codex/typecho-hugo-stack]
+    branches: [master]
   pull_request:
   workflow_dispatch:
 
