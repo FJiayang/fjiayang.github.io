@@ -1,0 +1,1924 @@
+{
+  "title": "LeetCode刷题记录",
+  "date": "2019-01-06T19:43:00+08:00",
+  "lastmod": "2019-04-21T09:56:15+08:00",
+  "typecho_cid": 201,
+  "url": "/archives/201/",
+  "comments": false,
+  "draft": false,
+  "slug": "201",
+  "categories": [
+    "开发",
+    "学习"
+  ],
+  "tags": [
+    "LeetCode",
+    "刷题",
+    "算法"
+  ],
+  "math": false
+}
+
+## 第1天 Jewels and Stones （771）
+
+- 题号771 [Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/)
+
+- 题目描述： 
+
+  > 给定字符串`J` 代表石头中宝石的类型，和字符串 `S`代表你拥有的石头。 `S` 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+  >
+  > `J` 中的字母不重复，`J` 和 `S`中的所有字符都是字母。字母区分大小写，因此`"a"`和`"A"`是不同类型的石头。
+
+- 解题思路：字符串遍历比对
+
+- 心得：查看了排名较前的解法，大部分也是暴力比对，少数取巧解法获得更好的时间复杂度
+
+[![771.png](https://i.loli.net/2019/01/06/5c31e0fecab27.png)](https://i.loli.net/2019/01/06/5c31e0fecab27.png)
+
+排名最前的解法
+
+[![771-good.png](https://i.loli.net/2019/01/06/5c31e1710edeb.png)](https://i.loli.net/2019/01/06/5c31e1710edeb.png)
+
+## 第2天 Unique Email Addresse （929）
+
+- 题号929 [Unique Email Addresses](https://leetcode.com/problems/unique-email-addresses/)
+
+- 题目描述：
+
+  > 每封电子邮件都由一个本地名称和一个域名组成，以 @ 符号分隔。
+  >
+  > 例如，在 `alice@leetcode.com`中， `alice` 是本地名称，而 `leetcode.com` 是域名。
+  >
+  > 除了小写字母，这些电子邮件还可能包含 `'.'` 或 `'+'`。
+  >
+  > 如果在电子邮件地址的**本地名称**部分中的某些字符之间添加句点（`'.'`），则发往那里的邮件将会转发到本地名称中没有点的同一地址。例如，`"alice.z@leetcode.com”` 和 `“alicez@leetcode.com”` 会转发到同一电子邮件地址。 （请注意，此规则不适用于域名。）
+  >
+  > 如果在**本地名称**中添加加号（`'+'`），则会忽略第一个加号后面的所有内容。这允许过滤某些电子邮件，例如 `m.y+name@email.com` 将转发到 `my@email.com`。 （同样，此规则不适用于域名。）
+  >
+  > 可以同时使用这两个规则。
+  >
+  > 给定电子邮件列表 `emails`，我们会向列表中的每个地址发送一封电子邮件。实际收到邮件的不同地址有多少？
+  >
+  >  
+  >
+  > **示例：**
+  >
+  > ```
+  > 输入：["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+  > 输出：2
+  > 解释：实际收到邮件的是 "testemail@leetcode.com" 和 "testemail@lee.tcode.com"。
+  > ```
+  >
+  >  
+  >
+  > **提示：**
+  >
+  > - `1 <= emails[i].length <= 100`
+  > - `1 <= emails.length <= 100`
+  > - 每封 `emails[i]` 都包含有且仅有一个 `'@'` 字符。
+
+- 解题思路：字符串替换+去除重复元素
+
+- 心得体会：网站测试用例不全导致排名较前的解法有问题，并不能完全符合题目要求，自己的代码时间复杂度还是较高
+
+[![929.png](https://i.loli.net/2019/01/06/5c31e88833ae5.png)](https://i.loli.net/2019/01/06/5c31e88833ae5.png)
+
+国外Java精简正则表达式解法
+[![929-good.png](https://i.loli.net/2019/01/06/5c31eba720c2e.png)](https://i.loli.net/2019/01/06/5c31eba720c2e.png)
+
+## 第3天 Sort Array By Parity （905）
+
+- 题号905 [Sort Array By Parity](https://leetcode.com/problems/sort-array-by-parity/)
+- 题目描述：给定一个非负整数数组 `A`，返回一个由 `A` 的所有偶数元素组成的数组，后面跟 `A` 的所有奇数元素。
+- 解题思路：双指针
+- 心得体会：经典解法，时间复杂度为O(n)，遍历数组，将偶数从前往后存放，奇数则从后往前存放
+
+[![905.png](https://i.loli.net/2019/01/07/5c32b93b0bde7.png)](https://i.loli.net/2019/01/07/5c32b93b0bde7.png)
+
+## 第4天 Encode and Decode TinyURL（535）
+
+- 题号535 [Encode and Decode TinyURL](https://leetcode.com/problems/encode-and-decode-tinyurl/)
+
+- 题目描述：
+
+  > TinyURL是一种URL简化服务， 比如：当你输入一个URL `https://leetcode.com/problems/design-tinyurl` 时，它将返回一个简化的URL `http://tinyurl.com/4e9iAk`.
+
+- 解题思路：短网址算法简化版
+
+- 心得体会：哈希运算后再转16进制即可明显缩短网址长度，题目没有要求生成的长度，故没有实现真正的[短网址算法](https://soulmachine.gitbooks.io/system-design/content/cn/tinyurl.html)，也有不运算通过集合直接存储返回下标的，目前暂时没有在讨论区看到更好的Java解法
+
+[![535.png](https://i.loli.net/2019/01/07/5c333e2d71840.png)](https://i.loli.net/2019/01/07/5c333e2d71840.png)
+
+
+还有更加取巧的解法，直接暴力返回。。然而还显示`739 / 739 个通过测试用例`。。排名较前的多为该解法
+
+[![535-2.png](https://i.loli.net/2019/01/07/5c333e2d6a7cd.png)](https://i.loli.net/2019/01/07/5c333e2d6a7cd.png)
+
+## 第5天 Subsets（78）
+
+- 题号78 [Subsets](https://leetcode.com/problems/subsets/)
+- 题目描述：给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
+说明：解集不能包含重复的子集。
+- 解题思路：深度优先或者广度优先算法
+- 心得体会：思考了一段时间，之后在讨论区看到BFS、DFS解法，最后看到使用排序和递归结合的DFS简洁解法，拓宽了思路
+
+[![78-m.png](https://i.loli.net/2019/01/08/5c345d693a7c3.png)](https://i.loli.net/2019/01/08/5c345d693a7c3.png)
+
+排序和递归结合的DFS解法
+
+[![78.png](https://i.loli.net/2019/01/08/5c341cf0352a3.png)](https://i.loli.net/2019/01/08/5c341cf0352a3.png)
+
+## 第6天 Minimum Add to Make Parentheses Valid（921）
+
+- 题号921 [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)
+
+- 题目描述：
+
+  > 给定一个由 `'('` 和 `')'` 括号组成的字符串 `S`，我们需要添加最少的括号（ `'('` 或是 `')'`，可以在任何位置），以使得到的括号字符串有效。
+  >
+  > 从形式上讲，只有满足下面几点之一，括号字符串才是有效的：
+  >
+  > - 它是一个空字符串，或者
+  > - 它可以被写成 `AB` （`A` 与 `B` 连接）, 其中 `A` 和 `B` 都是有效字符串，或者
+  > - 它可以被写作 `(A)`，其中 `A` 是有效字符串。
+  >
+  > 给定一个括号字符串，返回为使结果字符串有效而必须添加的最少括号数。
+
+- 解题思路：栈，遇到左括号则右括号入栈，遇到右括号则弹出栈顶元素并判断其是否为左括号，栈为空或者判断为false都将计数器自增，最终返回栈大小与计数器之和即可
+
+- 心得体会：按照题目标签选题为栈，故使用了栈来实现，但耗时其实比直接使用左右括号计数器要长
+
+[![921.png](https://i.loli.net/2019/01/11/5c387e9074688.png)](https://i.loli.net/2019/01/11/5c387e9074688.png)
+
+左右括号计数器解法
+
+[![921-good.png](https://i.loli.net/2019/01/11/5c387e9071e28.png)](https://i.loli.net/2019/01/11/5c387e9071e28.png)
+
+## 第7天 Reverse String（344）
+
+- 题号 344 [Reverse String](https://leetcode.com/problems/reverse-string/)
+- 题目描述：编写一个函数，其作用是将输入的字符串反转过来。
+- 解题思路：双指针
+- 心得体会：简单题，两个指针分别从前往后和从后往前遍历并交换，但从讨论区也看到了更多的思路，例如使用ACII位运算解法等
+
+[![344.png](https://i.loli.net/2019/01/12/5c39f0b3c4bf8.png)](https://i.loli.net/2019/01/12/5c39f0b3c4bf8.png)
+
+ACII位运算解法
+
+[![344-g.png](https://i.loli.net/2019/01/12/5c39f16367414.png)](https://i.loli.net/2019/01/12/5c39f16367414.png)
+
+
+
+## 第8天 Remove Linked List Elements（203）
+
+- 题号 203 [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/)
+- 题目描述：删除链表中等于给定值 **val** 的所有节点。
+- 解题思路：
+  - 单链表迭代删除元素
+  - 带虚拟头结点单链表迭代删除元素
+  - 递归实现
+- 心得体会：简单题，使用指针逐个判断下一个元素是否为待删除元素，迭代直至链表尾部。题目虽然难度不大，但可以增强对链表和递归用法的理解。
+
+
+
+非虚拟头结点实现
+
+[![Remove Linked List Elements1.png](https://i.loli.net/2019/04/06/5ca80cf535ab1.png)](https://i.loli.net/2019/04/06/5ca80cf535ab1.png)
+
+
+
+虚拟头结点实现
+
+[![Remove Linked List Elements2.png](https://i.loli.net/2019/04/06/5ca80cf52ea70.png)](https://i.loli.net/2019/04/06/5ca80cf52ea70.png)
+
+
+
+递归实现
+
+[![Remove Linked List Elements3.png](https://i.loli.net/2019/04/06/5ca80cf5200e1.png)](https://i.loli.net/2019/04/06/5ca80cf5200e1.png)
+
+
+
+## 第9天 Valid Parentheses（20）
+
+- 题号 20 [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
+
+- 题目描述：
+
+  > 给定一个只包括 `'('`，`')'`，`'{'`，`'}'`，`'['`，`']'` 的字符串，判断字符串是否有效。
+  >
+  > 有效字符串需满足：
+  >
+  > 1. 左括号必须用相同类型的右括号闭合。
+  > 2. 左括号必须以正确的顺序闭合。
+  >
+  > 注意空字符串可被认为是有效字符串。
+
+- 解题思路：栈
+
+- 心得体会：简单题，栈的基础操作，但注意出栈后仍需判断括号是否匹配以及遍历完毕还需判断栈是否为空
+
+
+
+[![Valid Parentheses.png](https://i.loli.net/2019/04/06/5ca80cf53c589.png)](https://i.loli.net/2019/04/06/5ca80cf53c589.png)
+
+
+
+## 第10天 Binary Tree Inorder Traversal（94）
+
+- 题号 94 [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+
+- 题目描述：
+
+  > 给定一个二叉树，返回它的*中序* 遍历。
+  >
+  > **示例:**
+  >
+  > ```
+  > 输入: [1,null,2,3]
+  >    1
+  >     \
+  >      2
+  >     /
+  >    3
+  > 
+  > 输出: [1,3,2]
+  > ```
+
+- 解题思路：考察二叉树中序遍历递归实现和非递归实现
+
+- 心得体会：简单题，二叉树的基础操作
+
+
+
+递归实现
+
+[![inorderTraversal.png](https://i.loli.net/2019/04/09/5cac0c760830d.png)](https://i.loli.net/2019/04/09/5cac0c760830d.png)
+
+
+
+非递归实现
+
+[![inorderTraversal1.png](https://i.loli.net/2019/04/09/5cac0c836d25a.png)](https://i.loli.net/2019/04/09/5cac0c836d25a.png)
+
+## 第11天 Search in a Binary Search Tree（700）
+
+- 题号 700 [Search in a Binary Search Tree](https://blog.fjy8018.top/<https:/leetcode.com/problems/search-in-a-binary-search-tree/>)
+
+- 题目描述：
+
+  > 给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。 返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
+  >
+  > 例如，
+  >
+  > ```
+  > 给定二叉搜索树:
+  > 
+  >         4
+  >        / \
+  >       2   7
+  >      / \
+  >     1   3
+  > 
+  > 和值: 2
+  > ```
+  >
+  > 你应该返回如下子树:
+  >
+  > ```
+  >       2     
+  >      / \   
+  >     1   3
+  > ```
+  >
+  > 在上述示例中，如果要找的值是 `5`，但因为没有节点值为 `5`，我们应该返回 `NULL`。
+
+- 解题思路：二叉树节点值比对、查找、递归实现
+
+- 心得体会：简单题，二叉树的查找操作
+
+[![searchBST.png](https://i.loli.net/2019/04/09/5cac1027f224c.png)](https://i.loli.net/2019/04/09/5cac1027f224c.png)
+
+## 第12天 Binary Tree Level Order Traversal II（107）
+
+- 题号 107 [Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/)
+
+- 题目描述：
+
+  > 给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
+  >
+  > 例如：
+  > 给定二叉树 `[3,9,20,null,null,15,7]`,
+  >
+  > ```
+  >     3
+  >    / \
+  >   9  20
+  >     /  \
+  >    15   7
+  > ```
+  >
+  > 返回其自底向上的层次遍历为：
+  >
+  > ```
+  > [
+  >   [15,7],
+  >   [9,20],
+  >   [3]
+  > ]
+  > ```
+
+- 解题思路：深度优先遍历、广度优先遍历
+
+- 心得体会：由于题目要求自底向上层次遍历，反向输出使用栈实现，考虑使用深度优先并结合队列实现，故使用非递归方式，但每层都要组合为一个集合，考虑使用双队列，解题过程中清楚这并不是最优解，后在评论区看到更优解法
+
+[![levelOrderBottom.png](https://i.loli.net/2019/04/09/5cac5fcc5c123.png)](https://i.loli.net/2019/04/09/5cac5fcc5c123.png)
+
+
+
+评论区赞同数较高的解法
+
+
+
+> DFS solution:
+>
+> ```java
+> public class Solution {
+>     public List<List<Integer>> levelOrderBottom(TreeNode root) {
+>         Queue<TreeNode> queue = new LinkedList<TreeNode>();
+>         List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
+>         
+>         if(root == null) return wrapList;
+>         
+>         queue.offer(root);
+>         while(!queue.isEmpty()){
+>             // 记录队列中根节点数量
+>             int levelNum = queue.size();
+>             List<Integer> subList = new LinkedList<Integer>();
+>             for(int i=0; i<levelNum; i++) {
+>                 if(queue.peek().left != null) queue.offer(queue.peek().left);
+>                 if(queue.peek().right != null) queue.offer(queue.peek().right);
+>                 subList.add(queue.poll().val);
+>             }
+>             wrapList.add(0, subList);
+>         }
+>         return wrapList;
+>     }
+> }
+> ```
+>
+> 
+>
+> BFS solution:
+>
+> ```java
+> public class Solution {
+>         public List<List<Integer>> levelOrderBottom(TreeNode root) {
+>             List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
+>             levelMaker(wrapList, root, 0);
+>             return wrapList;
+>         }
+>         
+>         public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
+>             if(root == null) return;
+>             if(level >= list.size()) {
+>                 list.add(0, new LinkedList<Integer>());
+>             }
+>             levelMaker(list, root.left, level+1);
+>             levelMaker(list, root.right, level+1);
+>             list.get(list.size()-level-1).add(root.val);
+>         }
+> }
+> ```
+>
+
+
+
+## 第13天 Binary Tree Preorder Traversal（144）
+
+- 题号 144 [Binary Tree Preorder Traversal](https://blog.fjy8018.top/<https:/leetcode.com/problems/binary-tree-preorder-traversal/>)
+
+- 题目描述：
+
+  > 给定一个二叉树，返回它的 *前序* 遍历。
+  >
+  >  **示例:**
+  >
+  > ```
+  > 输入: [1,null,2,3]  
+  >    1
+  >     \
+  >      2
+  >     /
+  >    3 
+  > 
+  > 输出: [1,2,3]
+  > ```
+
+- 解题思路：二叉树先序遍历递归实现、非递归实现
+
+- 心得体会：简单题，二叉树的基础操作
+
+递归实现
+
+[![preorderTraversal.png](https://i.loli.net/2019/04/09/5cac8d1c1ae0a.png)](https://i.loli.net/2019/04/09/5cac8d1c1ae0a.png)
+
+
+非递归实现
+
+[![preorderTraversal 2.png](https://i.loli.net/2019/04/09/5cac8d1e2803b.png)](https://i.loli.net/2019/04/09/5cac8d1e2803b.png)
+
+
+
+## 第14天 Binary Tree Postorder Traversal（145）
+
+- 题号 145 [Binary Tree Postorder Traversal](https://blog.fjy8018.top/<https:/leetcode.com/problems/binary-tree-postorder-traversal/>)
+
+- 题目描述：
+
+  > 给定一个二叉树，返回它的 *后序* 遍历。
+  >
+  > **示例:**
+  >
+  > ```
+  > 输入: [1,null,2,3]  
+  >    1
+  >     \
+  >      2
+  >     /
+  >    3 
+  > 
+  > 输出: [3,2,1]
+  > ```
+
+- 解题思路：二叉树递归操作、双栈使用
+
+- 心得体会：递归实现较为简单，但非递归实现需要对栈有深刻的理解，通过双栈使用让每个节点在第三次遍历时输出
+
+递归实现
+
+[![postorderTraversal 1.png](https://i.loli.net/2019/04/09/5cac8e0ed27b1.png)](https://i.loli.net/2019/04/09/5cac8e0ed27b1.png)
+
+非递归实现
+
+[![postorderTraversal.png](https://i.loli.net/2019/04/09/5cac8e0ebaa41.png)](https://i.loli.net/2019/04/09/5cac8e0ebaa41.png)
+
+
+
+## 第15天 Merge Two Sorted Lists（21）
+
+- 题号 21 [Merge Two Sorted Lists](https://blog.fjy8018.top/<https:/leetcode.com/problems/merge-two-sorted-lists/>)
+
+- 题目描述：
+
+  > 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+  >
+  > **示例：**
+  >
+  > ```
+  > 输入：1->2->4, 1->3->4
+  > 输出：1->1->2->3->4->4
+  > ```
+
+- 解题思路：链表插入操作
+
+- 心得体会：简单题，注意边界值以及可能出现两个链表长度不等的情况
+
+[![mergeTwoLists.png](https://i.loli.net/2019/04/09/5cac8eb30d4f1.png)](https://i.loli.net/2019/04/09/5cac8eb30d4f1.png)
+
+
+
+## 第16天 Remove Nth Node From End of List（19）
+
+- 题号 19 [Remove Nth Node From End of List](https://blog.fjy8018.top/<https:/leetcode.com/problems/remove-nth-node-from-end-of-list/>)
+
+- 题目描述：
+
+  > 给定一个链表，删除链表的倒数第 *n* 个节点，并且返回链表的头结点。
+  >
+  > **示例：**
+  >
+  > ```
+  > 给定一个链表: 1->2->3->4->5, 和 n = 2.
+  > 
+  > 当删除了倒数第二个节点后，链表变为 1->2->3->5.
+  > ```
+  >
+  > **说明：**
+  >
+  > 给定的 *n* 保证是有效的。
+  >
+  > **进阶：**
+  >
+  > 使用一趟扫描实现
+
+- 解题思路：第一趟扫描得到链表大小、用链表大小减去n得到节点顺位下标，按链表删除元素操作即可
+
+- 心得体会：两趟扫描比较容易想到，解题后在讨论区看到评价较高的一趟扫描排序实现
+
+两趟扫描实现
+
+[![removeNthFromEnd.png](https://i.loli.net/2019/04/09/5cac8f8d27897.png)](https://i.loli.net/2019/04/09/5cac8f8d27897.png)
+
+
+
+一趟扫描实现
+
+> A one pass solution can be done using pointers. Move one pointer **fast** --> **n+1** places forward, to maintain a gap of n between the two pointers and then move both at the same speed. Finally, when the fast pointer reaches the end, the slow pointer will be **n+1** places behind - just the right spot for it to be able to skip the next node.
+>
+> 
+>
+> Since the question gives that **n** is valid, not too many checks have to be put in place. Otherwise, this would be necessary.
+>
+> 
+>
+> ```java
+> public ListNode removeNthFromEnd(ListNode head, int n) {
+>     
+>     ListNode start = new ListNode(0);
+>     ListNode slow = start, fast = start;
+>     slow.next = head;
+>     
+>     //Move fast in front so that the gap between slow and fast becomes n
+>     for(int i=1; i<=n+1; i++)   {
+>         fast = fast.next;
+>     }
+>     //Move fast to the end, maintaining the gap
+>     while(fast != null) {
+>         slow = slow.next;
+>         fast = fast.next;
+>     }
+>     //Skip the desired node
+>     slow.next = slow.next.next;
+>     return start.next;
+> }
+> ```
+
+
+
+
+
+## 第17天 Unique Morse Code Words（804）
+
+- 题号 804 [Unique Morse Code Words](https://blog.fjy8018.top/<https:/leetcode.com/problems/unique-morse-code-words/>)
+
+- 题目描述：
+
+  > 国际摩尔斯密码定义一种标准编码方式，将每个字母对应于一个由一系列点和短线组成的字符串， 比如: `"a"` 对应 `".-"`, `"b"` 对应 `"-..."`, `"c"` 对应 `"-.-."`, 等等。
+  >
+  > 为了方便，所有26个英文字母对应摩尔斯密码表如下：
+  >
+  > ```
+  > [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+  > ```
+  >
+  > 给定一个单词列表，每个单词可以写成每个字母对应摩尔斯密码的组合。例如，"cab" 可以写成 "-.-..--..."，(即 "-.-." + "-..." + ".-"字符串的结合)。我们将这样一个连接过程称作单词翻译。
+  >
+  > 返回我们可以获得所有词不同单词翻译的数量。
+  >
+  > ```
+  > 例如:
+  > 输入: words = ["gin", "zen", "gig", "msg"]
+  > 输出: 2
+  > 解释: 
+  > 各单词翻译如下:
+  > "gin" -> "--...-."
+  > "zen" -> "--...-."
+  > "gig" -> "--...--."
+  > "msg" -> "--...--."
+  > 
+  > 共有 2 种不同翻译, "--...-." 和 "--...--.".
+  > ```
+  >
+  >  
+  >
+  > **注意:**
+  >
+  > - 单词列表`words` 的长度不会超过 `100`。
+  > - 每个单词 `words[i]`的长度范围为 `[1, 12]`。
+  > - 每个单词 `words[i]`只包含小写字母。
+
+- 解题思路：通过给定的摩斯密码表翻译成字符串再利用Set去重
+
+- 心得体会：翻译过程注意数组下标从0开始，故原本`a`对应`96`则需要`-97`，同时该问题不存在大写字母，可减少一部分逻辑
+
+
+
+[![uniqueMorseRepresentations.png](https://i.loli.net/2019/04/12/5caffe5510cd7.png)](https://i.loli.net/2019/04/12/5caffe5510cd7.png)
+
+## 第18天 Intersection of Two Arrays（349）
+
+- 题号 349 [Intersection of Two Arrays](https://blog.fjy8018.top/<https:/leetcode.com/problems/intersection-of-two-arrays/>)
+
+- 题目描述：
+
+  > 给定两个数组，编写一个函数来计算它们的交集。
+  >
+  > **示例 1:**
+  >
+  > ```
+  > 输入: nums1 = [1,2,2,1], nums2 = [2,2]
+  > 输出: [2]
+  > ```
+  >
+  > **示例 2:**
+  >
+  > ```
+  > 输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+  > 输出: [9,4]
+  > ```
+  >
+  > **说明:**
+  >
+  > - 输出结果中的每个元素一定是唯一的。
+  > - 我们可以不考虑输出结果的顺序。
+
+- 解题思路：使用集合对数组去重，并遍历另一个数组，遇到相同元素则添加进结果集，同时删除第一个数组集合中的元素，防止下次再次遇到相同的元素
+
+- 心得体会：最容易想到的方式是对两个数组都进行去重后比较，但通过使用第一个去重集合在第二个数组遍历过程中遇到相同元素时去除该元素的方式，减少对第二个数组的去重操作，提高性能
+
+
+
+[![intersection.png](https://i.loli.net/2019/04/12/5cafff3d0bad1.png)](https://i.loli.net/2019/04/12/5cafff3d0bad1.png)
+
+## 第19天 Intersection of Two Arrays II（350）
+
+- 题号 350 [Intersection of Two Arrays II](https://blog.fjy8018.top/<https:/leetcode.com/problems/intersection-of-two-arrays-ii/>)
+
+- 题目描述：
+
+  > 给定两个数组，编写一个函数来计算它们的交集。
+  >
+  > **示例 1:**
+  >
+  > ```
+  > 输入: nums1 = [1,2,2,1], nums2 = [2,2]
+  > 输出: [2,2]
+  > ```
+  >
+  > **示例 2:**
+  >
+  > ```
+  > 输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+  > 输出: [4,9]
+  > ```
+  >
+  > **说明：**
+  >
+  > - 输出结果中每个元素出现的次数，应与元素在两个数组中出现的次数一致。
+  > - 我们可以不考虑输出结果的顺序。
+  >
+  > **进阶:**
+  >
+  > - 如果给定的数组已经排好序呢？你将如何优化你的算法？
+  > - 如果 *nums1* 的大小比 *nums2* 小很多，哪种方法更优？
+  > - 如果 *nums2* 的元素存储在磁盘上，磁盘内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？
+
+- 解题思路：首先对第一个数组进行词频统计，在对第二个数组遍历过程中遇到相同元素对词频减一并加入结果集，当词频为0则移除元素，由此实现`每个元素出现的次数，应与元素在两个数组中出现的次数一致`
+
+- 心得体会：Map作为词频统计的经典用法，但注意当词频为0时需要移除元素，否则词频计数便没有意义
+
+
+
+[![intersect2.png](https://i.loli.net/2019/04/12/5cb00075b34fe.png)](https://i.loli.net/2019/04/12/5cb00075b34fe.png)
+
+## 第20天 N-Repeated Element in Size 2N Array（961）
+
+- 题号 961 [N-Repeated Element in Size 2N Array](https://blog.fjy8018.top/<https:/leetcode.com/problems/n-repeated-element-in-size-2n-array/>)
+
+- 题目描述：
+
+  > 在大小为 `2N` 的数组 `A` 中有 `N+1` 个不同的元素，其中有一个元素重复了 `N` 次。
+  >
+  > 返回重复了 `N` 次的那个元素。
+  >
+  >  
+  >
+  > 
+  >
+  > **示例 1：**
+  >
+  > ```
+  > 输入：[1,2,3,3]
+  > 输出：3
+  > ```
+  >
+  > **示例 2：**
+  >
+  > ```
+  > 输入：[2,1,2,5,3,2]
+  > 输出：2
+  > ```
+  >
+  > **示例 3：**
+  >
+  > ```
+  > 输入：[5,1,5,2,5,3,5,4]
+  > 输出：5
+  > ```
+  >
+  >  
+  >
+  > **提示：**
+  >
+  > 1. `4 <= A.length <= 10000`
+  > 2. `0 <= A[i] < 10000`
+  > 3. `A.length` 为偶数
+
+- 解题思路：Map词频统计用法，一旦某个元素重复了N次则不再继续统计
+
+- 心得体会：词频统计的经典用法
+
+
+
+[![repeatedNTimes.png](https://i.loli.net/2019/04/12/5cb001746edc6.png)](https://i.loli.net/2019/04/12/5cb001746edc6.png)
+
+## 第21天 Single Number（136）
+
+- 题号 136 [Single Number](https://blog.fjy8018.top/<https:/leetcode.com/problems/single-number/>)
+
+- 题目描述：
+
+  > 给定一个**非空**整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+  >
+  > **说明：**
+  >
+  > 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
+  >
+  > **示例 1:**
+  >
+  > ```
+  > 输入: [2,2,1]
+  > 输出: 1
+  > ```
+  >
+  > **示例 2:**
+  >
+  > ```
+  > 输入: [4,1,2,1,2]
+  > 输出: 4
+  > ```
+
+- 解题思路：Map词频统计用法，统计完成后寻找词频为1的即可
+
+- 心得体会：Map词频统计法比较容易想到，解题后在官方解答区看到两个更灵活的解法，分别通过数学计算和位运算实现，开阔了解题思路
+
+
+
+Map词频统计法
+
+[![singleNumber.png](https://i.loli.net/2019/04/12/5cb00274253a2.png)](https://i.loli.net/2019/04/12/5cb00274253a2.png)
+
+
+
+数学运算法
+
+原理
+$$
+2∗(a+b+c)−(a+a+b+b+c)=c
+$$
+
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        return (2 * sum(set(nums)) - sum(nums));
+    }
+
+    private int[] set(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        int[] res = new int[set.size()];
+        int i = 0;
+        for (Integer integer : set) {
+            res[i++] = integer;
+        }
+        return res;
+    }
+
+    private int sum(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum;
+    }
+}
+```
+
+
+
+位运算法（已知性能最佳解法）
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int i : nums) {
+            // 一个数和0异或还是自己，一个数和自己异或是0
+            result ^= i;
+        }
+        return result;
+    }
+}
+```
+
+
+
+## 第22天 Top K Frequent Elements（347）
+
+- 题号 347 [Top K Frequent Elements](https://blog.fjy8018.top/<https:/leetcode.com/problems/top-k-frequent-elements/>)
+
+- 题目描述：
+
+  > 给定一个非空的整数数组，返回其中出现频率前 **k** 高的元素。
+  >
+  > **示例 1:**
+  >
+  > ```
+  > 输入: nums = [1,1,1,2,2,3], k = 2
+  > 输出: [1,2]
+  > ```
+  >
+  > **示例 2:**
+  >
+  > ```
+  > 输入: nums = [1], k = 1
+  > 输出: [1]
+  > ```
+  >
+  > **说明：**
+  >
+  > - 你可以假设给定的 *k* 总是合理的，且 1 ≤ k ≤ 数组中不相同的元素的个数。
+  > - 你的算法的时间复杂度**必须**优于 O(*n* log *n*) , *n* 是数组的大小。
+
+- 解题思路：使用优先队列，维护出现频率前 **k** 高的元素
+
+- 心得体会：Java内置的优先队列为小根堆，同时支持定义比较器，结合优先队列特性即可解答
+
+
+
+[![topKFrequent.png](https://i.loli.net/2019/04/16/5cb5cc989ded8.png)](https://i.loli.net/2019/04/16/5cb5cc989ded8.png)
+
+
+
+## 第23天 Top K Frequent Words（692）
+
+- 题号 692 [Top K Frequent Words](https://blog.fjy8018.top/<https:/leetcode.com/problems/top-k-frequent-words/>)
+
+- 题目描述：
+
+  > 给一非空的单词列表，返回前 *k* 个出现次数最多的单词。
+  >
+  > 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。
+  >
+  > **示例 1：**
+  >
+  > ```
+  > 输入: ["i", "love", "leetcode", "i", "love", "coding"], k = 2
+  > 输出: ["i", "love"]
+  > 解析: "i" 和 "love" 为出现次数最多的两个单词，均为2次。
+  >     注意，按字母顺序 "i" 在 "love" 之前。
+  > ```
+  >
+  >  
+  >
+  > **示例 2：**
+  >
+  > ```
+  > 输入: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
+  > 输出: ["the", "is", "sunny", "day"]
+  > 解析: "the", "is", "sunny" 和 "day" 是出现次数最多的四个单词，
+  >     出现次数依次为 4, 3, 2 和 1 次。
+  > ```
+  >
+  >  
+  >
+  > **注意：**
+  >
+  > 1. 假定 *k* 总为有效值， 1 ≤ *k* ≤ 集合元素数。
+  > 2. 输入的单词均由小写字母组成。
+  >
+  >  
+  >
+  > **扩展练习：**
+  >
+  > 1. 尝试以 *O*(*n* log *k*) 时间复杂度和 *O*(*n*) 空间复杂度解决。
+
+- 解题思路：使用优先队列，维护前 *k* 个出现次数最多的单词，同时维护字典顺序
+
+- 心得体会：与347题类似，但需要处理`单词有相同出现频率，按字母顺序排序`的情况，按照Java默认字符串排序方式和频率大小定义比较器即可
+
+
+
+[![topKFrequent (1).png](https://i.loli.net/2019/04/16/5cb5cdd126751.png)](https://i.loli.net/2019/04/16/5cb5cdd126751.png)
+
+
+
+## 第24天 Range Sum Query - Immutable（303）
+
+- 题号 303 [Range Sum Query - Immutable](https://blog.fjy8018.top/<https:/leetcode.com/problems/range-sum-query-immutable/>)
+
+- 题目描述：
+
+  > 给定一个整数数组  *nums*，求出数组从索引 *i* 到 *j*  (*i* ≤ *j*) 范围内元素的总和，包含 *i,  j* 两点。
+  >
+  > **示例：**
+  >
+  > ```
+  > 给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()
+  > 
+  > sumRange(0, 2) -> 1
+  > sumRange(2, 5) -> -1
+  > sumRange(0, 5) -> -3
+  > ```
+  >
+  > **说明:**
+  >
+  > 1. 你可以假设数组不可变。
+  > 2. 会多次调用 *sumRange* 方法。
+
+- 解题思路：典型的**线段树**应用场景，但该题可以使用数组维护区间总和，对于该题来说时间复杂度更低
+
+- 心得体会：线段树解法从读题即可想到，而后由于说明为`Immutable`，故通过维护数组实现时间复杂度更低
+
+
+
+数组实现
+
+[![NumArray.png](https://i.loli.net/2019/04/16/5cb5cf54389eb.png)](https://i.loli.net/2019/04/16/5cb5cf54389eb.png)
+
+
+
+线段树实现
+
+```java
+class NumArray {
+    
+    private SegmentTree<Integer> tree;
+
+    public NumArray(int[] nums) {
+        Integer[] list = new Integer[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                list[i] = nums[i];
+            }
+            tree = new SegmentTree<>(list,(a, b) -> a+b);
+    }
+    
+    public int sumRange(int i, int j) {
+        return tree.query(i,j);
+    }
+    
+    class SegmentTree<E> {
+
+    private E[] data;
+    private E[] tree;
+    private Merger<E> merger;
+
+    public SegmentTree(E[] arr, Merger<E> merger) {
+        this.merger = merger;
+        this.data = (E[]) new Object[arr.length];
+        // 拷贝副本
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        // 创建线段树存储空间，4倍空间可以存储最坏情况下的线段树
+        this.tree = (E[]) new Object[4 * arr.length];
+        // 创建线段树
+        buildSegmentTree(0, 0, data.length - 1);
+    }
+
+    /**
+     * 在treeIndex的位置创建表示区间[l...r]的线段树
+     *
+     * @param treeIndex
+     * @param left
+     * @param right
+     */
+    private void buildSegmentTree(int treeIndex, int left, int right) {
+        if (data.length==0){
+            return;
+        }
+        // 递归终止条件为叶子节点
+        if (left == right) {
+            tree[treeIndex] = data[left];
+            return;
+        }
+        // 左子树索引
+        int leftIndex = leftChild(treeIndex);
+        // 右子树索引
+        int rightIndex = rightChild(treeIndex);
+        // 等价于 (left + right)/2
+        int mid = left + (right - left) / 2;
+        buildSegmentTree(leftIndex, left, mid);
+        buildSegmentTree(rightIndex, mid + 1, right);
+        // 线段值由业务情况决定
+        tree[treeIndex] = merger.merge(tree[leftIndex], tree[rightIndex]);
+    }
+
+    public E query(int queryL, int queryR) {
+        if (queryL < 0 || queryL >= data.length ||
+                queryR < 0 || queryR >= data.length || queryL > queryR) {
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+        return query(0, 0, data.length - 1, queryL, queryR);
+    }
+
+    private E query(int treeIndex, int left, int right, int queryL, int queryR) {
+        // 查询区间与线段树区间相等则直接返回
+        if (left == queryL && right == queryR) {
+            return tree[treeIndex];
+        }
+        int leftIndex = leftChild(treeIndex);
+        int rightIndex = rightChild(treeIndex);
+        int mid = left + (right - left) / 2;
+        // 若全在左子树
+        if (queryR <= mid) {
+            return query(leftIndex, left, mid, queryL, queryR);
+        } else if (queryL >= mid + 1) {
+            // 全在右子树
+            return query(rightIndex, mid + 1, right, queryL, queryR);
+        }
+        // 分散在左右子树
+        E leftResult = query(leftIndex, left, mid, queryL, mid);
+        E rightResult = query(rightIndex, mid + 1, right, mid + 1, queryR);
+        return merger.merge(leftResult, rightResult);
+    }
+
+    public int getSize() {
+        return data.length;
+    }
+
+    public E get(int index) {
+        isLegal(index);
+        return data[index];
+    }
+
+    private void isLegal(int index) {
+        if (index < 0 || index > data.length - 1) {
+            throw new IllegalArgumentException("index out of bound");
+        }
+    }
+
+    /**
+     * 返回平衡二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
+     *
+     * @param index
+     * @return
+     */
+    private int leftChild(int index) {
+        return index * 2 + 1;
+    }
+
+    /**
+     * 返回平衡二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
+     *
+     * @param index
+     * @return
+     */
+    private int rightChild(int index) {
+        return index * 2 + 2;
+    }}
+    
+    @FunctionalInterface
+    public interface Merger<E> {
+        /**
+         * 合并a、b两个对象
+         *
+         * @param a
+         * @param b
+         * @return
+         */
+        E merge(E a, E b);
+    }
+}
+```
+
+
+
+性能差异
+
+| 解决方式 | 耗时 | 内存  |
+| ----------------- | ------- | ------- |
+| 数组 | 52 ms   | 41.2 MB |
+| 线段树        | 59 ms   | 42.2 MB |
+
+
+## 第25天 Range Sum Query - Mutable（307）
+
+- 题号 307 [Range Sum Query - Mutable](https://blog.fjy8018.top/<https:/leetcode.com/problems/range-sum-query-mutable/>)
+
+- 题目描述：
+
+  > 给定一个整数数组  *nums*，求出数组从索引 *i* 到 *j*  (*i* ≤ *j*) 范围内元素的总和，包含 *i,  j* 两点。
+  >
+  > *update(i, val)* 函数可以通过将下标为 *i* 的数值更新为 *val*，从而对数列进行修改。
+  >
+  > **示例:**
+  >
+  > ```
+  > Given nums = [1, 3, 5]
+  > 
+  > sumRange(0, 2) -> 9
+  > update(1, 2)
+  > sumRange(0, 2) -> 8
+  > ```
+  >
+  > **说明:**
+  >
+  > 1. 数组仅可以在 *update* 函数下进行修改。
+  > 2. 你可以假设 *update* 函数与 *sumRange* 函数的调用次数是均匀分布的。
+
+- 解题思路：使用**线段树**或者数组动态维护区间总和
+
+- 心得体会：与303题类似，也是**线段树**的典型应用场景，但此时数组为`Mutable`，虽然也可以通过数组维护区间总和，但更新时需要同时维护多个数值，此时的效率不如**线段树**
+
+
+
+线段树实现
+
+```java
+class NumArray {
+
+    private SegmentTree<Integer> tree;
+
+        public NumArray(int[] nums) {
+            Integer[] arr = new Integer[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                arr[i] = nums[i];
+            }
+            tree = new SegmentTree<>(arr,(a, b) -> a+b);
+        }
+
+        public void update(int i, int val) {
+            tree.set(i,val);
+        }
+
+        public int sumRange(int i, int j) {
+            return tree.query(i,j);
+        }
+    
+    class SegmentTree<E> {
+
+    private E[] data;
+    private E[] tree;
+    private Merger<E> merger;
+
+    public SegmentTree(E[] arr, Merger<E> merger) {
+        this.merger = merger;
+        this.data = (E[]) new Object[arr.length];
+        // 拷贝副本
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        // 创建线段树存储空间，4倍空间可以存储最坏情况下的线段树
+        this.tree = (E[]) new Object[4 * arr.length];
+        // 创建线段树
+        buildSegmentTree(0, 0, data.length - 1);
+    }
+
+    /**
+     * 在treeIndex的位置创建表示区间[l...r]的线段树
+     *
+     * @param treeIndex
+     * @param left
+     * @param right
+     */
+    private void buildSegmentTree(int treeIndex, int left, int right) {
+        if (data.length==0){
+            return;
+        }
+        // 递归终止条件为叶子节点
+        if (left == right) {
+            tree[treeIndex] = data[left];
+            return;
+        }
+        // 左子树索引
+        int leftIndex = leftChild(treeIndex);
+        // 右子树索引
+        int rightIndex = rightChild(treeIndex);
+        // 等价于 (left + right)/2
+        int mid = left + (right - left) / 2;
+        buildSegmentTree(leftIndex, left, mid);
+        buildSegmentTree(rightIndex, mid + 1, right);
+        // 线段值由业务情况决定
+        tree[treeIndex] = merger.merge(tree[leftIndex], tree[rightIndex]);
+    }
+
+    public E query(int queryL, int queryR) {
+        if (queryL < 0 || queryL >= data.length ||
+                queryR < 0 || queryR >= data.length || queryL > queryR) {
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+        return query(0, 0, data.length - 1, queryL, queryR);
+    }
+
+    /**
+     * 在以treeIndex为根的线段树中[l...r]的范围里，搜索区间[queryL...queryR]的值
+     *
+     * @param treeIndex
+     * @param left
+     * @param right
+     * @param queryL
+     * @param queryR
+     * @return
+     */
+    private E query(int treeIndex, int left, int right, int queryL, int queryR) {
+        // 查询区间与线段树区间相等则直接返回
+        if (left == queryL && right == queryR) {
+            return tree[treeIndex];
+        }
+        int leftIndex = leftChild(treeIndex);
+        int rightIndex = rightChild(treeIndex);
+        int mid = left + (right - left) / 2;
+        // 若全在左子树
+        if (queryR <= mid) {
+            return query(leftIndex, left, mid, queryL, queryR);
+        } else if (queryL >= mid + 1) {
+            // 全在右子树
+            return query(rightIndex, mid + 1, right, queryL, queryR);
+        }
+        // 分散在左右子树
+        E leftResult = query(leftIndex, left, mid, queryL, mid);
+        E rightResult = query(rightIndex, mid + 1, right, mid + 1, queryR);
+        return merger.merge(leftResult, rightResult);
+    }
+
+    /**
+     * 将index位置的值，更新为e
+     *
+     * @param index
+     * @param e
+     */
+    public void set(int index,E e){
+        if (data.length==0){
+            return;
+        }
+        isLegal(index);
+        data[index] = e;
+        set(0,0,data.length-1,index,e);
+    }
+
+    /**
+     * 在以treeIndex为根的线段树中更新index的值为e
+     *
+     * @param treeIndex
+     * @param left
+     * @param right
+     * @param index
+     * @param e
+     */
+    private void set(int treeIndex,int left,int right,int index,E e){
+        if (left == right){
+            // 更新叶子结点
+            tree[treeIndex] = e;
+            return;
+        }
+
+        int mid = left+(right-left)/2;
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+
+        if (index<=mid){
+            set(leftTreeIndex,left,mid,index,e);
+        }else {
+            set(rightTreeIndex,mid+1,right,index,e);
+        }
+        // 更新线段树节点值
+        tree[treeIndex] = merger.merge(tree[leftTreeIndex],tree[rightTreeIndex]);
+    }
+
+    public int getSize() {
+        return data.length;
+    }
+
+    public E get(int index) {
+        isLegal(index);
+        return data[index];
+    }
+
+    private void isLegal(int index) {
+        if (index < 0 || index > data.length - 1) {
+            throw new IllegalArgumentException("index out of bound");
+        }
+    }
+
+    /**
+     * 返回平衡二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
+     *
+     * @param index
+     * @return
+     */
+    private int leftChild(int index) {
+        return index * 2 + 1;
+    }
+
+    /**
+     * 返回平衡二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
+     *
+     * @param index
+     * @return
+     */
+    private int rightChild(int index) {
+        return index * 2 + 2;
+    }}
+    
+    @FunctionalInterface
+public interface Merger<E> {
+    /**
+     * 合并a、b两个对象
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    E merge(E a, E b);
+}
+    
+    
+}
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray obj = new NumArray(nums);
+ * obj.update(i,val);
+ * int param_2 = obj.sumRange(i,j);
+ */
+```
+
+
+
+数组实现
+
+```java
+class NumArray {
+
+    int[] nums;
+        int[] origin;
+
+        public NumArray(int[] nums) {
+            origin = new int[nums.length];
+            if (nums.length>0){
+                origin[0] = nums[0];
+            }
+            // 第i个位置存储索引[0..i]的和，最后一个位置则为整个数组的和
+            for (int i = 1; i < nums.length; i++) {
+                origin[i] = nums[i];
+                nums[i] += nums[i - 1];
+            }
+
+            this.nums = nums;
+        }
+
+        public void update(int i, int val) {
+            // 更新位置之后的值均要变化
+            int oldVal = origin[i];
+            int diff = val - oldVal;
+            for (int j = i ; j < nums.length; j++) {
+                nums[j] += diff;
+            }
+            origin[i] = val;
+        }
+
+        public int sumRange(int i, int j) {
+            if (i == 0) {
+                return nums[j];
+            }
+            // 计算区间和
+            return nums[j] - nums[i - 1];
+        }
+}
+```
+
+
+
+性能差异
+
+| 解决方式 | 耗时 | 内存  |
+| -------- | ------- | ------- |
+| 线段树   | 60 ms   | 47.3 MB |
+| 数组     | 199 ms  | 49.3 MB |
+
+
+
+## 第26天 Implement Trie (Prefix Tree)（208）
+
+- 题号 208 [Implement Trie (Prefix Tree)](https://blog.fjy8018.top/<https:/leetcode.com/problems/implement-trie-prefix-tree/>)
+
+- 题目描述：
+
+  > 实现一个 Trie (前缀树)，包含 `insert`, `search`, 和 `startsWith` 这三个操作。
+  >
+  > **示例:**
+  >
+  > ```
+  > Trie trie = new Trie();
+  > 
+  > trie.insert("apple");
+  > trie.search("apple");   // 返回 true
+  > trie.search("app");     // 返回 false
+  > trie.startsWith("app"); // 返回 true
+  > trie.insert("app");   
+  > trie.search("app");     // 返回 true
+  > ```
+  >
+  > **说明:**
+  >
+  > - 你可以假设所有的输入都是由小写字母 `a-z` 构成的。
+  > - 保证所有输入均为非空字符串。
+
+- 解题思路：字典树（前缀树）实现
+
+- 心得体会：字典树（前缀树）实现
+
+
+
+字典树实现
+
+```java
+class Trie {
+
+        /**
+         * 多叉树结构
+         */
+        private class Node {
+            private boolean isWord;
+            private HashMap<Character, Node> next;
+
+            public Node(boolean isWord) {
+                this.isWord = isWord;
+                this.next = new HashMap<>();
+            }
+
+            public Node() {
+                this(false);
+            }
+        }
+
+        private Node root;
+        private int size;
+
+        /** Initialize your data structure here. */
+        public Trie() {
+            // 带虚拟头结点
+            this.root = new Node();
+            this.size = 0;
+        }
+
+        /** Inserts a word into the trie. */
+        public void insert(String word) {
+            Node cur = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                // 不存在当前字母节点
+                if (cur.next.get(c) == null) {
+                    cur.next.put(c, new Node());
+                }
+                // 已经存在当前字母节点，继续向下寻找
+                cur = cur.next.get(c);
+            }
+            // 字母添加完毕，查看当前单词末尾是否已经被标记，若被标记则说明重复添加
+            if (!cur.isWord) {
+                // 标记为单词末尾
+                cur.isWord = true;
+                size++;
+            }
+        }
+
+        /** Returns if the word is in the trie. */
+        public boolean search(String word) {
+            Node cur = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                if (cur.next.get(c) == null) {
+                    return false;
+                }
+                cur = cur.next.get(c);
+            }
+            return cur.isWord;
+        }
+
+        /** Returns if there is any word in the trie that starts with the given prefix. */
+        public boolean startsWith(String prefix) {
+            Node cur = root;
+            for (int i = 0; i < prefix.length(); i++) {
+                char c = prefix.charAt(i);
+                if (cur.next.get(c)==null){
+                    return false;
+                }
+                cur = cur.next.get(c);
+            }
+            return true;
+        }
+}
+```
+
+
+
+
+
+## 第27天 Add and Search Word - Data structure design（211）
+
+- 题号 211 [Add and Search Word - Data structure design](https://blog.fjy8018.top/<https:/leetcode.com/problems/add-and-search-word-data-structure-design/>)
+
+- 题目描述：
+
+  > 设计一个支持以下两种操作的数据结构：
+  >
+  > ```
+  > void addWord(word)
+  > bool search(word)
+  > ```
+  >
+  > search(word) 可以搜索文字或正则表达式字符串，字符串只包含字母 `.` 或 `a-z` 。 `.` 可以表示任何一个字母。
+  >
+  > **示例:**
+  >
+  > ```
+  > addWord("bad")
+  > addWord("dad")
+  > addWord("mad")
+  > search("pad") -> false
+  > search("bad") -> true
+  > search(".ad") -> true
+  > search("b..") -> true
+  > ```
+  >
+  > **说明:**
+  >
+  > 你可以假设所有单词都是由小写字母 `a-z` 组成的。
+
+- 解题思路：字典树实现
+
+- 心得体会：典型字典树（前缀树）应用场景
+
+
+
+字典树实现
+
+```java
+class WordDictionary {
+
+        /**
+         * 多叉树结构
+         */
+        private class Node {
+            private boolean isWord;
+            private HashMap<Character, Node> next;
+
+            public Node(boolean isWord) {
+                this.isWord = isWord;
+                this.next = new HashMap<>();
+            }
+
+            public Node() {
+                this(false);
+            }
+        }
+
+        private Node root;
+
+        /** Initialize your data structure here. */
+        public WordDictionary() {
+            // 带虚拟头结点
+            this.root = new Node();
+        }
+
+        /** Adds a word into the data structure. */
+        public void addWord(String word) {
+            Node cur = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                // 不存在当前字母节点
+                if (cur.next.get(c) == null) {
+                    cur.next.put(c, new Node());
+                }
+                // 已经存在当前字母节点，继续向下寻找
+                cur = cur.next.get(c);
+            }
+            // 字母添加完毕，查看当前单词末尾是否已经被标记，若被标记则说明重复添加
+            if (!cur.isWord) {
+                // 标记为单词末尾
+                cur.isWord = true;
+            }
+        }
+
+        /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
+        public boolean search(String word) {
+            return match(word,root,0);
+        }
+        
+        private boolean match(String word,Node node,int index){
+            // 终止条件
+            if (index == word.length()){
+                return node.isWord;
+            }
+            char c = word.charAt(index);
+            // 判断通配符
+            if (c != '.'){
+                if (node.next.get(c)==null){
+                    return false;
+                }
+                return match(word,node.next.get(c),index+1);
+            }
+            // 遍历当前节点所有的子节点
+            for (Character w : node.next.keySet()) {
+                // 如果有一个节点返回true则为true
+                if (match(word,node.next.get(w),index+1)){
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+/**
+ * Your WordDictionary object will be instantiated and called as such:
+ * WordDictionary obj = new WordDictionary();
+ * obj.addWord(word);
+ * boolean param_2 = obj.search(word);
+ */
+```
+
+
+
+## 第28天 Map Sum Pairs（677）
+
+- 题号 677 [Map Sum Pairs](https://blog.fjy8018.top/<https:/leetcode.com/problems/map-sum-pairs/>)
+
+- 题目描述：
+
+  > 实现一个 MapSum 类里的两个方法，`insert` 和 `sum`。
+  >
+  > 对于方法 `insert`，你将得到一对（字符串，整数）的键值对。字符串表示键，整数表示值。如果键已经存在，那么原来的键值对将被替代成新的键值对。
+  >
+  > 对于方法 `sum`，你将得到一个表示前缀的字符串，你需要返回所有以该前缀开头的键的值的总和。
+  >
+  > **示例 1:**
+  >
+  > ```
+  > 输入: insert("apple", 3), 输出: Null
+  > 输入: sum("ap"), 输出: 3
+  > 输入: insert("app", 2), 输出: Null
+  > 输入: sum("ap"), 输出: 5
+  > ```
+
+- 解题思路：**字典树**
+
+- 心得体会：使用字典树记录字母节点，到节点尾部维护权重值，更新时同时更新权重值即可
+
+
+
+字典树实现
+
+[![MapSum.png](https://i.loli.net/2019/04/19/5cb9873a3f54c.png)](https://i.loli.net/2019/04/19/5cb9873a3f54c.png)
+
+
+
+## 第29天 Validate Binary Search Tree（98）
+
+- 题号 98 [Validate Binary Search Tree](https://blog.fjy8018.top/<https:/leetcode.com/problems/validate-binary-search-tree/>)
+
+- 题目描述：
+
+  > 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
+  >
+  > 假设一个二叉搜索树具有如下特征：
+  >
+  > - 节点的左子树只包含**小于**当前节点的数。
+  > - 节点的右子树只包含**大于**当前节点的数。
+  > - 所有左子树和右子树自身必须也是二叉搜索树。
+  >
+  > **示例 1:**
+  >
+  > ```
+  > 输入:
+  >     2
+  >    / \
+  >   1   3
+  > 输出: true
+  > ```
+  >
+  > **示例 2:**
+  >
+  > ```
+  > 输入:
+  >     5
+  >    / \
+  >   1   4
+  >      / \
+  >     3   6
+  > 输出: false
+  > 解释: 输入为: [5,1,4,null,null,3,6]。
+  >      根节点的值为 5 ，但是其右子节点值为 4 。
+  > ```
+
+- 解题思路：二叉树中序遍历
+
+- 心得体会：利用二分搜索树中序遍历有序性的特点，对中序遍历集合进行检查，若发现无序则返回。该解法可进一步优化为在执行中序遍历过程中保留上一次递归结果进行判断，若发现无序则无需遍历所有节点。
+
+
+
+[![isValidBST.png](https://i.loli.net/2019/04/19/5cb98821be517.png)](https://i.loli.net/2019/04/19/5cb98821be517.png)
+
+
+
+## 第30天 Delete Node in a BST（450）
+
+- 题号 450 [Delete Node in a BST](https://blog.fjy8018.top/<https:/leetcode.com/problems/delete-node-in-a-bst/>)
+
+- 题目描述：
+
+  > 给定一个二叉搜索树的根节点 **root** 和一个值 **key**，删除二叉搜索树中的 **key** 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。
+  >
+  > 一般来说，删除节点可分为两个步骤：
+  >
+  > 1. 首先找到需要删除的节点；
+  > 2. 如果找到了，删除它。
+  >
+  > **说明：** 要求算法时间复杂度为 O(h)，h 为树的高度。
+  >
+  > **示例:**
+  >
+  > ```
+  > root = [5,3,6,2,4,null,7]
+  > key = 3
+  > 
+  >     5
+  >    / \
+  >   3   6
+  >  / \   \
+  > 2   4   7
+  > 
+  > 给定需要删除的节点值是 3，所以我们首先找到 3 这个节点，然后删除它。
+  > 
+  > 一个正确的答案是 [5,4,6,2,null,null,7], 如下图所示。
+  > 
+  >     5
+  >    / \
+  >   4   6
+  >  /     \
+  > 2       7
+  > 
+  > 另一个正确答案是 [5,2,6,null,4,null,7]。
+  > 
+  >     5
+  >    / \
+  >   2   6
+  >    \   \
+  >     4   7
+  > ```
+
+- 解题思路：二分搜索树删除节点
+
+- 心得体会：对于二分搜索树删除节点，此处选择该节点右子树中最小的节点替代被删除节点以保证二分搜索树的性质，相反，也可以通过使用该节点的左子树中最大的节点替代。
+
+
+
+[![deleteNode.png](https://i.loli.net/2019/04/19/5cb98906c38b0.png)](https://i.loli.net/2019/04/19/5cb98906c38b0.png)
+
+## 第31天 Binary Tree Level Order Traversal（102）
+
+- 题号 102 [Binary Tree Level Order Traversal](https://blog.fjy8018.top/<https:/leetcode.com/problems/binary-tree-level-order-traversal/>)
+
+- 题目描述：
+
+  > 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
+  >
+  > 例如:
+  > 给定二叉树: `[3,9,20,null,null,15,7]`,
+  >
+  > ```
+  >     3
+  >    / \
+  >   9  20
+  >     /  \
+  >    15   7
+  > ```
+  >
+  > 返回其层次遍历结果：
+  >
+  > ```
+  > [
+  >   [3],
+  >   [9,20],
+  >   [15,7]
+  > ]
+  > ```
+
+- 解题思路：二分搜索树层次遍历
+
+- 心得体会：与[107题](#第12天 Binary Tree Level Order Traversal II（107)类似
+
+[![levelOrder.png](https://i.loli.net/2019/04/19/5cb98a1754d5d.png)](https://i.loli.net/2019/04/19/5cb98a1754d5d.png)
+
+
+
+## 第32天 Binary Search Tree Iterator（173）
+
+- 题号 173 [Binary Search Tree Iterator](https://blog.fjy8018.top/<https:/leetcode.com/problems/binary-search-tree-iterator/>)
+
+- 题目描述：
+
+  > 实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。
+  >
+  > 调用 `next()` 将返回二叉搜索树中的下一个最小的数。
+  >
+  >  
+  >
+  > **示例：**
+  >
+  > [![bst-tree.png](https://i.loli.net/2019/04/19/5cb98bd86ac2a.png)](https://i.loli.net/2019/04/19/5cb98bd86ac2a.png)
+  >
+  > ```java
+  > BSTIterator iterator = new BSTIterator(root);
+  > iterator.next();    // 返回 3
+  > iterator.next();    // 返回 7
+  > iterator.hasNext(); // 返回 true
+  > iterator.next();    // 返回 9
+  > iterator.hasNext(); // 返回 true
+  > iterator.next();    // 返回 15
+  > iterator.hasNext(); // 返回 true
+  > iterator.next();    // 返回 20
+  > iterator.hasNext(); // 返回 false
+  > ```
+  >
+  >  
+  >
+  > **提示：**
+  >
+  > - `next()` 和 `hasNext()` 操作的时间复杂度是 O(1)，并使用 O(*h*) 内存，其中 *h* 是树的高度。
+  > - 你可以假设 `next()` 调用总是有效的，也就是说，当调用 `next()` 时，BST 中至少存在一个下一个最小的数。
+
+- 解题思路：使用栈或者队列实现
+
+- 心得体会：比较简单的方式是使用队列存储中序遍历集合，依次出队则保证为树中最小的元素，也评论区看到栈的解法，时间复杂度更低，但实现相对复杂
+
+
+
+队列解法
+
+[![BSTIterator.png](https://i.loli.net/2019/04/19/5cb98aa367a57.png)](https://i.loli.net/2019/04/19/5cb98aa367a57.png)
+
+
+
+栈解法
+
+```java
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+public class BSTIterator {
+    
+    private Stack<TreeNode> stack;
+    public BSTIterator(TreeNode root) {
+        stack = new Stack<>();
+        TreeNode cur = root;
+        while(cur != null){
+            stack.push(cur);
+            if(cur.left != null)
+                cur = cur.left;
+            else
+                break;
+        }
+    }
+
+    /** @return whether we have a next smallest number */
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+
+    /** @return the next smallest number */
+    public int next() {
+        TreeNode node = stack.pop();
+        TreeNode cur = node;
+        // traversal right branch
+        if(cur.right != null){
+            cur = cur.right;
+            while(cur != null){
+                stack.push(cur);
+                if(cur.left != null)
+                    cur = cur.left;
+                else
+                    break;
+            }
+        }
+        return node.val;
+    }
+}
+
+/**
+ * Your BSTIterator will be called like this:
+ * BSTIterator i = new BSTIterator(root);
+ * while (i.hasNext()) v[f()] = i.next();
+ */
+```
