@@ -67,6 +67,18 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(self.run_recovery(), first)
         self.assertIn(first['recovered'][0]['url'], self.article.read_text())
 
+    def test_matches_original_before_zcool_cdn_transformation(self):
+        cdn_url = 'http://img.zcool.cn/community/photo.jpg@1280w_1l.webp'
+        self.article.write_text(self.article.read_text().replace(URL, cdn_url))
+        (self.root/'reports/resources.json').write_text(json.dumps({'fetch_warnings':[{'url':cdn_url,'cids':[1]}]}))
+        (self.drafts/'photo.jpg').write_bytes(PNG)
+        report = self.run_recovery()
+        self.assertEqual(report['unresolved'], [])
+        row = report['recovered'][0]
+        self.assertEqual(row['source'], 'photo.jpg')
+        self.assertEqual(row['match_method'], 'original-filename-without-cdn-transform')
+        self.assertIn(row['url'], self.article.read_text())
+
     def test_does_not_guess_ambiguous_files(self):
         for name,data in [('a',PNG),('b',PNG+b'different')]:
             p=self.drafts/name/'screenshot.png';p.parent.mkdir();p.write_bytes(data)

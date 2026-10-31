@@ -36,9 +36,9 @@ https://huke88.com/course/5642.html
 ![截图.jpg][6]
 
 
-  [1]: http://img.zcool.cn/community/01c0285a03daf1a801204a0ed5d8f4.jpg@1280w_1l_2o_100sh.webp
+  [1]: /images/recovered/bcd00c72975f6912c31e.jpg
   [2]: /images/recovered/5f292066ce13c2d2fa33.jpg
   [3]: /images/recovered/fae4d71614ee92547fe2.jpg
   [4]: /images/recovered/e0da53493331f5c435d6.jpg
   [5]: /images/recovered/091757ba220ae07673e0.jpg
-  [6]: http://img.zcool.cn/community/01559a5a03dafda80121985c42a99a.jpg@1280w_1l_2o_100sh.webp
+  [6]: /images/recovered/089553d1edf6b02e2654.jpg

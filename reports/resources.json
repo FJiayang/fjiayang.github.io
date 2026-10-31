@@ -1,20 +1,5 @@
 {
   "method": "Stack v4.0.3 default image helper during Hugo build; failures are non-blocking; no independent availability probe",
   "listed_resource_urls": 1227,
-  "fetch_warnings": [
-    {
-      "url": "http://img.zcool.cn/community/01559a5a03dafda80121985c42a99a.jpg@1280w_1l_2o_100sh.webp",
-      "reason": "403 Forbidden",
-      "cids": [
-        16
-      ]
-    },
-    {
-      "url": "http://img.zcool.cn/community/01c0285a03daf1a801204a0ed5d8f4.jpg@1280w_1l_2o_100sh.webp",
-      "reason": "403 Forbidden",
-      "cids": [
-        16
-      ]
-    }
-  ]
+  "fetch_warnings": []
 }

@@ -64,6 +64,10 @@ def recover(draft_root):
             continue
         candidates = list(index.get(name.casefold(), []))
         method = 'exact-filename'
+        if not candidates and urlsplit(url).hostname == 'img.zcool.cn' and '@' in name:
+            # Zcool appends a rendition instruction; the supplied original keeps its .jpg name.
+            candidates = list(index.get(name.split('@', 1)[0].casefold(), []))
+            method = 'original-filename-without-cdn-transform'
         if not candidates:
             method = 'published-image-alt-filename'
             for cid in warning['cids']:
