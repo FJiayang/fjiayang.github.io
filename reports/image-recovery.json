@@ -2,6 +2,38 @@
   "baseline_failed_urls": 51,
   "recovered": [
     {
+      "original_url": "http://img.zcool.cn/community/01559a5a03dafda80121985c42a99a.jpg@1280w_1l_2o_100sh.webp",
+      "url": "/images/recovered/089553d1edf6b02e2654.jpg",
+      "source": "01559a5a03dafda80121985c42a99a.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "original-filename-without-cdn-transform",
+      "sha256": "089553d1edf6b02e2654346c3b868edbfd9cea4cc9bc159cbe436508a6ad1fbc",
+      "bytes": 971916,
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ]
+    },
+    {
+      "original_url": "http://img.zcool.cn/community/01c0285a03daf1a801204a0ed5d8f4.jpg@1280w_1l_2o_100sh.webp",
+      "url": "/images/recovered/bcd00c72975f6912c31e.jpg",
+      "source": "01c0285a03daf1a801204a0ed5d8f4.jpg",
+      "source_directory": "img",
+      "drafts": [],
+      "match_method": "original-filename-without-cdn-transform",
+      "sha256": "bcd00c72975f6912c31e725f9cb50db9d6223b6b57273d30c8dfced69c89410b",
+      "bytes": 5677586,
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ]
+    },
+    {
       "original_url": "https://fjy8018.gitee.io/images/img/git.png",
       "url": "/images/recovered/7029ed877105a9b0efec.png",
       "source": "git.png",
@@ -869,26 +901,5 @@
       ]
     }
   ],
-  "unresolved": [
-    {
-      "original_url": "http://img.zcool.cn/community/01559a5a03dafda80121985c42a99a.jpg@1280w_1l_2o_100sh.webp",
-      "articles": [
-        {
-          "cid": 16,
-          "title": "合成案例教学作品1——恐龙入侵"
-        }
-      ],
-      "reason": "no-local-file"
-    },
-    {
-      "original_url": "http://img.zcool.cn/community/01c0285a03daf1a801204a0ed5d8f4.jpg@1280w_1l_2o_100sh.webp",
-      "articles": [
-        {
-          "cid": 16,
-          "title": "合成案例教学作品1——恐龙入侵"
-        }
-      ],
-      "reason": "no-local-file"
-    }
-  ]
+  "unresolved": []
 }
