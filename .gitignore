@@ -1,0 +1,9 @@
+/public/
+/resources/
+/.hugo_build.lock
+/.cache/
+/.migration/
+__pycache__/
+.env
+.env.*
+.DS_Store

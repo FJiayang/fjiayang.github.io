@@ -1,0 +1,6 @@
+.friend-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.friend-card { display: flex; flex-direction: column; gap: .8rem; padding: 2rem; border-radius: 1rem; background: var(--card-background); border: 1px solid var(--card-separator-color); }
+.friend-card img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.friend-card span { color: var(--card-text-color-secondary); font-size: 1.5rem; }
+.article-content img { max-width: 100%; height: auto; }
+.legacy-note { padding: 1rem 2rem; border-inline-start: 4px solid #d9a72f; background: var(--blockquote-background-color); }

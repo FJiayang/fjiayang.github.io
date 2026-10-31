@@ -1,0 +1,9 @@
+<div class="friend-links">
+  {{ range hugo.Data.friends }}
+    <a class="friend-card" href="{{ .url | safeURL }}" target="_blank" rel="noopener noreferrer">
+      {{ with .image }}<img src="{{ . | safeURL }}" alt="" loading="lazy">{{ end }}
+      <strong>{{ .name }}</strong>
+      {{ with .description }}<span>{{ . }}</span>{{ end }}
+    </a>
+  {{ end }}
+</div>
