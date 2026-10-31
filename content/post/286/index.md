@@ -138,7 +138,7 @@ $ python web_demo.py
 
 基于A10显卡推理，运算速度非常快，对问题的理解能力也比之前体验的chatglm-6b更加准确，但依然有不少文字错误
 
-![chatglm2-6b问答1](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/chatglm2-6b问答1.gif)
+![chatglm2-6b问答1](/images/recovered/5005f04394cf5db652a3.gif)
 
 ## 部署Langchain知识库应用
 
@@ -283,13 +283,13 @@ LLM模型验证，连接本地ChatGLM2-6B成功
 
 基于基金研报知识库问答，总结准确，速度非常快
 
-![20](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/20.png)
+![20](/images/recovered/5a72b19c32c396a54a30.png)
 
 
 
 推理过程日志，显存占用14G
 
-![21](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/21.png)
+![21](/images/recovered/09f3d24cfddb5ac8c17b.png)
 
 
 

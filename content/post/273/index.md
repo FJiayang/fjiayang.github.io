@@ -122,7 +122,7 @@ $ echo http://$NODE_IP:$NODE_PORT
 
 此时可在kubesphere控制台中看到sonar服务
 
-![1623589521856](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589521856.png)
+![1623589521856](/images/recovered/e160945c268d616ce126.png)
 
 
 
@@ -130,7 +130,7 @@ $ echo http://$NODE_IP:$NODE_PORT
 
 访问地址，点击右上角的 **Log in**，然后使用默认帐户 `admin/admin` 登录。
 
-![1623589484956](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589484956.png)
+![1623589484956](/images/recovered/318f45c8e4470dac1fb4.png)
 
 
 
@@ -166,7 +166,7 @@ $ echo http://$NODE_IP:$NODE_PORT/sonarqube-webhook/
 
 依次点击 **Administration**、**Configuration** 和 **Webhooks** 创建一个 Webhook。
 
-![1623589828830](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589828830.png)
+![1623589828830](/images/recovered/5d85d8f656afd2acd16e.png)
 
 
 
@@ -174,7 +174,7 @@ $ echo http://$NODE_IP:$NODE_PORT/sonarqube-webhook/
 
 由于webhook都通过内部网络调用，故可以使用内部网络地址
 
-![1623589887169](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589887169.png)
+![1623589887169](/images/recovered/8d5a1ac24ac1f38e34a5.png)
 
 
 

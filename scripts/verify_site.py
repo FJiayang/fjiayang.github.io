@@ -2,6 +2,7 @@
 """Validate rendered output without reading the database or fetching remote resources."""
 from html.parser import HTMLParser
 import json
+import hashlib
 from pathlib import Path
 import re
 import sys
@@ -76,6 +77,23 @@ def main():
     article_urls = {item['url'] for item in manifest['items'] if item['cid'] in expected}
     if not article_urls.issubset(search_urls):
         errors.append('Search index omits migrated public articles')
+    recovery = ROOT/'reports/image-recovery.json'
+    if recovery.exists():
+        for image in json.loads(recovery.read_text())['recovered']:
+            path = public/image['url'].lstrip('/')
+            if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != image['sha256']:
+                errors.append(f"Recovered image missing or modified: {image['url']}")
+            for article in image['articles']:
+                page = public/f"archives/{article['cid']}/index.html"
+                if image['url'] not in page.read_text():
+                    errors.append(f"Recovered image not referenced: {article['cid']}")
+    for cid in (292, 291, 289):
+        page = public/f'archives/{cid}/index.html'
+        if page.exists() and 'article-image' not in page.read_text():
+            errors.append(f'Missing article cover: {cid}')
+    home = (public/'index.html').read_text()
+    if 'article-image' not in home:
+        errors.append('Homepage has no article cover images')
     if manifest['legacy_syntax']:
         errors.append('Unconverted theme syntax remains')
     errors = sorted(set(errors))

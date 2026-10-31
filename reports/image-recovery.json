@@ -1,0 +1,816 @@
+{
+  "baseline_failed_urls": 51,
+  "recovered": [
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/%E5%9F%BA%E4%BA%8EChatGLM2-6B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/20.png",
+      "url": "/images/recovered/5a72b19c32c396a54a30.png",
+      "source": "asset/基于 ChatGLM2-6B 搭建个人知识库/20.png",
+      "drafts": [
+        "Docker 版 GitLab CICD 实践3——CI文件编写.md",
+        "设计模式学习——原则.md",
+        "Jenkins job编写测试.md",
+        "k8s+gitlab+springboot CICD落地实践.md",
+        "SpringBoot 2.x quartz多数据定时任务源配置.md",
+        "使用DockerHub 自动构建镜像.md",
+        "tyk网关Docker安装.md",
+        "activiti 学习笔记.md",
+        "GraphQL实践1——集成JPA与MySQL.md",
+        "基于 ChatGLM2-6B 搭建个人知识库.md",
+        "loli/从零开始部署Rancher.md",
+        "picb/使用宝塔安装nextcloud私有云服务.md",
+        "picb/作业提交系统介绍.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "5a72b19c32c396a54a30b1e0a83a8d4df1c20b769006bd8bc2ce4046e85ccdff",
+      "bytes": 379735,
+      "articles": [
+        {
+          "cid": 286,
+          "title": "基于 ChatGLM2-6B 搭建个人知识库"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/%E5%9F%BA%E4%BA%8EChatGLM2-6B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/21.png",
+      "url": "/images/recovered/09f3d24cfddb5ac8c17b.png",
+      "source": "asset/基于 ChatGLM2-6B 搭建个人知识库/21.png",
+      "drafts": [
+        "设计模式学习——行为型.md",
+        "k8s监控平台搭建.md",
+        "分布式开发6大核心专题.md",
+        "PXC课程笔记.md",
+        "Jenkins job编写测试.md",
+        "LeetCode 刷题记录.md",
+        "k8s+gitlab+springboot CICD落地实践.md",
+        "Git工作使用笔记.md",
+        "PXC系列学习笔记（三）——MyCat安装和读写分离配置.md",
+        "基于 ChatGLM2-6B 搭建个人知识库.md",
+        "loli/从零开始部署Rancher.md",
+        "loli/自定义docker容器.md",
+        "picb/使用宝塔安装nextcloud私有云服务.md",
+        "picb/作业提交系统介绍.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "09f3d24cfddb5ac8c17b5f84fdd913c50235502bde8a3296aab7d3cc82d5338c",
+      "bytes": 742779,
+      "articles": [
+        {
+          "cid": 286,
+          "title": "基于 ChatGLM2-6B 搭建个人知识库"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/%E5%9F%BA%E4%BA%8EChatGLM2-6B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/chatglm2-6b%E9%97%AE%E7%AD%941.gif",
+      "url": "/images/recovered/5005f04394cf5db652a3.gif",
+      "source": "asset/基于 ChatGLM2-6B 搭建个人知识库/chatglm2-6b问答1.gif",
+      "drafts": [
+        "基于 ChatGLM2-6B 搭建个人知识库.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "5005f04394cf5db652a36d445046df4cff1d328495341c5416b95b6bae5dfdd5",
+      "bytes": 2578823,
+      "articles": [
+        {
+          "cid": 286,
+          "title": "基于 ChatGLM2-6B 搭建个人知识库"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/%E6%9C%AC%E5%9C%B0LLM%E8%AE%AD%E7%BB%83/file-20250329180305778.png",
+      "url": "/images/recovered/ed35f099beb68ef9c0d6.png",
+      "source": "asset/本地LLM训练/file-20250329180305778.png",
+      "drafts": [
+        "本地LLM训练.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "ed35f099beb68ef9c0d63f66e09870794e3291797c89b9758c55925348da7943",
+      "bytes": 346199,
+      "articles": [
+        {
+          "cid": 291,
+          "title": "本地LLM训练"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/%E6%9C%AC%E5%9C%B0LLM%E8%AE%AD%E7%BB%83/file-20250329210505564.png",
+      "url": "/images/recovered/27840e78e795fa10d888.png",
+      "source": "asset/本地LLM训练/file-20250329210505564.png",
+      "drafts": [
+        "本地LLM训练.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "27840e78e795fa10d88866da7fb3d4233ec95d79870ed03da3dc83621ef2fea3",
+      "bytes": 289337,
+      "articles": [
+        {
+          "cid": 291,
+          "title": "本地LLM训练"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577620098597.png",
+      "url": "/images/recovered/a47970ffb70cfa0ad0a9.png",
+      "source": "assets/1577620098597.png",
+      "drafts": [
+        "PXC系列学习笔记（一）——PXC单节点安装配置.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "a47970ffb70cfa0ad0a9e6941ef6e789b4bd3e5636f2773f34129be3395706a5",
+      "bytes": 664294,
+      "articles": [
+        {
+          "cid": 230,
+          "title": "PXC系列学习笔记（一）——PXC单节点安装配置"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580515850.png",
+      "url": "/images/recovered/e611ef9ba81da5b064b2.png",
+      "source": "assets/1588580515850.png",
+      "drafts": [
+        "微服务平台开发总结——第二代密码管理系统.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "e611ef9ba81da5b064b2133f566d3b0d92192f95dc161d992c23d22f5094659f",
+      "bytes": 226559,
+      "articles": [
+        {
+          "cid": 245,
+          "title": "微服务平台开发总结（3）——第二代密码管理平台"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780125428.png",
+      "url": "/images/recovered/8952d763193936f0e1b8.png",
+      "source": "assets/1621780125428.png",
+      "drafts": [
+        "kubesphere运维kubernetes集群.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "8952d763193936f0e1b8fc478deecf52f4a029f86f529475cd2c96e40e24c566",
+      "bytes": 260303,
+      "articles": [
+        {
+          "cid": 271,
+          "title": "Kubesphere运维Kubernetes集群"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780183351.png",
+      "url": "/images/recovered/e7a1819a228946782bef.png",
+      "source": "assets/1621780183351.png",
+      "drafts": [
+        "kubesphere运维kubernetes集群.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "e7a1819a228946782befc27de207eef30f6e5f9765347510aaa202bf23e68ed2",
+      "bytes": 270295,
+      "articles": [
+        {
+          "cid": 271,
+          "title": "Kubesphere运维Kubernetes集群"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574362360.png",
+      "url": "/images/recovered/5c831a7d7681e5d9eaff.png",
+      "source": "assets/1623574362360.png",
+      "drafts": [
+        "kubesphere安装.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "5c831a7d7681e5d9eaffafe688462c0853dcec960a175fb4a54f4dd3109c3e38",
+      "bytes": 267798,
+      "articles": [
+        {
+          "cid": 272,
+          "title": "Kubesphere安装——以GCP为例"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574465544.png",
+      "url": "/images/recovered/9d577af2fe0f8b8ac7e4.png",
+      "source": "assets/1623574465544.png",
+      "drafts": [
+        "kubesphere安装.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "9d577af2fe0f8b8ac7e407d6fce5941ee24048335cdf802c22091194ef77e800",
+      "bytes": 404897,
+      "articles": [
+        {
+          "cid": 272,
+          "title": "Kubesphere安装——以GCP为例"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623575697993.png",
+      "url": "/images/recovered/c2438d50aaf14694217d.png",
+      "source": "assets/1623575697993.png",
+      "drafts": [
+        "kubesphere安装.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "c2438d50aaf14694217df99e6b7ca1868963a09a67a46327b6848324b3e77f02",
+      "bytes": 346030,
+      "articles": [
+        {
+          "cid": 272,
+          "title": "Kubesphere安装——以GCP为例"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579284817.png",
+      "url": "/images/recovered/0dd005930909278cb808.png",
+      "source": "assets/1623579284817.png",
+      "drafts": [
+        "kubesphere安装.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "0dd005930909278cb8085d600963cff03b533e460652157525fac328ed70d2ca",
+      "bytes": 523740,
+      "articles": [
+        {
+          "cid": 272,
+          "title": "Kubesphere安装——以GCP为例"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623580089627.png",
+      "url": "/images/recovered/e27887a4970faa223d7a.png",
+      "source": "assets/1623580089627.png",
+      "drafts": [
+        "kubesphere安装.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "e27887a4970faa223d7a735e5eca2c8033adda042df18bd6c9192ee5971ad4dc",
+      "bytes": 726997,
+      "articles": [
+        {
+          "cid": 272,
+          "title": "Kubesphere安装——以GCP为例"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589484956.png",
+      "url": "/images/recovered/318f45c8e4470dac1fb4.png",
+      "source": "assets/1623589484956.png",
+      "drafts": [
+        "kubesphere落地DevOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "318f45c8e4470dac1fb4d06cfda2af949d3543eedafc3a2ac848f30d88d616ba",
+      "bytes": 241816,
+      "articles": [
+        {
+          "cid": 273,
+          "title": "Kubesphere落地DevOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589521856.png",
+      "url": "/images/recovered/e160945c268d616ce126.png",
+      "source": "assets/1623589521856.png",
+      "drafts": [
+        "kubesphere落地DevOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "e160945c268d616ce126efd916e1f06dff367f6ee0f95410aa669ee653bcf191",
+      "bytes": 282416,
+      "articles": [
+        {
+          "cid": 273,
+          "title": "Kubesphere落地DevOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589828830.png",
+      "url": "/images/recovered/5d85d8f656afd2acd16e.png",
+      "source": "assets/1623589828830.png",
+      "drafts": [
+        "kubesphere落地DevOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "5d85d8f656afd2acd16e40811ca8527925d13dabd2951d63617ab70c210ae2cb",
+      "bytes": 275346,
+      "articles": [
+        {
+          "cid": 273,
+          "title": "Kubesphere落地DevOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589887169.png",
+      "url": "/images/recovered/8d5a1ac24ac1f38e34a5.png",
+      "source": "assets/1623589887169.png",
+      "drafts": [
+        "kubesphere落地DevOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "8d5a1ac24ac1f38e34a521e3e9c80d4f310bb02215bbac1f7549350a99662b72",
+      "bytes": 216250,
+      "articles": [
+        {
+          "cid": 273,
+          "title": "Kubesphere落地DevOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/9919411-b8b4cfdba4c58e12.png",
+      "url": "/images/recovered/5f1205dd00a28d164de3.png",
+      "source": "assets/9919411-b8b4cfdba4c58e12.png",
+      "drafts": [
+        "RocketMQ笔记.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "5f1205dd00a28d164de3e1398f9b73a6b18929f3b3b40cdc2eb21b4329fc28d1",
+      "bytes": 263031,
+      "articles": [
+        {
+          "cid": 254,
+          "title": "RocketMQ学习笔记4——消费者核心"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD%E8%90%BD%E5%9C%B0GitOps/file-20250823222521865.png",
+      "url": "/images/recovered/a1504575c9f7c6924841.png",
+      "source": "asset/ArgoCD落地GitOps/file-20250823222521865.png",
+      "drafts": [
+        "ArgoCD落地GitOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "a1504575c9f7c69248417f6202d4ff8b78603c2d74b3d9e7fe1d2991c53b759d",
+      "bytes": 1666373,
+      "articles": [
+        {
+          "cid": 292,
+          "title": "ArgoCD落地GitOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD%E8%90%BD%E5%9C%B0GitOps/file-20250823224221287.png",
+      "url": "/images/recovered/9422e42da7137d180f3a.png",
+      "source": "asset/ArgoCD落地GitOps/file-20250823224221287.png",
+      "drafts": [
+        "ArgoCD落地GitOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "9422e42da7137d180f3a6309fa9d874347d65fd2eca2c23304cee1df985d5e32",
+      "bytes": 523431,
+      "articles": [
+        {
+          "cid": 292,
+          "title": "ArgoCD落地GitOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD%E8%90%BD%E5%9C%B0GitOps/file-20250823224305403.png",
+      "url": "/images/recovered/da96122ae78c8f216df2.png",
+      "source": "asset/ArgoCD落地GitOps/file-20250823224305403.png",
+      "drafts": [
+        "ArgoCD落地GitOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "da96122ae78c8f216df20a93ff95c84dbd5f000b2a90d1a447f3a480838d8c63",
+      "bytes": 678525,
+      "articles": [
+        {
+          "cid": 292,
+          "title": "ArgoCD落地GitOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD%E8%90%BD%E5%9C%B0GitOps/file-20250823224409148.png",
+      "url": "/images/recovered/c545c5ea9e05d634d002.png",
+      "source": "asset/ArgoCD落地GitOps/file-20250823224409148.png",
+      "drafts": [
+        "ArgoCD落地GitOps.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "c545c5ea9e05d634d002c75ddeb1734e75c3d426680cbda6d848654594915926",
+      "bytes": 365842,
+      "articles": [
+        {
+          "cid": 292,
+          "title": "ArgoCD落地GitOps"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/DeepSeek%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%BC%80%E5%90%AF%E8%81%94%E7%BD%91%E6%90%9C%E7%B4%A2/file-20250209145225878.gif",
+      "url": "/images/recovered/57dd520b810eb73609a7.gif",
+      "source": "asset/DeepSeek本地部署开启联网搜索/file-20250209145225878.gif",
+      "drafts": [
+        "DeepSeek 本地部署开启联网搜索.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "57dd520b810eb73609a7b112411f805d7e51233cd13a528ff94507b4ff7c5fc5",
+      "bytes": 14942444,
+      "articles": [
+        {
+          "cid": 289,
+          "title": "DeepSeek 本地部署开启联网搜索"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/chatglm-6b-autogpt.gif",
+      "url": "/images/recovered/180d6fc3afd209fa69f4.gif",
+      "source": "asset/ChatGLM-6B 本地化部署体验/chatglm-6b-autogpt.gif",
+      "drafts": [
+        "ChatGLM-6B 本地化部署体验.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "180d6fc3afd209fa69f4d44dbde0cccad91c1285cafdf0bb4daa316c2de0f74e",
+      "bytes": 1865553,
+      "articles": [
+        {
+          "cid": 285,
+          "title": "ChatGLM-6B 本地化部署体验"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/chatglm-6b.gif",
+      "url": "/images/recovered/444041181a77eac5f2bc.gif",
+      "source": "asset/ChatGLM-6B 本地化部署体验/chatglm-6b.gif",
+      "drafts": [
+        "ChatGLM-6B 本地化部署体验.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "444041181a77eac5f2bcae064638b8432a9cf40aa88a7266f5cd526e9bee2cfc",
+      "bytes": 3199823,
+      "articles": [
+        {
+          "cid": 285,
+          "title": "ChatGLM-6B 本地化部署体验"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200710111127488.png",
+      "url": "/images/recovered/6b691a8ced02a19be58b.png",
+      "source": "assets/image-20200710111127488.png",
+      "drafts": [
+        "RocketMQ笔记.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "6b691a8ced02a19be58bb436eebb29ef15732c3deb482084f23396da8c820742",
+      "bytes": 569996,
+      "articles": [
+        {
+          "cid": 252,
+          "title": "RocketMQ学习笔记2——入门"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105172013228.png",
+      "url": "/images/recovered/820f0e61977abfc45058.png",
+      "source": "assets/image-20211105172013228.png",
+      "drafts": [
+        "GraphQL实践1——集成JPA与MySQL.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "820f0e61977abfc4505808c26f852c907217e54bb14de46be871af7647af6010",
+      "bytes": 326023,
+      "articles": [
+        {
+          "cid": 274,
+          "title": "GraphQL实践1——集成JPA与MySQL"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105172501790.png",
+      "url": "/images/recovered/e92e1a1d5824d992e5cf.png",
+      "source": "assets/image-20211105172501790.png",
+      "drafts": [
+        "GraphQL实践1——集成JPA与MySQL.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "e92e1a1d5824d992e5cff5aef2d8249ca397315c2e18783de43280c8accfbc49",
+      "bytes": 391028,
+      "articles": [
+        {
+          "cid": 274,
+          "title": "GraphQL实践1——集成JPA与MySQL"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211115151701244.png",
+      "url": "/images/recovered/9b57909260354fb3aac5.png",
+      "source": "assets/image-20211115151701244.png",
+      "drafts": [
+        "GraphQL实践2——集成JPA与MySQL.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "9b57909260354fb3aac5e82517d5db8f4a12df9af73c9e4f4989c18390f06801",
+      "bytes": 214937,
+      "articles": [
+        {
+          "cid": 275,
+          "title": "GraphQL实践2——Spring-GraphQL集成JPA与MySQL"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528121339750.png",
+      "url": "/images/recovered/51ab890433412ae2daae.png",
+      "source": "asset/ChatGLM-6B 本地化部署体验/image-20230528121339750.png",
+      "drafts": [
+        "ChatGLM-6B 本地化部署体验.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "51ab890433412ae2daae62f1690f3eef08860badafb63a178555978ebc5ef429",
+      "bytes": 441331,
+      "articles": [
+        {
+          "cid": 285,
+          "title": "ChatGLM-6B 本地化部署体验"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528122234702.png",
+      "url": "/images/recovered/6c613fea21606bae426d.png",
+      "source": "asset/ChatGLM-6B 本地化部署体验/image-20230528122234702.png",
+      "drafts": [
+        "ChatGLM-6B 本地化部署体验.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "6c613fea21606bae426d4d0e34fb6444a415070d6879ecbedf2dd8e511d4dda8",
+      "bytes": 420286,
+      "articles": [
+        {
+          "cid": 285,
+          "title": "ChatGLM-6B 本地化部署体验"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528132206338.png",
+      "url": "/images/recovered/1714594fabbe13ed8d62.png",
+      "source": "asset/ChatGLM-6B 本地化部署体验/image-20230528132206338.png",
+      "drafts": [
+        "ChatGLM-6B 本地化部署体验.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "1714594fabbe13ed8d62d4202e190f1e7216b416d9647f86ed579243e3eb6c76",
+      "bytes": 358514,
+      "articles": [
+        {
+          "cid": 285,
+          "title": "ChatGLM-6B 本地化部署体验"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528132251350.png",
+      "url": "/images/recovered/d32b89cddc41a2a39649.png",
+      "source": "asset/ChatGLM-6B 本地化部署体验/image-20230528132251350.png",
+      "drafts": [
+        "ChatGLM-6B 本地化部署体验.md"
+      ],
+      "match_method": "exact-filename",
+      "sha256": "d32b89cddc41a2a3964966bb9db31e09e22d5eab60310d4c89685e3bff56ea88",
+      "bytes": 712881,
+      "articles": [
+        {
+          "cid": 285,
+          "title": "ChatGLM-6B 本地化部署体验"
+        }
+      ]
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/pw-cloud-v2%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg",
+      "url": "/images/recovered/2d0eba65095a8b8cd0e8.jpg",
+      "source": "assets/pw-cloud-v2架构图.jpg",
+      "drafts": [],
+      "match_method": "exact-filename",
+      "sha256": "2d0eba65095a8b8cd0e8fbdd074d5bb9afc1cbbbd36d4f20042a637c911b95eb",
+      "bytes": 757016,
+      "articles": [
+        {
+          "cid": 245,
+          "title": "微服务平台开发总结（3）——第二代密码管理平台"
+        }
+      ]
+    },
+    {
+      "original_url": "https://i.loli.net/2019/03/30/5c9ed6dba2070.png",
+      "url": "/images/recovered/b4cd43a2e3a3c1f61c6b.png",
+      "source": "assets/1553913556405.png",
+      "drafts": [
+        "SpringBoot2.x Data JPA 多数据源爬坑.md"
+      ],
+      "match_method": "published-image-alt-filename",
+      "sha256": "b4cd43a2e3a3c1f61c6be5c9b8e722cb580669ad8943bb14f8e91fc3fca70ee1",
+      "bytes": 66055,
+      "articles": [
+        {
+          "cid": 202,
+          "title": "SpringBoot2.x Data JPA 多数据源爬坑"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "original_url": "http://img.zcool.cn/community/01559a5a03dafda80121985c42a99a.jpg@1280w_1l_2o_100sh.webp",
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "http://img.zcool.cn/community/01c0285a03daf1a801204a0ed5d8f4.jpg@1280w_1l_2o_100sh.webp",
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://fjy8018.gitee.io/images/img/git.png",
+      "articles": [
+        {
+          "cid": 240,
+          "title": "Git工作使用笔记"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://fjy8018.gitee.io/images/img/logo_0_1.png",
+      "articles": [
+        {
+          "cid": 230,
+          "title": "PXC系列学习笔记（一）——PXC单节点安装配置"
+        },
+        {
+          "cid": 231,
+          "title": "PXC系列学习笔记（二）——PXC集群安装配置"
+        },
+        {
+          "cid": 232,
+          "title": "PXC系列学习笔记（三）——MyCat安装和读写分离配置"
+        },
+        {
+          "cid": 233,
+          "title": "PXC系列学习笔记（四）——搭建双机热备的MyCat集群"
+        },
+        {
+          "cid": 234,
+          "title": "PXC系列学习笔记（五）——Sysbench基准测试 "
+        },
+        {
+          "cid": 235,
+          "title": "PXC系列学习笔记（六）——Java千万数据量导入和查询优化 "
+        },
+        {
+          "cid": 236,
+          "title": "PXC系列学习笔记（七）——大数据归档——冷热数据分离"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnIer.png",
+      "articles": [
+        {
+          "cid": 146,
+          "title": "单节点MapReduce开发"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5BUW.png",
+      "articles": [
+        {
+          "cid": 136,
+          "title": "Typecho  Pinghsu 主题加入备案信息"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2JymHv.jpg",
+      "articles": [
+        {
+          "cid": 134,
+          "title": "我们一直过得更好，却不知珍惜"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk8f8.png",
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykAMg.png",
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yknwd.png",
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykouL.jpg",
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykrLR.png",
+      "articles": [
+        {
+          "cid": 53,
+          "title": "使用宝塔安装nextcloud私有云服务"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yt2sw.jpg",
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ytV6R.jpg",
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ],
+      "reason": "no-local-file"
+    },
+    {
+      "original_url": "https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yty3W.jpg",
+      "articles": [
+        {
+          "cid": 16,
+          "title": "合成案例教学作品1——恐龙入侵"
+        }
+      ],
+      "reason": "no-local-file"
+    }
+  ]
+}

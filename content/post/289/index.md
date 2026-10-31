@@ -95,7 +95,7 @@ docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-
 
 ### 8b + 联网搜索
 使用8b+联网搜索验证
-![file-20250209145225878.gif](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/DeepSeek本地部署开启联网搜索/file-20250209145225878.gif)
+![file-20250209145225878.gif](/images/recovered/57dd520b810eb73609a7.gif)
 
 容器日志可以看到搜索到的文本内容
 ![file-20250209145333195.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/DeepSeek本地部署开启联网搜索/file-20250209145333195.png)

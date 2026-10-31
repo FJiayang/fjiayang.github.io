@@ -275,7 +275,7 @@ spec:
 git提交后即可自动同步并创建ingress
 
 访问域名查看argocd webui
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD落地GitOps/file-20250823222521865.png)
+![](/images/recovered/a1504575c9f7c6924841.png)
 
 
 ### 部署Prometheus+Grafana
@@ -439,11 +439,11 @@ resources:
 ```
 
 同步后效果如下
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD落地GitOps/file-20250823224221287.png)
+![](/images/recovered/9422e42da7137d180f3a.png)
 
 查看监控部署拓扑
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD落地GitOps/file-20250823224305403.png)
+![](/images/recovered/da96122ae78c8f216df2.png)
 
 通过域名访问grafana
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD落地GitOps/file-20250823224409148.png)
+![](/images/recovered/c545c5ea9e05d634d002.png)

@@ -131,7 +131,7 @@ EOF
 
 节点状态
 
-![1621780183351](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780183351.png)
+![1621780183351](/images/recovered/e7a1819a228946782bef.png)
 
 
 
@@ -143,7 +143,7 @@ EOF
 
 监控告警
 
-![1621780125428](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780125428.png)
+![1621780125428](/images/recovered/8952d763193936f0e1b8.png)
 
 
 

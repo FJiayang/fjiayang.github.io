@@ -717,7 +717,7 @@ public class Consumer2 {
 
 ### 长轮询过程
 
-![img](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/9919411-b8b4cfdba4c58e12.png)
+![img](/images/recovered/5f1205dd00a28d164de3.png)
 
 1. 客户端发起获取消息请求，假设一次请求超时时间为15s
 2. 服务端判断是否有消息，有则直接返回
