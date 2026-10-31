@@ -52,6 +52,16 @@ def recover(draft_root):
     for warning in sorted(baseline['fetch_warnings'], key=lambda row: row['url']):
         url = warning['url']
         name = Path(unquote(urlsplit(url).path)).name
+        if url in previous:
+            # Already verified copies do not depend on the original source directory.
+            old = previous[url]
+            destination = ROOT/'static'/old['url'].lstrip('/')
+            if not destination.is_file() or hashlib.sha256(destination.read_bytes()).hexdigest() != old['sha256']:
+                raise ValueError(f'Previously recovered image missing or modified: {old["url"]}')
+            recovered.append(old)
+            for cid in warning['cids']:
+                replacements[cid][url] = old['url']
+            continue
         candidates = list(index.get(name.casefold(), []))
         method = 'exact-filename'
         if not candidates:
@@ -60,12 +70,6 @@ def recover(draft_root):
                 text = articles[cid].read_text()
                 for match in re.finditer(r'!\[([^\]]+)\]\('+re.escape(url)+r'(?:\s|\))', text):
                     candidates.extend(index.get(match[1].casefold(), []))
-        if not candidates and url in previous:
-            old = previous[url]
-            path = (draft_root/old['source']).resolve()
-            if path.is_file() and path.is_relative_to(draft_root):
-                candidates.append(path)
-                method = old['match_method']
         # Duplicate filenames are only acceptable if their bytes are identical.
         by_hash = {hashlib.sha256(path.read_bytes()).hexdigest(): path for path in sorted(set(candidates))}
         titles = []
@@ -85,7 +89,7 @@ def recover(draft_root):
             raise ValueError('Recovered destination checksum mismatch')
         target_url = '/images/recovered/'+destination.name
         matching_drafts = [str(path.relative_to(draft_root)) for path, text in drafts if name in text or source.name in text]
-        recovered.append({'original_url': url, 'url': target_url, 'source': str(source.relative_to(draft_root)), 'drafts': matching_drafts, 'match_method': method, 'sha256': digest, 'bytes': source.stat().st_size, 'articles': titles})
+        recovered.append({'original_url': url, 'url': target_url, 'source': str(source.relative_to(draft_root)), 'source_directory': draft_root.name, 'drafts': matching_drafts, 'match_method': method, 'sha256': digest, 'bytes': source.stat().st_size, 'articles': titles})
         for cid in warning['cids']:
             replacements[cid][url] = target_url
     for cid, mapping in replacements.items():

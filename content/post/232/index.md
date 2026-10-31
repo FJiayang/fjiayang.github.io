@@ -16,7 +16,7 @@
     "PXC",
     "MyCat"
   ],
-  "image": "https://fjy8018.gitee.io/images/img/logo_0_1.png",
+  "image": "/images/recovered/de47efcb191c722de4a9.png",
   "math": false
 }
 

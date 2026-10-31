@@ -13,7 +13,7 @@
   "tags": [
     "git"
   ],
-  "image": "https://fjy8018.gitee.io/images/img/git.png",
+  "image": "/images/recovered/7029ed877105a9b0efec.png",
   "math": false
 }
 

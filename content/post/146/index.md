@@ -503,7 +503,7 @@ Partitioner决定MapTask输出的数据交由哪个ReduceTask处理，其默认�
   [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Hnwbt.png
   [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Hnt2T.jpg
   [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnZ1M.jpg
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnIer.png
+  [4]: /images/recovered/6d3b91eec2ec6159544e.png
   [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnfEF.png
   [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HeOsr.png
   [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HeqIJ.png
