@@ -62,7 +62,7 @@ python3 scripts/migrate_typecho.py
 
 ## GitHub Pages
 
-`.github/workflows/hugo.yaml` 对 PR 运行转换测试、Hugo 构建及站点校验；向 `master` 推送或在 `master` 手动触发时部署。CI 只读取仓库文件，不连接 MySQL，也不需要数据库密码。`public/` 和缓存不提交。
+`.github/workflows/hugo.yaml` 对 PR 和迁移分支 `codex/typecho-hugo-stack` 运行转换测试、Hugo 构建及站点校验；向 `master` 推送或在 `master` 手动触发时部署。CI 只读取仓库文件，不连接 MySQL，也不需要数据库密码。`public/` 和缓存不提交。
 
 首次上线：
 
