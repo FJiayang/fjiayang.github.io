@@ -5,6 +5,8 @@ defaultContentLanguage = 'zh'
 hasCJKLanguage = true
 timeZone = 'Asia/Shanghai'
 enableRobotsTXT = true
+# Historical articles contain many remote images; allow their default fetches to finish.
+timeout = '15m'
 
 [module]
   [[module.imports]]
