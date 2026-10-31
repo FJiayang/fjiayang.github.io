@@ -1,6 +1,6 @@
 # F嘉阳的博客
 
-使用 Hugo Extended **0.169.0** 和 Stack **v4.0.3** 构建，站点地址为 <https://fjiayang.github.io/>。主题通过 Hugo Modules 锁定在 `go.mod` / `go.sum`，保留主题版权信息。
+使用 Hugo Extended **0.169.0** 和 Stack **v4.0.3** 构建，站点地址为 <https://blog.fjy8018.top/>。主题通过 Hugo Modules 锁定在 `go.mod` / `go.sum`，保留主题版权信息。
 
 ## 本地预览与验证
 
@@ -69,11 +69,11 @@ python3 scripts/migrate_typecho.py
 首次上线：
 
 1. 停止原 Typecho 的内容编辑，执行最终 `--extract`，检查迁移差异并重新构建校验。
-2. 在仓库 Settings → Pages → Build and deployment 将 Source 设为 **GitHub Actions**，不设置自定义域名。
+2. 在仓库 Settings → Pages → Build and deployment 将 Source 设为 **GitHub Actions**，Custom domain 设为 `blog.fjy8018.top`，DNS 的 `blog` CNAME 指向 `fjiayang.github.io`，证书就绪后启用 Enforce HTTPS。
 3. 合并迁移分支到 `master`，检查 Build and deploy Hugo 工作流完成。
 4. 验证首页、`/archives/`、文章、分类、标签、搜索、`/project.html`、`/links.html`、`/index.xml`、`/sitemap.xml` 和 404 页面。
 
-不修改 `blog.fjy8018.top` 的 DNS、Typecho 服务或数据库。旧域名继续访问原站，不自动跳转。旧 Gridea 文章没有兼容跳转。
+当前自定义域名为 `blog.fjy8018.top`，Hugo 的 `baseURL` 与 Pages 设置需保持一致。原 Typecho 数据库和服务不由本仓库修改，旧 Gridea 文章没有兼容跳转。
 
 ## 回滚
 

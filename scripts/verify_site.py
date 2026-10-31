@@ -6,10 +6,11 @@ import hashlib
 from pathlib import Path
 import re
 import sys
+import tomllib
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'https://fjiayang.github.io'
+BASE = tomllib.loads((ROOT/'hugo.toml').read_text())['baseURL'].rstrip('/')
 
 class Document(HTMLParser):
     def __init__(self):
