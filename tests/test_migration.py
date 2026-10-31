@@ -35,11 +35,12 @@ class MigrationTests(unittest.TestCase):
         self.assertIn('+08:00', result)
 
     def test_images_attachments_and_article_links(self):
-        result = self.convert('![图](https://images.example/a.png)\n![图](/usr/uploads/b.png)\n[附件](/usr/uploads/a.zip)\n[自己](https://blog.fjy8018.top/index.php/archives/1/#test)\n[私密引用](https://blog.fjy8018.top/archives/99/)')
+        result = self.convert('![图](https://images.example/a.png)\n![图](/usr/uploads/b.png)\n[附件](/usr/uploads/a.zip)\n[自己](https://blog.fjy8018.top/index.php/archives/1/#test)\n[私密引用](https://blog.fjy8018.top/archives/99/)\n[题目](<https://leetcode.com/problems/two-sum/>)')
         self.assertIn('![图](https://images.example/a.png)', result)
         self.assertIn('![图](https://blog.fjy8018.top/usr/uploads/b.png)', result)
         self.assertIn('[附件](https://blog.fjy8018.top/usr/uploads/a.zip)', result)
         self.assertIn('[自己](/archives/1/#test)', result)
+        self.assertIn('[题目](https://leetcode.com/problems/two-sum/)', result)
         self.assertIn('[私密引用](https://blog.fjy8018.top/archives/99/)', result)
 
     def test_old_shortcodes_and_unavailable_post(self):

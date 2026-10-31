@@ -312,7 +312,7 @@ variables:
 
 由于使用`k8s`集群，而通过集群部署需要使用`kubectl`客户端，故手动创建了一个`kubectl` `docker`镜像，使用`gitlab`触发`dockerhub`构建，构建内容公开透明，可放心使用，如有其它版本的构建需求也可提pull request，会在后面补充，目前用到的只有1.14.0
 
-[fjy8018/kubectl](https://blog.fjy8018.top/fjy8018/kubectl)
+[fjy8018/kubectl](https://hub.docker.com/r/fjy8018/kubectl)
 
 ![1574778835433](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778835433.png)
 

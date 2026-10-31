@@ -71,6 +71,9 @@ def migrate(data):
     report = {'source': DB, 'posts': len(posts), 'pages': sum(c['type'] == 'page' for c in data['contents']), 'items': [], 'unresolved_post_references': [], 'legacy_syntax': [], 'remote_resources': []}
     expected_paths = set()
     def article_link(url):
+        # Markdown permits angle-bracketed destinations; normalize before URL resolution.
+        if url.startswith('<') and url.endswith('>'):
+            url = url[1:-1]
         full = urlsplit(absolute(html.unescape(url)))
         if full.netloc.lower() != urlsplit(OLD).netloc:
             return url
