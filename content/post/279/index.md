@@ -99,11 +99,11 @@ public class FilmActorsDataLoader implements MappedBatchLoader<Integer, List<Act
 
 访问http://localhost:8080/graphiql即可看到在线查询页面
 
-![image-20221027223715143](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027223715143.png)
+![image-20221027223715143](/images/recovered/1353df48b207bc15b490.png)
 
 此时执行嵌套查询只会查询2次，一次查电影列表，一次查所有电影的Actor列表，非常快速
 
-![image-20221027223756097](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027223756097.png)
+![image-20221027223756097](/images/recovered/757144aea8efd9194197.png)
 
 
 

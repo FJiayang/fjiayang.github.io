@@ -152,7 +152,7 @@
 
   [1]: https://github.com/FJiayang/hadoopstudy
   [2]: https://github.com/LeeKemp/UserAgentParser
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25OjDr.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25ObQF.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25OQyM.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25Oamt.png
+  [3]: /images/recovered/c8bd0b7e79506e8a0180.png
+  [4]: /images/recovered/bccf395b908a78f86cef.png
+  [5]: /images/recovered/79ca81da4a134f992cbe.png
+  [6]: /images/recovered/25ca9f9a69e7b1556651.png

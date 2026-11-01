@@ -208,8 +208,8 @@ Determining fastest mirrors
 ```
 问题解决
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/28XPkG.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/28Xx0j.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/28XBRX.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/28TXWN.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/28TRr7.png
+  [1]: /images/recovered/9a98024a4773b2ba7802.png
+  [2]: /images/recovered/02cb6641c9473b737b7d.png
+  [3]: /images/recovered/6fbcfc9f5f5355987ed0.png
+  [4]: /images/recovered/1bc7f64bc6677eb88818.png
+  [5]: /images/recovered/0012dd0cb52a58713291.png

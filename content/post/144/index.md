@@ -120,9 +120,9 @@ YARN官方提供了示例java程序来测试资源调度，进入`/www/hadoop/ha
 ![请输入图片描述][6]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mE8vN.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mEHYc.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mE5lK.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mEqP6.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mEhVT.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mE3pt.png
+  [1]: /images/recovered/ab9c85cdc1352c528d83.png
+  [2]: /images/recovered/9ac4723e9201f31cbc3c.png
+  [3]: /images/recovered/9cae188707aadfbdb587.png
+  [4]: /images/recovered/c5ac9030697c66d104f3.png
+  [5]: /images/recovered/b8e0a1ff86df8044e742.png
+  [6]: /images/recovered/1829ed91dbf544f6af86.png

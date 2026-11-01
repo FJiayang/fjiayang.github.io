@@ -307,7 +307,7 @@
 
 - 建议扩张后的分片数是原有分片的2n倍
 
-  ![image-20191227101124573](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227101124573.png)
+  ![image-20191227101124573](/images/recovered/4366c68842307c5d65f0.png)
 
 #### （2）枚举值切分
 
@@ -383,15 +383,15 @@
 
    第一个分片
 
-   ![image-20191227114224190](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227114224190.png)
+   ![image-20191227114224190](/images/recovered/9be4ced7ee8852b17ce6.png)
 
    第二个分片
 
-   ![image-20191227114243981](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227114243981.png)
+   ![image-20191227114243981](/images/recovered/9d46500b7de260b7e0bb.png)
 
    查询mycat数据
 
-   ![image-20191227114257740](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227114257740.png)
+   ![image-20191227114257740](/images/recovered/6bbbd6792158c8cc0004.png)
 
 
 
@@ -445,21 +445,21 @@ insert into t_orders(id, customer_id) VALUES (5,3);
 
 分片一t_customer查询结果
 
-![image-20191227143140626](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227143140626.png)
+![image-20191227143140626](/images/recovered/82e180f1382670c5f883.png)
 
 分片一t_orders查询结果
 
-![image-20191227143222594](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227143222594.png)
+![image-20191227143222594](/images/recovered/f1fd6381e5a6efa49796.png)
 
 
 
 分片二t_customer查询结果
 
-![image-20191227143259570](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227143259570.png)
+![image-20191227143259570](/images/recovered/51afdbf66ae5c0c936b0.png)
 
 分片二t_orders查询结果
 
-![image-20191227143308802](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227143308802.png)
+![image-20191227143308802](/images/recovered/14305f2f822857701dbd.png)
 
 同一个客户订单和客户信息都存在相同分片中，结果符合预期
 
@@ -471,6 +471,6 @@ insert into t_orders(id, customer_id) VALUES (5,3);
 select c.username,t.id,t.datetime from t_customer c join t_orders t on c.id = t.customer_id
 ```
 
-![image-20191227143629621](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227143629621.png)
+![image-20191227143629621](/images/recovered/1181aa9c67331257423c.png)
 
 ##

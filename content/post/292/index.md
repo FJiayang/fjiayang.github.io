@@ -51,7 +51,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 检查安装结果
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/ArgoCD落地GitOps/file-20250823213425133.png)
+![](/images/recovered/a90ac85a4c0c433ae242.png)
 
 查看argo cd登录密码
 

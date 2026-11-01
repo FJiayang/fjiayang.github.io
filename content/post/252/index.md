@@ -34,7 +34,7 @@
 
 创建测试主题
 
-![image-20200710104500348](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200710104500348.png)
+![image-20200710104500348](/images/recovered/de256f2e06fc571aaebd.png)
 
 
 
@@ -495,24 +495,24 @@ rocketmq.config.namesrvAddr=10.139.12.52:9876;10.139.12.53:9876
 
 
 
-![image-20200714110245415](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200714110245415.png)
+![image-20200714110245415](/images/recovered/2805bca5ca13f927ceef.png)
 
 ## 数据高可用机制故障演练
 
 投递一条消息
 
-![image-20200714110939305](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200714110939305.png)
+![image-20200714110939305](/images/recovered/8d80823e56420d1e0dc3.png)
 
 关闭主节点，剩余一个slave
 
-![image-20200714111107887](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200714111107887.png)
+![image-20200714111107887](/images/recovered/b4185ba8ad779f81e365.png)
 
 启动消费者，消费正常
 
-![image-20200714111150207](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200714111150207.png)
+![image-20200714111150207](/images/recovered/b1ff4d93bb9d65186b43.png)
 
-![image-20200714111203755](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200714111203755.png)
+![image-20200714111203755](/images/recovered/4ea79bfe56f9aedd03fb.png)
 
 主节点上线，同步消息位点（offset）使消费端不会重复消费
 
-![image-20200714111327726](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200714111327726.png)
+![image-20200714111327726](/images/recovered/e32e700994f863b91d1a.png)

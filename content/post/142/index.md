@@ -63,17 +63,17 @@
 
   [1]: https://www.boke8.net/typecho-views-plugin.html/comment-page-1/
   [2]: https://github.com/YianAndCode/Comment2Wechat
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crlfW.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crwju.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crfKD.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crZ4a.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crtJd.png
-  [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crVA0.png
-  [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cryLr.png
-  [10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cHohF.png
+  [3]: /images/recovered/0fd460c2a32375c9fc14.png
+  [4]: /images/recovered/1d1f778eb93b94038ba4.png
+  [5]: /images/recovered/20de0ce4fb22cee31273.png
+  [6]: /images/recovered/cdb2091c2396219d3427.png
+  [7]: /images/recovered/5d3a246aea5585f0a186.png
+  [8]: /images/recovered/7fcbedaea71242e5c7c5.png
+  [9]: /images/recovered/4ddb114ae3006d76449f.png
+  [10]: /images/recovered/87b57d50c1c7ed6cff99.png
   [11]: http://sc.ftqq.com/3.version
-  [12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crgF1.png
-  [13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cHzJ7.png
-  [14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2crJfJ.png
-  [15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cHdlt.png
-  [16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cHKKM.png
+  [12]: /images/recovered/7e10d26c3584249c096c.png
+  [13]: /images/recovered/0811439452bf355b6200.png
+  [14]: /images/recovered/c6876cf9abf12d475c91.png
+  [15]: /images/recovered/cfe8a5471d0d30923a8e.png
+  [16]: /images/recovered/1f7bf97a0303d4ba2d6e.png

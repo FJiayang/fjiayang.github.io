@@ -25,7 +25,7 @@
 
 此处摘要部分[官网](https://docs.gitlab.com/ee/api/)`API`文档指南，所有`api`操作都需要在`gitlab`上申请访问令牌，该令牌应当至少包含api访问权限
 
-![image-20191106101754287](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191106101754287.png)
+![image-20191106101754287](/images/recovered/770f238044d33171139f.png)
 
 ### 获取工程列表
 
@@ -180,7 +180,7 @@
 
 通过该接口可以查询所有工程的ID，注意，该接口默认使用了分页
 
-![image-20191106102650310](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191106102650310.png)
+![image-20191106102650310](/images/recovered/f14504786f7edd67c402.png)
 
 
 

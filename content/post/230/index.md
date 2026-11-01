@@ -30,9 +30,9 @@
 [官网](https://www.percona.com/)
 [Percona官网](https://www.percona.com/)
 
-![Percona官网](https://learn.percona.com/hs-fs/hubfs/Images/Logos/P%20-%20Percona.png)
+![Percona官网](/images/recovered/54233f27b35008d0940a.png)
 
-![1577620169318](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577620169318.png)
+![1577620169318](/images/recovered/b38d45b9d0b4aa25f3a9.png)
 
 Percona数据库提供MySQL、MongoDB等衍生版本，在大数据、同步性能上做了大量优化
 
@@ -57,7 +57,7 @@ $ yum install qpress
 
 进入[官网](https://www.percona.com/downloads/)下载5.7版本的Percona，注意，此处下载的是单机版本
 
-![1577621418297](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577621418297.png)
+![1577621418297](/images/recovered/b1344428537a291552f9.png)
 
 - 进入RPM安装文件目录，执行下面的脚本
 

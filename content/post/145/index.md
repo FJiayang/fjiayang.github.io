@@ -47,11 +47,11 @@
 2018年4月9日全天整个业务系统通过域名访问处于崩溃状态，对所有需要访问的客户重定向到IP+端口号的地址，并且该地址还一直被微信拦截（微信拦截非80端口的网址）
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mKrru.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mKHka.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mKJCc.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mYX1D.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mEdHG.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mEYgX.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mEo0y.png
-  [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2mKydj.png
+  [1]: /images/recovered/dd9399a744de8fe04c1b.png
+  [2]: /images/recovered/2344914d3603a54ef9e1.png
+  [3]: /images/recovered/56b8e69802b63bd6e631.png
+  [4]: /images/recovered/616e08ebb071c9966eab.png
+  [5]: /images/recovered/be1231f8b29d04e8cf4e.png
+  [6]: /images/recovered/4db4c7b31ed466d9afac.png
+  [7]: /images/recovered/e62b14b6e7f4ac9abb29.png
+  [8]: /images/recovered/3273c228fdb89c91ca46.png

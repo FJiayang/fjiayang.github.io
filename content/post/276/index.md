@@ -213,7 +213,7 @@ type ActorEntity {
 
 访问http://localhost:8080/graphiql即可看到在线查询页面
 
-![image-20221027214859637](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027214859637.png)
+![image-20221027214859637](/images/recovered/4a1329e3cbae24b5919f.png)
 
 
 

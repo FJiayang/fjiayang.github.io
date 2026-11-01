@@ -121,8 +121,8 @@ VB自然支持函数（宏）调用，例如以下代码，先录制了三个预
         ActiveWorkbook.Save
     End Sub
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vOyVF.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vMdPt.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vMKfT.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vMYMM.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vO2Gr.png
+  [1]: /images/recovered/b90a35598b3beafd2f71.png
+  [2]: /images/recovered/cebc286c81d30505d355.png
+  [3]: /images/recovered/c0e02c622414378f54fd.png
+  [4]: /images/recovered/3ab6e91527863eb6eeea.png
+  [5]: /images/recovered/d6c4c1fbe18a725b254c.png

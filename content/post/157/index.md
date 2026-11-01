@@ -73,10 +73,10 @@ Nginx报错无法启动
 
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RPEjN.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RPD4K.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RPLMy.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RPUFj.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RPzVc.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RP9fG.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2RPxLX.png
+  [1]: /images/recovered/af830953d966c1b73732.png
+  [2]: /images/recovered/35718dc111a171347458.png
+  [3]: /images/recovered/734b5684f7427682679f.png
+  [4]: /images/recovered/7ce34ecc419ff8a3ec6a.png
+  [5]: /images/recovered/2e820c4df43ce390f87a.png
+  [6]: /images/recovered/8682030f401f2fecf58c.png
+  [7]: /images/recovered/28d9d173ab273b86f3d8.png

@@ -84,12 +84,12 @@
 ![请输入图片描述][9]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSnyX.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSemG.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSIXg.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cS658.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSVDi.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSZTw.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSkiL.png
-  [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cStqW.png
-  [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2cSftR.png
+  [1]: /images/recovered/181eb2830124898f2b2c.png
+  [2]: /images/recovered/0bdec2b039974aa70c3a.png
+  [3]: /images/recovered/b06ba38673890b5e0cbc.png
+  [4]: /images/recovered/c1ff6cfc51be2805c6da.png
+  [5]: /images/recovered/682eb1283d44aee1bf13.png
+  [6]: /images/recovered/39cd6749cb6720b58fa8.png
+  [7]: /images/recovered/a8f723697b25134b0455.png
+  [8]: /images/recovered/70fd77cc34c11a09187b.png
+  [9]: /images/recovered/a421385653169005ca21.png

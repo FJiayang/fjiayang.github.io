@@ -175,7 +175,7 @@ class ActorDataFetcherTest {
 
 从日志输出可以看到客户端成功接收异步通知
 
-![image-20221028214837298](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028214837298.png)
+![image-20221028214837298](/images/recovered/41f1d00aa1ac9f7211de.png)
 
 
 

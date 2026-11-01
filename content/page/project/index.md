@@ -16,4 +16,4 @@
 
 
   [1]: https://gitlab.fjy8018.top/users/fjy8018/projects
-  [2]: https://t1.picb.cc/uploads/2018/06/12/2xHYsu.png
+  [2]: /images/recovered/55b41d0887fd146ed74c.png

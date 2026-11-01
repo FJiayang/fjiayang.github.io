@@ -119,11 +119,11 @@
 
 进入任意一个仓库的设置中，查看CICD配置
 
-[![1554266163188.png](https://i.loli.net/2019/04/03/5ca46d8f7ec77.png)](https://i.loli.net/2019/04/03/5ca46d8f7ec77.png)
+[![1554266163188.png](/images/recovered/3081bff4a37d74a8a1ea.png)](/images/recovered/3081bff4a37d74a8a1ea.png)
 
 准备注册专用Runner令牌
 
-[![1554266217632.png](https://i.loli.net/2019/04/03/5ca46d8ff2aa9.png)](https://i.loli.net/2019/04/03/5ca46d8ff2aa9.png)
+[![1554266217632.png](/images/recovered/524156a5210b2633cf8b.png)](/images/recovered/524156a5210b2633cf8b.png)
 
 
 
@@ -131,7 +131,7 @@
 
 进入总设置页面，配置全局Runner令牌
 
-[![1554266287842.png](https://i.loli.net/2019/04/03/5ca46d907392b.png)](https://i.loli.net/2019/04/03/5ca46d907392b.png)
+[![1554266287842.png](/images/recovered/7febd5e20f496fcd92ee.png)](/images/recovered/7febd5e20f496fcd92ee.png)
 
 
 
@@ -184,13 +184,13 @@ $ docker run --rm -it \
 
 注册成功提示
 
-[![1554277014308.png](https://i.loli.net/2019/04/03/5ca46d8cb31ce.png)](https://i.loli.net/2019/04/03/5ca46d8cb31ce.png)
+[![1554277014308.png](/images/recovered/8c2fd4c5485abe7dafc3.png)](/images/recovered/8c2fd4c5485abe7dafc3.png)
 
 
 
 此时管理面板显示新的Runner已经注册
 
-[![1554277086811.png](https://i.loli.net/2019/04/03/5ca46d8db2078.png)](https://i.loli.net/2019/04/03/5ca46d8db2078.png)
+[![1554277086811.png](/images/recovered/16885f67d7b841618125.png)](/images/recovered/16885f67d7b841618125.png)
 
 
 
@@ -209,4 +209,4 @@ $ docker run -d --name gitlab-runner --restart always \
 
 此时可见Runner已经保持和Gitlab的联系
 
-[![1554277457677.png](https://i.loli.net/2019/04/03/5ca46d8c56a69.png)](https://i.loli.net/2019/04/03/5ca46d8c56a69.png)
+[![1554277457677.png](/images/recovered/1e4651221bc4d7449ea5.png)](/images/recovered/1e4651221bc4d7449ea5.png)

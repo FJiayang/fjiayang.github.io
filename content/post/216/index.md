@@ -272,7 +272,7 @@ $ chown 1000:1000 -R elasticsearch/
 
 注意所有索引副本数都要是2或者3，否则都无法实现高可用效果
 
-![1568039948401](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1568039948401.png)
+![1568039948401](/images/recovered/3a793080fa1663d6b7e6.png)
 
 由于网络问题或者服务器问题导致其中一个节点下线，es会自动对各个节点的副本重新路由，此时集群颜色为黄色，仍然可用，稍等片刻会实现最终一致性
 
@@ -280,7 +280,7 @@ $ chown 1000:1000 -R elasticsearch/
 
 橙色表示尚未路由完成，但所有索引数据均可用
 
-![1568038733273](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1568038733273.png)
+![1568038733273](/images/recovered/b497a79dc6b60e10b0a3.png)
 
 
 
@@ -288,8 +288,8 @@ $ chown 1000:1000 -R elasticsearch/
 
 若某些索引的副本数设置为1，则当某个节点宕机且其刚好存储该索引的副本，则整个集群的状态将立刻变成红色，意思是数据丢失
 
-![1568038760406](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1568038760406.png)
+![1568038760406](/images/recovered/a8bf0557ad4ab83560de.png)
 
 灰色表示已经下线的分片并且无法被重新路由
 
-![1568041023184](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1568041023184.png)
+![1568041023184](/images/recovered/226514538b0a619f07c0.png)

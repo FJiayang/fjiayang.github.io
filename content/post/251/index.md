@@ -55,7 +55,7 @@
 
 结构：
 
-![image-20200709155308594](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200709155308594.png)
+![image-20200709155308594](/images/recovered/3995ca35bf98137a9bf3.png)
 
 结构解析：
 
@@ -310,9 +310,9 @@ $ tail -f -n 500 /home/ocmuser/rocketmq-test/rocketmq-all-4.4.0-bin-release/logs
 
 
 
-![image-20200710094505851](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200710094505851.png)
+![image-20200710094505851](/images/recovered/b87bf7f911a2b7d1f5ba.png)
 
-![image-20200710094538126](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200710094538126.png)
+![image-20200710094538126](/images/recovered/0d7fa72b29c552ff1400.png)
 
 
 

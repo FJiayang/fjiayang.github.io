@@ -101,7 +101,7 @@ HBase非强ACID
 | 吞吐量     | 百万查询/每秒         | 数千查询/每秒  |
 ## HBase基础架构
 
-[![hbase1.jpg](https://i.loli.net/2018/12/15/5c14dd85593e5.jpg)](https://i.loli.net/2018/12/15/5c14dd85593e5.jpg)
+[![hbase1.jpg](/images/recovered/2d4ca2aacefb7394871b.jpg)](/images/recovered/2d4ca2aacefb7394871b.jpg)
 
 ### HBase分布式系统简介
 
@@ -120,7 +120,7 @@ HBase非强ACID
 
 ### HBase写流程
 
-[![hbase2.jpg](https://i.loli.net/2018/12/15/5c14eab0b66f1.jpg)](https://i.loli.net/2018/12/15/5c14eab0b66f1.jpg)
+[![hbase2.jpg](/images/recovered/6cf4cfb697554d45a8e7.jpg)](/images/recovered/6cf4cfb697554d45a8e7.jpg)
 
 1. Client先访问zookeeper，得到对应的RegionServer地址
 2. Client对RegionServer发起写请求，RegionServer接受数据写入内存
@@ -128,13 +128,13 @@ HBase非强ACID
 
 
 
-[![hbase3.jpg](https://i.loli.net/2018/12/15/5c14f18fb8065.jpg)](https://i.loli.net/2018/12/15/5c14f18fb8065.jpg)
+[![hbase3.jpg](/images/recovered/6303a954f80ba3c77d57.jpg)](/images/recovered/6303a954f80ba3c77d57.jpg)
 
 HBase特殊点在于其先写内存再写日志，通过类似MySQL中MVCC机制保证一致性
 
 ### HBase读流程
 
-[![hbase4.jpg](https://i.loli.net/2018/12/15/5c14f377038f9.jpg)](https://i.loli.net/2018/12/15/5c14f377038f9.jpg)
+[![hbase4.jpg](/images/recovered/97a83cac763b0655509a.jpg)](/images/recovered/97a83cac763b0655509a.jpg)
 
 1. Client先访问zookeeper，得到对应的RegionServer地址
 2. Client对RegionServer发起读请求

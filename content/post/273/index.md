@@ -25,19 +25,19 @@
 
 创建一个企业空间和一个帐户 (`project-admin`)，必须邀请该帐户至该企业空间并赋予 `workspace-self-provisioner` 角色。
 
-![1623583200028](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623583200028.png)
+![1623583200028](/images/recovered/ea9bbb7e31d4a35158a8.png)
 
 
 
 进入企业空间，切换到DevOps工程，点击创建
 
-![1623583256804](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623583256804.png)
+![1623583256804](/images/recovered/dced84112780ed526272.png)
 
 
 
 创建工程
 
-![1623583296345](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623583296345.png)
+![1623583296345](/images/recovered/2eefdee1b3fbb4fb8e72.png)
 
 
 
@@ -102,7 +102,7 @@ $ helm upgrade --install sonarqube sonarqube --repo https://charts.kubesphere.io
 
 输出
 
-![1623589400716](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589400716.png)
+![1623589400716](/images/recovered/746cefabe4b1d8f534e7.png)
 
 
 
@@ -116,7 +116,7 @@ $ echo http://$NODE_IP:$NODE_PORT
 
 输出
 
-![1623589466239](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589466239.png)
+![1623589466239](/images/recovered/930b4d1c1f4fbad23a38.png)
 
 
 
@@ -138,13 +138,13 @@ $ echo http://$NODE_IP:$NODE_PORT
 
 点击右上角字母 **A**，然后从菜单中选择 **My Account** 以转到 **Profile** 页面。
 
-![1623589658291](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589658291.png)
+![1623589658291](/images/recovered/1057ab3b055d13c8ccf7.png)
 
 
 
 生成token
 
-![1623589677983](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589677983.png)
+![1623589677983](/images/recovered/15351033dbc2e519bce5.png)
 
 
 
@@ -160,7 +160,7 @@ $ echo http://$NODE_IP:$NODE_PORT/sonarqube-webhook/
 
 输出
 
-![1623589732948](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623589732948.png)
+![1623589732948](/images/recovered/6150dcefd7cc296e237b.png)
 
 
 
@@ -220,31 +220,31 @@ $ echo http://$NODE_IP:$NODE_PORT
 
 输出
 
-![1623590243987](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590243987.png)
+![1623590243987](/images/recovered/577c6ee53476f48c2b4c.png)
 
 
 
 使用地址 `http://{$Public IP}:30180` 访问 Jenkins。安装 KubeSphere 时，默认情况下也会安装 Jenkins 仪表板。此外，Jenkins 还配置有 KubeSphere LDAP，这意味着您可以直接使用 KubeSphere 帐户（例如 `admin/P@88w0rd`）登录 Jenkins。
 
-![1623590218736](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590218736.png)
+![1623590218736](/images/recovered/47030135d3fd24f33d91.png)
 
 
 
 使用kubesphere admin账户登录
 
-![1623590300294](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590300294.png)
+![1623590300294](/images/recovered/0340063ee1866b31dd7c.png)
 
 
 
 前往**系统管理**下的 **Manage Credentials** 并点击 **Stores scoped to Jenkins** 下的 **Jenkins**，再点击**全局凭据 (unrestricted)**
 
-![1623590813853](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590813853.png)
+![1623590813853](/images/recovered/25a1a46e71332fe1397e.png)
 
 
 
 点击左侧导航栏的**添加凭据**，用 SonarQube 管理员令牌添加凭证
 
-![1623590901716](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590901716.png)
+![1623590901716](/images/recovered/cac331a35ea962c12d1e.png)
 
 
 
@@ -252,19 +252,19 @@ $ echo http://$NODE_IP:$NODE_PORT
 
 点击左侧的**系统管理**，向下翻页找到并点击**系统配置**。
 
-![1623590362224](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590362224.png)
+![1623590362224](/images/recovered/6a59e0d9670e2038d606.png)
 
 
 
 搜寻到 **SonarQube servers**，然后点击 **Add SonarQube**。
 
-![1623590399204](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590399204.png)
+![1623590399204](/images/recovered/10a406b65ad693b16a05.png)
 
 
 
 添加sonar服务器地址和名称，点击**应用**完成操作。
 
-![1623590948756](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623590948756.png)
+![1623590948756](/images/recovered/5d152bc8443988bb0d54.png)
 
 
 
@@ -295,7 +295,7 @@ $ kubectl edit  cm -n kubesphere-system  ks-console-config
 
 结果
 
-![1623591094844](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591094844.png)
+![1623591094844](/images/recovered/8e65227a783bf3d66c3b.png)
 
 
 
@@ -316,31 +316,31 @@ $ kubectl -n kubesphere-system rollout restart deploy ks-console
 
 在 SonarQube 控制台上，点击 **Create new project**。
 
-![1623591255909](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591255909.png)
+![1623591255909](/images/recovered/8bf090a32b9dd97d52bd.png)
 
 
 
 设置工程名称
 
-![1623591269495](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591269495.png)
+![1623591269495](/images/recovered/aa5f9a55e64069943df8.png)
 
 
 
 生成token
 
-![1623591326774](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591326774.png)
+![1623591326774](/images/recovered/5df7650587deb41e10af.png)
 
 
 
 创建令牌后，点击 **Continue**。
 
-![1623591357570](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591357570.png)
+![1623591357570](/images/recovered/c5861847548837fa2b87.png)
 
 
 
 分别选择 **Java** 和 **Maven**。复制下图所示绿色框中的序列号，如果要在流水线中使用，则需要在[凭证](https://kubesphere.io/zh/docs/devops-user-guide/how-to-use/credential-management/#创建凭证)中添加此序列号。
 
-![1623591381678](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591381678.png)
+![1623591381678](/images/recovered/9d23be1b7fa0cba0f97e.png)
 
 
 
@@ -357,25 +357,25 @@ $ kubectl -n kubesphere-system rollout restart deploy ks-console
 
 demo-kubeconfig
 
-![1623591543502](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591543502.png)
+![1623591543502](/images/recovered/9d589a710ea6a3c4949e.png)
 
 
 
 dockerhub-id
 
-![1623591726548](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591726548.png)
+![1623591726548](/images/recovered/a9e229f3e585cfe0567c.png)
 
 
 
 创建一个凭证 ID (`sonar-token`)
 
-![1623591882055](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591882055.png)
+![1623591882055](/images/recovered/eb8b6e0fed93a92cae44.png)
 
 
 
 列表中看到已创建的三个凭证。
 
-![1623591917707](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623591917707.png)
+![1623591917707](/images/recovered/62c836a1edee168c5bc4.png)
 
 
 
@@ -383,70 +383,70 @@ dockerhub-id
 
 在**流水线**页面点击**创建**，为了使用图形化流水线搭建，不在此处引用代码仓库，直接点击下一步
 
-![1623592917931](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623592917931.png)
+![1623592917931](/images/recovered/eefcd4734da6d82f034c.png)
 
 
 
 保持默认配置，点击创建
 
-![1623592981578](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623592981578.png)
+![1623592981578](/images/recovered/6fefff47857c97224971.png)
 
 创建成功
 
-![1623592994758](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623592994758.png)
+![1623592994758](/images/recovered/098e571387288539e753.png)
 
 
 
 进入流水线，点击编辑
 
-![1623593005853](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623593005853.png)
+![1623593005853](/images/recovered/bbb5720367c9c14f7443.png)
 
 
 
 此时选择CICD模板
 
-![1623593042443](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623593042443.png)
+![1623593042443](/images/recovered/3ffc52d9e25d72e8f851.png)
 
 
 
 可视化编辑流水线
 
-![1623593102065](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623593102065.png)
+![1623593102065](/images/recovered/439b3f7c3a40f5368b3d.png)
 
 
 
 编辑后运行
 
-![1623593508711](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623593508711.png)
+![1623593508711](/images/recovered/4304e8dee39c03644e84.png)
 
 
 
 流水线支持交互式操作
 
-![1623664726853](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623664726853.png)
+![1623664726853](/images/recovered/865d8f3e3449d7bdbb4b.png)
 
 ## 在 KubeSphere 控制台查看结果
 
 流水线执行成功后，即可查看到代码质量标签
 
-![1623664520315](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623664520315.png)
+![1623664520315](/images/recovered/a7044f82a5b93ad0bad3.png)
 
 
 
 sonar控制台也可以查看对应结果
 
-![1623664594650](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623664594650.png)
+![1623664594650](/images/recovered/3d038320fa8c788d03f0.png)
 
 
 
 jenkins视图
 
-![1623664630635](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623664630635.png)
+![1623664630635](/images/recovered/76996c18679d19edee6c.png)
 
 
 
 blue ocean
 
-![1623664649276](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623664649276.png)
+![1623664649276](/images/recovered/8f36aaa2df0c8f11e727.png)
 
-![1623664672153](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623664672153.png)
+![1623664672153](/images/recovered/531571e2834cf4a93bba.png)

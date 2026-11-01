@@ -87,7 +87,7 @@ mvn clean package
 ```
 即可生成对应的类
 
-![image-20221028212820748](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028212820748.png)
+![image-20221028212820748](/images/recovered/5977b035d674171ca4f4.png)
 
 
 
@@ -95,7 +95,7 @@ mvn clean package
 
 IDEA默认不识别target目录下的资源文件，生成后会导致无法引用
 
-![image-20221028213042840](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028213042840.png)
+![image-20221028213042840](/images/recovered/a230791d358e4659c26c.png)
 
 
 
@@ -103,9 +103,9 @@ IDEA默认不识别target目录下的资源文件，生成后会导致无法引�
 
 需要手动将对应的生成目录配置为Source Root即可
 
-![image-20221028213010859](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028213010859.png)
+![image-20221028213010859](/images/recovered/584b1a4fd7700822ea89.png)
 
-![image-20221028213109840](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028213109840.png)
+![image-20221028213109840](/images/recovered/62ba92c91ac00fa2819e.png)
 
 
 

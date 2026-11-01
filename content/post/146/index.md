@@ -500,35 +500,35 @@ Partitioner决定MapTask输出的数据交由哪个ReduceTask处理，其默认�
 已经有日志记录，配置成功！
 ![jobhistory][20]
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Hnwbt.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Hnt2T.jpg
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnZ1M.jpg
+  [1]: /images/recovered/85ca3706ace4a60acece.png
+  [2]: /images/recovered/c5c0ef35d2966cd8387f.jpg
+  [3]: /images/recovered/0cfc502b2509960e2506.jpg
   [4]: /images/recovered/6d3b91eec2ec6159544e.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HnfEF.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HeOsr.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HeqIJ.png
+  [5]: /images/recovered/47bd30485f36701d8119.png
+  [6]: /images/recovered/84ca6dd1bab92effa36f.png
+  [7]: /images/recovered/e32de240e351765ee033.png
   [8]: https://github.com/FJiayang/hadoopstudy
-  [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HlUXd.png
-  [10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HlEaD.png
-  [11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2HlKEv.png
-  [12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2riYsr.png
-  [13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2riK3F.png
-  [14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25VUyL.png
-  [15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25VsmW.png
-  [16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25Vzaw.png
-  [17]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25VKn8.png
-  [18]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25VDDR.png
-  [19]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25w6YF.png
-  [20]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wiur.png
-  [21]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wfpt.png
-  [22]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wZVT.png
-  [23]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wwGM.png
-  [24]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wn3J.png
+  [9]: /images/recovered/de416ff457a4a9ba671a.png
+  [10]: /images/recovered/2c32c0e5a49ed7da8443.png
+  [11]: /images/recovered/1d594a1414797a3cc025.png
+  [12]: /images/recovered/ed1ac8cfc47be3cc6f74.png
+  [13]: /images/recovered/67143d6432bdf002684f.png
+  [14]: /images/recovered/d2eb46f6701e3c57ad51.png
+  [15]: /images/recovered/734085e821a9f824260f.png
+  [16]: /images/recovered/1a336c856136b5a22f90.png
+  [17]: /images/recovered/5dc3e1be8d929b323e08.png
+  [18]: /images/recovered/45142802d9f7397050ed.png
+  [19]: /images/recovered/e0e4f5d259487536d7a0.png
+  [20]: /images/recovered/0be32300f2c6012bff53.png
+  [21]: /images/recovered/f7e61996fa39185cef6d.png
+  [22]: /images/recovered/ba658fb0535df0885257.png
+  [23]: /images/recovered/2bc299da0006cd1a4423.png
+  [24]: /images/recovered/dfa488495ed2ddcbaa02.png
   [25]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25weU0.png
   [26]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wu61.png
-  [27]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25w1gu.png
-  [28]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25w4GD.png
-  [29]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wCMd.png
-  [30]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wcPa.png
-  [31]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wGpv.png
-  [32]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/25wHdi.png
+  [27]: /images/recovered/b663e4820581e8ab477d.png
+  [28]: /images/recovered/7d1614ef81d857cdc3f5.png
+  [29]: /images/recovered/98cdb44c9d7a78b6678a.png
+  [30]: /images/recovered/72ec34c90f567b133369.png
+  [31]: /images/recovered/278d971f2e910f87794a.png
+  [32]: /images/recovered/a5dc027a93239bd5c178.png

@@ -59,7 +59,7 @@
 ![putty.png][4]
 
 
-[1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykDgu.png
-[2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykYdi.png
-[3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykKpv.png
-[4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykEGD.png
+[1]: /images/recovered/55b5c1973a9954ed6e4d.png
+[2]: /images/recovered/fc74729de3dca5b6480d.png
+[3]: /images/recovered/fc077f75ace9b812367d.png
+[4]: /images/recovered/1e6a05b776f1ead63286.png

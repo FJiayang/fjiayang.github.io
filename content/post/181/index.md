@@ -27,7 +27,7 @@
 ## 编写ansible playbook
 ### 搭建基础工程目录结构
 从仓库下载之前编写的ansible工程目录结构
-[![Jenkins_ansible1.png](https://i.loli.net/2018/09/01/5b8a1bb810a25.png)](https://i.loli.net/2018/09/01/5b8a1bb810a25.png)
+[![Jenkins_ansible1.png](/images/recovered/9d218175b7b4307ea8f8.png)](/images/recovered/9d218175b7b4307ea8f8.png)
 
 若没有也可自行创建，最终文件目录结构如下
 ```
@@ -52,7 +52,7 @@
             └─templates
                     nginx.conf.j2
 ```
-[![Jenkins_ansible2.png](https://i.loli.net/2018/09/01/5b8a1bb8103d2.png)](https://i.loli.net/2018/09/01/5b8a1bb8103d2.png)
+[![Jenkins_ansible2.png](/images/recovered/47a2f508e4c9134820b5.png)](/images/recovered/47a2f508e4c9134820b5.png)
 
 ### 文件编写
 工程入口`deploy.yml`编写
@@ -212,10 +212,10 @@ git push origin master
 
 ## Jenkins创建并执行
 创建自由风格构建任务，添加参数化构建、添加选项参数和文本参数
-[![Jenkins_ansible3.png](https://i.loli.net/2018/09/01/5b8a1bb82714b.png)](https://i.loli.net/2018/09/01/5b8a1bb82714b.png)
+[![Jenkins_ansible3.png](/images/recovered/00861dab5662c38c187d.png)](/images/recovered/00861dab5662c38c187d.png)
 
 添加Git仓库地址和账号
-[![Jenkins_ansible4.png](https://i.loli.net/2018/09/01/5b8a1bb81b6dc.png)](https://i.loli.net/2018/09/01/5b8a1bb81b6dc.png)
+[![Jenkins_ansible4.png](/images/recovered/844d631a0f6e99267616.png)](/images/recovered/844d631a0f6e99267616.png)
 
 添加Shell构建，Shell内容为
 ```
@@ -236,17 +236,17 @@ ansible-playbook --version
 # 引入资源清单，测试远程命令
 ansible-playbook -i inventory/$deploy_env ./deploy.yml -e project=nginx -e branch=$branch -e env=$deploy_env
 ```
-[![Jenkins_ansible5.png](https://i.loli.net/2018/09/01/5b8a1bb819714.png)](https://i.loli.net/2018/09/01/5b8a1bb819714.png)
+[![Jenkins_ansible5.png](/images/recovered/3232cf12b4eed7d480cc.png)](/images/recovered/3232cf12b4eed7d480cc.png)
 
 保存并构建
 
 ## 结果
 ### 构建成功
-[![Jenkins_ansible6.png](https://i.loli.net/2018/09/01/5b8a1bb8103a8.png)](https://i.loli.net/2018/09/01/5b8a1bb8103a8.png)
+[![Jenkins_ansible6.png](/images/recovered/6bb8e96257222d8ee803.png)](/images/recovered/6bb8e96257222d8ee803.png)
 
 ### 访问测试
 在工作主机上访问目标地址+资源路径即可，访问通过
-[![Jenkins_ansible7.png](https://i.loli.net/2018/09/01/5b8a1bb8636ce.png)](https://i.loli.net/2018/09/01/5b8a1bb8636ce.png)
+[![Jenkins_ansible7.png](/images/recovered/e7d13d6f89765dbf4765.png)](/images/recovered/e7d13d6f89765dbf4765.png)
 
 ### 后续构建
 后期只要在工作主机变更代码推送到git仓库，再到Jenkins的web界面点击参数化构建即可让Jenkins自动拉取最新分支并执行Ansible脚本

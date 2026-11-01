@@ -298,7 +298,7 @@ public class RepositoryBootstrapDemo {
 
 执行结果
 
-![1552526410620](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552526410620.png)
+![1552526410620](/images/recovered/766ef5544053255c68b4.png)
 
 
 
@@ -395,7 +395,7 @@ public @interface EnableCaching {...}
 
 `CachingConfigurationSelector`类图
 
-![CachingConfigurationSelector](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/CachingConfigurationSelector.png)
+![CachingConfigurationSelector](/images/recovered/ac3856f8e18509d3a973.png)
 
 
 
@@ -885,17 +885,17 @@ public class CalculateServiceDemo {
 
 执行结果——java8
 
-![1552531493071](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552531493071.png)
+![1552531493071](/images/recovered/3b3ed406eface02da60d.png)
 
 执行结果——java7
 
-![1552531524970](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552531524970.png)
+![1552531524970](/images/recovered/2adee61a3edab49faea0.png)
 
 
 
 若不指定配置则报错
 
-![1552531560007](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552531560007.png)
+![1552531560007](/images/recovered/6e088c3c455207c3a4d0.png)
 
 
 
@@ -1024,13 +1024,13 @@ public class SystemPropertyConditionBootstrap {
 
 执行结果
 
-![1552538022445](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552538022445.png)
+![1552538022445](/images/recovered/501d1aa2924a8dcd1a1d.png)
 
 
 
 条件不满足则报错
 
-![1552538064667](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552538064667.png)
+![1552538064667](/images/recovered/307eb9b3b94d00acadac.png)
 
 ## Spring Boot 自动装配
 
@@ -1108,7 +1108,7 @@ public abstract class SpringFactoriesLoader {
 
 目的在于使用`META-INF/spring.factories`文件配置替代`@ComponentScan`手动装配注解，从而实现自动装配
 
-![1552539366653](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552539366653.png)
+![1552539366653](/images/recovered/83926436645e38f56b02.png)
 
 
 
@@ -1198,10 +1198,10 @@ top.fjy8018.springboot.configuration.HelloWorldAutoConfiguration
 
 
 
-![1552552371274](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552552371274.png)
+![1552552371274](/images/recovered/a9c9e4bfdb54386736d5.png)
 
 
 
 执行结果与之前一致
 
-![1552552720130](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552552720130.png)
+![1552552720130](/images/recovered/6ff2cd562280f70bccaa.png)

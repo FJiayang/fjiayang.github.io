@@ -274,21 +274,21 @@ public class FilmDataFetcher {
 
 ### 不访问Actor
 
-![image-20221027222611945](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027222611945.png)
+![image-20221027222611945](/images/recovered/e0a617a602bcf420d34f.png)
 
 此时可以看到日志输出，没有查询Actor表
 
-![image-20221027222636357](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027222636357.png)
+![image-20221027222636357](/images/recovered/e04ff9b75412aaf0de3d.png)
 
 
 
 ### 访问Actor
 
-![image-20221027222705715](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027222705715.png)
+![image-20221027222705715](/images/recovered/5ff450ecdb9753703994.png)
 
 此时DSG会执行N+1查询Actor表，性能损耗非常大
 
-![image-20221027222731234](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027222731234.png)
+![image-20221027222731234](/images/recovered/e3c81522d228f1da62e6.png)
 
 
 

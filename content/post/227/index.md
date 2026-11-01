@@ -17,7 +17,7 @@
     "CICD",
     "Kubernetes"
   ],
-  "image": "https://s2.ax1x.com/2019/11/27/Qpybmn.png",
+  "image": "/images/recovered/f5cace70efb61011b9df.png",
   "math": false
 }
 
@@ -97,7 +97,7 @@
 
 在Docker 19.03.1版本之后默认开启了`TLS`配置，在构建的环境变量中需要声明，否则报连接不上`docker`的错误，并且使用`DinD`构建需要`runner`开启特权模式，以访问主机的资源，并且由于使用了特权模式，在`Pod`中对`runner`需要使用的资源限制将失效
 
-![1574777453616](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574777453616.png)
+![1574777453616](/images/recovered/a582dfca06d2650a98e5.png)
 
 
 
@@ -183,15 +183,15 @@ podAnnotations: {}
 
 选择`runner`镜像为`alpine-v12.1.0`，这一点单独说一下，目前最新的runner版本为12.5.0，但其有许多问题，`alpine`新版镜像在`Kubernetes`中间断发生无法解析`DNS`的问题，反映到`GitLab-Runner`中就是`Could not resolve host`和`server misbehaving`
 
-![1574778107416](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778107416.png)
+![1574778107416](/images/recovered/4f62d2a71d572b8c5a3e.png)
 
-![1574778146693](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778146693.png)
+![1574778146693](/images/recovered/5ef3418a63807e9d2f99.png)
 
 
 
 查阅解决方法
 
-![1574777890021](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574777890021.png)
+![1574777890021](/images/recovered/64134951d07447515eb3.png)
 
 通过查询发现，其官方仓库还有多个相关issue没有关闭
 
@@ -217,11 +217,11 @@ stackoverflow：[Gitlab Runner is not able to resolve DNS of Gitlab Server](http
 
 [ndots breaks DNS resolving #64924](https://github.com/`Kubernetes`/`Kubernetes`/issues/64924)
 
-![1574778408166](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778408166.png)
+![1574778408166](/images/recovered/77a31a4d5b4eed770682.png)
 
 
 
-![1574778416868](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778416868.png)
+![1574778416868](/images/recovered/a94cb221a51ffb83822b.png)
 
 
 
@@ -229,7 +229,7 @@ stackoverflow：[Gitlab Runner is not able to resolve DNS of Gitlab Server](http
 
 [DNS Issue #255](https://github.com/gliderlabs/docker-alpine/issues/255)
 
-![1574778470283](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778470283.png)
+![1574778470283](/images/recovered/26b612781eb91e309dcd.png)
 
 #### 安装
 
@@ -284,7 +284,7 @@ Your GitLab Runner should now be registered against the GitLab instance reachabl
 
 查看gitlab admin页面，发现已经有一个runner成功注册
 
-![1574778634857](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778634857.png)
+![1574778634857](/images/recovered/d10b19e854073addd985.png)
 
 
 
@@ -314,7 +314,7 @@ variables:
 
 [fjy8018/kubectl](https://hub.docker.com/r/fjy8018/kubectl)
 
-![1574778835433](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574778835433.png)
+![1574778835433](/images/recovered/a201ffc6c21b0774726a.png)
 
 
 
@@ -382,17 +382,17 @@ $ kubectl get secret hmdt-gitlab-ci-token-86n89  -n hmdt -o json | jq -r '.data.
 
 进入gitlab Kubernetes集群配置页面，填写相关信息，让gitlab自动连接上集群环境
 
-![1574779375430](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574779375430.png)
+![1574779375430](/images/recovered/1e7a628a0b17a63beebd.png)
 
-![1574779403873](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574779403873.png)
+![1574779403873](/images/recovered/077f2302c8f248b212a1.png)
 
 注意，需要将此处取消勾选，否则gitlab会自动创建新的用户账户，而不使用已经创建好的用户账户，在运行过程中会报无权限错误
 
-![1574779467185](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574779467185.png)
+![1574779467185](/images/recovered/2676ec20b4fd0cf870d5.png)
 
 不取消导致的报错如下，gitlab创建了新的用户账户`hmdt-prod-service-account`，但没有操作指定命名空间的权限
 
-![1574779599949](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574779599949.png)
+![1574779599949](/images/recovered/eaefe7781ff71d9bf4f8.png)
 
 
 
@@ -400,11 +400,11 @@ $ kubectl get secret hmdt-gitlab-ci-token-86n89  -n hmdt -o json | jq -r '.data.
 
 创建环境
 
-![image-20191127095307604](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127095307604.png)
+![image-20191127095307604](/images/recovered/b401fca8b9d48e6ffe48.png)
 
 名称和url可以按需自定义
 
-![image-20191127095330949](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127095330949.png)
+![image-20191127095330949](/images/recovered/3b954ff180a10d352428.png)
 
 
 
@@ -580,23 +580,23 @@ deploy_live:
 `Kubernetes`中的runner会根据任务多少自动扩缩容，目前配置的上限为10个
 
 
-![1574776369212](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574776369212.png)
+![1574776369212](/images/recovered/f133f2b163c321857b7d.png)
 
 
 
 Grafana也能监控到集群在构建过程中的资源使用情况
 
-![1574776599795](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1574776599795.png)
+![1574776599795](/images/recovered/fc84ee8606979d63f789.png)
 
 ### 使用`DinD`构建`Dockerfile`结果
 
-![image-20191127100525518](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127100525518.png)
+![image-20191127100525518](/images/recovered/e02aa3fbd03eb1439886.png)
 
 
 
 ### 使用`Kaniko`构建`Dockerfile`的结果
 
-![image-20191127100458620](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127100458620.png)
+![image-20191127100458620](/images/recovered/4f6b513823e8e91ea79c.png)
 
 
 
@@ -604,14 +604,14 @@ Grafana也能监控到集群在构建过程中的资源使用情况
 
 执行部署时gitlab会自动注入配置好的`kubectl` config
 
-![image-20191127095832650](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127095832650.png)
+![image-20191127095832650](/images/recovered/4e517f5b0185c4d5feb1.png)
 
 
 
 ### 构建结果
 
-![image-20191127095739561](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127095739561.png)
+![image-20191127095739561](/images/recovered/69370e29a5e76a27e1a9.png)
 
 部署完成后可在环境配置页中查看部署结果，只有成功的部署才会被记录
 
-![image-20191127095923676](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191127095923676.png)
+![image-20191127095923676](/images/recovered/2d3fb9fb02c9cce4f051.png)

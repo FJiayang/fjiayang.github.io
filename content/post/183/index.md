@@ -134,10 +134,10 @@ config-port.conf  config-rinetd.sh  nohup.out  rinetd  rinetd.1
 
 如下可见，启用前国内的速度平均在4Mbps左右，十足的小水管，而国外基本有百兆以上的性能
 
-[![vps4.png](https://i.loli.net/2018/09/13/5b99ebdd050a0.png)](https://i.loli.net/2018/09/13/5b99ebdd050a0.png)
+[![vps4.png](/images/recovered/267e57192914e689f428.png)](/images/recovered/267e57192914e689f428.png)
 
 #### 使用后
 
 加速后提升明显，国内速度平均45Mbps，对于大多数家庭20M宽带来说已经稳定跑满
 
-[![vps9.png](https://i.loli.net/2018/09/15/5b9d19a58a1b5.png)](https://i.loli.net/2018/09/15/5b9d19a58a1b5.png)
+[![vps9.png](/images/recovered/d587608b279ee786a8e4.png)](/images/recovered/d587608b279ee786a8e4.png)

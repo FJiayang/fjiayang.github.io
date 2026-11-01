@@ -31,7 +31,7 @@
 
 类图
 
-![image-20200120112838846](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120112838846.png)
+![image-20200120112838846](/images/recovered/0f2a8de41008e343907c.png)
 
 课程接口
 
@@ -314,7 +314,7 @@ class StudentTest {
 
 类图
 
-![image-20200120113206348](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120113206348.png)
+![image-20200120113206348](/images/recovered/18f906e224e85bc15400.png)
 
 抽象学习课程接口
 
@@ -784,7 +784,7 @@ public class Method {
 
 类图
 
-![image-20200120141648612](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120141648612.png)
+![image-20200120141648612](/images/recovered/c76476e410f66921d804.png)
 
 课程管理相关
 
@@ -921,7 +921,7 @@ class BirdTest {
 
 类图
 
-![image-20200120142833920](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120142833920.png)
+![image-20200120142833920](/images/recovered/a0d495bed12d966adbca.png)
 
 接口
 
@@ -1004,7 +1004,7 @@ public class Dog implements IAnimalAction {
 
 类图
 
-![image-20200120142946445](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120142946445.png)
+![image-20200120142946445](/images/recovered/4a88eefd7237878b5437.png)
 
 接口
 
@@ -1120,7 +1120,7 @@ public class Dog implements IEatAction, ISwimAction {
 
 类图
 
-![image-20200120143636461](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120143636461.png)
+![image-20200120143636461](/images/recovered/56913a2ffc011a5d3b43.png)
 
 ```java
 package top.fjy8018.designpattern.principle.demeter;
@@ -1239,7 +1239,7 @@ class BossTest {
 
 类图
 
-![image-20200120144312693](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120144312693.png)
+![image-20200120144312693](/images/recovered/a231f4b97f7c510ebe4e.png)
 
 ```java
 package top.fjy8018.designpattern.principle.liskovsubstitution.classdemo.before;
@@ -1318,7 +1318,7 @@ public class Square extends Rectangle {
 
 类图
 
-![image-20200120144357908](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120144357908.png)
+![image-20200120144357908](/images/recovered/1a4eeedd93237c405b66.png)
 
 ```java
 package top.fjy8018.designpattern.principle.liskovsubstitution.classdemo.after;
@@ -1633,7 +1633,7 @@ class ChildTest {
 
 类图
 
-![image-20200120150405004](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120150405004.png)
+![image-20200120150405004](/images/recovered/4bf3c4160b17699ac6f0.png)
 
 ```java
 package top.fjy8018.designpattern.principle.compositionaggregation.before;
@@ -1679,7 +1679,7 @@ public class ProductDao extends DBConnection {
 
 类图
 
-![image-20200120150804432](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120150804432.png)
+![image-20200120150804432](/images/recovered/6fd022c6d0e22fda3460.png)
 
 ```java
 package top.fjy8018.designpattern.principle.compositionaggregation.after;

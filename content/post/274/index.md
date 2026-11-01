@@ -58,7 +58,7 @@ SpringBoot官方提供的`starter`
 
 导入后如下
 
-![image-20211105170603665](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105170603665.png)
+![image-20211105170603665](/images/recovered/94cafe1b89e96171dc3e.png)
 
 
 
@@ -266,11 +266,11 @@ public class ActorGraphQLQueryResolver implements GraphQLQueryResolver {
 
 由于采用交互式页面，输入也会有语法提示，比较方便
 
-![image-20211105172405147](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105172405147.png)
+![image-20211105172405147](/images/recovered/f9b31fbe1fa8f5bd5813.png)
 
 ### 唯一查询
 
-![image-20211105172219520](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20211105172219520.png)
+![image-20211105172219520](/images/recovered/9156dd30589145781cf1.png)
 
 
 

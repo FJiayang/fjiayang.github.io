@@ -30,7 +30,7 @@
 
 ## 二、集群架构
 
-![image-20191227152159478](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227152159478.png)
+![image-20191227152159478](/images/recovered/5d19b9cec9176c1c4a1d.png)
 
 ## 三、搭建
 
@@ -123,7 +123,7 @@
 
   http://192.168.1.35:4001/dbs
 
-  ![image-20191227172147428](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191227172147428.png)
+  ![image-20191227172147428](/images/recovered/38626c060bfd45f736c9.png)
   
   用另外一个虚拟机同样按照上述操作安装`Haproxy`
 

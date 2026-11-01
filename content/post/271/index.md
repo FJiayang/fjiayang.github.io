@@ -48,14 +48,14 @@
 
 [Rancher](https://www.rancher.cn/) — 多云混合云多集群Kubernetes管理平台
 
-![Rancher](https://www.rancher.cn/imgs/rancher-logo-only-color.svg)
+![Rancher](/images/recovered/5e6e5ef2d9f2610c4033.svg)
 
 [post url="https://kubesphere.io/zh/" title="Kubesphere" intro="面向云原生应用的
-容器混合云" cover="https://kubesphere.io/images/logo.svg" /]
+容器混合云" cover="/images/recovered/10394e73acf79a23f18c.svg" /]
 
 [Kuboard](https://kuboard.cn/) — 快速在 Kubernetes 上落地微服务
 
-![Kuboard](https://kuboard.cn/favicon.png)
+![Kuboard](/images/recovered/f3f4891256423a40eb1c.png)
 
 
 
@@ -103,13 +103,13 @@ EOF
 
 [多节点安装](https://kubesphere.io/zh/docs/installing-on-linux/introduction/multioverview/) — Kubesphere
 
-![多节点安装](https://kubesphere.io/images/logo.svg)
+![多节点安装](/images/recovered/10394e73acf79a23f18c.svg)
 
 
 
 启动成功
 
-![1621780201562](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780201562.png)
+![1621780201562](/images/recovered/2e3e7e0e91bda8a70427.png)
 
 
 
@@ -117,13 +117,13 @@ EOF
 
 [启用可插拔组件](https://kubesphere.io/zh/docs/quick-start/enable-pluggable-components/) — Kubesphere
 
-![启用可插拔组件](https://kubesphere.io/images/logo.svg)
+![启用可插拔组件](/images/recovered/10394e73acf79a23f18c.svg)
 
 
 
 所有插件打开后如下
 
-![1621780327261](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780327261.png)
+![1621780327261](/images/recovered/77ecd04e12118033d95b.png)
 
 
 
@@ -137,7 +137,7 @@ EOF
 
 存储卷管理
 
-![1621780136546](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780136546.png)
+![1621780136546](/images/recovered/e4cdbd1816e105b212ad.png)
 
 
 
@@ -149,69 +149,69 @@ EOF
 
 日志采集
 
-![1621779955406](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621779955406.png)
+![1621779955406](/images/recovered/bcb4552b5592abe61117.png)
 
 
 
 日志查询
 
-![1621779885484](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621779885484.png)
+![1621779885484](/images/recovered/c9eff424d698a5b704f5.png)
 
 
 
 操作审计
 
-![1621779560948](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621779560948.png)
+![1621779560948](/images/recovered/efe674309f2647c5f5bb.png)
 
 
 
 工具箱
 
-![1621779548504](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621779548504.png)
+![1621779548504](/images/recovered/62ea2d12c0a6199f89ff.png)
 
 
 
 企业空间权限控制
 
-![1621778981460](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621778981460.png)
+![1621778981460](/images/recovered/8ef230866528726a62ab.png)
 
 
 
 内置helm应用商店，支持上线审批，在线编辑等
 
-![1621778958150](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621778958150.png)
+![1621778958150](/images/recovered/3b23bf7ac7909d756e7c.png)
 
 
 
 支持关联外部仓库
 
-![1621778927223](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621778927223.png)
+![1621778927223](/images/recovered/24b2d434ce77276e68ed.png)
 
-![1621778901846](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621778901846.png)
+![1621778901846](/images/recovered/a85a2b784210eb7a5e90.png)
 
 
 
 应用流量治理
 
-![1621780422538](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780422538.png)
+![1621780422538](/images/recovered/13a39410509098319b33.png)
 
 
 
 链路追踪
 
-![1621780443725](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780443725.png)
+![1621780443725](/images/recovered/ea0b5e409c21448178e5.png)
 
 
 
 灰度发布
 
-![1621780461446](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621780461446.png)
+![1621780461446](/images/recovered/6a857c37e206c9894f68.png)
 
 
 
 费用统计
 
-![1621781619162](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1621781619162.png)
+![1621781619162](/images/recovered/253336661df6c7663a72.png)
 
 
 

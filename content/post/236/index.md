@@ -25,7 +25,7 @@
 
 采用BTREE索引，IO占用高
 
-![1577613664767](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577613664767.png)
+![1577613664767](/images/recovered/97a2ebe021d8e57a5db8.png)
 
 ### 2. TokuDB优点
 
@@ -87,7 +87,7 @@
   ps-admin --enable -uroot -p
   ```
 
-  ![1577616788082](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577616788082.png)
+  ![1577616788082](/images/recovered/a16b7a0bf8c24c087871.png)
 
   重启数据库再次执行安装
 
@@ -98,7 +98,7 @@
 
   提示引擎已经成功安装
 
-  ![1577616885448](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577616885448.png)
+  ![1577616885448](/images/recovered/c31c1e49eccbd718fa41.png)
 
 * 查看安装结果
 
@@ -106,7 +106,7 @@
   show engines ;
   ```
 
-  ![1577616943297](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577616943297.png)
+  ![1577616943297](/images/recovered/9a4835c87ad7d4e5507f.png)
 
 
 
@@ -118,17 +118,17 @@
 
 架构图
 
-![1577617308745](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577617308745.png)
+![1577617308745](/images/recovered/258a4fb1f3393a6950fe.png)
 
 
 
 replication集群同步原理
 
-![1577617631199](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577617631199.png)
+![1577617631199](/images/recovered/59136878af05cde688ec.png)
 
 配置互为主从的replication集群
 
-![image-20191230105455876](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230105455876.png)
+![image-20191230105455876](/images/recovered/31b587a11de082590d39.png)
 
 
 
@@ -204,11 +204,11 @@ replication集群同步原理
 
   执行结果
 
-  ![image-20191230111321552](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230111321552.png)
+  ![image-20191230111321552](/images/recovered/ecb101ed1f102ac73997.png)
 
   当如下两个字段为yes，则说明主从同步已经开启
 
-  ![image-20191230111411382](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230111411382.png)
+  ![image-20191230111411382](/images/recovered/3d0a92c6ff7780805e56.png)
 
   在A节点启动主从同步
 
@@ -251,9 +251,9 @@ CREATE TABLE t_purchase_20191230 (
 
 在PXC8节点上也看到了新增的数据表
 
-![image-20191230111842282](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230111842282.png)
+![image-20191230111842282](/images/recovered/0df19663969c5b4b9846.png)
 
-![image-20191230111852563](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230111852563.png)
+![image-20191230111852563](/images/recovered/4fbc53d0686256d682dd.png)
 
 
 
@@ -342,7 +342,7 @@ CREATE TABLE t_purchase_20191230 (
 
   查看配置结果
 
-  ![image-20191230113143037](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230113143037.png)
+  ![image-20191230113143037](/images/recovered/7843618d767c38267d40.png)
 
 * 在两个节点上安装Keepalived，此处复用之前的Keepalived
 
@@ -374,11 +374,11 @@ CREATE TABLE t_purchase_20191230 (
 
   使用Java程序导入10万条测试数据，由mycat路由到两个分片中
 
-  ![image-20191230151221303](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230151221303.png)
+  ![image-20191230151221303](/images/recovered/112e3735aa477b70ce24.png)
 
   测试数据的时间为2019年11月21日
 
-  ![image-20191230151355909](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230151355909.png)
+  ![image-20191230151355909](/images/recovered/95481ad2a09c4d60977d.png)
 
 ## 七、执行数据归档
 
@@ -415,12 +415,12 @@ pt-archiver用途：
 
   迁移结果
 
-  ![image-20191230153643068](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230153643068.png)
+  ![image-20191230153643068](/images/recovered/a809fb12c0039a7a76b5.png)
 
   查询源库，记录已全部迁移
 
-  ![image-20191230153720046](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230153720046.png)
+  ![image-20191230153720046](/images/recovered/cd2efdab35a99f322f5c.png)
 
   查询归档库
 
-  ![image-20191230153804168](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20191230153804168.png)
+  ![image-20191230153804168](/images/recovered/5fc1458eefe92fede129.png)

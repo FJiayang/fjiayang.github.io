@@ -102,16 +102,16 @@ GitLab社区版不支持直接跨版本升级，需按照[官方指南][2]一步
 查看版本号，成功
 ![请输入图片描述][13]
 
-[1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHGfv.png
+[1]: /images/recovered/b4efd88df4990401d09a.png
 [2]: https://docs.gitlab.com/ee/policy/maintenance.html#upgrade-recommendations
-[3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHcla.png
+[3]: /images/recovered/9ff9db22492237bc68f0.png
 [4]: https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/
-[5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHuKd.png
-[6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHnVJ.png
-[7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xH1LD.png
-[8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHmvu.png
-[9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHe40.png
+[5]: /images/recovered/30f0a6e4744d4ad94f16.png
+[6]: /images/recovered/2eea46fe9290f5240d42.png
+[7]: /images/recovered/f7380e13d8b030dd5d5d.png
+[8]: /images/recovered/c1532a5c65b610bf37e2.png
+[9]: /images/recovered/41a65a0d584df7b3eb6a.png
 [10]: /archives/157/
-[11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHlj1.png
-[12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xH8VW.png
-[13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHAGw.png
+[11]: /images/recovered/31f8ee01d2ff09e1c3ad.png
+[12]: /images/recovered/001535dd97424e73572b.png
+[13]: /images/recovered/f9ead2c1315b24ef51a6.png

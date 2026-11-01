@@ -72,11 +72,11 @@ GitHub DevOps工作流又叫GitHub Actions 是2019年末推出的自动化CICD�
 
 在DockerHub中新增秘钥
 
-![1612612278354](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612612278354.png)
+![1612612278354](/images/recovered/33766ffbac339a643bd2.png)
 
 在构建工程的设置中新增用户名和密码变量
 
-![1612612340227](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612612340227.png)
+![1612612340227](/images/recovered/031c3219312febd8cb3a.png)
 
 
 
@@ -118,21 +118,21 @@ jobs:
 
 当前的触发方式配置为`PUSH`，修改好文件后会自动触发流水线工作
 
-![1612612585264](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612612585264.png)
+![1612612585264](/images/recovered/df6d278c50da560c3017.png)
 
 Maven打包，速度很快
 
-![1612612545382](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612612545382.png)
+![1612612545382](/images/recovered/89ed6a417a58fb26b780.png)
 
 打包完成
 
-![1612612706399](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612612706399.png)
+![1612612706399](/images/recovered/b90ea2761e169aa045fe.png)
 
 ## 检查结果
 
 登录到DockerHub中检查推送结果，可见成功推送
 
-![1612612761551](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612612761551.png)
+![1612612761551](/images/recovered/4c8392f4f79174eae42e.png)
 
 
 

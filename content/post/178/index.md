@@ -19,25 +19,25 @@
 ## 系统预配置
 ### 关闭防止跨站请求伪造
 测试期间系统设置中临时关闭防止跨站请求伪造，否则容易出现登录超时无法新建任务
-[![Jenkins10.png](https://i.loli.net/2018/08/26/5b821f7039ead.png)](https://i.loli.net/2018/08/26/5b821f7039ead.png)
+[![Jenkins10.png](/images/recovered/88b13347f4500fa4ef4b.png)](/images/recovered/88b13347f4500fa4ef4b.png)
 
-[![Jenkins22.png](https://i.loli.net/2018/08/26/5b821f77db05d.png)](https://i.loli.net/2018/08/26/5b821f77db05d.png)
+[![Jenkins22.png](/images/recovered/abb0130e052bdf47fd30.png)](/images/recovered/abb0130e052bdf47fd30.png)
 ### 添加远程仓库配置
 GitLab的用户邮箱、用户名、密码，用于拉取远程仓库代码
-[![Jenkins11.png](https://i.loli.net/2018/08/26/5b821f702fa6f.png)](https://i.loli.net/2018/08/26/5b821f702fa6f.png)
+[![Jenkins11.png](/images/recovered/a5612f66b1e2d89f8797.png)](/images/recovered/a5612f66b1e2d89f8797.png)
 
 ### 凭据
 添加凭据，凭据为用户的标识
-[![Jenkins12.png](https://i.loli.net/2018/08/26/5b821f70357fd.png)](https://i.loli.net/2018/08/26/5b821f70357fd.png)
+[![Jenkins12.png](/images/recovered/18aa862b9d5c8d8a5255.png)](/images/recovered/18aa862b9d5c8d8a5255.png)
 
 选择全局凭据
-[![Jenkins13.png](https://i.loli.net/2018/08/26/5b821f7033e32.png)](https://i.loli.net/2018/08/26/5b821f7033e32.png)
+[![Jenkins13.png](/images/recovered/7865a770fffea8ca33b2.png)](/images/recovered/7865a770fffea8ca33b2.png)
 
 添加凭据
-[![Jenkins14.png](https://i.loli.net/2018/08/26/5b821f703124d.png)](https://i.loli.net/2018/08/26/5b821f703124d.png)
+[![Jenkins14.png](/images/recovered/c2e00fd3e2ddc9d01a5e.png)](/images/recovered/c2e00fd3e2ddc9d01a5e.png)
 
 添加为Git用户
-[![Jenkins15.png](https://i.loli.net/2018/08/26/5b821f7038826.png)](https://i.loli.net/2018/08/26/5b821f7038826.png)
+[![Jenkins15.png](/images/recovered/2013f4feffe40a4f71bc.png)](/images/recovered/2013f4feffe40a4f71bc.png)
 
 ## Jenkins job
 ### freestyle Job
@@ -50,35 +50,35 @@ GitLab的用户邮箱、用户名、密码，用于拉取远程仓库代码
 
 #### 新建freestyle Job
 新建任务
-[![Jenkins16.png](https://i.loli.net/2018/08/26/5b821f7036e38.png)](https://i.loli.net/2018/08/26/5b821f7036e38.png)
+[![Jenkins16.png](/images/recovered/a56a635a32c43548f21c.png)](/images/recovered/a56a635a32c43548f21c.png)
 
 添加选项参数
-[![Jenkins17.png](https://i.loli.net/2018/08/26/5b821f70329b8.png)](https://i.loli.net/2018/08/26/5b821f70329b8.png)
+[![Jenkins17.png](/images/recovered/9ae41a0fd646915e59e3.png)](/images/recovered/9ae41a0fd646915e59e3.png)
 
 添加文本参数
-[![Jenkins18.png](https://i.loli.net/2018/08/26/5b821f702e141.png)](https://i.loli.net/2018/08/26/5b821f702e141.png)
+[![Jenkins18.png](/images/recovered/784a8e6d2e7eb8c9465b.png)](/images/recovered/784a8e6d2e7eb8c9465b.png)
 
 指定远程仓库地址
-[![Jenkins19.png](https://i.loli.net/2018/08/26/5b821f702a326.png)](https://i.loli.net/2018/08/26/5b821f702a326.png)
+[![Jenkins19.png](/images/recovered/cd3b60215bdd01baa117.png)](/images/recovered/cd3b60215bdd01baa117.png)
 
 添加Shell脚本
-[![Jenkins20.png](https://i.loli.net/2018/08/26/5b821f77dc787.png)](https://i.loli.net/2018/08/26/5b821f77dc787.png)
+[![Jenkins20.png](/images/recovered/1af1b3daa2ce50838aac.png)](/images/recovered/1af1b3daa2ce50838aac.png)
 
-[![Jenkins21.png](https://i.loli.net/2018/08/26/5b821f77e46e7.png)](https://i.loli.net/2018/08/26/5b821f77e46e7.png)
+[![Jenkins21.png](/images/recovered/cb5f17f91ace4c6c9b88.png)](/images/recovered/cb5f17f91ace4c6c9b88.png)
 
 保存后选择通过参数构建
-[![Jenkins23.png](https://i.loli.net/2018/08/26/5b821f77dde13.png)](https://i.loli.net/2018/08/26/5b821f77dde13.png)
+[![Jenkins23.png](/images/recovered/428494a424d7e63482ca.png)](/images/recovered/428494a424d7e63482ca.png)
 
 构建报错
-[![Jenkins28.png](https://i.loli.net/2018/08/26/5b821f77e2de2.png)](https://i.loli.net/2018/08/26/5b821f77e2de2.png)
+[![Jenkins28.png](/images/recovered/4cc91179917d01ee9f53.png)](/images/recovered/4cc91179917d01ee9f53.png)
 
 检查后发现Shell脚本开头的`#!/bin/bash`写成了`#! /bin/bash`，中间包含空格后系统无法识别
 
 修正错误后重新构建
-[![Jenkins24.png](https://i.loli.net/2018/08/26/5b821f77e5ba4.png)](https://i.loli.net/2018/08/26/5b821f77e5ba4.png)
+[![Jenkins24.png](/images/recovered/7cb61f9aec3d3ced307f.png)](/images/recovered/7cb61f9aec3d3ced307f.png)
 
 报语法错误，12行缺少空格
-[![Jenkins30.png](https://i.loli.net/2018/08/26/5b821f7d24a0b.png)](https://i.loli.net/2018/08/26/5b821f7d24a0b.png)
+[![Jenkins30.png](/images/recovered/83f159415f2381128c4b.png)](/images/recovered/83f159415f2381128c4b.png)
 
 检查发现`if [ -s test.properties ]`写成了`if [ -s test.properties]`，修正错误后再次构建
 修正后的Shell脚本为
@@ -105,16 +105,16 @@ fi
 echo "[INFO] 构建完成..."
 ```
 构建成功，输出正常
-[![Jenkins29.png](https://i.loli.net/2018/08/26/5b821f77df647.png)](https://i.loli.net/2018/08/26/5b821f77df647.png)
+[![Jenkins29.png](/images/recovered/d455072f76a681c99a72.png)](/images/recovered/d455072f76a681c99a72.png)
 
 
 查看构建历史
-[![Jenkins25.png](https://i.loli.net/2018/08/26/5b821f77d9a0b.png)](https://i.loli.net/2018/08/26/5b821f77d9a0b.png)
+[![Jenkins25.png](/images/recovered/a9238a296a9e6897819a.png)](/images/recovered/a9238a296a9e6897819a.png)
 
-[![Jenkins27.png](https://i.loli.net/2018/08/26/5b821f77e1271.png)](https://i.loli.net/2018/08/26/5b821f77e1271.png)
+[![Jenkins27.png](/images/recovered/e5f24eef7599db93e098.png)](/images/recovered/e5f24eef7599db93e098.png)
 
 同时显示构建稳定性
-[![Jenkins26.png](https://i.loli.net/2018/08/26/5b821f77d85c4.png)](https://i.loli.net/2018/08/26/5b821f77d85c4.png)
+[![Jenkins26.png](/images/recovered/83adf847568d4198d180.png)](/images/recovered/83adf847568d4198d180.png)
 
 ### pipeline job
 #### pipeline job简介
@@ -124,7 +124,7 @@ echo "[INFO] 构建完成..."
 4. steps{}用来添加具体需要调用的模块语句
 
 #### 新建pipeline任务
-[![Jenkins31.png](https://i.loli.net/2018/08/26/5b821f7d279f0.png)](https://i.loli.net/2018/08/26/5b821f7d279f0.png)
+[![Jenkins31.png](/images/recovered/fa22629058b7a3dfb808.png)](/images/recovered/fa22629058b7a3dfb808.png)
 
 #### 编写pipeline 脚本
 ```
@@ -202,26 +202,26 @@ pipeline {
 }
 ```
 其中`credentialsId`来自用户的凭据唯一标识，可在凭据页面查看
-[![Jenkins32.png](https://i.loli.net/2018/08/26/5b821f7d23347.png)](https://i.loli.net/2018/08/26/5b821f7d23347.png)
+[![Jenkins32.png](/images/recovered/f02c8f6da5401be0c434.png)](/images/recovered/f02c8f6da5401be0c434.png)
 
 #### 写入Shell脚本
-[![Jenkins33.png](https://i.loli.net/2018/08/26/5b821f7d204fe.png)](https://i.loli.net/2018/08/26/5b821f7d204fe.png)
+[![Jenkins33.png](/images/recovered/0dc758fbd682f5a8b181.png)](/images/recovered/0dc758fbd682f5a8b181.png)
 
 执行报错，`error: could not lock config file /etc/gitconfig: ????`
-[![Jenkins34.png](https://i.loli.net/2018/08/26/5b821f7d21c71.png)](https://i.loli.net/2018/08/26/5b821f7d21c71.png)
+[![Jenkins34.png](/images/recovered/34749d8d164c880f8e89.png)](/images/recovered/34749d8d164c880f8e89.png)
 
 
 
 由于使用root用户执行同样命令不会报错，故猜测没有权限，修改语法为`git config --global http.sslVerify false`即可
 重新构建
-[![Jenkins35.png](https://i.loli.net/2018/08/26/5b821f7d294a2.png)](https://i.loli.net/2018/08/26/5b821f7d294a2.png)
+[![Jenkins35.png](/images/recovered/b410a132611e5584ce16.png)](/images/recovered/b410a132611e5584ce16.png)
 
 日志符合预期
-[![Jenkins36.png](https://i.loli.net/2018/08/26/5b821f7d1bde0.png)](https://i.loli.net/2018/08/26/5b821f7d1bde0.png)
+[![Jenkins36.png](/images/recovered/e57257632bea1d88b141.png)](/images/recovered/e57257632bea1d88b141.png)
 
 ### freestyle shell Job
 新建任务
-[![Jenkins37.png](https://i.loli.net/2018/08/26/5b821f7d1ec30.png)](https://i.loli.net/2018/08/26/5b821f7d1ec30.png)
+[![Jenkins37.png](/images/recovered/20a4f9788c2032e218c6.png)](/images/recovered/20a4f9788c2032e218c6.png)
 
 写入shell脚本如下
 ```
@@ -247,23 +247,23 @@ py_cmd=`which python`
 # 查看python版本号
 $py_cmd --version
 ```
-[![Jenkins38.png](https://i.loli.net/2018/08/26/5b821f7d1d3a0.png)](https://i.loli.net/2018/08/26/5b821f7d1d3a0.png)
+[![Jenkins38.png](/images/recovered/17b78a7934af3e198600.png)](/images/recovered/17b78a7934af3e198600.png)
 
 运行并查看日志，符合预期
-[![Jenkins39.png](https://i.loli.net/2018/08/26/5b821f7d26264.png)](https://i.loli.net/2018/08/26/5b821f7d26264.png)
+[![Jenkins39.png](/images/recovered/08b2cd2c6797a88832e9.png)](/images/recovered/08b2cd2c6797a88832e9.png)
 
 ### 参数任务
 新建参数化构建任务
-[![Jenkins44.png](https://i.loli.net/2018/08/26/5b82700347046.png)](https://i.loli.net/2018/08/26/5b82700347046.png)
+[![Jenkins44.png](/images/recovered/7b2212c7743be350417d.png)](/images/recovered/7b2212c7743be350417d.png)
 
 添加选项参数等
-[![Jenkins45.png](https://i.loli.net/2018/08/26/5b8270034698e.png)](https://i.loli.net/2018/08/26/5b8270034698e.png)
+[![Jenkins45.png](/images/recovered/1a471c0a816f118ebfbe.png)](/images/recovered/1a471c0a816f118ebfbe.png)
 
 添加shell构建参数
-[![Jenkins46.png](https://i.loli.net/2018/08/26/5b8270034511c.png)](https://i.loli.net/2018/08/26/5b8270034511c.png)
+[![Jenkins46.png](/images/recovered/6426e81ef559dfaa32f8.png)](/images/recovered/6426e81ef559dfaa32f8.png)
 
 构建
-[![Jenkins47.png](https://i.loli.net/2018/08/26/5b82700345d4a.png)](https://i.loli.net/2018/08/26/5b82700345d4a.png)
+[![Jenkins47.png](/images/recovered/666f6a9be291878416ac.png)](/images/recovered/666f6a9be291878416ac.png)
 
 输出符合预期
-[![Jenkins48.png](https://i.loli.net/2018/08/26/5b82700341009.png)](https://i.loli.net/2018/08/26/5b82700341009.png)
+[![Jenkins48.png](/images/recovered/2e449bfb65602b8823ea.png)](/images/recovered/2e449bfb65602b8823ea.png)

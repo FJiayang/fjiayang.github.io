@@ -46,11 +46,11 @@ GPU：RTX 2060 SUPER 8G
 
 采用秋叶一键部署包，使用8G显存版本
 
-![image-20230528172118422](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528172118422.png)
+![image-20230528172118422](/images/recovered/71f8ffea27b25a109f0c.png)
 
 启动成功，访问web-ui
 
-![image-20230528172141100](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528172141100.png)
+![image-20230528172141100](/images/recovered/69c786a508d8f3c96e78.png)
 
 ### 对话
 
@@ -62,11 +62,11 @@ GPU：RTX 2060 SUPER 8G
 
 由于显存限制，咨询过大的问题会直接导致爆显存无法回答
 
-![image-20230528173346575](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528173346575.png)
+![image-20230528173346575](/images/recovered/f280e1c1d1a5fa690f1c.png)
 
 
 
-![image-20230528122150070](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528122150070.png)
+![image-20230528122150070](/images/recovered/6198a55ce8d8e6e7f709.png)
 
 ## 实践-闻达版本
 
@@ -82,11 +82,11 @@ GPU：RTX 2060 SUPER 8G
 
 使用官方一键包，默认使用6g显存模型
 
-![image-20230528173835563](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528173835563.png)
+![image-20230528173835563](/images/recovered/52df70eb5c548a8c07fc.png)
 
 启动成功
 
-![image-20230528173915303](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528173915303.png)
+![image-20230528173915303](/images/recovered/7bf5d1a521179db97951.png)
 
 
 
@@ -94,7 +94,7 @@ GPU：RTX 2060 SUPER 8G
 
 只使用已有模型数据，询问
 
-![image-20230528121247875](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528121247875.png)
+![image-20230528121247875](/images/recovered/f479c942bb65b9d5011c.png)
 
 回答内容文不对题
 
@@ -108,7 +108,7 @@ GPU：RTX 2060 SUPER 8G
 
 打开联网知识库，清理历史后重新询问，不需要提供本地知识也可以自行通过网络检索后回答正确
 
-![image-20230528121121124](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528121121124.png)
+![image-20230528121121124](/images/recovered/283d2feb02d40173e957.png)
 
 
 
@@ -130,7 +130,7 @@ GPU：RTX 2060 SUPER 8G
 
 尽管使用的是6g显存的版本，读取较大的文档时也会爆显存
 
-![image-20230528133754622](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528133754622.png)
+![image-20230528133754622](/images/recovered/8166c1f45e9915323da6.png)
 
 
 
@@ -140,7 +140,7 @@ GLM文档分析实际上是将文档识别后转换为特定prompt进行问答�
 
 参考内嵌prompt
 
-![image-20230528174537908](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528174537908.png)
+![image-20230528174537908](/images/recovered/c10ec9df21d7a2e3e633.png)
 
 
 
@@ -154,7 +154,7 @@ GLM文档分析实际上是将文档识别后转换为特定prompt进行问答�
 
 使用wenda提供的“根据标题写论文功能”可自动触发AutoGPT模式
 
-![image-20230528175719724](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20230528175719724.png)
+![image-20230528175719724](/images/recovered/a25fe46740588a10d820.png)
 
 
 

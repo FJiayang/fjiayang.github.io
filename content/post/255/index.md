@@ -20,7 +20,7 @@
 
 ## 消息存储结构
 
-![img](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/rocketmq_design_1.png)
+![img](/images/recovered/b985e01fe83c87866feb.png)
 
 1. CommitLog：消息主体以及元数据的存储主体，存储Producer端写入的消息主体内容,消息内容不是定长的。消息主要是顺序写入日志文件，当文件满了，写入下一个文件；其日志信息科用于数据恢复，作为MQ数据保障兜底策略。
 2. ConsumerQueue：消息消费队列，存储消息在commit log 中所在的这个位置，也可以说是一个偏移量.引入的目的主要是提高消息消费的性能。
@@ -36,7 +36,7 @@
 
 - 消息存储：内存+磁盘存储，两种刷盘方式
 
-![img](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/rocketmq_design_2.png)
+![img](/images/recovered/a0ebb0999321066cc484.png)
 
 ### 异步刷盘
 

@@ -14,7 +14,7 @@
   "tags": [
     "Kubernetes"
   ],
-  "image": "https://s2.ax1x.com/2019/11/27/QC2UuF.png",
+  "image": "/images/recovered/5d56b001c55d28ddb0c2.png",
   "math": false
 }
 

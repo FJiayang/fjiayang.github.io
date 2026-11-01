@@ -76,7 +76,7 @@ python train_pretrain.py
 
 
 执行预训练，得到`pretrain_*.pth`作为预训练的输出权重（其中为模型的dimension，默认为512）
-![file-20250329205630234](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/本地LLM训练/file-20250329205630234.png)
+![file-20250329205630234](/images/recovered/1f2cf5d57a979f62e0aa.png)
 ### 监督微调
 ```bash
 python train_full_sft.py
@@ -84,14 +84,14 @@ python train_full_sft.py
 执行监督全参数微调，在我的环境下需要2.5小时
 ![file-20250329210505564](/images/recovered/27840e78e795fa10d888.png)
 
-![file-20250329233223537](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/本地LLM训练/file-20250329233223537.png)
+![file-20250329233223537](/images/recovered/2f7c3a8802523c4e5498.png)
 ## 效果测试
 
 测试全参微调
 ```bash
 python eval_model.py --model_mode 1
 ```
-![file-20250330084041529](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/本地LLM训练/file-20250330084041529.png)
+![file-20250330084041529](/images/recovered/fed32a4afe5eea26cc70.png)
 
 从结果来看，能进行对话，但受限于参数量，很多知识不完整，对话回答质量比较一般。
 

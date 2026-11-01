@@ -28,10 +28,10 @@
 使用最小安装，ISO镜像大小为906MB，在VM中导入镜像，给4G内存（Rancher2.0最低要求），安装过程系统配置均为默认配置
 
 安装好后为纯净环境，使用`ip addr`即可查看ip，使用外部远程连接工具连接虚拟机ip
-![rancher1.png](https://i.loli.net/2018/08/11/5b6ec998439f2.png)
+![rancher1.png](/images/recovered/ac4f6fd355342c12a6b6.png)
 
 使用`yum install docker`安装docker环境
-![rancher2.png](https://i.loli.net/2018/08/11/5b6ec9984435d.png)
+![rancher2.png](/images/recovered/c044884a0a6f2301d9f1.png)
 
 安装好后使用命令`systemctl start docker`启动docker
 使用` docker info`或者`docker version`查看版本
@@ -76,16 +76,16 @@
 访问quickstart查看docker命令
 
 目前Rancher官方开始推荐2.0版本，首次使用推荐使用1.6稳定版
-![rancher3.png](https://i.loli.net/2018/08/11/5b6ec99849aaa.png)
+![rancher3.png](/images/recovered/b60ee4ab7d05ddee458e.png)
 
 在下方找到1.6文档，使用命令在虚拟机中安装Rancher1.6
-![rancher4.png](https://i.loli.net/2018/08/11/5b6ec998470c0.png)
+![rancher4.png](/images/recovered/3c965a81bcbfe64a6b16.png)
 
-![rancher5.png](https://i.loli.net/2018/08/11/5b6ec9984c5c3.png)
+![rancher5.png](/images/recovered/056619d35fed17f45ff5.png)
 
     sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
 
-![rancher6.png](https://i.loli.net/2018/08/11/5b6ec998464fd.png)
+![rancher6.png](/images/recovered/be8d6284815ff9b8b63a.png)
 
 ### 配置防火墙 ###
 安装后若没有打开8080端口则会报错，配置CentOS防火墙
@@ -96,7 +96,7 @@
 >查看状态： systemctl status firewalld 
 >开机禁用  ： systemctl disable firewalld
 >开机启用  ： systemctl enable firewalld
-![rancher7.png](https://i.loli.net/2018/08/11/5b6ec99845fbf.png)
+![rancher7.png](/images/recovered/7a7c3050e7b8894816bb.png)
 
 >2.systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。
 >启动一个服务：systemctl start firewalld.service
@@ -136,7 +136,7 @@
 
     firewall-cmd --zone=public --add-port=8080/tcp --permanent
 
-![rancher8.png](https://i.loli.net/2018/08/11/5b6ec968aa407.png)
+![rancher8.png](/images/recovered/ebe45f72a940fedb1955.png)
 
 重载防火墙
 
@@ -146,55 +146,55 @@
 
      firewall-cmd --zone=public --list-ports
 
-![rancher9.png](https://i.loli.net/2018/08/11/5b6ec968b1579.png)
+![rancher9.png](/images/recovered/9e758841964b13efc967.png)
 
 ## 设置Rancher ##
 ### 设置Rancher界面语言 ###
 通过虚拟机ip+端口号访问Rancher：`http://192.168.79.142:8080`
-![rancher10.png](https://i.loli.net/2018/08/11/5b6ec968b93b4.png)
+![rancher10.png](/images/recovered/6cbdc91a01610af2474b.png)
 
 默认为英文界面，Rancher官方有中文支持
 修改右下方语言选项即可
-![rancher11.png](https://i.loli.net/2018/08/11/5b6ec968ba0d8.png)
+![rancher11.png](/images/recovered/8434f4c30132969552fd.png)
 
-![rancher12.png](https://i.loli.net/2018/08/11/5b6ec968b5a50.png)
+![rancher12.png](/images/recovered/276977385f115a3f18d1.png)
 
 ### 设置Rancher主机 ###
 首次访问需要设置主机
-![rancher13.png](https://i.loli.net/2018/08/11/5b6ec968b61be.png)
+![rancher13.png](/images/recovered/d8dee04718f403eb8d6f.png)
 
 按照默认识别的IP即可，点击保存
-![rancher14.png](https://i.loli.net/2018/08/11/5b6ec968b66c3.png)
+![rancher14.png](/images/recovered/1b363d753477dba9790c.png)
 
 选择主机类型，包含自定义主机、亚马逊主机等，此处选择自定义主机
-![rancher15.png](https://i.loli.net/2018/08/11/5b6ec968b99b7.png)
+![rancher15.png](/images/recovered/bef965a003e428005f18.png)
 
 依照指示操作，为了确保通信测试，暂时关闭防火墙
-![rancher16.png](https://i.loli.net/2018/08/11/5b6ec968b76b2.png)
+![rancher16.png](/images/recovered/77febb12fdb61a19ba8a.png)
 
 为了测试多台Rancher Server和agent服务，使用VM保存快照并复制一份虚拟机启动
 目前测试：128为server，129为agent，注意此处填的是客户端的地址，非主机地址
-![rancher26.png](https://i.loli.net/2018/08/11/5b6ec7c4c89c0.png)
+![rancher26.png](/images/recovered/7834e51754523ccf4bfd.png)
 
 ### 设置Rancher客户端 ###
 复制Server的配置命令，在agent服务器上运行，等待下载
-![rancher19.png](https://i.loli.net/2018/08/11/5b6ec7c4c36aa.png)
+![rancher19.png](/images/recovered/60140045d4c752e6b298.png)
 
-![rancher20.png](https://i.loli.net/2018/08/11/5b6ec7c4c47a2.png)
+![rancher20.png](/images/recovered/5d29857c511de04a6223.png)
 
-![rancher21.png](https://i.loli.net/2018/08/11/5b6ec7c4c1a63.png)
+![rancher21.png](/images/recovered/c84c35f7ef034e73edfa.png)
 
 
 按照指示，运行后关闭Server主机配置
 查看主机列表
-![rancher22.png](https://i.loli.net/2018/08/11/5b6ec7c4c28e2.png)
+![rancher22.png](/images/recovered/390aac4f3d09346a455b.png)
 
-![rancher23.png](https://i.loli.net/2018/08/11/5b6ec7c4bd914.png)
+![rancher23.png](/images/recovered/6ffdc5fc68a8756aef16.png)
 
 也可以添加环境、测试环境、生产环境等
-![rancher24.png](https://i.loli.net/2018/08/11/5b6ec7c4bdb11.png)
+![rancher24.png](/images/recovered/1bfa01f67381ae2d6af9.png)
 
-![rancher25.png](https://i.loli.net/2018/08/11/5b6ec968b71ce.png)
+![rancher25.png](/images/recovered/cceed8a4fcdf2c67c159.png)
 
 
   [1]: http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1804.iso

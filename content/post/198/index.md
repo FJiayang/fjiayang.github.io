@@ -70,7 +70,7 @@ spring:
 
 同时若使用IDEA自带提示也可看出问题，有两种驱动都存在的问题，希望后续修复
 
-[![mybatis1.jpg](https://i.loli.net/2018/12/27/5c244679d8870.jpg)](https://i.loli.net/2018/12/27/5c244679d8870.jpg)
+[![mybatis1.jpg](/images/recovered/a25e2fbf090b20512aeb.jpg)](/images/recovered/a25e2fbf090b20512aeb.jpg)
 
 另一种解决方案，从SpringBoot2.0之后连接池使用hikari，可根据url自动识别驱动，即如下配置也可成功运行
 

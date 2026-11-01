@@ -75,19 +75,19 @@ CDN（云分发）可以结合优质的网络节点资源、传输路由技术�
 ![多地访问测试][16]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J53M1.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J57UJ.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5vf0.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5qvr.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5WlF.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J54fe.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5Clc.png
-  [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5mLN.png
-  [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5MYt.png
-  [10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5AjM.png
-  [11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J55V6.png
-  [12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J584T.png
-  [13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5chK.png
-  [14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5HF7.png
-  [15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5GAs.png
-  [16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5bGu.png
+  [1]: /images/recovered/534d298e5144ab842b2e.png
+  [2]: /images/recovered/95a35679975c70bb6c6b.png
+  [3]: /images/recovered/1620f7d092fbbc616164.png
+  [4]: /images/recovered/471b4e5b90b2d67b8a6d.png
+  [5]: /images/recovered/2f9e683eaad0e8bbac40.png
+  [6]: /images/recovered/c0e0967e2a8f304c3302.png
+  [7]: /images/recovered/2c63776a3c3a775c8f2d.png
+  [8]: /images/recovered/e391f7c205a50a635e79.png
+  [9]: /images/recovered/cc4d4fd9524efab323da.png
+  [10]: /images/recovered/4b10482a74069c89705c.png
+  [11]: /images/recovered/18e20363d9597e39e944.png
+  [12]: /images/recovered/713fec9042b19bc85dfd.png
+  [13]: /images/recovered/8c68a452030234a2501f.png
+  [14]: /images/recovered/97e622c3b26d9f73e58d.png
+  [15]: /images/recovered/cde3de201fd5b068b277.png
+  [16]: /images/recovered/7e52eea8cd4cb60329b7.png

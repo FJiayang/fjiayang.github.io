@@ -121,7 +121,7 @@ location / {
 
 如图，第一个为真实客户端IP，第二个为CDN代理IP
 
-[![1554256476626.png](https://i.loli.net/2019/04/03/5ca413f53a191.png)](https://i.loli.net/2019/04/03/5ca413f53a191.png)
+[![1554256476626.png](/images/recovered/99aaa3b8220a760fa149.png)](/images/recovered/99aaa3b8220a760fa149.png)
 
 
 

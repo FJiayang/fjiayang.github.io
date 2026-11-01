@@ -32,7 +32,7 @@
 
 
 
-![image-20200715104841483](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200715104841483.png)
+![image-20200715104841483](/images/recovered/3267dd2be8ed8ed2d9b0.png)
 
 ## 主从同步机制
 
@@ -50,7 +50,7 @@
 
 元信息同步工程源码位于broker中
 
-![image-20200715143320216](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200715143320216.png)
+![image-20200715143320216](/images/recovered/8a9e74c984c921681b28.png)
 
 
 
@@ -397,19 +397,19 @@ public class RemotingCommand {
 
 消息同步工程源码位于store中
 
-![image-20200715143525717](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200715143525717.png)
+![image-20200715143525717](/images/recovered/6a74513e223f107c4a2b.png)
 
-![image-20200715143825027](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200715143825027.png)
+![image-20200715143825027](/images/recovered/f30aab27b10e27f0d7e3.png)
 
 `HAConnection`实现消息读写
 
-![image-20200715144228823](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200715144228823.png)
+![image-20200715144228823](/images/recovered/857838a6b7ec2b5044cd.png)
 
 
 
 `HAservice`包含节点连接实现`HAClient`
 
-![image-20200715144149951](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200715144149951.png)
+![image-20200715144149951](/images/recovered/fd22b1867577b1fe50c9.png)
 
 #### 逻辑
 
@@ -1450,7 +1450,7 @@ public class MQClientAPIImpl {
 
 类图
 
-![NettyRemotingClient](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/NettyRemotingClient.png)
+![NettyRemotingClient](/images/recovered/3e8c567d2eabb0eeee58.png)
 
 ### `RemotingClient`源码
 
@@ -2070,7 +2070,7 @@ public abstract class NettyRemotingAbstract {
 
 netty消息数据包结构
 
-![1605443341755](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1605443341755.png)
+![1605443341755](/images/recovered/66e0554f6efa7539ce50.png)
 
 `RemotingCommand`中编码、解码方法体现了其数据包格式和用法
 

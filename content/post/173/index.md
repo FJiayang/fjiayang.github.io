@@ -60,7 +60,7 @@ maven报错如下
 ![请输入图片描述][4]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/JlspqK.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/Jlsjnc.png
+  [1]: /images/recovered/cc91cdde749517d2568a.png
+  [2]: /images/recovered/e7af7f2448909fdc2288.png
   [3]: https://blog.csdn.net/liqi_q/article/details/80557157
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/Jls0TN.png
+  [4]: /images/recovered/1b062d122899b871d034.png

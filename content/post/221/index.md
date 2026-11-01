@@ -15,7 +15,7 @@
     "docker",
     "Kubernetes"
   ],
-  "image": "https://s2.ax1x.com/2019/11/27/QC2YcT.png",
+  "image": "/images/recovered/96bce7011ae633f4c9aa.png",
   "math": false
 }
 

@@ -4,7 +4,13 @@
 
 ## 本地预览与验证
 
-安装 Hugo Extended 0.169.0、Go 1.24.3 和 Python 3.11+；`hugo version` 应包含 `extended`。
+安装 Hugo Extended 0.169.0、Go 1.24.3 和 Python 3.11+；`hugo version` 应包含 `extended`。图片迁移工具和相关测试使用固定版本的 CommonMark 解析器：
+
+```sh
+python3 -m venv .migration/image-tools
+source .migration/image-tools/bin/activate
+python3 -m pip install -r requirements-images.txt
+```
 
 ```sh
 hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/
@@ -22,7 +28,9 @@ python3 scripts/report_resources.py .migration/hugo-build.log
 
 站点图标和侧栏头像使用原仓库的 `/images/avatar.png`，原文件恢复到 `static/images/avatar.png`。
 
-除下文已从本地恢复的 51 个图片地址外，其余文章图片、封面和附件保留原地址。**保留 Stack 默认图片模板**：Hugo 构建会下载远程图片以读取元数据；关闭生成缩略图及响应式派生图，页面继续使用原地址。不可达图片产生警告，不阻止发布。原站及图床需要继续提供资源。首次构建受图片网络速度影响，缓存可加快后续构建。
+现有博客图片已全部保存到 `static/images/recovered/`，文章、封面和页面使用本站图片路径，原图床下线后不影响这些图片。原文件、画质及 GIF 动画保留。
+
+**保留 Stack 默认图片模板和现有构建缓存流程**。后续文章仍可使用新的外链图片，CI 不设置外链图片门禁，也不禁止 Hugo HTTP 资源请求。对于未来新加的外链，Stack 仍按原逻辑获取图片信息。非图片附件和普通外链不在此次迁移范围内。
 
 `reports/resources.json` 记录本次本地构建的图片请求警告；没有警告不代表链接永久可用，HTML 原生图片、附件和友情链接不会因 Hugo 构建而获得完整的可用性检查。
 
@@ -96,3 +104,22 @@ python3 scripts/recover_images.py '/Users/fjy/Documents/workspace/images/img'
 ```
 
 若重新执行一次性 Typecho 导入，请在导入后运行恢复命令以重新应用本地图片引用。原草稿不修改，草稿正文不导入站点。
+
+
+## 全量图片本地化
+
+本次新增迁移 1,146 个远程图片地址，与原有 51 张恢复图片合计 1,197 个原始地址记录。图片合计约 155 MB，校验、来源和关联文章见 `reports/image-localization.json`。只有实际展示的图片被迁移；代码示例中的 URL 不修改。“阳明的博客”友情链接和失效图标按要求移除。
+
+工具支持本地目录匹配、一次性下载和按原 URL 导出的旧 Hugo 资源副本；获取后图片均永久提交到博客仓库，不需要旧图床或缓存才能展示。原 Gitea 路径以本地原图片仓库 `blog` 分支版本为准，同名且内容不同的其他候选不会自动猜测。
+
+```sh
+# 默认匹配已记录的三个本地目录；无完整匹配时仅输出待解决清单，不改写文章
+python3 scripts/localize_images.py apply
+# 需要时显式允许一次性下载未匹配的图片（不会在 CI 中执行）
+python3 scripts/localize_images.py apply --download-missing
+# 可选的手动盘点，不是 CI 门禁；以后引入新外链图片时会报告这些外链
+python3 scripts/localize_images.py check-source
+python3 scripts/localize_images.py check-output
+```
+
+不要在图片本地化后重新运行原始 Typecho 导入覆盖内容。若确需重导入，需重新应用迁移工具并校验图片。
