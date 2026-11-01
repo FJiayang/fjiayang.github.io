@@ -43,7 +43,7 @@ input SubmitActor {
 
 SubmitActor类型可以交给代码生成器自动生成
 
-![image-20221028214119439](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028214119439.png)
+![image-20221028214119439](/images/recovered/d5cbcc42e488444ef649.png)
 
 ### 类型转换器
 
@@ -75,4 +75,4 @@ public interface ActorAssembler {
 
 访问http://localhost:8080/graphiql即可看到在线查询页面
 
-![image-20221028213607156](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221028213607156.png)
+![image-20221028213607156](/images/recovered/269846d45b81582ada6b.png)

@@ -28,7 +28,7 @@
 
 ## 集群拓扑图
 
-![1608468950654](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1608468950654.png)
+![1608468950654](/images/recovered/398339bc910b2924abb3.png)
 
 | IP           | 资源         | 服务                                         |
 | ------------ | ------------ | -------------------------------------------- |
@@ -50,7 +50,7 @@
 
 将4个节点的hosts均改为如上内容，并将4.4.0版本包放入环境中解压
 
-![image-20201221151014840](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201221151014840.png)
+![image-20201221151014840](/images/recovered/7f6a8e5c922dbc1c5729.png)
 
 
 
@@ -486,13 +486,13 @@ $ tail -f -n 500 /home/ocmuser/rocketmq-test/logs/rocketmqlogs/namesrv.log
 
 查看进程和日志，可见部署完成
 
-![image-20201223142210826](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201223142210826.png)
+![image-20201223142210826](/images/recovered/3c48cbdcebf385672b8f.png)
 
 角色为同步双写，异步刷盘，4个节点通信正常
 
-![image-20201223172428307](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201223172428307.png)
+![image-20201223172428307](/images/recovered/3b45e871e643a698cf24.png)
 
-![image-20201223172525074](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201223172525074.png)
+![image-20201223172525074](/images/recovered/d417bc0297c8a11086fd.png)
 
 
 
@@ -508,11 +508,11 @@ rocketmq.config.namesrvAddr=10.139.12.51:9876;10.139.12.52:9876;10.139.12.53:987
 
 连接正常
 
-![image-20201223172027458](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201223172027458.png)
+![image-20201223172027458](/images/recovered/a5dd99cea65542241868.png)
 
 查看各节点角色和状态
 
-![image-20201223172105913](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201223172105913.png)
+![image-20201223172105913](/images/recovered/7797fcfc712958faba39.png)
 
 
 

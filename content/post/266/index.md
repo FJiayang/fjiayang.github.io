@@ -43,7 +43,7 @@ Sentinel默认只能对限流规则存储到内存中
 
 [ 添加持久化支持，可选持久化选项](https://github.com/alibaba/Sentinel/pull/1711) — Fixes Issues #1696 添加持久化支持，可选持久化选项：nacos、apollo、zookeeper ; 修改 README.md 说明文档
 
-![1612669905332](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1612669905332.png)
+![1612669905332](/images/recovered/cb49475bf045ff44f19c.png)
 
 
 
@@ -210,4 +210,4 @@ networks:
 
 启动成功后可以看到`nacos`上成功注册了`sentinel-dashboard`
 
-![1612670651663](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img//1612670651663.png)
+![1612670651663](/images/recovered/23fbc0e5e0031c2977fb.png)

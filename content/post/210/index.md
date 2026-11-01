@@ -60,7 +60,7 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
 
 在`GitHub`上创建对应的仓库，并推送`Dockerfile`
 
-![1564572008865.png](https://i.loli.net/2019/07/31/5d41a6b6dfd8192366.png)
+![1564572008865.png](/images/recovered/6390fa3989548d96de64.png)
 
 
 
@@ -68,12 +68,12 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
 
 登陆`DockerHub`选择`repository`新建仓库
 
-![1564572101153.png](https://i.loli.net/2019/07/31/5d41a6b6ca75420080.png)
+![1564572101153.png](/images/recovered/e008bec8c75cb0bac738.png)
 
 
 首次链接可以参照[指引](https://docs.docker.com/docker-hub/builds/link-source/)操作，主要是做`OAuth `授权
 
-![1564572489753.png](https://i.loli.net/2019/07/31/5d41a6b6b3cd010635.png)
+![1564572489753.png](/images/recovered/a2b92162be7cd65bae45.png)
 
 
 
@@ -81,13 +81,13 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
 
 连接`GitHub`后可以选择需要构建的仓库，同时展开构建选项，可以指定不同分支构建出的标签，默认`master`分支构建为`latest`版本
 
-![1564580799275.png](https://i.loli.net/2019/07/31/5d41a6b6d5f8a31891.png)
+![1564580799275.png](/images/recovered/d729c0ff376b8fb94466.png)
 
 ### 触发构建
 
 第一次会自动触发构建，随后代码推送都会触发构建
 
-![1564572890867.png](https://i.loli.net/2019/07/31/5d41a6b6b319370352.png)
+![1564572890867.png](/images/recovered/43195a15c659a8ad29bb.png)
 
 
 
@@ -95,7 +95,7 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
 
 在管理页面可以查看构建时长和构建结果
 
-![1564573686044.png](https://i.loli.net/2019/07/31/5d41a6b6d559a89403.png)
+![1564573686044.png](/images/recovered/ebde8d898cf020b8b007.png)
 
 
 
@@ -105,12 +105,12 @@ ENTRYPOINT /usr/local/mycat/bin/mycat console
 
 用户视角可以看到构建的GitHub仓库
 
-![1564583383061.png](https://i.loli.net/2019/07/31/5d41a6b6e89a952064.png)
+![1564583383061.png](/images/recovered/910642fa1b428c2ae701.png)
 
 自动构建产生的分支
 
-![1564583424202.png](https://i.loli.net/2019/07/31/5d41a6b6be96a97983.png)
+![1564583424202.png](/images/recovered/40947f6a874ad607c27b.png)
 
 构建历史记录
 
-![1564583451660.png](https://i.loli.net/2019/07/31/5d41a6b6d671469520.png)
+![1564583451660.png](/images/recovered/a945c16c9cc176e3c2c7.png)

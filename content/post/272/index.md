@@ -22,11 +22,11 @@
 
 创建工作空间
 
-![1623574207829](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574207829.png)
+![1623574207829](/images/recovered/386050971babc7c10842.png)
 
 启用计算引擎API
 
-![1623574277108](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574277108.png)
+![1623574277108](/images/recovered/b68253b684c29bd46e96.png)
 
 
 
@@ -56,15 +56,15 @@
 
 基于实例模板创建3台虚拟机，选择地区为香港
 
-![1623574509743](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574509743.png)
+![1623574509743](/images/recovered/23051b2a8ad211383496.png)
 
 此处用于演示用途，可选择无状态机器，机器删除后不会保留磁盘内容
 
 注意关闭自动扩缩容
 
-![1623574573744](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574573744.png)
+![1623574573744](/images/recovered/ed058957f98c9f92c8cf.png)
 
-![1623575054375](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623575054375.png)
+![1623575054375](/images/recovered/d2dfc6105b4ece100125.png)
 
 等待实例创建
 
@@ -74,19 +74,19 @@
 
 ### 配置连接秘钥
 
-![1623574639897](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574639897.png)
+![1623574639897](/images/recovered/7ad13b9d4b2d482c28d7.png)
 
 
 
 添加本地生成好的rsa秘钥即可
 
-![1623574692495](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623574692495.png)
+![1623574692495](/images/recovered/99e5de849a97d9951173.png)
 
 本地SSH工具配置私钥即可连接
 
-![1623575916094](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623575916094.png)
+![1623575916094](/images/recovered/644ba2efb32c1d56b92e.png)
 
-![1623575936073](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623575936073.png)
+![1623575936073](/images/recovered/b07b7ff0b3d2d25805e5.png)
 
 
 
@@ -130,7 +130,7 @@ $ chmod +x kk
 
 放行VPC防火墙
 
-![1623579543782](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579543782.png)
+![1623579543782](/images/recovered/7feb8ca5138d3bee6be8.png)
 
 ## 创建集群
 
@@ -178,7 +178,7 @@ $ service sshd restart
 
 控制台添加主节点公钥，则所有新建主机都能被主节点访问
 
-![1623576902639](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623576902639.png)
+![1623576902639](/images/recovered/a87c9e0e1b7f4b6105a6.png)
 
 
 
@@ -350,7 +350,7 @@ spec:
 
 ### 安装集群
 
-![1623578613894](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623578613894.png)
+![1623578613894](/images/recovered/ce0ea5f885931e4a42c2.png)
 
 
 
@@ -362,19 +362,19 @@ spec:
 
 创建完成
 
-![1623579607890](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579607890.png)
+![1623579607890](/images/recovered/d9126ee57f778950a670.png)
 
 
 
 访问成功
 
-![1623579584535](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579584535.png)
+![1623579584535](/images/recovered/f557b2ec8676c70881bc.png)
 
 
 
 集群正常，不安装组件时内存占用率并不高
 
-![1623579689768](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579689768.png)
+![1623579689768](/images/recovered/a0398e411c2140267fb7.png)
 
 安装`kubectl`
 
@@ -388,7 +388,7 @@ $ yum install -y kubectl
 
 点击**自定义资源 CRD**，然后在搜索栏中输入 `clusterconfiguration`，点击搜索结果进入其详情页面。
 
-![1623579764558](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623579764558.png)
+![1623579764558](/images/recovered/cd0aace390bc74819648.png)
 
 
 
@@ -513,7 +513,7 @@ spec:
 
 通过在线控制台，查看安装进度
 
-![1623580120458](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623580120458.png)
+![1623580120458](/images/recovered/23b7584c3ef9d140f0bb.png)
 
 
 
@@ -529,16 +529,16 @@ $ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l ap
 
 安装组件过程中，对CPU负载较大
 
-![1623580387124](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623580387124.png)
+![1623580387124](/images/recovered/d4b4c6f86f7d9930d30c.png)
 
 
 
 所有组件安装完成
 
-![1623580751492](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623580751492.png)
+![1623580751492](/images/recovered/a91cc05a82c850667cab.png)
 
 
 
 资源占用情况
 
-![1623580770352](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1623580770352.png)
+![1623580770352](/images/recovered/8bd3f8db8740186ddf79.png)

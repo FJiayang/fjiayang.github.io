@@ -58,8 +58,8 @@
 ![请输入图片描述][5]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vOyVF.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vOku1.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vOZUa.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vOtvd.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2vOf6u.png
+  [1]: /images/recovered/b90a35598b3beafd2f71.png
+  [2]: /images/recovered/ac14ed59acdd5fc36656.png
+  [3]: /images/recovered/3a3accb17d83fe708cc8.png
+  [4]: /images/recovered/fa27b69e9cca3713f139.png
+  [5]: /images/recovered/fa1bc1b38608c2d3b759.png

@@ -40,6 +40,11 @@ jobs:
             hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}-
       - name: Download pinned theme modules
         run: hugo mod get
+      - name: Install image migration dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/image-tools"
+          "$RUNNER_TEMP/image-tools/bin/python" -m pip install -r requirements-images.txt
+          echo "$RUNNER_TEMP/image-tools/bin" >> "$GITHUB_PATH"
       - name: Test migration converter
         run: python3 -m unittest discover -s tests -v
       - name: Build

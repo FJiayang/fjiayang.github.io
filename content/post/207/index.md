@@ -141,7 +141,7 @@
 
 配置全局变量目的在于配置脚本中**不应该**包含密码等敏感信息
 
-[![1554278638713.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46d8dd6a74.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46d8dd6a74.png)
+[![1554278638713.png](/images/recovered/af7cce73632b17e25367.png)](/images/recovered/af7cce73632b17e25367.png)
 
 
 
@@ -200,31 +200,31 @@ docker-build:
 
 触发后会自动执行任务
 
-[![1554278973797.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e940608c.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e940608c.png)
+[![1554278973797.png](/images/recovered/6962e7bec46dd02dd6fc.png)](/images/recovered/6962e7bec46dd02dd6fc.png)
 
 
 
-[![1554279027476.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e93a1220.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e93a1220.png)
+[![1554279027476.png](/images/recovered/767eee344cf27e970b30.png)](/images/recovered/767eee344cf27e970b30.png)
 
 
 
 Maven自动触发构建，自动镜像打包
 
-[![1554279219445.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e9490c9f.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e9490c9f.png)
+[![1554279219445.png](/images/recovered/6a886ba9fd995a06044b.png)](/images/recovered/6a886ba9fd995a06044b.png)
 
-[![1554279272711.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e935f2c2.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e935f2c2.png)
+[![1554279272711.png](/images/recovered/af376e5618731af03d84.png)](/images/recovered/af376e5618731af03d84.png)
 
 自动上传（推送）镜像
 
-[![1554279311054.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e93137c7.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e93137c7.png)
+[![1554279311054.png](/images/recovered/203756983dc32c4ee639.png)](/images/recovered/203756983dc32c4ee639.png)
 
 ### 执行结果
 
-[![1554279508887.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e921bcd7.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e921bcd7.png)
+[![1554279508887.png](/images/recovered/8251f1ff39f3475408c3.png)](/images/recovered/8251f1ff39f3475408c3.png)
 
 若执行失败则会发送邮件给开发人员
 
-[![1554279616575.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e94b500e.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5ca46e94b500e.png)
+[![1554279616575.png](/images/recovered/88d0e56ab64d8fd3b57e.png)](/images/recovered/88d0e56ab64d8fd3b57e.png)
 
 
 

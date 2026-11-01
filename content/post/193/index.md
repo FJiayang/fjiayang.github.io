@@ -264,7 +264,7 @@ Compiled Failed Invalid   Time   FailedType FailedMethod
 ```
 
 JVM内存结构
-![image](https://note.youdao.com/yws/api/personal/file/0DC017ABCA7F4BDAB9F27FC978DFC1DF?method=download&shareKey=01c660434ae633a64683f00caab890b9)
+![image](/images/recovered/cb905cf3e364f273d93e.jpg)
 
 ## 内存溢出
 ### 堆区内存溢出
@@ -373,21 +373,21 @@ PS Old Generation
 [工具下载](https://www.eclipse.org/mat/downloads.php)
 导入文件显示怀疑内存溢出（Leak suspects）
 
-![image](https://note.youdao.com/yws/api/personal/file/364971015AA9477D929D59EB9DE3317C?method=download&shareKey=057c9fb83f94bf32a762b215eabd98c3)
+![image](/images/recovered/b337be0079864cbba13e.png)
 选择直方图
 
-![image](https://note.youdao.com/yws/api/personal/file/EB594BF78BA5411ABE964F2F20739F89?method=download&shareKey=057c9fb83f94bf32a762b215eabd98c3)
+![image](/images/recovered/11841225b22bb3e9b544.png)
 找到影响最大的项目，右键查看强引用以判断这些占用内存大的对象由谁引用，由此定位内存溢出问题
 
-![image](https://note.youdao.com/yws/api/personal/file/FDECFC5665744F65B77BCFE1D413FAC9?method=download&shareKey=057c9fb83f94bf32a762b215eabd98c3)
+![image](/images/recovered/d1852dfe000e1830b957.png)
 
-![image](https://note.youdao.com/yws/api/personal/file/5E32B8B0761B4EDFB5FC95F2F4371D68?method=download&shareKey=057c9fb83f94bf32a762b215eabd98c3)
+![image](/images/recovered/ed2937ccab73ec722619.png)
 选择实体树
 
-![image](https://note.youdao.com/yws/api/personal/file/569ED5F451294E7A9583AB78F20558BC?method=download&shareKey=057c9fb83f94bf32a762b215eabd98c3)
+![image](/images/recovered/d98dffa6b227ba227d6f.png)
 也可看出存在大量对象加载
 
-![image](https://note.youdao.com/yws/api/personal/file/9070BB03D104487D8CBAC7D42E527793?method=download&shareKey=057c9fb83f94bf32a762b215eabd98c3)
+![image](/images/recovered/8276bf2237796379f644.png)
 
 ### jstack
 分析线程状态

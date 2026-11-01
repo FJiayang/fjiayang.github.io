@@ -96,7 +96,7 @@ COMMAND 命令
   sysbench  /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua --mysql-host=192.168.1.9 --mysql-port=3306 --mysql-user=admin --mysql-password=Abc_123456 --oltp-tables-count=10 --oltp-table-size=100000 prepare
   ```
 
-  ![1577453015988](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577453015988.png)
+  ![1577453015988](/images/recovered/eaf5d428c9a2a65609a5.png)
 
 - 执行测试
 
@@ -104,7 +104,7 @@ COMMAND 命令
   sysbench  /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua --mysql-host=192.168.1.9 --mysql-port=3306 --mysql-user=admin --mysql-password=Abc_123456 --oltp-test-mode=complex --threads=10 --time=300 --report-interval=10 run >> /home/mysysbench.log
   ```
 
-  ![1577453381678](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577453381678.png)
+  ![1577453381678](/images/recovered/176f224d65e5cd3ca11f.png)
 
   5分钟压测结果
 
@@ -160,7 +160,7 @@ listen   proxy_mysql
 
 结果
 
-![1577452516683](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577452516683.png)
+![1577452516683](/images/recovered/15bf28c9411842548b5f.png)
 
 推荐测试配置：
 

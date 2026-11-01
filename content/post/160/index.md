@@ -62,10 +62,10 @@ CentOS 7中出于安全考虑，设置了部分别名，防止误操作，但在
 
 
   [1]: https://gitlab.com/xhang/gitlab
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHppe.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xH0Ys.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHbVK.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHQPc.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHjGN.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHK3a.png
-  [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2xHEud.png
+  [2]: /images/recovered/2840dcd022b39f2383ae.png
+  [3]: /images/recovered/3a52a3112baadbc4037f.png
+  [4]: /images/recovered/df073c58fdaddbc50b1e.png
+  [5]: /images/recovered/321ac50c24378f4a7601.png
+  [6]: /images/recovered/9d2e24a4ffeb9af11ee1.png
+  [7]: /images/recovered/14fa1d562f51dc1f97d5.png
+  [8]: /images/recovered/ae67f72432c0879bc588.png

@@ -196,10 +196,10 @@ deploy.yml  inventory  roles
 (.py3-a2.5-env) [ansible@localhost test_playbook]$ ansible-playbook -i inventory/testenv ./deploy.yml 
 ```
 部署完成
-[![ansible9.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982d357.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982d357.png)
+[![ansible9.png](/images/recovered/e5573562bd456bac4fb1.png)](/images/recovered/e5573562bd456bac4fb1.png)
 
 登录目标主机查看
-[![ansible10.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982d3ec.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982d3ec.png)
+[![ansible10.png](/images/recovered/082d562eaff2eeb1866c.png)](/images/recovered/082d562eaff2eeb1866c.png)
 
 ### 远程文件创建
 编辑任务文件
@@ -212,10 +212,10 @@ deploy.yml  inventory  roles
   file: 'path=/root/foo.txt state=touch mode=0755 owner=foo group=foo'
 ```
 执行文件
-[![ansible11.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982c79f.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982c79f.png)
+[![ansible11.png](/images/recovered/72a8d42d932fc19d3f8f.png)](/images/recovered/72a8d42d932fc19d3f8f.png)
 
 执行成功，登录目标主机查看是否创建
-[![ansible12.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982b4a2.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982b4a2.png)
+[![ansible12.png](/images/recovered/0ef97adb7830e856e3d4.png)](/images/recovered/0ef97adb7830e856e3d4.png)
 
 ### 远程文件拷贝
 新建存放文件目录
@@ -252,7 +252,7 @@ remote_src=no定义为文件传输，并设置644权限，指定强制执行，�
   copy: 'remote_src=no src=roles/testbox/files/foo.sh dest=/root/foo.sh mode=0644 force=yes'
 ```
 执行成功
-[![ansible13.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982d7ce.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982d7ce.png)
+[![ansible13.png](/images/recovered/1e640757beb2f000c65c.png)](/images/recovered/1e640757beb2f000c65c.png)
 
 ### 判断文件是否存在
 在`roles/testbox/tasks/main.yml`添加任务如下
@@ -268,7 +268,7 @@ remote_src=no定义为文件传输，并设置644权限，指定强制执行，�
 ```
 
 执行，成功输出信息
-[![ansible14.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982cf76.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982cf76.png)
+[![ansible14.png](/images/recovered/e7092eb484e79a0ee427.png)](/images/recovered/e7092eb484e79a0ee427.png)
 
 ### 远程执行命令
 在`roles/testbox/tasks/main.yml`添加任务如下
@@ -277,7 +277,7 @@ remote_src=no定义为文件传输，并设置644权限，指定强制执行，�
   command: 'sh /root/foo.sh'
 ```
 执行成功
-[![ansible15.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982cf7a.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d982cf7a.png)
+[![ansible15.png](/images/recovered/fa322d76f06095100c00.png)](/images/recovered/fa322d76f06095100c00.png)
 
 ### template模块任务
 环境变量配置文件中`inventory/testenv`添加如下命令
@@ -325,10 +325,10 @@ events {
   service: name=nginx state=started
 ```
 所有任务列表
-[![ansible16.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d9829953.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d9829953.png)
+[![ansible16.png](/images/recovered/2f7fa8d7e8e4929769a5.png)](/images/recovered/2f7fa8d7e8e4929769a5.png)
 
 查看变量参数是否应用成功
-[![ansible18.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d9826462.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d9826462.png)
+[![ansible18.png](/images/recovered/4e0dfee39ff78373f0eb.png)](/images/recovered/4e0dfee39ff78373f0eb.png)
 
 `ssh root@test.fjy8018.top ps -ef | grep nginx`查看nginx是否启动成功
-[![ansible19.png](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d9f492f9.png)](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/5b810d9f492f9.png)
+[![ansible19.png](/images/recovered/e8f49b9141c14617e14c.png)](/images/recovered/e8f49b9141c14617e14c.png)

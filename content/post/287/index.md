@@ -89,7 +89,7 @@ graph TD
 
 - 初始化（Initialization）
 
-![img](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1725970963664-0942df87-bda1-4380-b3a4-807445188655.png)
+![img](/images/recovered/b13d09447dc15b102853.png)
 
 # 核心方法
 
@@ -265,7 +265,7 @@ graph TD
 
 OSGi是一个 Java 模块化系统和服务平台，它提供了一种动态管理模块（Bundle）的方法，支持不停止应用程序的情况下动态更新、添加或删除模块。
 
-![img](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/37c6000e8f5c80881925839c8e32d498.svg)
+![img](/images/recovered/57b2b9aa9380a1beac1a.svg)
 
 以Apache Felix实现的OSGi为例，其查找逻辑如下
 
@@ -400,7 +400,7 @@ SofaArk是蚂蚁集团开源轻量类隔离框架
 
 其定义3个概念：Ark Container，Ark Plugin，Ark Biz。
 
-![img](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1523868989241-f50695ed-dca0-4bf7-a6a9-afe07c2ade76.png)
+![img](/images/recovered/86bfcb7dc89344565e4d.png)
 
 - sofaark通过maven插件在打包时将插件启动器、导出类、导入类、导出资源、导入资源、优先级等元信息保存在 Ark Plugin 中的 META-INF/MANIFEST.MF 中，每个ark plugin都有独立的类加载器读取插件元信息和类资源导入导出关系。插件之间可以互相委托加载类。
 - ark biz只能加载自己模块的类信息，也可以委托plugin加载所需的类。

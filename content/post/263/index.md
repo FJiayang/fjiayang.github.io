@@ -103,7 +103,7 @@
 
 [kubesphere](https://kubesphere.io/) — The Kubernetes platform tailored for hybrid multicloud
 
-![kubesphere](https://kubesphere.io/images/logo.svg)
+![kubesphere](/images/recovered/10394e73acf79a23f18c.svg)
 
 
 

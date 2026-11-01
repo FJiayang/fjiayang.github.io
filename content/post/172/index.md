@@ -71,5 +71,5 @@ server:
 ![请输入图片描述][2]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/JwhBna.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/JwhSDd.png
+  [1]: /images/recovered/8c1332eac187ab1677c2.png
+  [2]: /images/recovered/e7e5c9f6cf08d84d06d2.png

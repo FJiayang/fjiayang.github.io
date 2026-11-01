@@ -16,7 +16,7 @@
     "Kubernetes",
     "Vagrant"
   ],
-  "image": "https://s2.ax1x.com/2019/11/27/QCRTo9.jpg",
+  "image": "/images/recovered/77ab86c22b65cec04f2d.jpg",
   "math": false
 }
 

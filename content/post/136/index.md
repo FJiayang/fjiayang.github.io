@@ -51,12 +51,12 @@
 ![最终效果][9]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5XvL.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5RMR.png
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5pYv.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5jjD.png
+  [1]: /images/recovered/aa0e29e4a7356e2dd92b.png
+  [2]: /images/recovered/e3da3dcda640f04e7ba8.png
+  [3]: /images/recovered/2118b645dbf7e92a7571.png
+  [4]: /images/recovered/36876fdad5ef9cd899af.png
   [5]: /images/recovered/f257c41e141ceda08e4e.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5Sui.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2J5P6w.png
+  [6]: /images/recovered/1538a1ee2628cfc1bb4b.png
+  [7]: /images/recovered/7bd3f06abf6ed2b73237.png
   [8]: https://www.fjy8018.xin/
-  [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Jari7.png
+  [9]: /images/recovered/c9891992c05c93f09d4b.png

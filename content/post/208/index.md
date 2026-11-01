@@ -39,7 +39,7 @@
 
 均无效
 
-![1564288081390.png](https://i.loli.net/2019/07/28/5d3d2d216a5f496230.png)
+![1564288081390.png](/images/recovered/b7248d8b4f8ceece2387.png)
 
 
 
@@ -88,7 +88,7 @@ ERROR: Job failed: exit code 1
 
 该错误在早期版本就出现过，但与本次情况均不符合，以往通过挂载容器路径即可，而本次情况是`runner`服务和构建脚本均不变的情况下突然出现构建失败的情况
 
-![1564288454164.png](https://i.loli.net/2019/07/28/5d3d2d21691a426024.png)
+![1564288454164.png](/images/recovered/7c3ea7bcb70669e2e37f.png)
 
 
 
@@ -96,17 +96,17 @@ ERROR: Job failed: exit code 1
 
 [Jobs failing with "Cannot connect to the Docker daemon"](https://gitlab.com/gitlab-org/gitlab-ce/issues/64959)
 
-![1564288560626.png](https://i.loli.net/2019/07/28/5d3d2d212457666352.png)
+![1564288560626.png](/images/recovered/468f76a26f792aad8aa0.png)
 
 官方开发者解释 当天几个小时前发布的新版本 `19.03`默认开启了`TLS`确实会影响已有的`Docker in Docker `模式的构建环境
 
-![1564288621569.png](https://i.loli.net/2019/07/28/5d3d2d2147bd260875.png)
+![1564288621569.png](/images/recovered/19a25aa3b20ff662245b.png)
 
 
 
 同时官方开发人员建议自行部署的`runner`建议开启`TLS`功能
 
-![1564288718662.png](https://i.loli.net/2019/07/28/5d3d2d214685a34515.png)
+![1564288718662.png](/images/recovered/8bad00b140945c32db00.png)
 
 
 
@@ -114,7 +114,7 @@ ERROR: Job failed: exit code 1
 
 [Update DinD example for 19.03](https://gitlab.com/gitlab-org/gitlab-ce/merge_requests/31051#note_194866340)
 
-![1564288829375.png](https://i.loli.net/2019/07/28/5d3d2d21539a832091.png)
+![1564288829375.png](/images/recovered/473c520a4e2060e3aa24.png)
 
 
 
@@ -353,7 +353,7 @@ services:
 
 按照社区配置修改后重新构建则成功
 
-![1564290149104.png](https://i.loli.net/2019/07/28/5d3d2d213b81385192.png)
+![1564290149104.png](/images/recovered/dacd27e92b4b701b195a.png)
 
 
 

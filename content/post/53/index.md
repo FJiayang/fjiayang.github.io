@@ -145,26 +145,26 @@ nextcloud还需其他的PHP扩展环境，运行命令```apt-get  install php-my
 
  [1]: /images/recovered/105114d1832cde042c55.png
  [2]: /images/recovered/59e081402b983d81bef7.png
- [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygYhe.png
- [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygd9s.png
- [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygKeN.png
- [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykJBT.png
- [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykyw7.png
- [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk2A6.png
- [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykgJM.png
- [10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykk4t.png
- [11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yktbF.png
- [12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykZKr.png
- [13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykflJ.png
- [14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk6h0.png
- [15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykIL1.png
- [16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykeAa.png
- [17]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykCJD.png
- [18]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yklFu.png
- [19]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykc4v.png
- [20]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk1KL.png
- [21]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykmji.png
+ [3]: /images/recovered/e6f0d50d0edcb945e1bb.png
+ [4]: /images/recovered/cd8c0bed844ad2b1416c.png
+ [5]: /images/recovered/1afa3bb193b45d4cb084.png
+ [6]: /images/recovered/05fe83fef07308816e5f.png
+ [7]: /images/recovered/0a556186253b773cc071.png
+ [8]: /images/recovered/9284ef0e4e90cf5b130d.png
+ [9]: /images/recovered/d8f584d67b75215be799.png
+ [10]: /images/recovered/b21cfc58084573a7cd27.png
+ [11]: /images/recovered/749e728bf5d925de7481.png
+ [12]: /images/recovered/d857a52f094f9e9c7fdf.png
+ [13]: /images/recovered/55a1d58ec348df35d4cb.png
+ [14]: /images/recovered/7a8504a4326e00a1d7c7.png
+ [15]: /images/recovered/e9b215ab12654e5c4fd0.png
+ [16]: /images/recovered/079c8838bf10db7354cf.png
+ [17]: /images/recovered/0436f48fea8da3727b8a.png
+ [18]: /images/recovered/4097d19ee3dd9205b0a6.png
+ [19]: /images/recovered/cc287e3af62ebaa896ef.png
+ [20]: /images/recovered/326584abee4bfe33c859.png
+ [21]: /images/recovered/09a51d091ebf62e6c77c.png
  [22]: /images/recovered/31df481befd24dd07644.png
- [23]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykHvw.png
- [24]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykGlW.png
+ [23]: /images/recovered/c077cb22b3a6f435cd44.png
+ [24]: /images/recovered/bc32fe50ebc22e684641.png
  [25]: /images/recovered/927ab954b160a4adc75a.png

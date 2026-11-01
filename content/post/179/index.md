@@ -33,29 +33,29 @@ useradd jenkins-docker
 ```
 docker run -p 8081:8080 -p 50001:50000  -v /home/jenkins-docker:/var/jenkins_home hub.c.163.com/library/jenkins:latest
 ```
-[![Jenkins40.png](https://i.loli.net/2018/08/26/5b824d9100b45.png)](https://i.loli.net/2018/08/26/5b824d9100b45.png)
+[![Jenkins40.png](/images/recovered/ce6a0b24ea8588369f4a.png)](/images/recovered/ce6a0b24ea8588369f4a.png)
 
 命令中没有使用后台启动为了查看输出的管理员密码
-[![Jenkins41.png](https://i.loli.net/2018/08/26/5b8250976f9d7.png)](https://i.loli.net/2018/08/26/5b8250976f9d7.png)
+[![Jenkins41.png](/images/recovered/3e99fd6f0d8484c3a631.png)](/images/recovered/3e99fd6f0d8484c3a631.png)
 
 若使用了挂载目录也可以在挂载的目录下查看
-[![Jenkins43.png](https://i.loli.net/2018/08/26/5b82524685344.png)](https://i.loli.net/2018/08/26/5b82524685344.png)
+[![Jenkins43.png](/images/recovered/75c05be9a5819682b2fa.png)](/images/recovered/75c05be9a5819682b2fa.png)
 
 访问web界面，输入密码即可
-[![Jenkins42.png](https://i.loli.net/2018/08/26/5b825097716e7.png)](https://i.loli.net/2018/08/26/5b825097716e7.png)
+[![Jenkins42.png](/images/recovered/ad9abf861ecf9e9a628b.png)](/images/recovered/ad9abf861ecf9e9a628b.png)
 
 # 使用原生系统安装
 ## 基础环境
 CentOS7 1804最小安装
 
 安装基础wget工具`yum install -y wget`
-[![Jenkins1.png](https://i.loli.net/2018/08/26/5b821cbd19e26.png)](https://i.loli.net/2018/08/26/5b821cbd19e26.png)
+[![Jenkins1.png](/images/recovered/ff745be6e29d01de49ed.png)](/images/recovered/ff745be6e29d01de49ed.png)
 
 ### 导入仓库源
 ```
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo
 ```
-[![Jenkins2.png](https://i.loli.net/2018/08/26/5b821cbd15815.png)](https://i.loli.net/2018/08/26/5b821cbd15815.png)
+[![Jenkins2.png](/images/recovered/ac7d487972b37a4c5945.png)](/images/recovered/ac7d487972b37a4c5945.png)
 
 下载并导入仓库的key，用于验证仓库安全性
 ```
@@ -118,7 +118,7 @@ Disabled
 ```
 yum -y install jenkins
 ```
-[![Jenkins3.png](https://i.loli.net/2018/08/26/5b821cbd1918e.png)](https://i.loli.net/2018/08/26/5b821cbd1918e.png)
+[![Jenkins3.png](/images/recovered/000726f7d2b37caf2f7b.png)](/images/recovered/000726f7d2b37caf2f7b.png)
 安装后会自动添加jenkins，此时可以自定义发布用户
 ```
 [root@localhost ~]# useradd jenkins
@@ -131,7 +131,7 @@ useradd：用户“jenkins”已存在
 [root@localhost ~]# vi /etc/sysconfig/jenkins 
 ```
 将用户改为新建的用户`JENKINS_USER="deploy"`，端口号默认为8080
-[![Jenkins4.png](https://i.loli.net/2018/08/26/5b821cbd19e34.png)](https://i.loli.net/2018/08/26/5b821cbd19e34.png)
+[![Jenkins4.png](/images/recovered/7be7ece92d283e3cff9f.png)](/images/recovered/7be7ece92d283e3cff9f.png)
 
 修改log目录和权限
 ```
@@ -157,16 +157,16 @@ java    1683 deploy  161u  IPv6  24353      0t0  TCP *:webcache (LISTEN)
 ```
 ### 访问web界面
 地址为ip:8080
-[![Jenkins5.png](https://i.loli.net/2018/08/26/5b821cbd1f054.png)](https://i.loli.net/2018/08/26/5b821cbd1f054.png)
+[![Jenkins5.png](/images/recovered/cf398b153e1b5256f105.png)](/images/recovered/cf398b153e1b5256f105.png)
 
 去提示的目录下查找密码
-[![Jenkins6.png](https://i.loli.net/2018/08/26/5b821cbd178fd.png)](https://i.loli.net/2018/08/26/5b821cbd178fd.png)
+[![Jenkins6.png](/images/recovered/f0cd75e6d05cc0bda1e5.png)](/images/recovered/f0cd75e6d05cc0bda1e5.png)
 
 安装推荐配置插件
-[![Jenkins7.png](https://i.loli.net/2018/08/26/5b821cbd1fedb.png)](https://i.loli.net/2018/08/26/5b821cbd1fedb.png)
+[![Jenkins7.png](/images/recovered/1600db1f07ec35bb9d97.png)](/images/recovered/1600db1f07ec35bb9d97.png)
 
 新建管理员用户
-[![Jenkins8.png](https://i.loli.net/2018/08/26/5b821cbd1c3bc.png)](https://i.loli.net/2018/08/26/5b821cbd1c3bc.png)
+[![Jenkins8.png](/images/recovered/d133383c5bd3ef0650f5.png)](/images/recovered/d133383c5bd3ef0650f5.png)
 
 安装成功
-[![Jenkins9.png](https://i.loli.net/2018/08/26/5b821cbd127fc.png)](https://i.loli.net/2018/08/26/5b821cbd127fc.png)
+[![Jenkins9.png](/images/recovered/41756cf978d17b335e36.png)](/images/recovered/41756cf978d17b335e36.png)

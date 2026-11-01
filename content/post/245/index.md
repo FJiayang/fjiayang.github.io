@@ -112,99 +112,99 @@
 
 操作日志记录
 
-![1588579947777](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588579947777.png)
+![1588579947777](/images/recovered/c43bfe9a313e60517294.png)
 
 错误日志系统内采集
 
-![1588581001650](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581001650.png)
+![1588581001650](/images/recovered/2cb6f5b0e943a9953639.png)
 
 Turbine集成熔断监控
 
-![1588580468453](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580468453.png)
+![1588580468453](/images/recovered/aafe3a6d9b9c5d636c49.png)
 
 通知发布
 
-![1588579968512](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588579968512.png)
+![1588579968512](/images/recovered/2a1ffdd6eb2bcc480427.png)
 
 ### 普通用户
 
 主题切换
 
-![1588579979531](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588579979531.png)
+![1588579979531](/images/recovered/a604ca052708dd6888fd.png)
 
 微信扫码注册
 
-![1588580114649](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580114649.png)
+![1588580114649](/images/recovered/3d863d716b8440a26023.png)
 
 补全信息
 
-![1588580190679](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580190679.png)
+![1588580190679](/images/recovered/a736815da2f753f94cb0.png)
 
 主页资源权限控制
 
-![1588580246683](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580246683.png)
+![1588580246683](/images/recovered/92eeb43622eb3cd1faf0.png)
 
 
 
-![1588584226440](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588584226440.png)
+![1588584226440](/images/recovered/cd86a33c6e684e8990fd.png)
 
 菜单资源权限控制
 
-![1588580268145](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580268145.png)
+![1588580268145](/images/recovered/12bbd8c0b809c1cdd07c.png)
 
 Excel导入导出
 
-![1588580286188](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580286188.png)
+![1588580286188](/images/recovered/7eca89f6f5118cdf1d76.png)
 
-![1588580307993](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580307993.png)
+![1588580307993](/images/recovered/3545926b5793f96da641.png)
 
-![1588580302209](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580302209.png)
+![1588580302209](/images/recovered/d8b63dbef46494c28918.png)
 
 密码管理
 
-![1588580328939](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580328939.png)
+![1588580328939](/images/recovered/637fe1cf991f6400b49c.png)
 
-![1588580345585](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580345585.png)
-
-
-
-![1588580360145](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580360145.png)
+![1588580345585](/images/recovered/6bc7e24e4c55e3842c0c.png)
 
 
 
-![1588580378111](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580378111.png)
+![1588580360145](/images/recovered/34b9eac6ed4618b0f08b.png)
+
+
+
+![1588580378111](/images/recovered/dfdaf52c0401f8d1411f.png)
 
 
 
 
 
-![1588580423240](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580423240.png)
+![1588580423240](/images/recovered/f1559bad966e0ad8e4b5.png)
 
 ### 运维
 
 Nacos注册中心
 
-![1588581761146](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581761146.png)
+![1588581761146](/images/recovered/08bfd7b6a69ca20e7743.png)
 
 Sentinel限流管控
 
-![image-20200507154857570](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200507154857570.png)
+![image-20200507154857570](/images/recovered/21aafa66225f799d52e6.png)
 
 SpringBoot Admin应用内指标监控
 
-![image-20200521161617030](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200521161617030.png)
+![image-20200521161617030](/images/recovered/64779ebf78c1e3daaeae.png)
 
-![image-20200521161630570](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200521161630570.png)
+![image-20200521161630570](/images/recovered/cd44b36c7a7e7940f696.png)
 
-![image-20200521161745282](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200521161745282.png)
+![image-20200521161745282](/images/recovered/634b99d7cd56429ae647.png)
 
 Harbor内网私服
 
-![1588584874907](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588584874907.png)
+![1588584874907](/images/recovered/f4af39dfb2adfef57723.png)
 
 Nexus内网私服，提供maven和npm包
 
-![1588584922069](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588584922069.png)
+![1588584922069](/images/recovered/cbceb04b6ea9ca2f8943.png)
 
 
 
@@ -214,79 +214,79 @@ graylog日志采集
 
 三节点ES集群支持日志存储
 
-![1588581945300](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581945300.png)
+![1588581945300](/images/recovered/d08baf7b74e14b450414.png)
 
 
 
-![1588580536165](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580536165.png)
+![1588580536165](/images/recovered/c509812b159072bcd0b1.png)
 
 耗时统计
 
-![1588580556444](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580556444.png)
+![1588580556444](/images/recovered/7f8376bda41c8284233b.png)
 
 新UI风格
 
-![1588580850602](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580850602.png)
+![1588580850602](/images/recovered/a767be4907436f520f82.png)
 
 动态服务依赖关系图
 
-![1588580591683](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580591683.png)
+![1588580591683](/images/recovered/6b57c2751e99f19f3ec6.png)
 
 新UI依赖图
 
-![1588580908961](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580908961.png)
+![1588580908961](/images/recovered/7735db8b7e95ad568a15.png)
 
 Prometheus指标采集
 
-![image-20200507154338613](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200507154338613.png)
+![image-20200507154338613](/images/recovered/498d28a442d05b892d88.png)
 
 Grafana资源指标监控
 
-![1588580674840](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580674840.png)
+![1588580674840](/images/recovered/c6302cbf2b6ce97ce82a.png)
 
-![1588580713872](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580713872.png)
+![1588580713872](/images/recovered/a09ba7f7d85c1585a7c7.png)
 
 Kuberneties服务部署监控
 
-![1588580784287](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580784287.png)
+![1588580784287](/images/recovered/dd304aa70e27542651cf.png)
 
 ### 开发过程工具
 
 Gitlab CICD流水线
 
-![1588580803424](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580803424.png)
+![1588580803424](/images/recovered/eebf8d80d1056ebdd764.png)
 
-![1588580814213](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588580814213.png)
+![1588580814213](/images/recovered/a3af8b1b9054a0cb01b6.png)
 
-![1588581090189](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581090189.png)
+![1588581090189](/images/recovered/dce1a498a26f8a371974.png)
 
 看板
 
-![1588581109459](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581109459.png)
+![1588581109459](/images/recovered/034bbfd23eb7827a0631.png)
 
 
 
-![1588581124259](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581124259.png)
+![1588581124259](/images/recovered/565acfada0d4ff3b6f9b.png)
 
 功能开发周期分析
 
-![1588584966734](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588584966734.png)
+![1588584966734](/images/recovered/0241e5e66bd4c33ac8e8.png)
 
 gitlab集成k8s部署环境
 
-![1588581135887](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588581135887.png)
+![1588581135887](/images/recovered/7800f1281a485a6dabd7.png)
 
 Sonarqube代码质量检查
 
-![1588584033088](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1588584033088.png)
+![1588584033088](/images/recovered/307c794fb377429087b4.png)
 
 分支图
 
-![image-20200507155216967](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200507155216967.png)
+![image-20200507155216967](/images/recovered/6767661518310ccc0b2f.png)
 
 工程模块图
 
-![image-20200507155249468](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200507155249468.png)
+![image-20200507155249468](/images/recovered/3e1c9f57065d4a8d7d72.png)
 
 
 

@@ -32,7 +32,7 @@
 
 默认套餐对自建服务器的吸引不大而且和其他服务提供商产品类型差不多，适用于视频搬运。另外，因为自建服务器成本和套餐差距不大，除了需要自己维护之外没太大区别，而且自建服务器还有台服务器可以折腾
 
-[![aaex7.png](https://i.loli.net/2018/12/09/5c0c8412d2b5e.png)](https://i.loli.net/2018/12/09/5c0c8412d2b5e.png)
+[![aaex7.png](/images/recovered/83e80e7b79538e18171d.png)](/images/recovered/83e80e7b79538e18171d.png)
 
 对于本人来说一般就偶尔看个视频，自建服务器一个月才3-5刀，还不限流量，但缺点也是节点有限，而且带宽流量极大浪费，然后发现了另一个隐藏套餐
 
@@ -40,29 +40,29 @@
 
 这个就比较有意思了，按量付费，和买运营商流量包一样，按需购买，还不清零，永久有效，对于查阅资料，游戏玩家来说还是非常友好的，而且所有节点均可用
 
-[![aaex6.png](https://i.loli.net/2018/12/09/5c0c8412d4b8f.png)](https://i.loli.net/2018/12/09/5c0c8412d4b8f.png)
+[![aaex6.png](/images/recovered/f0eaf214bd51c6118df6.png)](/images/recovered/f0eaf214bd51c6118df6.png)
 
-[![aaex8.png](https://i.loli.net/2018/12/09/5c0c8412679ee.png)](https://i.loli.net/2018/12/09/5c0c8412679ee.png)
+[![aaex8.png](/images/recovered/bbfbc8ab9bbbd2711ddb.png)](/images/recovered/bbfbc8ab9bbbd2711ddb.png)
 
 本人试了下买了200多G的流量套餐100块，38个节点随便用，全平台支持（好评，特别是苹果用户，下载客户端非常麻烦，而且一般还要付费），AAEX官方提供appleID下载梯子app（满分）
 
-[![aaex5.png](https://i.loli.net/2018/12/09/5c0c8412623bf.png)](https://i.loli.net/2018/12/09/5c0c8412623bf.png)
+[![aaex5.png](/images/recovered/4b19d57a5493d65579ec.png)](/images/recovered/4b19d57a5493d65579ec.png)
 
 ## 效果
 
 常见的控制台，多个香港节点，延迟低带宽大
 
-[![aaex4.png](https://i.loli.net/2018/12/09/5c0c8412cfe7a.png)](https://i.loli.net/2018/12/09/5c0c8412cfe7a.png)
+[![aaex4.png](/images/recovered/af63f42fac9bd00ed404.png)](/images/recovered/af63f42fac9bd00ed404.png)
 
 使用RSS订阅客户端自动更新节点，同时带有流量统计，比原生的SSR体验好了不少
 
-[![aaex2.png](https://i.loli.net/2018/12/09/5c0c8412c9acc.png)](https://i.loli.net/2018/12/09/5c0c8412c9acc.png)
+[![aaex2.png](/images/recovered/8f5cd0dea8496ea162a2.png)](/images/recovered/8f5cd0dea8496ea162a2.png)
 
 全节点均可用
 
 
 
-[![aaex3.png](https://i.loli.net/2018/12/09/5c0c8412d2363.png)](https://i.loli.net/2018/12/09/5c0c8412d2363.png)
+[![aaex3.png](/images/recovered/0c3560914945f4836cf0.png)](/images/recovered/0c3560914945f4836cf0.png)
 
 通过在线视频和网页测试基本秒开，在线4K无压力，带宽也能跑满本地带宽（20M）
 

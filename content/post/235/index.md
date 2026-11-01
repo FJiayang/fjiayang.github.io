@@ -119,7 +119,7 @@ public interface DBTestRepository extends JpaRepository<DBTest,Integer> {}
 
 参考资料：[jdbcTemplate.batchUpdate在批量执行的时候，性能差没有效果，看看怎么解决的。](https://blog.csdn.net/shushugood/article/details/81005718)
 
-![1577623991663](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577623991663.png)
+![1577623991663](/images/recovered/570ce8f60a535dc9494a.png)
 
 ```yaml
 spring:

@@ -78,15 +78,15 @@
 
 2019年7月将手上的一个小型项目尝试使用完整的`DevOps`流程开发，开发小组选择敏捷开发方法，所有的开发工具都尽量的适应快速的需求变化，同时投入非常少量的开发人员，分工明确，从一开始一周发布一次到最后一天可以发布多次
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565881026961.png)
+![](/images/recovered/2a647d8a097f10998770.png)
 
 开发人员已经完全从运维中脱离，全团队没有专门的运维人员，极大的提高了开发效率，精简了人员构成，一旦构建失败，开发人员可以根据邮件通知的内容排查上线失败问题，调整代码和配置后重新提交
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565881202626.png)
+![](/images/recovered/21e5023b138055e4556a.png)
 
 面板提供了流水线统计图，如果出现频繁的失败还是需要人工介入，查看问题原因
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565881072564.png)
+![](/images/recovered/ac9a1a032981c1223169.png)
 
 ## 当前的问题
 

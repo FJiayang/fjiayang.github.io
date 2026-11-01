@@ -28,11 +28,11 @@ wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/scr
 
 HiFormance 亚洲优化线路，由于HiFormance 亚洲优化线路虚拟化平台是OpenVZ+lxc，故无法安装BBR加速
 
-[![vps6.png](https://i.loli.net/2018/09/13/5b99ea259b4f6.png)](https://i.loli.net/2018/09/13/5b99ea259b4f6.png)
+[![vps6.png](/images/recovered/e31226a40f4d33093747.png)](/images/recovered/e31226a40f4d33093747.png)
 
 HiFormance 普通线路，启用了BBR加速
 
-[![vps4.png](https://i.loli.net/2018/09/13/5b99ebdd050a0.png)](https://i.loli.net/2018/09/13/5b99ebdd050a0.png)
+[![vps4.png](/images/recovered/267e57192914e689f428.png)](/images/recovered/267e57192914e689f428.png)
 
 ## KVM
 
@@ -40,14 +40,14 @@ HiFormance 普通线路，启用了BBR加速
 
 搬瓦工VPS，亚洲优化，启用BBR
 
-[![vps3.png](https://i.loli.net/2018/09/13/5b99eccc9c3e7.png)](https://i.loli.net/2018/09/13/5b99eccc9c3e7.png)
+[![vps3.png](/images/recovered/849506318170d7f8ded7.png)](/images/recovered/849506318170d7f8ded7.png)
 
 阿里云ECS 1Mbps带宽，识别正常
 
-[![vps2.png](https://i.loli.net/2018/09/13/5b99eda58e8b5.png)](https://i.loli.net/2018/09/13/5b99eda58e8b5.png)
+[![vps2.png](/images/recovered/7269ae8b4d8414c28c74.png)](/images/recovered/7269ae8b4d8414c28c74.png)
 
 ## 物理机
 
 识别平台为独立主机
 
-[![vps1.png](https://i.loli.net/2018/09/13/5b99dcd864753.png)](https://i.loli.net/2018/09/13/5b99dcd864753.png)
+[![vps1.png](/images/recovered/3985c5c0887f57e74d8b.png)](/images/recovered/3985c5c0887f57e74d8b.png)

@@ -66,7 +66,7 @@ reboot
 
 进入[官网](https://www.percona.com/downloads/)下载5.7版本的Percona，注意，此处下载的是集群版本，下载后分发到所有集群节点执行相同的安装和配置操作
 
-![1577621346428](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1577621346428.png)
+![1577621346428](/images/recovered/e19e9c3b2518db1daa32.png)
 
 - 进入RPM文件目录，执行安装命令
 

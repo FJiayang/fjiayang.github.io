@@ -28,7 +28,7 @@
 - 监控每个容器基础指标
 - 监控k8s集群组件基础指标
 
-![Prometheus architecture](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/architecture.png)
+![Prometheus architecture](/images/recovered/f1d8eab0237042b0edfb.png)
 
 ## 基础环境
 
@@ -60,7 +60,7 @@ charts官方仓库：<https://github.com/helm/charts>
 
 - [Unable to Deploy on Polyaxon with helm v2.16.0 (No kind Job is registered for version batch/v1) #601](https://github.com/polyaxon/polyaxon/issues/601)
 
-![1573557182761](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573557182761.png)
+![1573557182761](/images/recovered/f769516369b4972bed4f.png)
 
 
 
@@ -620,19 +620,19 @@ spec:
 
 访问Prometheus web站点，首页支持执行`PromeQL`查询采集指标信息
 
-![1573563429972](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573563429972.png)
+![1573563429972](/images/recovered/dd75b51173f6ec3247a9.png)
 
 
 
 访问target可见所有指标采集器都处于正常状态
 
-![1573562831317](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573562831317.png)
+![1573562831317](/images/recovered/9714b5aad03d709b5ddf.png)
 
 
 
 访问监控与告警可查看所有告警规则
 
-![1573563374318](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573563374318.png)
+![1573563374318](/images/recovered/a05495d563b43bf801a2.png)
 
 
 
@@ -640,7 +640,7 @@ spec:
 
 首次访问会要求登陆
 
-![1573563646221](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573563646221.png)
+![1573563646221](/images/recovered/3f487b9f3cbcfcdc9c19.png)
 
 #### 查看用户名和密码
 
@@ -712,20 +712,20 @@ type: Opaque
 
 登录后可查看`Grafana`已经被配置好的多种可视化面板提供指标展示
 
-![1573563198155](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573563198155.png)
+![1573563198155](/images/recovered/8e8bbf954f6973001bfd.png)
 
 点击左上角即可查看已经配置好的指标展示面板
 
-![1573563283684](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573563283684.png)
+![1573563283684](/images/recovered/e9768111ec23fc8f96d4.png)
 
 Etcd监控面板
 
-![1573563299117](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573563299117.png)
+![1573563299117](/images/recovered/027e5b31b72f4905e9dd.png)
 
 节点监控
 
-![1573564479823](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573564479823.png)
+![1573564479823](/images/recovered/b1986cea34ae260f9bf4.png)
 
 计算资源监控
 
-![1573564530686](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1573564530686.png)
+![1573564530686](/images/recovered/6b066788b3dae38ac07c.png)

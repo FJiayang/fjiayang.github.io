@@ -30,7 +30,7 @@
 
 #### 安装node环境 ####
 elasticsearch-head插件依赖node环境来启动，可以通过官方node.js安装包安装，也可以通过宝塔自带的PM2管理器安装，此处安装宝塔的PM2管理器
-![请输入图片描述](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2a5GKN.png)
+![请输入图片描述](/images/recovered/b00e7a975241e8d7b6e1.png)
 
 安装后检查当前环境中的node版本，若装好后node命令无法使用可以尝试重启服务器或者让配置环境变量生效
 ```bash
@@ -38,7 +38,7 @@ elasticsearch-head插件依赖node环境来启动，可以通过官方node.js安
     v8.11.2
 ```
 将两个下载好的文件用宝塔上传到CentOS 7环境中并解压
-![请输入图片描述](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2a5mJj.png)
+![请输入图片描述](/images/recovered/30c8bbb2de52884ab79b.png)
 
 ## 单节点环境配置 ##
 ### elasticsearch单节点配置 ###
@@ -137,18 +137,18 @@ elasticsearch默认不支持root用户启动，故要新建用户并对运行目
 
 ### elasticsearch-head插件启动 ###
 进入`elasticsearch-head`目录，使用`npm run start`启动node服务即可
-![请输入图片描述](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2a514c.png)
+![请输入图片描述](/images/recovered/20977c041ba687e37801.png)
 
 ## 服务检验 ##
 首先使用宝塔开放相关防火墙端口，
 
-![请输入图片描述](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2a54bK.png)
+![请输入图片描述](/images/recovered/519206c3949f515a6355.png)
 
 直接访问es服务，浏览器默认显示为原生json格式，此处使用chrome浏览器的`JSON viewer`进行了美化
-![请输入图片描述](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2a5Mf6.png)
+![请输入图片描述](/images/recovered/873fcb7205e2daeef46f.png)
 
 访问elasticsearch-head插件，此处截图为配置好集群后的截图
-![请输入图片描述](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2a5OAT.png)
+![请输入图片描述](/images/recovered/b8f31752229991a8d19e.png)
 
 elasticsearch环境搭建完成！
 

@@ -66,7 +66,7 @@
 
 类图
 
-![image-20200228111432933](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228111432933.png)
+![image-20200228111432933](/images/recovered/92dc0753a3e75dcb0152.png)
 
 
 
@@ -378,7 +378,7 @@ public class GiftExchangeService {
 
 类图
 
-![image-20200228112525024](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228112525024.png)
+![image-20200228112525024](/images/recovered/ea17d66fca068944b377.png)
 
 此时业务层无需关心子系统，只和外观类通信
 
@@ -429,7 +429,7 @@ public class GiftExchangeService {
 
 类图
 
-![image-20200228143741677](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228143741677.png)
+![image-20200228143741677](/images/recovered/d0e57485d5d54461af77.png)
 
 `Battercake`
 
@@ -541,7 +541,7 @@ class BattercakeTest {
 
 类图
 
-![image-20200228143941570](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228143941570.png)
+![image-20200228143941570](/images/recovered/cc67950d4f5d56945d1c.png)
 
 所有类的抽象
 
@@ -778,7 +778,7 @@ class BattercakeTest {
 
 类图
 
-![image-20200228145631132](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228145631132.png)
+![image-20200228145631132](/images/recovered/170cf7bb2b92d64154db.png)
 
 220V
 
@@ -882,7 +882,7 @@ class AdapterTest {
 
 类图
 
-![image-20200228145904885](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228145904885.png)
+![image-20200228145904885](/images/recovered/4a0b41e0ec5e7bba47d8.png)
 
 目标类实现接口
 
@@ -1016,7 +1016,7 @@ class AdapterTest {
 
 类图
 
-![image-20200228150732030](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228150732030.png)
+![image-20200228150732030](/images/recovered/8769f204671bf3278022.png)
 
 `Target`、`Adaptee`、`ConcreteTarget`都与类适配器一致、`Adapter`修改如下
 
@@ -1124,7 +1124,7 @@ class AdapterTest {
 
 类图
 
-![image-20200228154426599](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200228154426599.png)
+![image-20200228154426599](/images/recovered/2232092f88cc3a91bd32.png)
 
 
 
@@ -1317,7 +1317,7 @@ class EmployeeTest {
 
 类图
 
-![image-20200229092541389](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200229092541389.png)
+![image-20200229092541389](/images/recovered/45730799722d7187d147.png)
 
 课程抽象类
 
@@ -1572,7 +1572,7 @@ class CatalogComponentTest {
 
 类图
 
-![image-20200229143734541](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200229143734541.png)
+![image-20200229143734541](/images/recovered/e1c36424dd8195f25bdb.png)
 
 桥接模式核心在于将抽象与实现通过组合模式连接，使抽象和实现都可以自由扩展
 
@@ -2021,7 +2021,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
 
 类图
 
-![image-20200302101343908](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200302101343908.png)
+![image-20200302101343908](/images/recovered/bbe8b273bc6ffa268051.png)
 
 订单
 
@@ -2258,7 +2258,7 @@ class OrderServiceStaticProxyTest {
 
 类图
 
-![image-20200303161327080](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200303161327080.png)
+![image-20200303161327080](/images/recovered/ea89337bfaa6564dd521.png)
 
 动态代理类
 
@@ -2561,4 +2561,4 @@ final class WeakCache<K, P, V> {
 
 断点查看执行情况
 
-![image-20200303182412370](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200303182412370.png)
+![image-20200303182412370](/images/recovered/b186200a813edb910568.png)

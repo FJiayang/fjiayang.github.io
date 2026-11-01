@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 import re
 from urllib.parse import unquote
+import tomllib
+from image_refs import source_inventory,remote
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,7 +22,7 @@ def main():
             warnings[match[1]]=reason
     inventory=json.loads((ROOT/'reports/migration.json').read_text())
     report={'method':'Stack v4.0.3 default image helper during Hugo build; failures are non-blocking; no independent availability probe',
-            'listed_resource_urls':len({x['url'] for x in inventory['remote_resources']}),
+            'listed_resource_urls':sum(remote(u,tomllib.loads((ROOT/'hugo.toml').read_text())['baseURL']) for u in source_inventory(ROOT)),
             'fetch_warnings':[]}
     for url,reason in sorted(warnings.items()):
         cids=sorted({x['cid'] for x in inventory['remote_resources'] if unquote(x['url'])==unquote(url)})

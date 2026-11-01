@@ -102,19 +102,19 @@ edge浏览器下载文件标题乱码
 
   [1]: https://cms.fjy8018.xin/cms/index
   [2]: http://home.fjy8018.top:8090/blog/index.php/archives/100/
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orapc.png
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orQGj.png
-  [5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/or03e.png
-  [6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orbYK.png
-  [7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orpuN.png
-  [8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orSUs.png
-  [9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orPPT.png
-  [10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orB67.png
-  [11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orxgM.png
-  [12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orFO6.png
-  [13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orTHt.png
-  [14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/or9pF.png
-  [15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orsCJ.png
-  [16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orLdr.png
-  [17]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orz30.png
-  [18]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orDs1.png
+  [3]: /images/recovered/8e046c2000e8a50fd434.png
+  [4]: /images/recovered/d3cd001eab8cb6e6fa59.png
+  [5]: /images/recovered/5d518a107ce5fd842897.png
+  [6]: /images/recovered/c98a403abe14b7b275c5.png
+  [7]: /images/recovered/47157ca04d741535c9e1.png
+  [8]: /images/recovered/386f2505a00cab9137e2.png
+  [9]: /images/recovered/a1ad41cf37c609c6dad8.png
+  [10]: /images/recovered/be30f11c7333bd313cbf.png
+  [11]: /images/recovered/fd5cff1ce8fcc93b97d0.png
+  [12]: /images/recovered/fbedc0e9eb403141aac4.png
+  [13]: /images/recovered/07f69a52b5056251b781.png
+  [14]: /images/recovered/1d5a349c3928c2dafa97.png
+  [15]: /images/recovered/160203cfc419df8de87c.png
+  [16]: /images/recovered/e58a69a1b732643c4db8.png
+  [17]: /images/recovered/cbdf0fc9b9fe3efd793b.png
+  [18]: /images/recovered/16678d4faf42cd78851f.png

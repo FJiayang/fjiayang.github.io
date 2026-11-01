@@ -23,7 +23,7 @@
 
 4台服务器，一台外部客户机
 
-[![mesos.png](https://i.loli.net/2018/10/03/5bb4cd4019de8.png)](https://i.loli.net/2018/10/03/5bb4cd4019de8.png)
+[![mesos.png](/images/recovered/5298b9d43479be9ff137.png)](/images/recovered/5298b9d43479be9ff137.png)
 
 ## 安装指南
 
@@ -136,7 +136,7 @@ I1003 08:41:29.918772     8 master.cpp:1782] Recovered 0 agents from the registr
 
 访问IP:5050，对于PWD，可以访问`http://SSHIP-5050.direct.labs.play-with-docker.com/#/`，将SSH ip替换成实际提供的IP即可
 
-[![mesos-master1.png](https://i.loli.net/2018/10/03/5bb4cd40025d2.png)](https://i.loli.net/2018/10/03/5bb4cd40025d2.png)
+[![mesos-master1.png](/images/recovered/4382c1e966af6ddb4ea6.png)](/images/recovered/4382c1e966af6ddb4ea6.png)
 
 ### mesos从节点
 
@@ -233,13 +233,13 @@ I1003 08:41:29.918772     8 master.cpp:1782] Recovered 0 agents from the registr
 
   访问主节点web界面可看见资源邀约有效
 
-[![mesos-master2.png](https://i.loli.net/2018/10/03/5bb4cd4005732.png)](https://i.loli.net/2018/10/03/5bb4cd4005732.png)
+[![mesos-master2.png](/images/recovered/faf68189c029cce1e2d0.png)](/images/recovered/faf68189c029cce1e2d0.png)
 
 
 
 节点情况
 
-[![mesos-master3.png](https://i.loli.net/2018/10/03/5bb4cd3fdf9aa.png)](https://i.loli.net/2018/10/03/5bb4cd3fdf9aa.png)
+[![mesos-master3.png](/images/recovered/71f6aded9492c4f330d9.png)](/images/recovered/71f6aded9492c4f330d9.png)
 
 
 
@@ -259,7 +259,7 @@ docker run -d --net=host \
 
 通过IP:8080查看运行结果
 
-[![marathon1.png](https://i.loli.net/2018/10/03/5bb4cd3fe60d2.png)](https://i.loli.net/2018/10/03/5bb4cd3fe60d2.png)
+[![marathon1.png](/images/recovered/128ce0fe619a71f0e065.png)](/images/recovered/128ce0fe619a71f0e065.png)
 
 
 
@@ -279,4 +279,4 @@ docker run -d --net=host \
 
   访问`IP:9090/haproxy?stats`可查看启动状态
 
-[![marathon-lb1.png](https://i.loli.net/2018/10/03/5bb4cd4000f2b.png)](https://i.loli.net/2018/10/03/5bb4cd4000f2b.png)
+[![marathon-lb1.png](/images/recovered/8aa580752352d8e3d28d.png)](/images/recovered/8aa580752352d8e3d28d.png)

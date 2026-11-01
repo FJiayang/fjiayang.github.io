@@ -30,21 +30,21 @@ ChatGLM2-6B 是开源中英双语对话模型 ChatGLM-6B的第二代版本，提
 
 ### 申请机器
 
-![1](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/1.png)
+![1](/images/recovered/d2d069293fb97911e130.png)
 
 ### 创建工作空间
 
-![2](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/2.png)
+![2](/images/recovered/703de656b717542a74d0.png)
 
 
 
 ### 创建实例
 
-![3](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/3.png)
+![3](/images/recovered/99a770c69081b310671f.png)
 
 启动机器后进入工作台
 
-![4](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/4.png)
+![4](/images/recovered/2b2768e3f8b23ed4a243.png)
 
 
 
@@ -67,7 +67,7 @@ $ cd ChatGLM2-6B
 $ pip install -r requirements.txt
 ```
 
-![5](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/5.png)
+![5](/images/recovered/6ae8545209b95c4553d2.png)
 
 ### 安装git lfs
 
@@ -88,7 +88,7 @@ $ git lfs fetch
 $ git lfs checkout
 ```
 
-![6](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/6.png)
+![6](/images/recovered/d070dc69764a106cf3a6.png)
 
 
 
@@ -120,21 +120,21 @@ $ pip install gradio
 $ python web_demo.py
 ```
 
-![7](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/7.png)
+![7](/images/recovered/75762f44bf3e99725e57.png)
 
 启动成功
 
-![8](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/8.png)
+![8](/images/recovered/229b8cd14c2a0bcfc1ac.png)
 
 使用非量化模型，显存占用12G
 
-![9](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/9.png)
+![9](/images/recovered/48e7b29352dba575ebb1.png)
 
 
 
 ### 问答验证
 
-![10](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/10.png)
+![10](/images/recovered/2ce870d248c00c5e6ff1.png)
 
 基于A10显卡推理，运算速度非常快，对问题的理解能力也比之前体验的chatglm-6b更加准确，但依然有不少文字错误
 
@@ -150,7 +150,7 @@ $ python web_demo.py
 
 原理示意图
 
-![langchain+chatglm](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/langchain+chatglm.png)
+![langchain+chatglm](/images/recovered/9ae4af8281129ba13033.png)
 
 
 
@@ -175,7 +175,7 @@ $ cd Langchain-Chatchat
 $ pip install -r requirements.txt
 ```
 
-![11](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/11.png)
+![11](/images/recovered/9a7cc2e0db83ea74d1cb.png)
 
 
 
@@ -189,7 +189,7 @@ $ git lfs fetch
 $ git lfs checkout
 ```
 
-![12](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/12.png)
+![12](/images/recovered/e21003f76b81afe9e9c8.png)
 
 
 
@@ -227,7 +227,7 @@ embedding_model_dict = {
                        }
 ```
 
-![13](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/13.png)
+![13](/images/recovered/42ae4ee12b12503beccc.png)
 
 
 
@@ -239,7 +239,7 @@ embedding_model_dict = {
 $ python init_database.py --recreate-vs
 ```
 
-![14](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/14.png)
+![14](/images/recovered/1c17dc43aeaccb29133a.png)
 
 
 
@@ -251,21 +251,21 @@ $ python init_database.py --recreate-vs
 $ python startup.py -a
 ```
 
-![15](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/15.png)
+![15](/images/recovered/8857f39ffe1d6b0e06ab.png)
 
-![16](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/16.png)
+![16](/images/recovered/f21f735f25f83c3169c4.png)
 
 ### 问答验证
 
 LLM模型验证，连接本地ChatGLM2-6B成功
 
-![17](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/17.png)
+![17](/images/recovered/e70614a7355d590a4792.png)
 
 
 
 工程自带样例知识库，可以使用内置知识库验证，此处跳过，直接使用个人知识库验证
 
-![18](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/18.png)
+![18](/images/recovered/85638c79881f5747c8e9.png)
 
 
 
@@ -277,7 +277,7 @@ LLM模型验证，连接本地ChatGLM2-6B成功
 
 将内容存储为txt上传到知识库
 
-![19](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/19.png)
+![19](/images/recovered/c8268e6dcef3ca6d3368.png)
 
 
 
@@ -297,17 +297,17 @@ LLM模型验证，连接本地ChatGLM2-6B成功
 
 将Java并发知识点转为txt类型知识库上传并创建新的知识库空间
 
-![22](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/22.png)
+![22](/images/recovered/9852439f176b24ac897a.png)
 
 不使用知识库情况下回答
 
-![23](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/23.png)
+![23](/images/recovered/d471a4956cb4c069dfa5.png)
 
 
 
 使用知识库情况下回答
 
-![24](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/基于ChatGLM2-6B搭建个人知识库/24.png)
+![24](/images/recovered/b96cc8c3af04bdc540d3.png)
 
 
 

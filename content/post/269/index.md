@@ -427,7 +427,7 @@ server:
 
 生产者每隔一秒发送一次消息
 
-![1613880363469](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1613880363469.png)
+![1613880363469](/images/recovered/b7d363b0d67c373d682f.png)
 
 
 
@@ -587,17 +587,17 @@ server:
 
 
 
-![1613881049845](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1613881049845.png)
+![1613881049845](/images/recovered/a1f5ec22f0ee3a6f72c4.png)
 
 触发`/send1`
 
-![1613881012552](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1613881012552.png)
+![1613881012552](/images/recovered/99acd313e5fdee55d1cf.png)
 
 
 
 触发`/send2`
 
-![1613881021809](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1613881021809.png)
+![1613881021809](/images/recovered/6f500f762b8ce5faf8e6.png)
 
 可见消息被正确的路由
 

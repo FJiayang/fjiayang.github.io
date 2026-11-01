@@ -218,19 +218,19 @@ TF容量：32G U1速度
 保存退出即可
 
 
-[1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykUMd.png
-[2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykL61.png
+[1]: /images/recovered/d0f7f302f45f4f554461.png
+[2]: /images/recovered/fe9b29edd8febc935090.png
 [3]: https://9sb.org/722
-[4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykFYF.png
-[5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykRur.png
-[6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykTU0.png
-[7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykSVT.png
-[8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykjM7.png
-[9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykbfs.png
-[10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykQUe.png
-[11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykpP6.png
-[12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykqGy.png
-[13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykhYc.png
-[14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk3lK.png
-[15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ykNvN.png
-[16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yk7jj.png
+[4]: /images/recovered/a058fbb234f67ec4eac5.png
+[5]: /images/recovered/94398b8d244c29c6c858.png
+[6]: /images/recovered/49f33c1fa7c314c202c4.png
+[7]: /images/recovered/cc2a816a99b18fdb397b.png
+[8]: /images/recovered/367c82d2478fe457c84b.png
+[9]: /images/recovered/24d80144c6d63506c8e6.png
+[10]: /images/recovered/94dbf15faff0290a181e.png
+[11]: /images/recovered/00257d5d1805d6d7fa8d.png
+[12]: /images/recovered/9cdae223575dfd7a9a6e.png
+[13]: /images/recovered/23182a4de0daf764c23d.png
+[14]: /images/recovered/90aaed4259d611d09ddd.png
+[15]: /images/recovered/0df45bc3c70072046a08.png
+[16]: /images/recovered/ef02a64d6a06b3c8ed88.png

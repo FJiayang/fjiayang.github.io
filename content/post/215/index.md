@@ -39,7 +39,7 @@
 
 部署架构图如下
 
-![devops](https://s2.ax1x.com/2019/11/27/QCWiWt.png)
+![devops](/images/recovered/48c5dd8a7195d0d6b35e.png)
 
 各服务详细部署情况
 
@@ -471,25 +471,25 @@ $ docker-compose -f xx.yml logs [-f]
 
 随便打开一个节点的mesos端口，可看到当前的服务注册数量和当前的leader，其采用与ZK类似的选举算法来选出leader实现高可用
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566123331161.png)
+![](/images/recovered/af93ef3a9425fb7b1a8d.png)
 
 slave信息
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566123374166.png)
+![](/images/recovered/f6365d398811895a5f8a.png)
 
 查看框架注册情况
 
-![1566124680011](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566124680011.png)
+![1566124680011](/images/recovered/33cfdb5b32513dbd2f58.png)
 
 查看marathon-lb情况
 
-![1566124772689](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566124772689.png)
+![1566124772689](/images/recovered/ac51f1dd372df50e4997.png)
 
 
 
 marathon面板
 
-![1566123387054](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566123387054.png)
+![1566123387054](/images/recovered/c2c64b042e74eee05118.png)
 
 marathon支持通过面板创建任务和通过rest接口创建任务
 
@@ -511,23 +511,23 @@ marathon支持通过面板创建任务和通过rest接口创建任务
 
 结果
 
-![1566123482678](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566123482678.png)
+![1566123482678](/images/recovered/127e90173afc61b24409.png)
 
 面板同步显示
 
-![1566123506660](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566123506660.png)
+![1566123506660](/images/recovered/812987a98f9ad01a5aa3.png)
 
 运行状态正常
 
-![1566124822675](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566124822675.png)
+![1566124822675](/images/recovered/f5a60de93f4ee97df72c.png)
 
 查看详情可知其运行在130服务器上
 
-![1566124853340](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566124853340.png)
+![1566124853340](/images/recovered/50d8f32a87e387e3ed28.png)
 
 通过面板创建
 
-![1566124949525](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566124949525.png)
+![1566124949525](/images/recovered/a99be09d68c4564e44ce.png)
 
 切换为json格式可以编辑更多内容
 
@@ -563,56 +563,56 @@ marathon支持通过面板创建任务和通过rest接口创建任务
 
 
 
-![1566125064780](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125064780.png)
+![1566125064780](/images/recovered/bdb23559f4d9e1b92e1f.png)
 
 
 
 运行成功
 
-![1566125104507](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125104507.png)
+![1566125104507](/images/recovered/04b2a8385b9bee3d238e.png)
 
 访问成功
 
-![1566125318702](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125318702.png)
+![1566125318702](/images/recovered/c2aed763f366925bf376.png)
 
 查看资源调度情况
 
-![1566125350396](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125350396.png)
+![1566125350396](/images/recovered/3011a935da57faf94452.png)
 
 
 
-![1566125370134](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125370134.png)
+![1566125370134](/images/recovered/1625e8af5a5c4bdc12e3.png)
 
 配置扩缩容
 
-![1566125437096](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125437096.png)
+![1566125437096](/images/recovered/def5290923cd27138be3.png)
 
 配置成功
 
-![1566125461566](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125461566.png)
+![1566125461566](/images/recovered/78e5b237a952b1efac3c.png)
 
 
 
 两个实例被分别调度到不同的机器上
 
-![1566125537165](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125537165.png)
+![1566125537165](/images/recovered/094837ffb3a048251ee6.png)
 
 
 
-![1566125544430](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125544430.png)
+![1566125544430](/images/recovered/c454d4fe5bd3682017e7.png)
 
 
 
 配置健康检查
 
-![1566125749835](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125749835.png)
+![1566125749835](/images/recovered/4188df80226c1e0ec54a.png)
 
 自动轮询接口
 
-![1566125738241](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125738241.png)
+![1566125738241](/images/recovered/543fe8e14971c46d14ff.png)
 
 
 
 错误告警
 
-![1566125926856](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1566125926856.png)
+![1566125926856](/images/recovered/6c2ff8976a530414e94a.png)

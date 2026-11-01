@@ -43,7 +43,7 @@
 
 类图
 
-![image-20200120153714633](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120153714633.png)
+![image-20200120153714633](/images/recovered/44a95fa3bdf9424f375e.png)
 
 ```java
 package top.fjy8018.designpattern.pattern.creational.simplefactory;
@@ -228,7 +228,7 @@ class AbstractVideoTest {
 
 类图
 
-![image-20200120160434335](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120160434335.png)
+![image-20200120160434335](/images/recovered/bacc1cf0d2c1da95ff88.png)
 
 ```java
 package top.fjy8018.designpattern.pattern.creational.factorymethod;
@@ -401,11 +401,11 @@ class AbstractVideoFactoryTest {
 
 使用抽象工厂易于扩展产品族
 
-![image-20200120161033050](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120161033050.png)
+![image-20200120161033050](/images/recovered/12d056d3f0905d3a49be.png)
 
 其与工厂方法区别为：抽象工厂关心产品族，工厂方法关系产品等级
 
-![image-20200120161115607](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120161115607.png)
+![image-20200120161115607](/images/recovered/3ecc9647dc6368b85fb8.png)
 
 
 
@@ -413,7 +413,7 @@ class AbstractVideoFactoryTest {
 
 类图
 
-![image-20200120161151908](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120161151908.png)
+![image-20200120161151908](/images/recovered/dbe1517c23acf5d2af55.png)
 
 ```java
 package top.fjy8018.designpattern.pattern.creational.abstractfactory;
@@ -659,7 +659,7 @@ class CourseFactoryTest {
 
 类图
 
-![image-20200120164102333](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200120164102333.png)
+![image-20200120164102333](/images/recovered/d006369f2a7a4e4aa9e3.png)
 
 ```java
 package top.fjy8018.designpattern.pattern.creational.builder;
@@ -2714,7 +2714,7 @@ class ThreadLocalInstanceTest {
 
 类图
 
-![image-20200121103805342](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200121103805342.png)
+![image-20200121103805342](/images/recovered/ed436665440afbe58aee.png)
 
 ```java
 package top.fjy8018.designpattern.pattern.creational.prototype.before;
@@ -2795,7 +2795,7 @@ public class BMailUtil {
 
 类图
 
-![image-20200122170719439](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200122170719439.png)
+![image-20200122170719439](/images/recovered/23cb18505a422ece13d5.png)
 
 
 

@@ -59,7 +59,7 @@ reboot使禁用操作生效
 
     wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
 
-[![ansible1.png](https://i.loli.net/2018/08/19/5b792c501dafe.png)](https://i.loli.net/2018/08/19/5b792c501dafe.png)
+[![ansible1.png](/images/recovered/94096422331067034828.png)](/images/recovered/94096422331067034828.png)
 解压编译包
 
     tar xf Python-3.7.0.tar.xz
@@ -98,13 +98,13 @@ reboot使禁用操作生效
 
     yum install gcc
 
-[![ansible2.png](https://i.loli.net/2018/08/19/5b792c501d7ef.png)](https://i.loli.net/2018/08/19/5b792c501d7ef.png)
+[![ansible2.png](/images/recovered/8307a3987cbb1f1ce30f.png)](/images/recovered/8307a3987cbb1f1ce30f.png)
 再次编译，编译通过
 安装编译文件
 
      make && make altinstall
 
-[![ansible3.png](https://i.loli.net/2018/08/19/5b792c501ced6.png)](https://i.loli.net/2018/08/19/5b792c501ced6.png)
+[![ansible3.png](/images/recovered/c5248e1b2146c4f4b7be.png)](/images/recovered/c5248e1b2146c4f4b7be.png)
 日志如下
 
     Traceback (most recent call last):
@@ -134,7 +134,7 @@ reboot使禁用操作生效
 
 安装成功
 
-[![ansible4.png](https://i.loli.net/2018/08/19/5b792c501d0bd.png)](https://i.loli.net/2018/08/19/5b792c501d0bd.png)
+[![ansible4.png](/images/recovered/6d3a678117fd9112ff44.png)](/images/recovered/6d3a678117fd9112ff44.png)
 
 Python3.7对应的包管理工具pip版本也为3.7，查看其路径
 
@@ -150,7 +150,7 @@ Python3.7对应的包管理工具pip版本也为3.7，查看其路径
 
     pip install virtualenv
 
-[![ansible5.png](https://i.loli.net/2018/08/19/5b792c5019c9d.png)](https://i.loli.net/2018/08/19/5b792c5019c9d.png)
+[![ansible5.png](/images/recovered/aa58e6698683d739dc67.png)](/images/recovered/aa58e6698683d739dc67.png)
 
 安装git工具及其依赖
 
@@ -169,7 +169,7 @@ Python3.7对应的包管理工具pip版本也为3.7，查看其路径
 
     virtualenv -p /usr/local/bin/python3.7 .py3-a2.5-env
 
-[![ansible6.png](https://i.loli.net/2018/08/19/5b792c5018bf5.png)](https://i.loli.net/2018/08/19/5b792c5018bf5.png)
+[![ansible6.png](/images/recovered/dace44ec5fe56c01c54b.png)](/images/recovered/dace44ec5fe56c01c54b.png)
 源码安装git-ansible2.5
 
     cd /home/ansible/.py3-a2.5-env
@@ -178,7 +178,7 @@ Python3.7对应的包管理工具pip版本也为3.7，查看其路径
 
     git clone https://github.com/ansible/ansible.git
 
-[![ansible7.png](https://i.loli.net/2018/08/19/5b792c5018b6c.png)](https://i.loli.net/2018/08/19/5b792c5018b6c.png)
+[![ansible7.png](/images/recovered/9135554a1d3ccc360639.png)](/images/recovered/9135554a1d3ccc360639.png)
 加载virtualenv环境
 
     [ansible@localhost .py3-a2.5-env]$ source /home/ansible/.py3-a2.5-env/bin/activate
@@ -188,7 +188,7 @@ Python3.7对应的包管理工具pip版本也为3.7，查看其路径
 
     pip install paramiko PyYAML jinja2
 
-[![ansible8.png](https://i.loli.net/2018/08/19/5b792c5018808.png)](https://i.loli.net/2018/08/19/5b792c5018808.png)
+[![ansible8.png](/images/recovered/1aa54650ef400ae0219b.png)](/images/recovered/1aa54650ef400ae0219b.png)
 
 查看文件
 

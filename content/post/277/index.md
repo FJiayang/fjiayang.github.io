@@ -247,7 +247,7 @@ type Actor {
 
 访问http://localhost:8080/graphiql即可看到在线查询页面
 
-![image-20221027220330451](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20221027220330451.png)
+![image-20221027220330451](/images/recovered/2585730d2ba894f25ecc.png)
 
 
 

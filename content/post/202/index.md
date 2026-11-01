@@ -1100,7 +1100,7 @@ public class DataAccessConfig {
 
 配置完成后启动
 
-[![Snipaste_2019-03-30_10-32-35.png](https://i.loli.net/2019/03/30/5c9ed56325a01.png)](https://i.loli.net/2019/03/30/5c9ed56325a01.png)
+[![Snipaste_2019-03-30_10-32-35.png](/images/recovered/b2ba6342c18c240d6925.png)](/images/recovered/b2ba6342c18c240d6925.png)
 
 发现日志中建表SQL没有输出，同时查看数据库，确认表未创建
 
@@ -1111,7 +1111,7 @@ public class DataAccessConfig {
 
 进入配置文件查看ddl配置，发现默认为false
 
-[![1553913435794.png](https://i.loli.net/2019/03/30/5c9ed66fb8481.png)](https://i.loli.net/2019/03/30/5c9ed66fb8481.png)
+[![1553913435794.png](/images/recovered/c7edb369af3b22c7ae81.png)](/images/recovered/c7edb369af3b22c7ae81.png)
 
 将其配置为true后总配置文件如下
 
@@ -1151,7 +1151,7 @@ spring:
 
 查看数据库情况，与预期一致，主库只包含主库的表，备份库只包含备份库的表，多数据配置完成
 
-[![1553913636212.png](https://i.loli.net/2019/03/30/5c9ed727864e4.png)](https://i.loli.net/2019/03/30/5c9ed727864e4.png)
+[![1553913636212.png](/images/recovered/58a73e5352faea66c326.png)](/images/recovered/58a73e5352faea66c326.png)
 
 
 
@@ -1163,7 +1163,7 @@ spring:
 
 若在单数据源配置下应当无需配置该项，同时发现本应该默认将驼峰属性名映射为`_`拼接名称策略也失效，说明自定义配置源时覆盖了默认配置或者导致默认配置失效
 
-[![1553944509394.png](https://i.loli.net/2019/03/30/5c9f4fca79187.png)](https://i.loli.net/2019/03/30/5c9f4fca79187.png)
+[![1553944509394.png](/images/recovered/32182104efd5b749d437.png)](/images/recovered/32182104efd5b749d437.png)
 
 查询源码分析原因，发现`hibernate`相关配置均在`HibernateProperties`配置类中
 
@@ -1506,11 +1506,11 @@ public class DataAccessConfig {
 
 启动日志也可看出结果符合预期
 
-[![1553944717550.png](https://i.loli.net/2019/03/30/5c9f50b8df2ea.png)](https://i.loli.net/2019/03/30/5c9f50b8df2ea.png)
+[![1553944717550.png](/images/recovered/a58bfbb668156910c12b.png)](/images/recovered/a58bfbb668156910c12b.png)
 
 
 
-[![1553944734003.png](https://i.loli.net/2019/03/30/5c9f50b8d148c.png)](https://i.loli.net/2019/03/30/5c9f50b8d148c.png)
+[![1553944734003.png](/images/recovered/40e55d7ca56c57810c73.png)](/images/recovered/40e55d7ca56c57810c73.png)
 
 
 

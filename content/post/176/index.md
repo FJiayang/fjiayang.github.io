@@ -77,7 +77,7 @@ reboot使禁用操作生效
 
     curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
 
-[![gitlab-ce1.png](https://i.loli.net/2018/08/19/5b792caa9524e.png)](https://i.loli.net/2018/08/19/5b792caa9524e.png)
+[![gitlab-ce1.png](/images/recovered/e40f23554740ec90a275.png)](/images/recovered/e40f23554740ec90a275.png)
 
 ## 启动邮件服务 ## 
 
@@ -91,7 +91,7 @@ reboot使禁用操作生效
 
     yum -y install gitlab-ce
 
-[![gitlab-ce2.png](https://i.loli.net/2018/08/19/5b792caa92435.png)](https://i.loli.net/2018/08/19/5b792caa92435.png)
+[![gitlab-ce2.png](/images/recovered/c3a4c7a22b6efcd68eef.png)](/images/recovered/c3a4c7a22b6efcd68eef.png)
 ## 配置SSL证书 ##
 
     mkdir -p /etc/gitlab/ssl
@@ -155,7 +155,7 @@ X.509为证书格式 365为有效期
 ### 输出pem证书 ### 
 
     openssl dhparam -out /etc/gitlab/ssl/dhparams.pem 2048
-[![gitlab-ce3.png](https://i.loli.net/2018/08/19/5b792caa910ba.png)](https://i.loli.net/2018/08/19/5b792caa910ba.png)
+[![gitlab-ce3.png](/images/recovered/3230f49ec2f010e5511b.png)](/images/recovered/3230f49ec2f010e5511b.png)
 
     [root@localhost ssl]# ll
     总用量 16
@@ -187,7 +187,7 @@ X.509为证书格式 365为有效期
     external_url 'https://gitlab.fjy8018.top'
 
 检索重定向配置，启用重定向
-[![gitlab-ce4.png](https://i.loli.net/2018/08/19/5b792caa93b9a.png)](https://i.loli.net/2018/08/19/5b792caa93b9a.png)
+[![gitlab-ce4.png](/images/recovered/3915f8c9ed0f3461e5ea.png)](/images/recovered/3915f8c9ed0f3461e5ea.png)
 
     # nginx['client_max_body_size'] = '250m'
       nginx['redirect_http_to_https'] = true
@@ -205,7 +205,7 @@ key、ssl_dhparam同样配置
 
     gitlab-ctl reconfigure
 
-[![gitlab-ce5.png](https://i.loli.net/2018/08/19/5b792caa8fc5b.png)](https://i.loli.net/2018/08/19/5b792caa8fc5b.png)
+[![gitlab-ce5.png](/images/recovered/85479ac3efc37c88d235.png)](/images/recovered/85479ac3efc37c88d235.png)
 修改gitlab的nginx配置文件
 
     vi /var/opt/gitlab/nginx/conf/gitlab-http.conf
@@ -223,7 +223,7 @@ key、ssl_dhparam同样配置
     [root@localhost ssl]# gitlab-ctl restart
 
 所有服务启动成功
-[![gitlab-ce6.png](https://i.loli.net/2018/08/19/5b792caa8d145.png)](https://i.loli.net/2018/08/19/5b792caa8d145.png)
+[![gitlab-ce6.png](/images/recovered/1563f85f12a0d28dea0b.png)](/images/recovered/1563f85f12a0d28dea0b.png)
 
 访问成功
-[![gitlab-ce7.png](https://i.loli.net/2018/08/19/5b792caa8e574.png)](https://i.loli.net/2018/08/19/5b792caa8e574.png)
+[![gitlab-ce7.png](/images/recovered/5c5dbd3c2f4390a845d5.png)](/images/recovered/5c5dbd3c2f4390a845d5.png)

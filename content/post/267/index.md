@@ -187,7 +187,7 @@ class OssEntityMapperTest {
 
 编译结果，报错
 
-![1613831019363](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1613831019363.png)
+![1613831019363](/images/recovered/98e07e4cded0995fb5c2.png)
 
 
 
@@ -230,7 +230,7 @@ class OssEntityMapperTest {
 
 最终通过给官方仓库提交[issue](https://github.com/mapstruct/mapstruct/issues/2361)咨询得到答案
 
-![1613831616294](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1613831616294.png)
+![1613831616294](/images/recovered/62bc1121a800ded9bc21.png)
 
 原来是`lombok`版本太高导致的。。
 

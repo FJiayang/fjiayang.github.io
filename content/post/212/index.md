@@ -27,19 +27,19 @@
 
 编辑 -> 虚拟网络编辑器
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565511835683.png)
+![](/images/recovered/f3e859df62155f3b2549.png)
 
 更改
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565511856009.png)
+![](/images/recovered/2816a1ffb3c6f27d85c2.png)
 
 取消勾选此项
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565511935505.png)
+![](/images/recovered/cef11bb213a4c65fe24c.png)
 
 进入NAT设置记录默认网关和子网掩码
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565511992789.png)
+![](/images/recovered/26cda52ca1c039639555.png)
 
 进入虚拟机
 
@@ -616,14 +616,14 @@ $ firewall-cmd --reload
 
 访问虚拟机地址<http://192.168.133.128/login/> 可见启动成功
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565514599088.png)
+![](/images/recovered/397ee1d1e3b757fd3ca6.png)
 
 ### TCP方式连接宿主机
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565514658149.png)
+![](/images/recovered/f1dfbc352341843523dd.png)
 
 
 
 连接成功
 
-![](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1565514685892.png)
+![](/images/recovered/70d7384bb3032f40bdbf.png)

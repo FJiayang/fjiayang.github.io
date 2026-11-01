@@ -127,7 +127,7 @@ spring:
 
 官网压缩包路径`quartz-2.3.0-SNAPSHOT\src\org\quartz\impl\jdbcjobstore`中支持大量数据库建表语句，选择对应的使用即可
 
-![1564406464554.png](https://i.loli.net/2019/07/29/5d3ef2d5f182d76181.png)
+![1564406464554.png](/images/recovered/01419fc93bdff4f4b8ef.png)
 
 
 
@@ -326,8 +326,8 @@ public class CustomQuartzJob extends QuartzJobBean {
 
 执行成功
 
-![1564383676571.png](https://i.loli.net/2019/07/29/5d3e9a29728e424620.png)
+![1564383676571.png](/images/recovered/ac503a44c70710960393.png)
 
 在分布式环境下自动进行作业节点迁移
 
-![1564383705389.png](https://i.loli.net/2019/07/29/5d3e9a29782f691650.png)
+![1564383705389.png](/images/recovered/9e9fec9c543a785320e7.png)

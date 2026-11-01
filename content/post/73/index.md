@@ -66,20 +66,20 @@
 ![javaweb15.png][17]
 
 
-[1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygNZa.png
-[2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yg7n0.png
-[3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygWEJ.png
-[4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygvTd.png
-[5]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygh71.png
-[6]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygQ8u.png
-[7]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygaXD.png
-[8]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yg0aL.png
-[9]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygj2v.png
-[10]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygp1i.png
-[11]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygF7R.png
-[12]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygSEW.png
-[13]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygBew.png
-[14]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygP98.png
-[15]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygxwg.png
-[16]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2ygT8X.png
-[17]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2yg9BG.png
+[1]: /images/recovered/d4d76b582fd3b78efe2e.png
+[2]: /images/recovered/3a3458dc75ce73a8904e.png
+[3]: /images/recovered/1ab934bc7c1a4d47fd6e.png
+[4]: /images/recovered/ee0095bddcbc18f02c79.png
+[5]: /images/recovered/fad3f0be3ca4ce6bdf01.png
+[6]: /images/recovered/6c06ed82030176758630.png
+[7]: /images/recovered/043d11bd49bab350061f.png
+[8]: /images/recovered/38e61dbfe40003b8f556.png
+[9]: /images/recovered/3a1d4b78d23b890ceae2.png
+[10]: /images/recovered/5546abbe8786c0c9c24c.png
+[11]: /images/recovered/974b607065eabebc4af2.png
+[12]: /images/recovered/68185ea5c714f9bc6f52.png
+[13]: /images/recovered/df685e09565cf211f323.png
+[14]: /images/recovered/292c1f315e75591078f2.png
+[15]: /images/recovered/29712d86653c88dd2711.png
+[16]: /images/recovered/1c3eda3a23fd333a072f.png
+[17]: /images/recovered/a82c488ecc46e0da4254.png

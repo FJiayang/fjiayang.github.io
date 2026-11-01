@@ -25,6 +25,6 @@
 ![cms3.png][3]
 
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orvPG.jpg
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/orhMX.jpg
-  [3]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/or76g.png
+  [1]: /images/recovered/b924982fc3932c3eeb10.jpg
+  [2]: /images/recovered/0338618156db0ffda1dc.jpg
+  [3]: /images/recovered/a7641e7106543b225886.png

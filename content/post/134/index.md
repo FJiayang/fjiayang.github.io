@@ -32,7 +32,7 @@
 
 再次回到题目，我们生来便比他们的条件更好，却不懂得珍惜
 
-  [1]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2JycgD.png
-  [2]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Jy10i.md.jpg
+  [1]: /images/recovered/0c4a70eec98c8dab4045.png
+  [2]: /images/recovered/56f2f3848d4cd2a50a36.jpg
   [3]: /images/recovered/d988710b0cba1688d53b.jpg
-  [4]: https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/2Jy4dL.md.jpg
+  [4]: /images/recovered/6e281b42cc5f624cf124.jpg

@@ -209,7 +209,7 @@ F1109 10:56:02.764150       1 storage_decorator.go:57] Unable to create storage 
 
 [Kubeadm证书过期时间调整](https://www.cnblogs.com/skymyyang/p/11093686.html) — Devops、小铁匠
 
-![Kubeadm证书过期时间调整](https://s1.ax1x.com/2020/04/21/J8VnAI.th.jpg)
+![Kubeadm证书过期时间调整](/images/recovered/dd97e00269586198aae2.jpg)
 
 
 

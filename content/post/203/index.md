@@ -167,13 +167,13 @@ $ firewall-cmd --reload
 
 访问浏览器`IP:3000`输入秘钥
 
-[![1554004096241.png](https://i.loli.net/2019/03/31/5ca072553a14b.png)](https://i.loli.net/2019/03/31/5ca072553a14b.png)
+[![1554004096241.png](/images/recovered/6b9ea881ad4b468f6cc4.png)](/images/recovered/6b9ea881ad4b468f6cc4.png)
 
 
 
 许可证已经发送到注册邮件中，激活后可登陆
 
-[![1554004144220.png](https://i.loli.net/2019/03/31/5ca072552f277.png)](https://i.loli.net/2019/03/31/5ca072552f277.png)
+[![1554004144220.png](/images/recovered/b425431692e64fa0f506.png)](/images/recovered/b425431692e64fa0f506.png)
 
 
 
@@ -238,10 +238,10 @@ $ docker run --rm -it --network tyk-free_tyk-service-bridge -e TARGET_IP=tyk_das
 
 随即获得登陆名和密码
 
-[![1554007784141.png](https://i.loli.net/2019/03/31/5ca07255176c1.png)](https://i.loli.net/2019/03/31/5ca07255176c1.png)
+[![1554007784141.png](/images/recovered/124e3f383df2c233d522.png)](/images/recovered/124e3f383df2c233d522.png)
 
 
 
 登陆成功
 
-[![1554018550325.png](https://i.loli.net/2019/03/31/5ca0725532940.png)](https://i.loli.net/2019/03/31/5ca0725532940.png)
+[![1554018550325.png](/images/recovered/1b190d1f811771e314a2.png)](/images/recovered/1b190d1f811771e314a2.png)

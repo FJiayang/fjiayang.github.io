@@ -138,7 +138,7 @@ public @interface SpringBootApplication {
 
 在IDEA中使用`ctrl+shift+n`可查看Spring源码中包含大量`spring.factories`文件
 
-![1552445154381](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552445154381.png)
+![1552445154381](/images/recovered/6e6176bcf59dbfc0f66c.png)
 
 样例文件：
 
@@ -225,7 +225,7 @@ public class WebMvcAutoConfiguration {
 
 Maven依赖变化
 
-![1552446944990](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552446944990.png)
+![1552446944990](/images/recovered/1fd04d44b5f19ca41c9d.png)
 
 由此可看出默认的Web容器为Tomcat（内嵌Servlet容器）
 
@@ -304,7 +304,7 @@ public class MyServlet extends HttpServlet {
 
 1. Servlet 3.0规范要求必须实现`HttpServlet`
 
-2. 其内部提供多种方法实现（ctrl+F12）![1552447475522](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552447475522.png)
+2. 其内部提供多种方法实现（ctrl+F12）![1552447475522](/images/recovered/b843c866b455c328a35e.png)
 3. `urlPatterns = "/myservlet"`指明浏览器映射
 
 
@@ -334,7 +334,7 @@ public class OverviewApplication {
 
 启动后从控制台可看出映射已经成功
 
-![1552469521146](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552469521146.png)
+![1552469521146](/images/recovered/535c8471d00672d27e22.png)
 
 ## 异步非阻塞 Servlet 
 
@@ -504,7 +504,7 @@ public class BasicErrorController extends AbstractErrorController {
 
 
 
-![1552452404369](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552452404369.png)
+![1552452404369](/images/recovered/777d760110b57ef3a65f.png)
 
 
 
@@ -631,7 +631,7 @@ public @interface CrossOrigin {...}
 
 - HATEOS
 
-![1552483929211](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552483929211.png)
+![1552483929211](/images/recovered/ced477005eef760e1c72.png)
 
 ### 核心组件
 
@@ -733,7 +733,7 @@ Tomcat -> Jetty
 </dependency>
 ```
 
-![1552469589005](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552469589005.png)
+![1552469589005](/images/recovered/71457cb5fc17e1fe53bb.png)
 
 
 
@@ -767,13 +767,13 @@ public class SpringbootApplication {
 
 依赖变化
 
-![1552470767813](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552470767813.png)
+![1552470767813](/images/recovered/a20d097b14406878cf17.png)
 
 
 
 启动后变为Netty容器
 
-![1552469817525](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552469817525.png)
+![1552469817525](/images/recovered/bc3cbc6505e1ad5b6371.png)
 
 
 
@@ -802,7 +802,7 @@ public interface WebServerFactoryCustomizer<T extends WebServerFactory> {
 
 该接口为主接口，其下有大量实现，IDEA通过ctrl+alt+B或者ctrl+alt+左键点击查看
 
-![1552470119786](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552470119786.png)
+![1552470119786](/images/recovered/a9f6f5fa88999acd572d.png)
 
 
 
@@ -915,7 +915,7 @@ public class ReactiveWebServerFactoryCustomizer implements
 
 依赖变化，在SpringBoot2.0 后依赖新的连接池 HikariCP
 
-![1552470792077](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552470792077.png)
+![1552470792077](/images/recovered/98774e31af55c68ebde4.png)
 
 
 
@@ -992,7 +992,7 @@ public class DataSourceAutoConfiguration {...}
 
 该类属于自动装配，故必然在`spring.factories`中，而数据源下即`JdbcTemplateAutoConfiguration`
 
-![1552475892031](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552475892031.png)
+![1552475892031](/images/recovered/bb4252c9049c8dde04cf.png)
 
 
 
@@ -1038,7 +1038,7 @@ Consider the following:
 
 其属于SpringData项目，基于hibernate实现，同时也自动依赖JDBC
 
-![1552476271433](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552476271433.png)
+![1552476271433](/images/recovered/24695ede286e0d249019.png)
 
 
 
@@ -1423,7 +1423,7 @@ public interface PropertySources extends Iterable<PropertySource<?>> {...}
 
 启动效果
 
-![1552484479402](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552484479402.png)
+![1552484479402](/images/recovered/b70f90664805b64899df.png)
 
 
 
@@ -1462,11 +1462,11 @@ public interface PropertySources extends Iterable<PropertySource<?>> {...}
 
 依据SpringBoot打印的进程号或者依据应用名称使用Jconsole监控，该操作使用的为JMX端点
 
-![1552484208529](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552484208529.png)
+![1552484208529](/images/recovered/70d229158ba5e50f9e9c.png)
 
 
 
-![1552484239522](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552484239522.png)
+![1552484239522](/images/recovered/0b8a5dd11ce9e76f6ddc.png)
 
  
 
@@ -1479,7 +1479,7 @@ public interface PropertySources extends Iterable<PropertySource<?>> {...}
 
 使用JMX在默认情况下能获取比Web端点更多的信息，原因是JMX支持使用安全连接，具有更好的安全性
 
-![1552484354776](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552484354776.png)
+![1552484354776](/images/recovered/3f3491babacbb79ad651.png)
 
 
 
@@ -1502,13 +1502,13 @@ management.endpoints.web.exposure.include=*
 
 从日志输出可知增加了更多的URL映射
 
-![1552463624541](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552463624541.png)
+![1552463624541](/images/recovered/7f39921eba90f042c77f.png)
 
 
 
 但尽管配置后，JMX显示的信息仍然比Web端更丰富，例如在JMX中不仅看到状态，还能看到磁盘、内存等信息，而Web端仅看到状态
 
-![1552484871890](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1552484871890.png)
+![1552484871890](/images/recovered/2cfbbecdf644e80ec08d.png)
 
 
 

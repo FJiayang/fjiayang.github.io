@@ -72,7 +72,7 @@
 
 类图
 
-![image-20200304112909684](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200304112909684.png)
+![image-20200304112909684](/images/recovered/0b8dfe205550cb6b28bd.png)
 
 抽象课程
 
@@ -324,7 +324,7 @@ class ACourseTest {
 
 类图
 
-![image-20200304151240323](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200304151240323.png)
+![image-20200304151240323](/images/recovered/146b9aba85ee3b088a72.png)
 
 课程接口
 
@@ -635,7 +635,7 @@ class CourseIteratorTest {
 
 类图
 
-![image-20200304160526066](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200304160526066.png)
+![image-20200304160526066](/images/recovered/410ac72bfcf946b959aa.png)
 
 促销接口
 
@@ -770,7 +770,7 @@ class PromotionStrategyTest {
 
 类图
 
-![image-20200304170326421](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200304170326421.png)
+![image-20200304170326421](/images/recovered/87c00fd83735f267bacc.png)
 
 空促销策略
 
@@ -946,7 +946,7 @@ class PromotionStrategyTest {
 
 类图
 
-![image-20200305151426324](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200305151426324.png)
+![image-20200305151426324](/images/recovered/308c611331535c5d99b4.png)
 
 解释器
 
@@ -1225,7 +1225,7 @@ class InterpreterTest {
 
 类图
 
-![image-20200305155223638](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200305155223638.png)
+![image-20200305155223638](/images/recovered/04876253e78ff638a809.png)
 
 课程问题
 
@@ -1509,7 +1509,7 @@ class GuavaEventTest {
 
 类图
 
-![Article](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/Article.png)
+![Article](/images/recovered/09d9e7677ac38f766936.png)
 
 文章
 
@@ -1742,7 +1742,7 @@ class ArticleMementoTest {
 
 类图
 
-![Command](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/Command.png)
+![Command](/images/recovered/4eb9685bcf9eb58ca58a.png)
 
 命令抽象
 
@@ -1955,7 +1955,7 @@ Java设计模式精讲课程视频关闭
 
 类图
 
-![Mediator](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/Mediator.png)
+![Mediator](/images/recovered/5324226703c2aabd423e.png)
 
 学习群组（中介者）
 
@@ -2077,7 +2077,7 @@ Tue Jul 21 16:47:03 CST 2020 [Tom] : OK! F嘉阳
 
 类图
 
-![chain](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/chain.png)
+![chain](/images/recovered/ff831166499db5f45e8f.png)
 
 模拟二级审批场景
 
@@ -2290,7 +2290,7 @@ Java设计模式含有视频,批准
 
 类图
 
-![visitor](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/visitor.png)
+![visitor](/images/recovered/993660a48c46217171b0.png)
 
 课程抽象
 
@@ -2514,7 +2514,7 @@ class VisitorTest {
 
 类图
 
-![state](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/state.png)
+![state](/images/recovered/e3f4141d49e9df4b7408.png)
 
 视频播放状态转换场景
 

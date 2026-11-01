@@ -101,37 +101,37 @@
 
 登陆页
 
-![image-20200506161528778](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161528778.png)
+![image-20200506161528778](/images/recovered/9e71ca63890518528c74.png)
 
 若用户不存在则自动新增
 
-![image-20200506161607742](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161607742.png)
+![image-20200506161607742](/images/recovered/1db533bd6488d11b374b.png)
 
 录入加密秘钥
 
-![image-20200506161628599](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161628599.png)
+![image-20200506161628599](/images/recovered/95145821594004259d26.png)
 
 主页
 
-![image-20200506161724845](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161724845.png)
+![image-20200506161724845](/images/recovered/c0c56411b631d8319d38.png)
 
 信息录入
 
-![image-20200506161803334](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161803334.png)
+![image-20200506161803334](/images/recovered/a7e345375886e71e359e.png)
 
-![image-20200506161813699](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161813699.png)
+![image-20200506161813699](/images/recovered/d82886dbe011ada2c480.png)
 
 支持全字段模糊检索
 
-![image-20200506161844739](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161844739.png)
+![image-20200506161844739](/images/recovered/0520fbf9dfc2c7084eaf.png)
 
 支持Excel模板信息导入
 
-![image-20200506161917039](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506161917039.png)
+![image-20200506161917039](/images/recovered/a973a91984a9f7c33199.png)
 
 登出
 
-![image-20200506162827488](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20200506162827488.png)
+![image-20200506162827488](/images/recovered/c1157615bbbdcf1b0585.png)
 
 ## 效果
 

@@ -57,7 +57,7 @@ public enum ConsumeFromWhere {
 
 `AllocateMessageQueueStrategy`接口用于集群模式下消息策略，默认配置为平均消息分配器`AllocateMessageQueueAveragely`
 
-![image-20201212110317224](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212110317224.png)
+![image-20201212110317224](/images/recovered/145b87345fd539f1abbd.png)
 
 默认配置源码
 
@@ -110,7 +110,7 @@ consumer.subscribe("test_model_topic2", "*");
 
 `offsetStore`配置核心偏移量，有两个实现，用于支持远程存储和本地存储，即支持集群和单机模式
 
-![image-20201212110754861](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212110754861.png)
+![image-20201212110754861](/images/recovered/357b05cb7ef9db6dccae.png)
 
 
 
@@ -197,7 +197,7 @@ public class DefaultMQPushConsumer extends ClientConfig implements MQPushConsume
 
 `MessageListener`用于消息监听配置，包括并发、顺序读取等
 
-![image-20201212111901572](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212111901572.png)
+![image-20201212111901572](/images/recovered/d3faab179d3443c40281.png)
 
 `MessageModel`配置消息模式，广播或者集群，默认为集群模式
 
@@ -404,15 +404,15 @@ public class Consumer2 {
 
 发送10条消息结果
 
-![image-20201212153332162](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212153332162.png)
+![image-20201212153332162](/images/recovered/3bf07dbc5694305dbdb4.png)
 
 消费者1结果
 
-![image-20201212153337722](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212153337722.png)
+![image-20201212153337722](/images/recovered/12bbc710b7a65095d5d3.png)
 
 消费者2结果
 
-![image-20201212153342986](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212153342986.png)
+![image-20201212153342986](/images/recovered/5384521520e410e45948.png)
 
 **注意，若使用集群模式，则tag表达式应该为*号，才能支持多consumer消费，若集群模式下指定tag表达式，则会导致消费结果不确定**，原因如下
 
@@ -430,7 +430,7 @@ consumer.subscribe("test_model_topic2", "TagA");
 
 此时发送10条消息，consumer1监听的结果
 
-![image-20201212160206853](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212160206853.png)
+![image-20201212160206853](/images/recovered/1591182bff42db20250c.png)
 
 此时将consumer2改成监听`TagB`并启动
 
@@ -440,11 +440,11 @@ consumer.subscribe("test_model_topic2", "TagB");
 
 此时发送10条消息，consumer1监听的结果
 
-![image-20201212160312513](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212160312513.png)
+![image-20201212160312513](/images/recovered/e330f78be258e33a26bb.png)
 
 consumer2监听结果为空，大量消息丢失
 
-![image-20201212160329310](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212160329310.png)
+![image-20201212160329310](/images/recovered/829b460396e9f7113133.png)
 
 经过实测发现，只要集群模式下指定了tag，那么只有一个consumer能正常进行消费，其他consumer都为空
 
@@ -466,11 +466,11 @@ consumer.subscribe("test_model_topic2", "*");
 
 发送10条消息consumer1消费结果
 
-![image-20201212161104586](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212161104586.png)
+![image-20201212161104586](/images/recovered/2bbf9f0e0b658302cc9e.png)
 
 consumer2消费结果
 
-![image-20201212161110693](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212161110693.png)
+![image-20201212161110693](/images/recovered/485e238d029a186c9bc0.png)
 
 
 
@@ -492,11 +492,11 @@ consumer.subscribe("test_model_topic2", "TagB");
 
 发送10条消息consumer1消费结果
 
-![image-20201212162320622](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212162320622.png)
+![image-20201212162320622](/images/recovered/213bfdd36c4a1b21721d.png)
 
 consumer2消费结果
 
-![image-20201212162328860](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212162328860.png)
+![image-20201212162328860](/images/recovered/162e7b4eab3b17955f90.png)
 
 结果只有其中一个consumer能正常消费，与集群模式一样的问题
 
@@ -553,15 +553,15 @@ public class Consumer1 {
 
 发送10条消息结果
 
-![image-20201212114407769](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212114407769.png)
+![image-20201212114407769](/images/recovered/113b7f3dab2b42154704.png)
 
 消费者1结果
 
-![image-20201212114422118](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212114422118.png)
+![image-20201212114422118](/images/recovered/2d2202f64eb051ec58d6.png)
 
 消费者2结果
 
-![image-20201212114435569](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212114435569.png)
+![image-20201212114435569](/images/recovered/da94d24b8241472a97da.png)
 
 
 
@@ -669,15 +669,15 @@ public class Consumer2 {
 
 发送10条消息结果
 
-![image-20201212163558602](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212163558602.png)
+![image-20201212163558602](/images/recovered/8999a93d9b6c3cb7b822.png)
 
 消费者1结果
 
-![image-20201212114422118](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212114422118.png)
+![image-20201212114422118](/images/recovered/2d2202f64eb051ec58d6.png)
 
 消费者2结果
 
-![image-20201212114435569](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/image-20201212114435569.png)
+![image-20201212114435569](/images/recovered/da94d24b8241472a97da.png)
 
 
 
@@ -742,13 +742,13 @@ public class Consumer2 {
 
 源码实现位置
 
-![1608375938631](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1608375938631.png)
+![1608375938631](/images/recovered/bd36f744a23454cfdfdc.png)
 
 
 
 `PullRequestHoldService`继承自`Runnable`接口
 
-![1608376015873](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1608376015873.png)
+![1608376015873](/images/recovered/2b3ab9a2db261843cade.png)
 
 核心类`PullRequestHoldService`源码全貌
 
@@ -983,7 +983,7 @@ public class Producer {
 
 发送消息后的结果，在队列1有45条消息
 
-![1608436249690](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1608436249690.png)
+![1608436249690](/images/recovered/8682de5964ed7a126524.png)
 
 ### 使用普通Pull轮询模式
 
@@ -1059,7 +1059,7 @@ public class PullConsumer {
 
 而且该模式需要客户端编码实现Offset存储
 
-![1608436289786](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1608436289786.png)
+![1608436289786](/images/recovered/e98e2f39b59b242e9c16.png)
 
 ### Pull定时任务实现样例
 
@@ -1124,7 +1124,7 @@ public class PullScheduleService {
 
 运行结果，由于采用多线程读取所有队列，所以当服务端有消息时可以及时获取
 
-![1608436456415](https://gitea.fjy8018.top/fjy8018/images/raw/branch/blog/img/1608436456415.png)
+![1608436456415](/images/recovered/b0f39ce089c80978dbe9.png)
 
 ### 实现原理
 
